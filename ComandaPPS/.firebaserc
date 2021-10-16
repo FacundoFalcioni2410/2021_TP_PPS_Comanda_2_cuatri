@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "comandapps-f0233": {
+      "hosting": {
+        "app": [
+          "comandapps-f0233"
+        ]
+      }
+    }
+  }
+}
