@@ -1,0 +1,15 @@
+{
+	"appId": "pps.pst.comanda",
+	"appName": "Comanda PPS",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins":
+	{
+		"SplashScreen":
+		{
+			"launchShowDuration": 5000,
+			"launchAutoHide": false,
+			"backgroundColor": "#633DAD"
+		}
+	}
+}
