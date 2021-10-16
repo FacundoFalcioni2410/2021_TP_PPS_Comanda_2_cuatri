@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 // Firebase
 import { AuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 //Plugins
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +15,11 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 export class FotosService {
 
   items: any;
-  referenciaFotos: any;
-  // chatDb = '/fotos';
   nombreFoto = '';
   disable: boolean = false;
   loading = false;
 
-  constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, firestore: AngularFirestore) {
-    // this.referenciaFotos = this.firestore.
-    this.items = firestore.collection('fotos').valueChanges({idField: 'id'});
+  constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService) {
   }
 
   async TakePhoto(tipo: string){
@@ -36,10 +32,10 @@ export class FotosService {
 
     let dataUrl = capturedPhoto.dataUrl;
     let time = Date.now().toString();
-    // this.nombreFoto = '/' + this.auth.usuario?.email + hora;
+    this.nombreFoto = '/' + this.auth.usuarioActual?.email + time;
     let ref = this.storage.ref(`fotos/` + this.nombreFoto);
 
-    // this.loading = true;
+    this.loading = true;
 
     ref.putString(dataUrl, 'data_url',{
       contentType: 'image/jpeg',
@@ -68,11 +64,23 @@ export class FotosService {
 
         let photo: any = {
           url: url,
-          // userUID: this.auth.usuarioActual?.uid,
+          userUID: this.auth.usuarioActual?.uid,
         }
 
-        // itemsRef.push(photo);
+        if(this.auth.usuarioActual?.perfil === 'supervisor' || this.auth.usuarioActual?.perfil === 'dueño')
+        {
+          this.firestore.AltaFoto('supervisorFotos', photo);
+        }
+        else if(this.auth.usuarioActual?.perfil === 'clientes')
+        {
+          this.firestore.AltaFoto('clientesFotos', photo);
+        }
+        else if(this.auth.usuarioActual?.perfil === 'empleados')
+        {
+          this.firestore.AltaFoto('empleadosFotos', photo);
+        }
+        
+        this.loading = false;
       });
-      // this.loading = false;
   }
 }

@@ -1,4 +1,5 @@
 export interface Dueno {
+    uid?: string;
     nombre: string;
     apellido: string;
     dni: number;
