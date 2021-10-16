@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" style="max-height: 100vh !important;" >
+    <!-- <div *ngIf="this.auth.loading">
+        <app-spinner></app-spinner>
+    </div>
+    <form [formGroup]='form' (ngSubmit)='this.signIn()'>
+        <div class="containerForm bg-dark text-white">
+            <h1>Login</h1>
+            <h3>Ingrese sus datos:</h3>
+
+            <div class="row">
+                <div class="col-12">
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" formControlName='email' name="email" required>
+                    
+                    <div class='text-danger p-1 m-0' *ngIf="form.get('email')?.touched && form.get('email')?.errors?.required">
+                        Ingrese su email
+                    </div>
+                    <div class='text-danger p-1 m-0' *ngIf="form.get('email')?.touched && form.get('email')?.errors?.email">
+                        Ingrese un email valido
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="password"><b>Contraseña</b></label>
+                    <input type="password" formControlName='password' name="password" required>
+                    
+                    <div class='text-danger p-1' *ngIf="form.get('password')?.touched && form.get('password')?.errors?.required">
+                        Ingrese su contraseña
+                    </div>
+                    <div class='text-danger p-1' *ngIf="form.get('password')?.touched && form.get('password')?.errors?.minlength">
+                        La contraseña debe tener 8 caracteres o mas
+                    </div>
+                </div>
+            </div>        
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" [disabled]='form.invalid' class="btn">Ingresar</button>
+                </div>
+                <div class="col-md-4 col-12">
+                    <button type="button" (click)='this.loginEspecialista()' class="btn">Ingreso especialista</button>
+                </div>
+                <div class="col-md-4 col-12">
+                    <button type="button" (click)='this.loginPaciente()' class="btn">Ingreso paciente</button>
+                </div>
+                <div class="col-md-4 col-12">
+                    <button type="button" (click)='this.loginAdmin()' class="btn">Ingreso admin</button>
+                </div>
+            </div>
+        </div>
+    </form> -->
+</div>
+</ion-content>

@@ -28,9 +28,12 @@
     "@capacitor/splash-screen": "^1.1.5",
     "@capacitor/status-bar": "1.0.5",
     "@ionic/angular": "^5.5.2",
+    "@sweetalert2/ngx-sweetalert2": "^10.0.0",
+    "@sweetalert2/theme-borderless": "^5.0.5",
     "firebase": "^9.0.0",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.1.9",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
