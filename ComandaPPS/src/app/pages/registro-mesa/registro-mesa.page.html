@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de mesa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content>
+    <div class="container" style="max-height: 100vh !important;" >
+
+      
+      <form [formGroup]='controles' (ngSubmit)='RegistrarMesa()'>
+          <div class="containerForm bg-dark text-white">
+
+              <h3>Ingrese los datos de la mesa:</h3>
+              <!-- Se cargará el nombre, la descripción, el tiempo (promedio) de elavoración y el precio -->
+              <div class="row">
+                 <div class="col-12">
+                      <label for="nombre"><b>Número de la mesa</b></label>
+                      <input type="number" formControlName='numero' name="numero" required>
+                      
+                      <div class='text-danger p-1 m-0' *ngIf="controles.get('numero')?.touched && controles.get('numero')?.errors?.required">
+                          Ingrese el número de la mesa
+                      </div>
+                      <div class='text-danger p-1 m-0' *ngIf="controles.get('numero')?.touched && controles.get('numero')?.errors?.minlength">
+                        Ingrese un número válido.
+                      </div>
+                  </div>
+                  <div class="col-12">
+                        <label for="cantidadComensales"><b>Cantidad de comensales</b></label>
+                        <input type="number" formControlName='cantidadComensales' name="cantidadComensales" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('cantidadComensales')?.touched && controles.get('cantidadComensales')?.errors?.required">
+                            Ingrese la cantidad de comensales.
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('cantidadComensales')?.touched && controles.get('cantidadComensales')?.errors?.minlength">
+                            Ingrese una cantidad de comensales valida.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="tipo"><b>Tipo</b></label>
+                        <select  formControlName='tipo' name="tipo" required>
+                          <option>Estándar</option>
+                          <option>VIP</option>
+                          <option>Discapacitados</option>
+                        </select>
+                    </div>
+              </div>
+                  <div class="row">
+                      <div class="col-12">
+                          <button type="submit" [disabled]='controles.invalid' class="btn">Registrar mesa</button>
+                      </div>
+                  </div>
+         
+         </div>
+      </form>
+    
+    </div>
+  </ion-content>
+  
+</ion-content>

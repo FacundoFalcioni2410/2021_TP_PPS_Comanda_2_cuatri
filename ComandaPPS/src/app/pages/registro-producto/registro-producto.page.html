@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content>
+    <div class="container" style="max-height: 100vh !important;" >
+
+      
+      <form [formGroup]='controles' (ngSubmit)='RegistrarProducto()'>
+          <div class="containerForm bg-dark text-white">
+
+              <h3>Ingrese los datos del producto:</h3>
+              <!-- Se cargará el nombre, la descripción, el tiempo (promedio) de elavoración y el precio -->
+              <div class="row">
+                 <div class="col-12">
+                      <label for="nombre"><b>Nombre del producto</b></label>
+                      <input type="text" formControlName='nombre' name="nombre" required>
+                      
+                      <div class='text-danger p-1 m-0' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.required">
+                          Ingrese el nombre del producto
+                      </div>
+                      <div class='text-danger p-1 m-0' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.minlength">
+                        Ingrese un nombre del producto valido
+                      </div>
+                  </div>
+                  <div class="col-12">
+                        <label for="descripcion"><b>Descripcion</b></label>
+                        <input type="text" formControlName='descripcion' name="descripcion" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('descripcion')?.touched && controles.get('descripcion')?.errors?.required">
+                            Ingrese la descripcion
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('descripcion')?.touched && controles.get('descripcion')?.errors?.minlength">
+                            Ingrese una descripcion valida.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="tiempo"><b>Tiempo de elaboracion</b></label>
+                        <input type="number" formControlName='TElaboracion' name="TElaboracion" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.required">
+                            Ingrese un tiempo de elaboracion
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.minlength">
+                            Ingrese un tiempo de elaboracion valido.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="precio"><b>Precio</b></label>
+                        <input type="number" formControlName='precio' name="precio" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('precio')?.touched && controles.get('precio')?.errors?.required">
+                            Ingrese el precio
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('precio')?.touched && controles.get('precio')?.errors?.minlength">
+                            Ingrese un precio valido
+                        </div>
+                    </div>
+              </div>
+                  <div class="row">
+                      <div class="col-12">
+                          <button type="submit" [disabled]='controles.invalid' class="btn">Registrar</button>
+                      </div>
+                  </div>
+         
+         </div>
+      </form>
+    
+    </div>
+  </ion-content>
+  
+</ion-content>
