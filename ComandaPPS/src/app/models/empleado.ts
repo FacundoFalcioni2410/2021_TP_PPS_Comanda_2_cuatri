@@ -3,6 +3,8 @@ export interface Empleado {
     nombre : string;
     apellido : string;
     dni : number;
+    password: string;
+    email : string;
     cuil : string;
     foto : string;
     tipo : string;

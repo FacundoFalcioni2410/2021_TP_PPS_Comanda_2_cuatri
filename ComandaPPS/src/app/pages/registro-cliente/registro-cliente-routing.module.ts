@@ -5,7 +5,7 @@ import { RegistroClientePage } from './registro-cliente.page';
 
 const routes: Routes = [
   {
-    path: 'registro',
+    path: '',
     component: RegistroClientePage
   }
 ];
