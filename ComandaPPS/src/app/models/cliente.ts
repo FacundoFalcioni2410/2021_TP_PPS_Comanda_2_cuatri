@@ -3,8 +3,8 @@ export interface Cliente {
     password: string;
     email : string;
     nombre : string;
-    apellido : string;
-    dni : number;
+    apellido? : string;
+    dni? : number;
     foto? : string;
     
 }
