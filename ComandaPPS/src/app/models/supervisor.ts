@@ -1,4 +1,4 @@
-export interface Dueno {
+export interface Supervisor {
     uid?: string;
     nombre: string;
     password: string;

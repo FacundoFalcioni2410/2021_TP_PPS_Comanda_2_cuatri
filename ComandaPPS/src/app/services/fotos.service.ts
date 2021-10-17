@@ -11,6 +11,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 //Toast
 import Swal from 'sweetalert2/src/sweetalert2.js'
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class FotosService {
   disable: boolean = false;
   loading = false;
 
-  constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService) {
+  constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService, private vibration: Vibration) {
   }
 
   async TakePhoto(){
@@ -40,6 +41,8 @@ export class FotosService {
     catch(e){
       this.loading = false;
       this.auth.borrarUsuarioActual();
+      this.vibration.vibrate(2000);
+      this.mostrarToast({text: 'La foto es obligatorio, se cancela el registro', title: 'Error registro', icon: 'error', time: 1500, timerProgressBar: true})
     }
 
     let dataUrl = capturedPhoto.dataUrl;
@@ -62,9 +65,9 @@ export class FotosService {
     let nombres0 = Date.now().toString() + nombres[0];
     let nombres1 = Date.now().toString() + nombres[1];
     let nombres2 = Date.now().toString() + nombres[2];
-    let referencia0 = this.storage.ref(nombres0);
-    let referencia1 = this.storage.ref(nombres1);
-    let referencia2 = this.storage.ref(nombres2);
+    let referencia0 = this.storage.ref('fotos/' + nombres0);
+    let referencia1 = this.storage.ref('fotos/' + nombres1);
+    let referencia2 = this.storage.ref('fotos/' + nombres2);
     await this.storage.upload(nombres0, archivo0);
     await this.storage.upload(nombres1, archivo1);
     await this.storage.upload(nombres2, archivo2);
@@ -110,6 +113,8 @@ export class FotosService {
         this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
 
       }).catch(()=>{
+        this.mostrarToast({title: "Error", text:"Error al subir la foto, intentenlo nuevamente", icon: 'error', time: 1500,timeProgressBar:true})
+        this.vibration.vibrate(2000);
         this.auth.borrarUsuarioActual();
         this.loading = false;
       });

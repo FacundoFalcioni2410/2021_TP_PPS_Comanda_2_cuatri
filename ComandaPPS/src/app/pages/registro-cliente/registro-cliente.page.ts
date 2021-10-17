@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { Cliente } from 'src/app/models/cliente';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -39,7 +40,7 @@ export class RegistroClientePage implements OnInit {
     }
   }
 
-  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService) { 
+  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration) { 
     this.controles = this.form.group({});
   }
 
@@ -71,10 +72,10 @@ export class RegistroClientePage implements OnInit {
 
   RegistrarCliente(){
     this.loading = true;
-    let cliente: any;
+    let cliente: Cliente;
     if(this.tipoCliente === "anonimo")
     {
-      let cliente : Cliente = {
+      cliente = {
         nombre: this.getNombre(),
         email : this.getEmail(),
         password: this.getPassword()
@@ -82,7 +83,7 @@ export class RegistroClientePage implements OnInit {
     }
     else
     {
-      let cliente : Cliente = {
+      cliente = {
         nombre: this.getNombre(),
         apellido: this.getApellido(),
         dni: this.getDni(),
@@ -90,6 +91,7 @@ export class RegistroClientePage implements OnInit {
         password: this.getPassword()
       }
     }
+    
 
     this.authService.registro(cliente)
     .then(async res =>{
@@ -104,12 +106,18 @@ export class RegistroClientePage implements OnInit {
       this.authService.AltaCliente(cliente);
     })
     .catch( err =>{
-      this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       setTimeout(()=>{
         this.loading = false;
       },1000);
-    });;
+      this.vibration.vibrate(2000);
+      if(err.code === "auth/email-already-in-use")
+      {
+        this.mostrarToast({text: 'La cuenta ya existe',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
+      }
+      // this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
+    });
 
+    this.controles.reset();
   }
 
 }

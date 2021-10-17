@@ -45,5 +45,6 @@ export class RegistroMesaPage implements OnInit {
     };
 
     this.auth.AltaMesa(mesa);
+    this.controles.reset();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { Empleado } from 'src/app/models/empleado';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -15,7 +16,7 @@ export class RegistroEmpleadoPage implements OnInit {
   controles !: FormGroup;
   loading = false;
 
-  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService) { 
+  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration) { 
     this.controles = this.form.group({
       nombre:['', [Validators.required]],
       apellido:['', [Validators.required]],
@@ -23,6 +24,7 @@ export class RegistroEmpleadoPage implements OnInit {
       cuil:['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
+      tipo: ['', [Validators.required]],
     });
   }
 
@@ -112,11 +114,16 @@ export class RegistroEmpleadoPage implements OnInit {
       this.authService.AltaEmpleado(empleado);
     })
     .catch( err =>{
-      this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       setTimeout(()=>{
         this.loading = false;
       },1000);
-    });;
+      this.vibration.vibrate(2000);
+      if(err.code === "auth/email-already-in-use")
+      {
+        this.mostrarToast({text: 'La cuenta ya existe',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
+      }
+    });
 
+    this.controles.reset();
   }
 }

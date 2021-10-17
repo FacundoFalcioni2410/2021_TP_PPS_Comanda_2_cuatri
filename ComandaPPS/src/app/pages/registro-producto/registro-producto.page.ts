@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { Producto } from 'src/app/models/producto';
 import { AuthService } from 'src/app/services/auth.service';
 import { FotosService } from 'src/app/services/fotos.service';
@@ -16,7 +17,7 @@ export class RegistroProductoPage implements OnInit {
   formDataFotos: FormData;
   nombresFotos: any = [];
 
-  constructor(private form : FormBuilder, private auth : AuthService, private fotoS: FotosService) {
+  constructor(private form : FormBuilder, private auth : AuthService, private fotoS: FotosService, private vibration: Vibration) {
 
     this.controles = this.form.group({
       'nombre':['', [Validators.required]],
@@ -59,6 +60,7 @@ export class RegistroProductoPage implements OnInit {
     else
     {
       this.formDataFotos = null;
+      this.vibration.vibrate(2000);
       this.mostrarToast({text: "Debe seleccionar 3 fotos", toast: true, position: 'bottom',timer: 2000,timerProgressBar: true, icon: 'error'});
     }
   }
@@ -78,5 +80,6 @@ export class RegistroProductoPage implements OnInit {
     };
 
     this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, producto);
+    this.controles.reset();
   }
 }
