@@ -33,19 +33,44 @@ export class FotosService {
           source: CameraSource.Camera,
           webUseInput: true,
         });
-
-       
     }
     catch(e){
       
       this.auth.borrarUsuarioActual();
     }
-     
 
-    console.log(capturedPhoto);
-  
-     
-    
+    let dataUrl = capturedPhoto.dataUrl;
+    let time = Date.now().toString();
+    this.nombreFoto = '/' + this.auth.usuarioActual?.email + time;
+    let ref = this.storage.ref(`fotos/` + this.nombreFoto);
+
+    this.loading = true;
+
+    ref.putString(dataUrl, 'data_url',{
+      contentType: 'image/jpeg',
+    }).then(()=>{
+      this.uploadPhoto();
+    });
+  }
+
+  async TakePhotos(){
+
+    let capturedPhoto : any;
+
+    try{
+        capturedPhoto = await Camera.getPhoto({
+          quality: 100,
+          resultType: CameraResultType.DataUrl,
+          source: CameraSource.Photos,
+          webUseInput: true,
+        });
+
+        console.log(capturedPhoto);
+    }
+    catch(e){
+      
+      this.auth.borrarUsuarioActual();
+    }
 
     let dataUrl = capturedPhoto.dataUrl;
     let time = Date.now().toString();

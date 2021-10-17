@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2/src/sweetalert2.js'
+import { FotosService } from '../services/fotos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public fotoS: FotosService) {}
 
   // ionViewDidEnter(){
   //   Swal.fire({

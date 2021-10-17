@@ -65,14 +65,17 @@ export class RegistroClientePage implements OnInit {
 
     this.authService.registro(cliente)
     .then(async res =>{
+      cliente.uid = res.user.uid;
+      this.authService.usuarioActual = cliente;
       this.mostrarToast({text: 'Debe sacarse una foto para completar el registro',toast: true,position: 'bottom',timer: 3000,timerProgressBar: true,icon: 'info'});
       setTimeout(()=>{
-        this.fotoS.TakePhoto();
-      },3000);
-      cliente.uid = res.user.uid;
+        // this.fotoS.TakePhoto();
+        this.authService.borrarUsuarioActual();
+      },1000);
+
       this.authService.AltaCliente(cliente);
 
-      this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+      // this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
       this.authService.usuarioActual = cliente;
       setTimeout(()=>{
         this.loading = false;

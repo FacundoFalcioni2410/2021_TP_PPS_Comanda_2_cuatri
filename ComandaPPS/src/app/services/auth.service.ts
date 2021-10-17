@@ -31,10 +31,37 @@ export class AuthService {
     user.delete().then( () =>{
       console.log('deleted');
     });
-      // this.auth.authState(res =>{
-      //   res.delete()
-      // })
 
+    if(this.usuarioActual?.perfil)
+    {
+      let clienteFirestore = await this.firestore.collection('supervisor', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+
+      this.firestore.collection("supervisor").doc(clienteFirestore[0].id).delete();
+
+      let fotoFirestore = await this.firestore.collection('supervisorFotos', ref => ref.where('userUID', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+
+      this.firestore.collection("supervisorFotos").doc(clienteFirestore[0].id).delete();
+    }
+    else if(this.usuarioActual?.tipo)
+    {
+      let clienteFirestore = await this.firestore.collection('empleados', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+
+      this.firestore.collection("empleados").doc(clienteFirestore[0].id).delete();
+
+      let fotoFirestore = await this.firestore.collection('empleadosFotos', ref => ref.where('userUID', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+
+      this.firestore.collection("empleadosFotos").doc(clienteFirestore[0].id).delete();
+    }
+    else
+    {
+      let clienteFirestore = await this.firestore.collection('clientes', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+
+      this.firestore.collection("clientes").doc(clienteFirestore[0].id).delete();
+
+      let fotoFirestore = await this.firestore.collection('clientesFotos', ref => ref.where('userUID', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+
+      this.firestore.collection("clientesFotos").doc(clienteFirestore[0].id).delete();
+    }
   }
 
   AltaCliente(cliente : Cliente){
