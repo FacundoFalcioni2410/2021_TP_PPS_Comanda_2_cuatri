@@ -8,7 +8,9 @@
 
   <ion-content>
     <div class="container" style="max-height: 100vh !important;" >
-
+        <div *ngIf="this.loading">
+            <app-spinner></app-spinner>
+        </div>
       
       <form [formGroup]='controles' (ngSubmit)='RegistrarCliente()'>
           <div class="containerForm bg-dark text-white">

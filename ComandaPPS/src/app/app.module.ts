@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @NgModule({
   declarations: 
@@ -26,10 +27,11 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   ],
   providers: 
   [
+    Vibration,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy
-    }
+    },
   ],
   bootstrap: [AppComponent],
 })

@@ -53,7 +53,7 @@ export class RegistroClientePage implements OnInit {
   }
 
   RegistrarCliente(){
-
+    this.loading = true;
     let cliente : Cliente = {
       nombre: this.getNombre(),
       apellido: this.getApellido(),
@@ -67,16 +67,14 @@ export class RegistroClientePage implements OnInit {
     .then(async res =>{
       cliente.uid = res.user.uid;
       this.authService.usuarioActual = cliente;
-      this.mostrarToast({text: 'Debe sacarse una foto para completar el registro',toast: true,position: 'bottom',timer: 3000,timerProgressBar: true,icon: 'info'});
+      this.mostrarToast({text: 'Debe sacarse una foto para completar el registro',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
       setTimeout(()=>{
-        // this.fotoS.TakePhoto();
-        this.authService.borrarUsuarioActual();
-      },1000);
+        this.fotoS.TakePhoto();
+      },2000);
 
       this.authService.AltaCliente(cliente);
 
       // this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
-      this.authService.usuarioActual = cliente;
       setTimeout(()=>{
         this.loading = false;
       },1000);
