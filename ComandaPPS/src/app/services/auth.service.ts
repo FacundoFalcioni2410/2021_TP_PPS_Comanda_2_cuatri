@@ -36,14 +36,15 @@ export class AuthService {
   login(user: any){
     return this.auth.signInWithEmailAndPassword(user.email, user.password)
     .then( res =>{
-
+      this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
       setTimeout(()=>{
         this.loading = false;
-        this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
-      },1000);
+      },1500);
     })
     .catch( err =>{
-
+      setTimeout(()=>{
+        this.loading = false;
+      },1500);
     });;
   }
 
@@ -56,13 +57,17 @@ export class AuthService {
         await this.AltaCliente(user);
       }
       this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+      this.usuarioActual = user;
       setTimeout(()=>{
         this.loading = false;
       },1000);
     })
     .catch( err =>{
-
-    });;
+      this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
+      setTimeout(()=>{
+        this.loading = false;
+      },1000);
+    });
   }
 
   mostrarToast(options: any){

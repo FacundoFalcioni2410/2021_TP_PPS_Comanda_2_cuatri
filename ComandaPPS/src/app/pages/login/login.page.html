@@ -6,10 +6,7 @@
 
 <ion-content>
   <div class="container" style="max-height: 100vh !important;" >
-    <!-- <div *ngIf="this.auth.loading">
-        <app-spinner></app-spinner>
-    </div>
-    <form [formGroup]='form' (ngSubmit)='this.signIn()'>
+    <form [formGroup]='form' (ngSubmit)='this.login()'>
         <div class="containerForm bg-dark text-white">
             <h1>Login</h1>
             <h3>Ingrese sus datos:</h3>
@@ -42,17 +39,8 @@
                 <div class="col-12">
                     <button type="submit" [disabled]='form.invalid' class="btn">Ingresar</button>
                 </div>
-                <div class="col-md-4 col-12">
-                    <button type="button" (click)='this.loginEspecialista()' class="btn">Ingreso especialista</button>
-                </div>
-                <div class="col-md-4 col-12">
-                    <button type="button" (click)='this.loginPaciente()' class="btn">Ingreso paciente</button>
-                </div>
-                <div class="col-md-4 col-12">
-                    <button type="button" (click)='this.loginAdmin()' class="btn">Ingreso admin</button>
-                </div>
             </div>
         </div>
-    </form> -->
+    </form>
 </div>
 </ion-content>
