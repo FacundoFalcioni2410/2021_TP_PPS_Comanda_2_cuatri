@@ -9,6 +9,8 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 //Plugins
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
+//Toast
+import Swal from 'sweetalert2/src/sweetalert2.js'
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +38,7 @@ export class FotosService {
         });
     }
     catch(e){
-      
+      this.loading = false;
       this.auth.borrarUsuarioActual();
     }
 
@@ -45,7 +47,6 @@ export class FotosService {
     this.nombreFoto = '/' + this.auth.usuarioActual?.email + time;
     let ref = this.storage.ref(`fotos/` + this.nombreFoto);
 
-    this.loading = true;
 
     ref.putString(dataUrl, 'data_url',{
       contentType: 'image/jpeg',
@@ -106,8 +107,15 @@ export class FotosService {
         }
 
         this.loading = false;
+        this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+
       }).catch(()=>{
         this.auth.borrarUsuarioActual();
+        this.loading = false;
       });
+  }
+
+  mostrarToast(options: any){
+    Swal.fire(options);
   }
 }
