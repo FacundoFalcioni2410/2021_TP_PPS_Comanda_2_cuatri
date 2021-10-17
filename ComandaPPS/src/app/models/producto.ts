@@ -4,5 +4,5 @@ export interface Producto {
     descripcion : string;
     tiempo : number;
     precio : number;
-    fotos : string[];
+    fotos? : string[];
 }

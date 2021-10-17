@@ -6,6 +6,6 @@ export interface Dueno {
     apellido: string;
     dni: number;
     cuil: number;
-    foto: string,
+    foto?: string,
     perfil: string;
 }

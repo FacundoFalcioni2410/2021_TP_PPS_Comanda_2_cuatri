@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Mesa } from 'src/app/models/mesa';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registro-mesa',
@@ -10,7 +12,7 @@ export class RegistroMesaPage implements OnInit {
 
   controles !: FormGroup;
 
-  constructor(private form : FormBuilder) {
+  constructor(private form : FormBuilder, private auth : AuthService) {
 
     this.controles = this.form.group({
       'numero':['', [Validators.required]],
@@ -35,6 +37,13 @@ export class RegistroMesaPage implements OnInit {
   }
 
   RegistrarMesa(){
+    let mesa : Mesa = {
+      numero : this.getNumero(),
+      cantidadComensales : this.getCantidadComensales(),
+      tipo : this.getTipo(),
+      //foto: aca va la foto
+    };
 
+    this.auth.AltaMesa(mesa);
   }
 }

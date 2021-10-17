@@ -6,7 +6,7 @@ export interface Empleado {
     password: string;
     email : string;
     cuil : string;
-    foto : string;
+    foto? : string;
     tipo : string;
 
 }

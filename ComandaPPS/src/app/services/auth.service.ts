@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { Cliente } from '../models/cliente';
+import { Mesa } from '../models/mesa';
+import { Producto } from '../models/producto';
 import { FotosService } from './fotos.service';
 
 @Injectable({
@@ -15,13 +17,26 @@ export class AuthService {
 
   usuarioActual: any;
   loading: boolean = false;
+  //Clientes
   clientes : Observable<Cliente[]>;
   clienteCollection : AngularFirestoreCollection<Cliente>;
+  ///Mesas
+  mesas : Observable<Mesa[]>;
+  mesaCollection : AngularFirestoreCollection<Mesa>;
+  ///Productos
+  productos : Observable<Producto[]>;
+  productoCollection : AngularFirestoreCollection<Producto>;
 
   constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) { 
-
+    //Clientes
     this.clienteCollection = firestore.collection<Cliente>('clientes');
     this.clientes = this.clienteCollection.valueChanges({idField: 'id'});
+    ///Mesas
+    this.mesaCollection = firestore.collection<Mesa>('mesas');
+    this.mesas = this.mesaCollection.valueChanges({idField: 'id'});
+    ///Productos
+    this.productoCollection = firestore.collection<Producto>('productos');
+    this.productos = this.productoCollection.valueChanges({idField : 'id'});
 
   }
 
@@ -67,6 +82,14 @@ export class AuthService {
   AltaCliente(cliente : Cliente){
     this.usuarioActual = cliente;
     return this.clienteCollection.add({...cliente});
+  }
+
+  AltaMesa(mesa : Mesa){
+    return this.mesaCollection.add({...mesa});
+  }
+
+  AltaProducto(producto : Producto){
+    return this.productoCollection.add({...producto});
   }
 
   async getCliente(uid: string){
