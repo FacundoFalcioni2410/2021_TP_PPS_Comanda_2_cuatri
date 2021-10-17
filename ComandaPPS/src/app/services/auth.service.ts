@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { Cliente } from '../models/cliente';
+import { Empleado } from '../models/empleado';
 import { Mesa } from '../models/mesa';
 import { Producto } from '../models/producto';
 import { FotosService } from './fotos.service';
@@ -26,6 +27,9 @@ export class AuthService {
   ///Productos
   productos : Observable<Producto[]>;
   productoCollection : AngularFirestoreCollection<Producto>;
+  //Empleados
+  empleados : Observable<Empleado[]>;
+  empleadoCollection : AngularFirestoreCollection<Empleado>;
 
   constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) { 
     //Clientes
@@ -37,6 +41,9 @@ export class AuthService {
     ///Productos
     this.productoCollection = firestore.collection<Producto>('productos');
     this.productos = this.productoCollection.valueChanges({idField : 'id'});
+    //Empleados
+    this.empleadoCollection = firestore.collection<Empleado>('empleados');
+    this.empleados = this.empleadoCollection.valueChanges({idField : 'id'});
 
   }
 
@@ -90,6 +97,10 @@ export class AuthService {
 
   AltaProducto(producto : Producto){
     return this.productoCollection.add({...producto});
+  }
+
+  AltaEmpleado(empleado : Empleado){
+    return this.empleadoCollection.add({...empleado});
   }
 
   async getCliente(uid: string){
