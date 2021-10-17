@@ -104,6 +104,7 @@ export class RegistroClientePage implements OnInit {
       },2000);
 
       this.authService.AltaCliente(cliente);
+      this.controles.reset();
     })
     .catch( err =>{
       setTimeout(()=>{
@@ -114,10 +115,10 @@ export class RegistroClientePage implements OnInit {
       {
         this.mostrarToast({text: 'La cuenta ya existe',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       }
+      this.controles.reset();
       // this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
     });
 
-    this.controles.reset();
   }
 
 }

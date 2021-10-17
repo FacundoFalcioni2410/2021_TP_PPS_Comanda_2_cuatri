@@ -112,6 +112,7 @@ export class RegistroEmpleadoPage implements OnInit {
         }
       });
       this.authService.AltaEmpleado(empleado);
+      this.controles.reset();
     })
     .catch( err =>{
       setTimeout(()=>{
@@ -122,8 +123,7 @@ export class RegistroEmpleadoPage implements OnInit {
       {
         this.mostrarToast({text: 'La cuenta ya existe',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       }
+      this.controles.reset();
     });
-
-    this.controles.reset();
   }
 }

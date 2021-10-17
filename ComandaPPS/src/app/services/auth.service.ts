@@ -9,6 +9,7 @@ import { Cliente } from '../models/cliente';
 import { Empleado } from '../models/empleado';
 import { Mesa } from '../models/mesa';
 import { Producto } from '../models/producto';
+import { Supervisor } from '../models/supervisor';
 import { FotosService } from './fotos.service';
 
 @Injectable({
@@ -31,6 +32,10 @@ export class AuthService {
   empleados : Observable<Empleado[]>;
   empleadoCollection : AngularFirestoreCollection<Empleado>;
 
+  //Supervisores / Dueños
+  supervisores : Observable<Supervisor[]>;
+  supervisorCollection : AngularFirestoreCollection<Supervisor>;
+
   constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) { 
     //Clientes
     this.clienteCollection = firestore.collection<Cliente>('clientes');
@@ -44,6 +49,9 @@ export class AuthService {
     //Empleados
     this.empleadoCollection = firestore.collection<Empleado>('empleados');
     this.empleados = this.empleadoCollection.valueChanges({idField : 'id'});
+
+    this.supervisorCollection = firestore.collection<Supervisor>('supervisores');
+    this.supervisores = this.supervisorCollection.valueChanges({idField : 'id'});
 
   }
 
@@ -101,6 +109,10 @@ export class AuthService {
 
   AltaEmpleado(empleado : Empleado){
     return this.empleadoCollection.add({...empleado});
+  }
+
+  AltaSupervisor(supervisor : Supervisor){
+    return this.supervisorCollection.add({...supervisor});
   }
 
   async getCliente(uid: string){
