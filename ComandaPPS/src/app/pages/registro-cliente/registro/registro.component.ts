@@ -7,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
+  loading = false;
+  seleccionado = false;
+  tipo: string = '';
+  
   constructor() { }
 
   ngOnInit() {}
 
+  seleccionarTipo(tipo: string){
+    this.seleccionado = true;
+    this.tipo = tipo;
+  }
 }

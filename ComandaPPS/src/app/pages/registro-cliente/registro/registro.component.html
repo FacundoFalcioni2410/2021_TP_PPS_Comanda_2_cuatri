@@ -1,3 +1,20 @@
-<p>
-  registro works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button >
+        <ion-icon name="log-out-outline" style="font-size:40px" color="tertiary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- *ngIf='this.auth.isLoggedIn' (click)="this.auth.logOut()" -->
+
+<ion-content>
+  <app-spinner *ngIf='this.loading'></app-spinner>
+  <div style='height: calc(100vh - 56px);margin:0;padding:0;' *ngIf='!this.seleccionado'>
+    <ion-button class="" style="text-shadow: 3px 3px 3px black;height:50%;width:100%;margin:0;padding:0;color:#FF7F50;" (click)='seleccionarTipo("estandar")'>Cliente estandar</ion-button>
+    <ion-button class="" style="text-shadow: 3px 3px 3px black;height:50%;width:100%;margin:0;padding:0;color:#22B6A2;" (click)='seleccionarTipo("anonimo")'>Anonimo</ion-button>
+  </div>
+
+  <app-registro-cliente *ngIf='this.seleccionado' [tipo]="this.tipo"></app-registro-cliente>
+</ion-content>

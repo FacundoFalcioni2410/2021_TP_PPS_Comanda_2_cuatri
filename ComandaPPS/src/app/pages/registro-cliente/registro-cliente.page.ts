@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/models/cliente';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,16 +14,33 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 export class RegistroClientePage implements OnInit {
 
   controles !: FormGroup;
+  tipoCliente: any;
   loading = false;
+  @Input() set tipo(value: any)
+  {
+    this.tipoCliente = value;
+    if(value === 'anonimo')
+    {
+      this.controles = this.form.group({
+        'nombre':['', [Validators.required]],
+        'password': ['', [Validators.required, Validators.minLength(8)]],
+        'email': ['', [Validators.required, Validators.email]],
+      });
+    }
+    else
+    {
+      this.controles = this.form.group({
+        'nombre':['', [Validators.required]],
+        'apellido':['', [Validators.required]],
+        'dni':['', [Validators.required]],
+        'password': ['', [Validators.required, Validators.minLength(8)]],
+        'email': ['', [Validators.required, Validators.email]],
+      });
+    }
+  }
 
   constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService) { 
-    this.controles = this.form.group({
-      'nombre':['', [Validators.required]],
-      'apellido':['', [Validators.required]],
-      'dni':['', [Validators.required]],
-      'password': ['', [Validators.required, Validators.minLength(8)]],
-      'email': ['', [Validators.required, Validators.email]],
-    });
+    this.controles = this.form.group({});
   }
 
   ngOnInit() {
@@ -54,13 +71,24 @@ export class RegistroClientePage implements OnInit {
 
   RegistrarCliente(){
     this.loading = true;
-    let cliente : Cliente = {
-      nombre: this.getNombre(),
-      apellido: this.getApellido(),
-      dni: this.getDni(),
-      // foto: this.getFoto(),
-      email : this.getEmail(),
-      password: this.getPassword()
+    let cliente: any;
+    if(this.tipoCliente === "anonimo")
+    {
+      let cliente : Cliente = {
+        nombre: this.getNombre(),
+        email : this.getEmail(),
+        password: this.getPassword()
+      }
+    }
+    else
+    {
+      let cliente : Cliente = {
+        nombre: this.getNombre(),
+        apellido: this.getApellido(),
+        dni: this.getDni(),
+        email : this.getEmail(),
+        password: this.getPassword()
+      }
     }
 
     this.authService.registro(cliente)

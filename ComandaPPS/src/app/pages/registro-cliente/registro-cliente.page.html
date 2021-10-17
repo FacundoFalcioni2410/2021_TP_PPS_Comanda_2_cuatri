@@ -51,6 +51,7 @@
                         Ingrese un nombre validow
                     </div>
                 </div>
+               <div *ngIf='this.tipoCliente !== "anonimo"'>
                 <div class="col-12">
                     <label for="password"><b>Apellido</b></label>
                     <input type="text" formControlName='apellido' name="apellido" required>
@@ -72,7 +73,8 @@
                     <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.minlength">
                         Ingrese un dni valido
                     </div>
-                </div>                  
+                </div>   
+               </div>               
               </div>        
               <div class="row">
                   <div class="col-12">
