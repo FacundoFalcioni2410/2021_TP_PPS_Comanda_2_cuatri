@@ -11,6 +11,8 @@ export class HomePage {
 
   constructor(public fotoS: FotosService) {}
 
+  
+
   // ionViewDidEnter(){
   //   Swal.fire({
   //     text: 'hola',

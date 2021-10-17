@@ -18,7 +18,7 @@ export class SplashPage implements OnInit {
   ionViewDidEnter(){
     SplashScreen.hide();
     setTimeout(()=>{
-      this.router.navigate(['/registro-cliente']);
+      this.router.navigate(['/home']);
     },2000);
   }
 

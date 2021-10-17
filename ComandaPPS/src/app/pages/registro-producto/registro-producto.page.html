@@ -45,7 +45,7 @@
                         <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.required">
                             Ingrese un tiempo de elaboracion
                         </div>
-                        <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.minlength">
+                        <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.maxlength">
                             Ingrese un tiempo de elaboracion valido.
                         </div>
                     </div>
@@ -60,10 +60,16 @@
                             Ingrese un precio valido
                         </div>
                     </div>
+                    <div class="col-12">
+                        <input class="btn btn-primary" type="file" multiple accept="image/*" (change)='archivoSeleccionado($event)'>
+                    </div>
               </div>
                   <div class="row">
                       <div class="col-12">
-                          <button type="submit" [disabled]='controles.invalid' class="btn">Registrar</button>
+                            <label for="file-upload" class="custom-file-upload mt-2">
+                                <i class="fa fa-cloud-upload"></i> Custom Upload
+                            </label>
+                          <button type="submit" [disabled]='controles.invalid || !formDataFotos' class="btn">Registrar</button>
                       </div>
                   </div>
          

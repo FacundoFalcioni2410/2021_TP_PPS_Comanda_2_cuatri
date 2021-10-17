@@ -24,7 +24,13 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     SweetAlert2Module.forRoot()
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: 
+  [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -70,6 +70,17 @@ button:hover {
   opacity:1;
 }
 
+input[type=file] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
 /* Change styles for signup button on extra small screens */
 @media screen and (max-width: 910px) {
   .signupbtn {
