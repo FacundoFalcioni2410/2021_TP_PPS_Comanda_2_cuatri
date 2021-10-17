@@ -22,13 +22,20 @@ export class FotosService {
   constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService) {
   }
 
-  async TakePhoto(tipo: string){
+  async TakePhoto(){
+
     let capturedPhoto = await Camera.getPhoto({
-      quality: 100,
-      resultType: CameraResultType.DataUrl,
-      source: CameraSource.Camera,
-      webUseInput: true,
-    });
+        quality: 100,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
+        webUseInput: true,
+      });
+
+    console.log(capturedPhoto);
+    if(capturedPhoto === null)
+    {
+      this.auth.borrarUsuarioActual();
+    }
 
     let dataUrl = capturedPhoto.dataUrl;
     let time = Date.now().toString();
@@ -48,39 +55,27 @@ export class FotosService {
       let storage = this.storage.ref(`/fotos`).child(this.nombreFoto);
       storage.getDownloadURL().toPromise()
       .then( (url:any) =>{
-        // const itemsRef = this.db.list('/fotos');
-        // let user = this.auth.isLoggedIn?.email.split('@');
-        let d = new Date();
-        let day: any = d.getDate();
-        let month: any = d.getMonth();
-        let year = d.getFullYear();
-
-        if(day < 10) {
-          day = '0' + day;
-        }
-        if(month < 10) {
-          month = '0' + month;
-        }
-
         let photo: any = {
           url: url,
           userUID: this.auth.usuarioActual?.uid,
         }
 
-        if(this.auth.usuarioActual?.perfil === 'supervisor' || this.auth.usuarioActual?.perfil === 'dueño')
+        if(this.auth.usuarioActual?.perfil)
         {
           this.firestore.AltaFoto('supervisorFotos', photo);
         }
-        else if(this.auth.usuarioActual?.perfil === 'clientes')
-        {
-          this.firestore.AltaFoto('clientesFotos', photo);
-        }
-        else if(this.auth.usuarioActual?.perfil === 'empleados')
+        else if(this.auth.usuarioActual?.tipo)
         {
           this.firestore.AltaFoto('empleadosFotos', photo);
         }
-        
+        else
+        {
+          this.firestore.AltaFoto('clientesFotos', photo);
+        }
+
         this.loading = false;
+      }).catch(()=>{
+        this.auth.borrarUsuarioActual();
       });
   }
 }

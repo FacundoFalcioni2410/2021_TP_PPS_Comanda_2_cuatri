@@ -40,7 +40,7 @@
                   </div>
                   <div class="col-12">
                     <label for="password"><b>Nombre</b></label>
-                    <input type="password" formControlName='nombre' name="nombre" required>
+                    <input type="text" formControlName='nombre' name="nombre" required>
                     
                     <div class='text-danger p-1' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.required">
                         Ingrese su nombre
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-12">
                     <label for="password"><b>Apellido</b></label>
-                    <input type="password" formControlName='apellido' name="apellido" required>
+                    <input type="text" formControlName='apellido' name="apellido" required>
                     
                     <div class='text-danger p-1' *ngIf="controles.get('apellido')?.touched && controles.get('apellido')?.errors?.required">
                         Ingrese su apellido
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-12">
                     <label for="password"><b>DNI</b></label>
-                    <input type="password" formControlName='dni' name="dni" required>
+                    <input type="number" formControlName='dni' name="dni" required>
                     
                     <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.required">
                         Ingrese su dni
@@ -70,20 +70,11 @@
                     <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.minlength">
                         Ingrese un dni valido
                     </div>
-                </div>
-                <div class="col-12">
-                    <label for="password"><b>FOTO</b></label>
-                    <input type="password" formControlName='foto' name="foto" required>
-                    
-                    <div class='text-danger p-1' *ngIf="controles.get('foto')?.touched && controles.get('foto')?.errors?.required">
-                        Ingrese su foto
-                    </div>
-                </div>
-                  
+                </div>                  
               </div>        
               <div class="row">
                   <div class="col-12">
-                      <button type="submit" [disabled]='form.invalid' class="btn">Registrar</button>
+                      <button type="submit" [disabled]='controles.invalid' class="btn">Registrar</button>
                   </div>
               </div>
           </div>

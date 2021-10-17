@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { Cliente } from '../models/cliente';
+import { FotosService } from './fotos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,18 @@ export class AuthService {
 
     this.clienteCollection = firestore.collection<Cliente>('clientes');
     this.clientes = this.clienteCollection.valueChanges({idField: 'id'});
+
+  }
+
+  async borrarUsuarioActual(){
+    let user = await this.auth.currentUser;
+
+    user.delete().then( () =>{
+      console.log('deleted');
+    });
+      // this.auth.authState(res =>{
+      //   res.delete()
+      // })
 
   }
 
@@ -49,25 +62,7 @@ export class AuthService {
   }
 
   registro(user: any){
-    return this.auth.signInWithEmailAndPassword(user.email, user.password)
-    .then(async res =>{
-      user.uid = res.user.uid;
-      if(user === "cliente")
-      {
-        await this.AltaCliente(user);
-      }
-      this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
-      this.usuarioActual = user;
-      setTimeout(()=>{
-        this.loading = false;
-      },1000);
-    })
-    .catch( err =>{
-      this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
-      setTimeout(()=>{
-        this.loading = false;
-      },1000);
-    });
+    return this.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
   mostrarToast(options: any){
