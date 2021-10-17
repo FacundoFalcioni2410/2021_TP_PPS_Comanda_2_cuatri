@@ -24,18 +24,28 @@ export class FotosService {
 
   async TakePhoto(){
 
-    let capturedPhoto = await Camera.getPhoto({
-        quality: 100,
-        resultType: CameraResultType.DataUrl,
-        source: CameraSource.Camera,
-        webUseInput: true,
-      });
+    let capturedPhoto : any;
 
-    console.log(capturedPhoto);
-    if(capturedPhoto === null)
-    {
+    try{
+        capturedPhoto = await Camera.getPhoto({
+          quality: 100,
+          resultType: CameraResultType.DataUrl,
+          source: CameraSource.Camera,
+          webUseInput: true,
+        });
+
+       
+    }
+    catch(e){
+      
       this.auth.borrarUsuarioActual();
     }
+     
+
+    console.log(capturedPhoto);
+  
+     
+    
 
     let dataUrl = capturedPhoto.dataUrl;
     let time = Date.now().toString();
