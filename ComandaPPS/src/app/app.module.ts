@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: 
@@ -34,6 +35,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy
     },
+    { provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }
   ],
   bootstrap: [AppComponent],
 })

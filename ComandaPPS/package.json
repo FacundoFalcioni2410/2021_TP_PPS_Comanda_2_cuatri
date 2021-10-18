@@ -36,6 +36,7 @@
     "@sweetalert2/theme-borderless": "^5.0.5",
     "cordova-plugin-vibration": "^3.1.1",
     "firebase": "^9.0.0",
+    "ng-lazyload-image": "^9.1.0",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
