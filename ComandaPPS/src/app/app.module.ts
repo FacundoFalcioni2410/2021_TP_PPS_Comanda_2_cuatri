@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @NgModule({
   declarations: 
@@ -27,6 +28,7 @@ import { Vibration } from '@ionic-native/vibration/ngx';
   ],
   providers: 
   [
+    BarcodeScanner,
     Vibration,
     {
       provide: RouteReuseStrategy,

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { FotosService } from '../services/fotos.service';
+import { QRService } from '../services/qr.service';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +10,12 @@ import { FotosService } from '../services/fotos.service';
 })
 export class HomePage {
 
-  constructor(public fotoS: FotosService) {}
+  constructor(public fotoS: FotosService, private qrS: QRService) {}
 
+  scan(){
+    this.qrS.scan();
+  }
   
 
-  // ionViewDidEnter(){
-  //   Swal.fire({
-  //     text: 'hola',
-  //     toast: true,
-  //     position: 'bottom',
-  //     timer: 1500,
-  //     timerProgressBar: true,
-  //     icon: 'error',
-  //   })
-  // }
+
 }

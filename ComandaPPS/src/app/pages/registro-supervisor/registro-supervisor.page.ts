@@ -5,6 +5,7 @@ import { Supervisor } from 'src/app/models/supervisor';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FotosService } from 'src/app/services/fotos.service';
+import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,7 @@ export class RegistroSupervisorPage implements OnInit {
   controles !: FormGroup;
   loading = false;
 
-  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration) { 
+  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService) { 
     this.controles = this.form.group({
       nombre:['', [Validators.required]],
       apellido:['', [Validators.required]],
@@ -61,6 +62,15 @@ export class RegistroSupervisorPage implements OnInit {
 
   mostrarToast(options: any){
     Swal.fire(options);
+  }
+
+  scanDNI(){
+    this.qrS.scanDNI();
+    if(!this.qrS.scaneando)
+    {
+      alert(this.qrS.dni);
+      this.controles.get('dni')?.setValue(this.qrS.dni);
+    }
   }
 
   RegistrarEmpleado(){
