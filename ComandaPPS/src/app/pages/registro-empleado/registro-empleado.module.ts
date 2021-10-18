@@ -10,6 +10,9 @@ import { RegistroEmpleadoPage } from './registro-empleado.page';
 import { SharedModule } from 'src/app/sharedComponents/shared/shared.module';
 
 @NgModule({
+  declarations: [
+    RegistroEmpleadoPage,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -18,6 +21,5 @@ import { SharedModule } from 'src/app/sharedComponents/shared/shared.module';
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [RegistroEmpleadoPage]
 })
 export class RegistroEmpleadoPageModule {}

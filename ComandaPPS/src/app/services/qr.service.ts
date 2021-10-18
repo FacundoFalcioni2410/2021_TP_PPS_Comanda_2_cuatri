@@ -25,14 +25,17 @@ export class QRService {
 
     if(scannedData.text)
     {
-      let dniArr = scannedData.text.split('@');
-      let digitosCUIL = dniArr[8];
-      let cuil = digitosCUIL[0] + digitosCUIL[1] + dniArr[4] + digitosCUIL[2];
+      if(scannedData.text.includes('@'))
+      {
+        let dniArr = scannedData.text.split('@');
+        let digitosCUIL = dniArr[8];
+        let cuil = digitosCUIL[0] + digitosCUIL[1] + dniArr[4] + digitosCUIL[2];
 
-      return {
-        dni: dniArr[4],
-        cuil: cuil
-      };
+        return {
+          dni: dniArr[4],
+          cuil: cuil
+        };
+      }
     }
 
     return null;
