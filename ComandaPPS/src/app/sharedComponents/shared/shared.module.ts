@@ -7,7 +7,7 @@ import { SpinnerComponent } from 'src/app/components/spinner/spinner.component';
 @NgModule({
   declarations: [SpinnerComponent],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     SpinnerComponent

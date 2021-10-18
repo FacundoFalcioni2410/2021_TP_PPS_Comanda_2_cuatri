@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxQrcodeElementTypes } from 'ngx-qrcode2';
 import { Mesa } from 'src/app/models/mesa';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,7 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./registro-mesa.page.scss'],
 })
 export class RegistroMesaPage implements OnInit {
-
+  elementType : 'url' | 'canvas' | 'img' = 'url';
+  createdCode : string = 'Techiediaries';
   controles !: FormGroup;
 
   constructor(private form : FormBuilder, private auth : AuthService) {

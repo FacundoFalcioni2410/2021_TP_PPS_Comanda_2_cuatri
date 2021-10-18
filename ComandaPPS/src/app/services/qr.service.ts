@@ -25,6 +25,7 @@ export class QRService {
 
     if(scannedData.text)
     {
+      console.log(scannedData.text);
       if(scannedData.text.includes('@'))
       {
         let dniArr = scannedData.text.split('@');
@@ -37,7 +38,14 @@ export class QRService {
         };
       }
     }
-
     return null;
+  }
+
+  generateQR(){
+    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, 'caca')
+    .then(data =>{
+      console.log(data);
+    });
+
   }
 }

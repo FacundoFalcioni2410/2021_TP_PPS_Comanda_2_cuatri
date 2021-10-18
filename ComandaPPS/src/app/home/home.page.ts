@@ -10,5 +10,5 @@ import { QRService } from '../services/qr.service';
 })
 export class HomePage {
 
-  constructor(public fotoS: FotosService) {}
+  constructor(public fotoS: FotosService, public qrS: QRService) {}
 }
