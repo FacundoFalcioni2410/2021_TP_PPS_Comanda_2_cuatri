@@ -64,13 +64,10 @@ export class RegistroSupervisorPage implements OnInit {
     Swal.fire(options);
   }
 
-  scanDNI(){
-    this.qrS.scanDNI();
-    if(!this.qrS.scaneando)
-    {
-      alert(this.qrS.dni);
-      this.controles.get('dni')?.setValue(this.qrS.dni);
-    }
+  async scanDNI(){
+    let datos = await this.qrS.scanDNI();
+    this.controles.get('dni')?.setValue(datos?.dni);
+    this.controles.get('cuil')?.setValue(datos?.cuil);
   }
 
   RegistrarEmpleado(){

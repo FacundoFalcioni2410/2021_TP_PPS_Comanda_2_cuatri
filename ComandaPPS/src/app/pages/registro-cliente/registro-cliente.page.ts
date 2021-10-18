@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FotosService } from 'src/app/services/fotos.service';
+import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 
 @Component({
@@ -40,7 +41,7 @@ export class RegistroClientePage implements OnInit {
     }
   }
 
-  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration) { 
+  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService) { 
     this.controles = this.form.group({});
   }
 
@@ -69,6 +70,12 @@ export class RegistroClientePage implements OnInit {
   mostrarToast(options: any){
     Swal.fire(options);
   }
+
+  async scanDNI(){
+    let datos = await this.qrS.scanDNI();
+    this.controles.get('dni')?.setValue(datos?.dni);
+  }
+
 
   RegistrarCliente(){
     this.loading = true;

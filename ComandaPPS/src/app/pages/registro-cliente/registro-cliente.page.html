@@ -1,89 +1,82 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registro de clientes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
-  <ion-content>
     <div class="container" style="max-height: 100vh !important;" >
         <div *ngIf="this.fotoS.loading">
             <app-spinner></app-spinner>
         </div>
       
-      <form [formGroup]='controles' (ngSubmit)='RegistrarCliente()'>
-          <div class="containerForm bg-dark text-white">
+        <form [formGroup]='controles' (ngSubmit)='RegistrarCliente()'>
+            <div class="containerForm bg-dark text-white">
 
-              <h3>Ingrese sus datos:</h3>
+                <h3>Ingrese sus datos:</h3>
   
-              <div class="row">
-                  <div class="col-12">
-                      <label for="email"><b>Email</b></label>
-                      <input type="text" formControlName='email' name="email" required>
-                      
-                      <div class='text-danger p-1 m-0' *ngIf="controles.get('email')?.touched && controles.get('email')?.errors?.required">
-                          Ingrese su email
-                      </div>
-                      <div class='text-danger p-1 m-0' *ngIf="controles.get('email')?.touched && controles.get('email')?.errors?.email">
-                          Ingrese un email valido
-                      </div>
-                  </div>
-                  <div class="col-12">
-                      <label for="password"><b>Contraseña</b></label>
-                      <input type="password" formControlName='password' name="password" required>
-                      
-                      <div class='text-danger p-1' *ngIf="controles.get('password')?.touched && controles.get('password')?.errors?.required">
-                          Ingrese su contraseña
-                      </div>
-                      <div class='text-danger p-1' *ngIf="controles.get('password')?.touched && controles.get('password')?.errors?.minlength">
-                          La contraseña debe tener 8 caracteres o mas
-                      </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="password"><b>Nombre</b></label>
-                    <input type="text" formControlName='nombre' name="nombre" required>
-                    
-                    <div class='text-danger p-1' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.required">
-                        Ingrese su nombre
+                <div class="row">
+                    <div class="col-12">
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" formControlName='email' name="email" required>
+                        
+                        <div class='text-danger p-1 m-0' *ngIf="controles.get('email')?.touched && controles.get('email')?.errors?.required">
+                            Ingrese su email
+                        </div>
+                        <div class='text-danger p-1 m-0' *ngIf="controles.get('email')?.touched && controles.get('email')?.errors?.email">
+                            Ingrese un email valido
+                        </div>
                     </div>
-                    <div class='text-danger p-1' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.minlength">
-                        Ingrese un nombre validow
+                    <div class="col-12">
+                        <label for="password"><b>Contraseña</b></label>
+                        <input type="password" formControlName='password' name="password" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('password')?.touched && controles.get('password')?.errors?.required">
+                            Ingrese su contraseña
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('password')?.touched && controles.get('password')?.errors?.minlength">
+                            La contraseña debe tener 8 caracteres o mas
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="password"><b>Nombre</b></label>
+                        <input type="text" formControlName='nombre' name="nombre" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.required">
+                            Ingrese su nombre
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.minlength">
+                            Ingrese un nombre validow
+                        </div>
+                    </div>
+                <div *ngIf='this.tipoCliente !== "anonimo"'>
+                    <div class="col-12">
+                        <label for="password"><b>Apellido</b></label>
+                        <input type="text" formControlName='apellido' name="apellido" required>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('apellido')?.touched && controles.get('apellido')?.errors?.required">
+                            Ingrese su apellido
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('apellido')?.touched && controles.get('apellido')?.errors?.minlength">
+                            Ingrese un apellido valido
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="password"><b>DNI</b></label>
+                        <div class="d-flex aling-items-center">
+                            <input class='d-inline' type="number" formControlName='dni' name="dni" required style="width: 85%;">
+                            <i class="fas fa-qrcode pt-3 ps-2" (click)="this.scanDNI()" style="font-size: 32px;"></i>
+                        </div>
+                        
+                        <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.required">
+                            Ingrese su dni
+                        </div>
+                        <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.minlength">
+                            Ingrese un dni valido
+                        </div>
+                    </div>   
+                </div>               
+                </div>        
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" [disabled]='controles.invalid' class="btn">Registrar</button>
                     </div>
                 </div>
-               <div *ngIf='this.tipoCliente !== "anonimo"'>
-                <div class="col-12">
-                    <label for="password"><b>Apellido</b></label>
-                    <input type="text" formControlName='apellido' name="apellido" required>
-                    
-                    <div class='text-danger p-1' *ngIf="controles.get('apellido')?.touched && controles.get('apellido')?.errors?.required">
-                        Ingrese su apellido
-                    </div>
-                    <div class='text-danger p-1' *ngIf="controles.get('apellido')?.touched && controles.get('apellido')?.errors?.minlength">
-                        Ingrese un apellido valido
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label for="password"><b>DNI</b></label>
-                    <input type="number" formControlName='dni' name="dni" required>
-                    
-                    <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.required">
-                        Ingrese su dni
-                    </div>
-                    <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.minlength">
-                        Ingrese un dni valido
-                    </div>
-                </div>   
-               </div>               
-              </div>        
-              <div class="row">
-                  <div class="col-12">
-                      <button type="submit" [disabled]='controles.invalid' class="btn">Registrar</button>
-                  </div>
-              </div>
-          </div>
-      </form>
-  </div>
-  </ion-content>
-  
+            </div>
+        </form>
+    </div>
 </ion-content>

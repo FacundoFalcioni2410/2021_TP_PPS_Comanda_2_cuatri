@@ -7,7 +7,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 export class QRService {
 
   dni: string;
-  scaneando: boolean = false;
 
   constructor(private barcodeScanner: BarcodeScanner) {
 
@@ -21,17 +20,21 @@ export class QRService {
      });
  }
 
-  scanDNI(){
-    this.scaneando = true;
-    this.barcodeScanner.scan({showTorchButton: true,formats:'QR_CODE,PDF_417', resultDisplayDuration: 0}).then(barcodeData => {
-      if(barcodeData.text.includes('@'))
-      {
-        let dniArr = barcodeData.text.split('@');
-        this.dni = dniArr[4];
-        this.scaneando = false;
-      }
-     }).catch(err => {
-         console.log('Error: ' + err);
-     });
+  async scanDNI(){
+    let scannedData = await this.barcodeScanner.scan({showTorchButton: true,formats:'QR_CODE,PDF_417', resultDisplayDuration: 0});
+
+    if(scannedData.text)
+    {
+      let dniArr = scannedData.text.split('@');
+      let digitosCUIL = dniArr[8];
+      let cuil = digitosCUIL[0] + digitosCUIL[1] + dniArr[4] + digitosCUIL[2];
+
+      return {
+        dni: dniArr[4],
+        cuil: cuil
+      };
+    }
+
+    return null;
   }
 }

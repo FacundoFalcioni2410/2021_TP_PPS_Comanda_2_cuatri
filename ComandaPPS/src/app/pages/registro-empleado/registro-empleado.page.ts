@@ -5,6 +5,7 @@ import { Empleado } from 'src/app/models/empleado';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FotosService } from 'src/app/services/fotos.service';
+import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,7 +17,7 @@ export class RegistroEmpleadoPage implements OnInit {
   controles !: FormGroup;
   loading = false;
 
-  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration) { 
+  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService) { 
     this.controles = this.form.group({
       nombre:['', [Validators.required]],
       apellido:['', [Validators.required]],
@@ -60,6 +61,12 @@ export class RegistroEmpleadoPage implements OnInit {
 
   mostrarToast(options: any){
     Swal.fire(options);
+  }
+
+  async scanDNI(){
+    let datos = await this.qrS.scanDNI();
+    this.controles.get('dni')?.setValue(datos?.dni);
+    this.controles.get('cuil')?.setValue(datos?.cuil);
   }
 
   RegistrarEmpleado(){

@@ -1,7 +1,12 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Registro de clientes</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title>Registro de empleados</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -64,7 +69,10 @@
                 </div>
                 <div class="col-12">
                     <label for="password"><b>DNI</b></label>
-                    <input type="number" formControlName='dni' name="dni" required>
+                    <div class="d-flex aling-items-center">
+                        <input class='d-inline' type="number" formControlName='dni' name="dni" required style="width: 85%;">
+                        <i class="fas fa-qrcode pt-3 ps-2" (click)="this.scanDNI()" style="font-size: 32px;"></i>
+                    </div>
                     
                     <div class='text-danger p-1' *ngIf="controles.get('dni')?.touched && controles.get('dni')?.errors?.required">
                         Ingrese su dni
