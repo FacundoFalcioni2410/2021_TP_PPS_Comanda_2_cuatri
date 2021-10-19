@@ -7,14 +7,15 @@
 <ion-content>
   <div class="container" style="max-height: 100vh !important;" >
     <form [formGroup]='form' (ngSubmit)='this.login()'>
-        <div class="containerForm bg-dark text-white">
-            <h1>Login</h1>
+        <div class="containerForm text-white">
+            <img [src]="this.logo" alt="" height="150px" width="150px">
+            <h1>Ingreso</h1>
             <h3>Ingrese sus datos:</h3>
 
             <div class="row">
-                <div class="col-12">
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" formControlName='email' name="email" required>
+                <div class="col-12 form-floating">
+                    <input type="text" class="form-control" formControlName='email' name="email" required>
+                    <label class="ms-1 floating" for="email"><b>Email</b></label>
                     
                     <div class='text-danger p-1 m-0' *ngIf="form.get('email')?.touched && form.get('email')?.errors?.required">
                         Ingrese su email
@@ -23,9 +24,9 @@
                         Ingrese un email valido
                     </div>
                 </div>
-                <div class="col-12">
-                    <label for="password"><b>Contraseña</b></label>
-                    <input type="password" formControlName='password' name="password" required>
+                <div class="col-12 form-floating">
+                    <input type="password" class="form-control" formControlName='password' name="password" required>
+                    <label class="ms-1 floating" for="password"><b>Contraseña</b></label>
                     
                     <div class='text-danger p-1' *ngIf="form.get('password')?.touched && form.get('password')?.errors?.required">
                         Ingrese su contraseña
@@ -37,7 +38,7 @@
             </div>        
             <div class="row">
                 <div class="col-12">
-                    <button type="submit" [disabled]='form.invalid' class="btn">Ingresar</button>
+                    <ion-button type="submit" [disabled]="form.invalid" class="mt-3" color="secondary" fill="solid" expand="block">Ingresar</ion-button>
                 </div>
             </div>
         </div>

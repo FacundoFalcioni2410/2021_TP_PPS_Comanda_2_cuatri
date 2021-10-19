@@ -90,7 +90,7 @@ export class RegistroEmpleadoPage implements OnInit {
       //this.mostrarToast({text: 'Sáquese una foto para completar el registro (opcional, puede hacerlo después)',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
-          confirmButton: 'btn btn-success',
+          confirmButton: 'btn btn-success mb-2',
           cancelButton: 'btn btn-danger'
         },
         buttonsStyling: false
@@ -100,6 +100,7 @@ export class RegistroEmpleadoPage implements OnInit {
         title: 'Foto opcional',
         text: "¿Quiere sacarse una foto ahora? Puede hacerlo después.",
         icon: 'question',
+        backdrop: false,
         showCancelButton: true,
         confirmButtonText: 'Si, sacarmela ahora.',
         cancelButtonText: 'No, prefiero hacerlo despues',

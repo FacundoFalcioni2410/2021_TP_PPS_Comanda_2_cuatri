@@ -11,7 +11,7 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 export class LoginPage implements OnInit {
 
   form: FormGroup;
-  loading = false;
+  logo = "../../../assets/restaurant.png";
 
   constructor(private auth: AuthService, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
@@ -24,8 +24,19 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    this.loading = true;
-    this.auth.login(this.form.value);
+    this.logo = "../../../assets/spinner.gif";
+    this.auth.login(this.form.value)
+    .then( res =>{
+      this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+      setTimeout(()=>{
+        this.logo = "../../../assets/restaurant.png";
+      },1500);
+    })
+    .catch( err =>{
+      setTimeout(()=>{
+        this.logo = "../../../assets/restaurant.png";
+      },1500);
+    });
   }
 
   mostrarToast(options: any){

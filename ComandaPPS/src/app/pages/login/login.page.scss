@@ -8,6 +8,10 @@ body {
 
 /* Add padding to container elements */
 .containerForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     padding: 20px;
     width: 800px;
     min-width: 300px;
@@ -16,6 +20,7 @@ body {
     margin: 1% auto;
     border:1px solid #ccc;
     border-radius:10px;
+    background-color: #120711 !important;
     background:white;
     -webkit-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
     -moz-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
@@ -88,5 +93,6 @@ button:hover {
     
     .containerForm{
         width: 250px;
+        height: 600px;
     }
   }

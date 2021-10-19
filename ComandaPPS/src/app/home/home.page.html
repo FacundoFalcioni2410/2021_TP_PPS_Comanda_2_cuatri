@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,6 +14,7 @@
   </ion-header>
 
   <div id="container">
+    <ion-button [routerLink]="['/login']">Login</ion-button>
     <ion-button [routerLink]="['/registro-cliente']">Cliente</ion-button>
     <ion-button [routerLink]="['/registro-mesa']">Mesa</ion-button>
     <ion-button [routerLink]="['/registro-producto']">Producto</ion-button>

@@ -121,17 +121,6 @@ export class AuthService {
 
   login(user: any){
     return this.auth.signInWithEmailAndPassword(user.email, user.password)
-    .then( res =>{
-      this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
-      setTimeout(()=>{
-        this.loading = false;
-      },1500);
-    })
-    .catch( err =>{
-      setTimeout(()=>{
-        this.loading = false;
-      },1500);
-    });;
   }
 
   registro(user: any){

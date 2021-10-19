@@ -8,7 +8,6 @@ import { RegistroMesaPageRoutingModule } from './registro-mesa-routing.module';
 
 import { RegistroMesaPage } from './registro-mesa.page';
 import { SharedModule } from 'src/app/sharedComponents/shared/shared.module';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   imports: [
