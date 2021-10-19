@@ -76,7 +76,7 @@ export class RegistroClientePage implements OnInit {
       title: 'Escaneo DNI!',
       backdrop: false,
       text: 'Para escanear el DNI guiese con la foto de arriba',
-      imageUrl: '../../../assets/dni.jpg',
+      imageUrl: '../../../../assets/dni.jpg',
       imageWidth: 400,
       imageHeight: 200,
       imageAlt: 'Custom image',

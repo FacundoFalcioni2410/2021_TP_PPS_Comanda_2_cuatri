@@ -18,25 +18,26 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'registro-cliente',
-    loadChildren: () => import('./pages/registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
+    loadChildren: () => import('./pages/registro/registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
   },
   {
     path: 'registro-producto',
-    loadChildren: () => import('./pages/registro-producto/registro-producto.module').then( m => m.RegistroProductoPageModule)
+    loadChildren: () => import('./pages/registro/registro-producto/registro-producto.module').then( m => m.RegistroProductoPageModule)
   },
   {
     path: 'registro-mesa',
-    loadChildren: () => import('./pages/registro-mesa/registro-mesa.module').then( m => m.RegistroMesaPageModule)
+    loadChildren: () => import('./pages/registro/registro-mesa/registro-mesa.module').then( m => m.RegistroMesaPageModule)
   },
   {
     path: 'registro-empleado',
-    loadChildren: () => import('./pages/registro-empleado/registro-empleado.module').then( m => m.RegistroEmpleadoPageModule)
+    loadChildren: () => import('./pages/registro/registro-empleado/registro-empleado.module').then( m => m.RegistroEmpleadoPageModule)
   },
   {
     path: 'registro-supervisor',
-    loadChildren: () => import('./pages/registro-supervisor/registro-supervisor.module').then( m => m.RegistroSupervisorPageModule)
+    loadChildren: () => import('./pages/registro/registro-supervisor/registro-supervisor.module').then( m => m.RegistroSupervisorPageModule)
   },
   {
     path: 'clientes',

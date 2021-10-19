@@ -65,9 +65,25 @@ export class RegistroSupervisorPage implements OnInit {
   }
 
   async scanDNI(){
-    let datos = await this.qrS.scanDNI();
-    this.controles.get('dni')?.setValue(datos?.dni);
-    this.controles.get('cuil')?.setValue(datos?.cuil);
+    Swal.fire({
+      title: 'Escaneo DNI!',
+      backdrop: false,
+      text: 'Para escanear el DNI guiese con la foto de arriba',
+      imageUrl: '../../../../assets/dni.jpg',
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
+      showCancelButton: true,
+      confirmButtonText: 'Escanear',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        let datos = await this.qrS.scanDNI();
+        this.controles.get('dni')?.setValue(datos?.dni);
+        this.controles.get('cuil')?.setValue(datos?.cuil);
+      }
+    });
   }
 
   RegistrarEmpleado(){
