@@ -81,6 +81,14 @@
               </ion-radio-group>
           </ion-list>
         </div>
+        <div class="row">
+          <div class="col-12">
+                <label for="file-upload" class="custom-file-upload mt-2">
+                    <i class="fa fa-cloud-upload"></i> Custom Upload
+                </label>
+                <input class="btn btn-primary" type="file" id="file-upload" multiple accept="image/*" (change)='archivoSeleccionado($event)'>
+          </div>
+      </div>
       </form>
     </div>
 </ion-content>
