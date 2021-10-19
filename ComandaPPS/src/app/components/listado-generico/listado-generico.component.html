@@ -1,0 +1,17 @@
+<table class="table table-dark table-striped  table-hover">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">DNI</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-dark" *ngFor="let persona of personas" (click)="SeleccionarPersona(persona)">
+      <td>{{persona.nombre}}</td>
+      <td>{{persona.apellido}}</td>
+      <td>{{persona.dni}}</td>
+    </tr>
+  </tbody>
+</table>

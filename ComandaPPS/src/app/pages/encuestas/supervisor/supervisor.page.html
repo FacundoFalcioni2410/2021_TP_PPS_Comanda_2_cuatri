@@ -6,4 +6,88 @@
 
 <ion-content>
 
+  <div class="container bg-dark" >
+
+    <h1 id="title"> Encuesta para supervisores</h1>
+      
+          <app-listado-generico *ngIf="!clickeado" [personas]="totalPersonas" (personaClickeadaEmitter)="PersonaClickeada($event)"></app-listado-generico>
+        
+    <div *ngIf="clickeado">
+      <form id="survey-form">
+        <div class="form-group">
+          <h2>{{personaClickeada.nombre}}, {{personaClickeada.apellido}}</h2>
+        </div>
+        <div class="form-group">
+          <ion-item>
+            <ion-label position="floating">Anotacion sobre el cliente/empleado...</ion-label>
+            <ion-textarea></ion-textarea>
+          </ion-item>
+        </div>
+        <div class="form-group">
+          <ion-label position:for="trato">Trato con los demás</ion-label>
+          <ion-item>
+            <ion-range id="trato" (ionChange)='change($event)' value="5" min="1" max="10" color="danger" mode="ios" pin="true">
+              <ion-icon slot="start" name="sad"></ion-icon>
+              <ion-icon slot="end" name="happy"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </div>
+        <div class="form-group">
+          <ion-list>
+            <ion-radio-group value="bien" mode="ios" >
+              
+              <ion-list-header>
+                <ion-label>Mantuvo la limpieza del lugar</ion-label>
+              </ion-list-header>
+              
+              <ion-item>
+                <ion-label>Absolutamente</ion-label>
+                <ion-radio slot="start" color="success" value="absolutamente"></ion-radio>
+              </ion-item>
+    
+              <ion-item>
+                <ion-label>Ensució un poco</ion-label>
+                <ion-radio slot="start" color="warning" value="ensucio"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Un desastre</ion-label>
+                <ion-radio slot="start" color="danger" value="desastre"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+
+        <div class="form-group">
+          <ion-item>
+            <ion-label>Turno en el que accedió al local</ion-label>
+            <ion-select ok-text="Aceptar" cancel-text="Cancelar">
+              <ion-select-option value="mediodia">Mediodía</ion-select-option>
+              <ion-select-option value="tarde">Tarde</ion-select-option>
+              <ion-select-option value="noche">Noche</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div class="form-group">
+          <div>
+            <ion-list>
+              <ion-list-header></ion-list-header>
+                <ion-item>
+                  <ion-label>Si</ion-label>
+                  <ion-checkbox mode="ios" color="primary" checked slot="start"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" id="submit" class="submit-button">
+            Enviar encuesta
+          </button>
+        </div>
+        
+      </form>
+  </div>
+    </div>
+
 </ion-content>

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SupervisorPageRoutingModule } from './supervisor-routing.module';
 
 import { SupervisorPage } from './supervisor.page';
+import { ListadoGenericoComponent } from 'src/app/components/listado-generico/listado-generico.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { SupervisorPage } from './supervisor.page';
     IonicModule,
     SupervisorPageRoutingModule
   ],
-  declarations: [SupervisorPage]
+  declarations: [SupervisorPage, ListadoGenericoComponent]
 })
 export class SupervisorPageModule {}
