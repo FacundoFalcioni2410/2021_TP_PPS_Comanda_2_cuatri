@@ -13,9 +13,11 @@
             <h3>Ingrese sus datos:</h3>
 
             <div class="row">
-                <div class="col-12 form-floating">
-                    <input type="text" class="form-control" formControlName='email' name="email" required>
-                    <label class="ms-1 floating" for="email"><b>Email</b></label>
+                <div class="col-12">
+                    <ion-item>
+                        <ion-label class="ms-1" position="floating" for="email"><b>Email</b></ion-label>
+                        <ion-input type="text" class="" formControlName='email' name="email" required></ion-input>
+                    </ion-item>
                     
                     <div class='text-danger p-1 m-0' *ngIf="form.get('email')?.touched && form.get('email')?.errors?.required">
                         Ingrese su email
@@ -24,9 +26,11 @@
                         Ingrese un email valido
                     </div>
                 </div>
-                <div class="col-12 form-floating">
-                    <input type="password" class="form-control" formControlName='password' name="password" required>
-                    <label class="ms-1 floating" for="password"><b>Contraseña</b></label>
+                <div class="col-12">
+                    <ion-item>
+                        <ion-label class="ms-1" position="floating" for="password"><b>Contraseña</b></ion-label>
+                        <ion-input type="password" class="" formControlName='password' name="password" required></ion-input>
+                    </ion-item>
                     
                     <div class='text-danger p-1' *ngIf="form.get('password')?.touched && form.get('password')?.errors?.required">
                         Ingrese su contraseña

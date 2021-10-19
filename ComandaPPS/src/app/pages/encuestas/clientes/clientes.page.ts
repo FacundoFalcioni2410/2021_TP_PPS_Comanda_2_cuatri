@@ -12,4 +12,8 @@ export class ClientesPage implements OnInit {
   ngOnInit() {
   }
 
+  change(value){
+    console.log(value.detail.value);
+  }
+
 }
