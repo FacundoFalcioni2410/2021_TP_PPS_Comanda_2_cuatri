@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'registro-supervisor',
     loadChildren: () => import('./pages/registro-supervisor/registro-supervisor.module').then( m => m.RegistroSupervisorPageModule)
   },
+  {
+    path: 'clientes',
+    loadChildren: () => import('./pages/encuestas/clientes/clientes.module').then( m => m.ClientesPageModule)
+  },
 
 ];
 
