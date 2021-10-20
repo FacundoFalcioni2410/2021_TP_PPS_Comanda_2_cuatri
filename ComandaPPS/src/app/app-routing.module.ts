@@ -46,7 +46,11 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'splash',
     pathMatch: 'full'
+  },  {
+    path: 'sala-espera',
+    loadChildren: () => import('./pages/sala-espera/sala-espera.module').then( m => m.SalaEsperaPageModule)
   },
+
 
 ];
 
