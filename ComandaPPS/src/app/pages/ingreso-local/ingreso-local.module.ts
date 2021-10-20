@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SalaEsperaPageRoutingModule } from './sala-espera-routing.module';
+import { IngresoLocalPageRoutingModule } from './ingreso-local-routing.module';
 
-import { SalaEsperaPage } from './sala-espera.page';
+import { IngresoLocalPage } from './ingreso-local.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SalaEsperaPageRoutingModule
+    IngresoLocalPageRoutingModule
   ],
-  declarations: [SalaEsperaPage]
+  declarations: [IngresoLocalPage]
 })
-export class SalaEsperaPageModule {}
+export class IngresoLocalPageModule {}

@@ -43,13 +43,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/encuestas/supervisor/supervisor.module').then( m => m.SupervisorPageModule)
   },
   {
+    path: 'ingreso-local',
+    loadChildren: () => import('./pages/ingreso-local/ingreso-local.module').then( m => m.IngresoLocalPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'splash',
     pathMatch: 'full'
-  },  {
-    path: 'sala-espera',
-    loadChildren: () => import('./pages/sala-espera/sala-espera.module').then( m => m.SalaEsperaPageModule)
   },
+
+
 
 
 ];
