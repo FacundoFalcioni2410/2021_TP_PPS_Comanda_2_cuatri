@@ -141,7 +141,7 @@ export class AuthService {
   }
 
   async getCliente(uid: string){
-    return await this.firestore.collection('administradores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    return await this.firestore.collection('clientes', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
   }
 
   async getSupervisor(uid: string)
@@ -152,6 +152,22 @@ export class AuthService {
   async getEmpleado(uid: string)
   {
     return await this.firestore.collection('empleados', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+  }
+
+  async getUsers(email: string)
+  {
+    let usuario: any = await this.firestore.collection('clientes', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    if(usuario.length === 0)
+    {
+      usuario = await this.firestore.collection('empleados', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    }
+    if(usuario.length === 0)
+    {
+      usuario = await this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    }
+    this.usuarioActual = usuario[0];
+    
+    return usuario[0];
   }
 
   login(user: any){

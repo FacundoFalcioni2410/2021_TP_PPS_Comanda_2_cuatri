@@ -101,7 +101,8 @@ export class RegistroClientePage implements OnInit {
       cliente = {
         nombre: this.getNombre(),
         email : this.getEmail(),
-        password: this.getPassword()
+        password: this.getPassword(),
+        habilitado: true,
       }
     }
     else
@@ -111,7 +112,8 @@ export class RegistroClientePage implements OnInit {
         apellido: this.getApellido(),
         dni: this.getDni(),
         email : this.getEmail(),
-        password: this.getPassword()
+        password: this.getPassword(),
+        habilitado: false,
       }
     }
     

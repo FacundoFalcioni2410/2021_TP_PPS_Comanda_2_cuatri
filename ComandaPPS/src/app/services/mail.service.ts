@@ -10,8 +10,6 @@ init("user_8zr4jAdzYg1UjcQN1kt1m");
 })
 export class MailService {
 
-  private API_TOKEN = "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";
-
   constructor() {}
 
   enviarAviso(usuario: any){

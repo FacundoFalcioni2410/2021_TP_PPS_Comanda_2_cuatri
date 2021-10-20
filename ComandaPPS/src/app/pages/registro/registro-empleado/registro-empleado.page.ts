@@ -93,7 +93,6 @@ export class RegistroEmpleadoPage implements OnInit {
       dni: this.getDni(),
       cuil : this.getCuil(),
       tipo : this.getTipo(),
-      // foto: this.getFoto(),
       email : this.getEmail(),
       password: this.getPassword()
     }
@@ -103,7 +102,7 @@ export class RegistroEmpleadoPage implements OnInit {
       this.fotoS.loading = true;
       empleado.uid = res.user.uid;
       this.authService.usuarioActual = empleado;
-      //this.mostrarToast({text: 'Sáquese una foto para completar el registro (opcional, puede hacerlo después)',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
+      this.mostrarToast({text: 'Sáquese una foto para completar el registro (opcional, puede hacerlo después)',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success mb-2',
@@ -128,14 +127,17 @@ export class RegistroEmpleadoPage implements OnInit {
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
-          swalWithBootstrapButtons.fire(
-            'Foto cancelada.',
-            'Podes subir tu foto después. Registro completado',
-            'success'
-          )
+          Swal.fire({
+            title: "Foto cancelada.",
+            text: "Podes subir tu foto después. Registro completado",
+            icon: 'success',
+            backdrop: false
+          });
+          this.authService.AltaEmpleado(empleado);
+          this.fotoS.loading = false;
         }
       });
-      // this.authService.AltaEmpleado(empleado);
+
       this.controles.reset();
     })
     .catch( err =>{

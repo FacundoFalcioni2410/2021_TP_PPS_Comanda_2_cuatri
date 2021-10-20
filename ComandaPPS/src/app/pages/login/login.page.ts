@@ -26,13 +26,32 @@ export class LoginPage implements OnInit {
   login(){
     this.logo = "../../../assets/spinner.gif";
     this.auth.login(this.form.value)
-    .then( res =>{
-      this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+    .then( async res =>{
+      console.log(res);
+      let user = await this.auth.getUsers(res.user.email);
+      console.log(user);
+      if(user)
+      {
+        if(!user?.cuil && !user?.habilitado)
+        {
+          this.mostrarToast({text: 'Debe aguardar a que su cuenta sea aceptada para ingresar',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
+        }
+        else
+        {
+          this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+        }
+
+      }
+      else
+      {
+        this.mostrarToast({text: 'Datos incorrectos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
+      }
       setTimeout(()=>{
         this.logo = "../../../assets/restaurant.png";
       },1500);
     })
     .catch( err =>{
+      this.mostrarToast({text: 'Datos incorrectos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       setTimeout(()=>{
         this.logo = "../../../assets/restaurant.png";
       },1500);
