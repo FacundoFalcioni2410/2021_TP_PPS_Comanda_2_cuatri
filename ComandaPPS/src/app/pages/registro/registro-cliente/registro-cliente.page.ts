@@ -123,10 +123,9 @@ export class RegistroClientePage implements OnInit {
       this.authService.usuarioActual = cliente;
       this.mostrarToast({text: 'Debe sacarse una foto para completar el registro',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
       setTimeout(()=>{
-        this.fotoS.TakePhoto();
+        this.fotoS.TakePhoto(cliente);
       },2000);
 
-      this.authService.AltaCliente(cliente);
       this.controles.reset();
     })
     .catch( err =>{

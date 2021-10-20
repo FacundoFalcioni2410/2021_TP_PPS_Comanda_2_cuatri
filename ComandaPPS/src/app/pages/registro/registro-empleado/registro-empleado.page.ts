@@ -123,7 +123,7 @@ export class RegistroEmpleadoPage implements OnInit {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-          this.fotoS.TakePhoto();
+          this.fotoS.TakePhoto(empleado);
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
@@ -135,7 +135,7 @@ export class RegistroEmpleadoPage implements OnInit {
           )
         }
       });
-      this.authService.AltaEmpleado(empleado);
+      // this.authService.AltaEmpleado(empleado);
       this.controles.reset();
     })
     .catch( err =>{

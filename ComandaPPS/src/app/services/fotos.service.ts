@@ -26,7 +26,7 @@ export class FotosService {
   constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService, private vibration: Vibration) {
   }
 
-  async TakePhoto(){
+  async TakePhoto(objeto: any){
 
     let capturedPhoto : any;
 
@@ -54,59 +54,106 @@ export class FotosService {
     ref.putString(dataUrl, 'data_url',{
       contentType: 'image/jpeg',
     }).then(()=>{
-      this.uploadPhoto();
+      this.uploadPhoto(objeto);
     });
   }
 
-  async subirArchivos(formData: FormData, nombres: string[], producto: any){
+  async subirArchivos(formData: FormData, nombres: string[], objeto?: any){
     let archivo0 = formData.get('archivo0');
+    let referencia0;
+    let referencia1;
+    let referencia2;
+    
+    if(archivo0)
+    {
+      let nombre0 = Date.now().toString() + nombres[0];
+      referencia0 = this.storage.ref('fotos/' + nombre0);
+      await this.storage.upload('fotos/' + nombre0, archivo0);
+    }
     let archivo1 = formData.get('archivo1');
-    let archivo2 = formData.get('archivo2');
-    let nombres0 = Date.now().toString() + nombres[0];
-    let nombres1 = Date.now().toString() + nombres[1];
-    let nombres2 = Date.now().toString() + nombres[2];
-    let referencia0 = this.storage.ref('fotos/' + nombres0);
-    let referencia1 = this.storage.ref('fotos/' + nombres1);
-    let referencia2 = this.storage.ref('fotos/' + nombres2);
-    await this.storage.upload(nombres0, archivo0);
-    await this.storage.upload(nombres1, archivo1);
-    await this.storage.upload(nombres2, archivo2);
+    if(archivo1)
+    {
+      let nombre1 = Date.now().toString() + nombres[1];
+      referencia1 = this.storage.ref('fotos/' + nombre1);
+      await this.storage.upload('fotos/' + nombre1, archivo1);
+    }
 
-    referencia0.getDownloadURL().subscribe((url0: any) => {
-      producto.fotos = [];
-      producto.fotos.push(url0);
-      referencia1.getDownloadURL().subscribe((url1: any) => {
-        producto.fotos.push(url1);
-        referencia2.getDownloadURL().subscribe((url2: any) => {
-          producto.fotos.push(url2);
-          this.auth.AltaProducto(producto);
-          this.firestore.AltaFoto('productoFotos', {nombreProducto: producto.nombre, fotos: producto.fotos});
-        });
-      });
-    }); 
+    let archivo2 = formData.get('archivo2');
+
+    if(archivo2)
+    {
+      let nombre2 = Date.now().toString() + nombres[2];
+      referencia2 = this.storage.ref('fotos/' + nombre2);
+      await this.storage.upload('fotos/' + nombre2, archivo2);
+    }
+
+    if(archivo0 && archivo1 && archivo2)
+    {
+      referencia0.getDownloadURL().subscribe((url0: any) => {
+        objeto.fotos = [];
+        objeto.fotos.push(url0);
+
+          referencia1.getDownloadURL().subscribe((url1: any) => {
+            objeto.fotos.push(url1);
+
+              referencia2.getDownloadURL().subscribe((url2: any) => {
+                objeto.fotos.push(url2);
+
+                if(objeto?.descripcion)
+                {
+                  this.auth.AltaProducto(objeto);
+                }
+                else
+                {
+                  this.auth.AltaEncuesta(objeto);
+                }
+              });
+          });
+      }); 
+    }
+    else if(archivo0 && archivo1)
+    {
+      referencia0.getDownloadURL().subscribe((url0: any) => {
+        objeto.fotos = [];
+        objeto.fotos.push(url0);
+
+          referencia1.getDownloadURL().subscribe((url1: any) => {
+            objeto.fotos.push(url1);
+            
+            this.auth.AltaEncuesta(objeto);
+                
+          });
+      }); 
+    }
+    else
+    {
+      referencia0.getDownloadURL().subscribe((url0: any) => {
+        objeto.fotos = [];
+        objeto.fotos.push(url0);
+        this.auth.AltaEncuesta(objeto);     
+      }); 
+    }
   }
 
 
-    uploadPhoto(){
+    uploadPhoto(objeto: any){
       let storage = this.storage.ref(`/fotos`).child(this.nombreFoto);
       storage.getDownloadURL().toPromise()
       .then( (url:any) =>{
-        let photo: any = {
-          url: url,
-          userUID: this.auth.usuarioActual?.uid,
-        }
 
-        if(this.auth.usuarioActual?.perfil)
+        objeto.foto = url;
+
+        if(objeto?.perfil)
         {
-          this.firestore.AltaFoto('supervisorFotos', photo);
+          this.auth.AltaSupervisor(objeto);
         }
-        else if(this.auth.usuarioActual?.tipo)
+        else if(objeto.tipo)
         {
-          this.firestore.AltaFoto('empleadosFotos', photo);
+          this.auth.AltaEmpleado(objeto);
         }
         else
         {
-          this.firestore.AltaFoto('clientesFotos', photo);
+          this.auth.AltaCliente(objeto);
         }
 
         this.loading = false;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { FotosService } from 'src/app/services/fotos.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 
 @Component({
@@ -9,10 +11,19 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 })
 export class ClientesPage implements OnInit {
 
+  form: FormGroup
   nombresFotos = []
   formDataFotos: FormData = null;
 
-  constructor(private vibration: Vibration) { }
+  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration) {
+    this.form = this.formBuilder.group({
+      nombre: ['',[Validators.required]],
+      satisfaccion: ['5',[Validators.required]],
+      productoConsumido: ['',[Validators.required]],
+      trato: ['bien',[Validators.required]],
+      visitar: ['false',[Validators.required]],
+    });
+  }
 
   ngOnInit() {
   }
@@ -27,10 +38,10 @@ export class ClientesPage implements OnInit {
 
   archivoSeleccionado(event: any)
   {
-    if (event.target.files.length === 3)
+    if (event.target.files.length > 0)
     {
       this.formDataFotos = new FormData();
-      for (let i = 0; i < 3; i++)
+      for (let i = 0; i < event.target.files.length; i++)
       {
         this.nombresFotos.push(event.target.files[i].name);
         this.formDataFotos.delete(`archivo${i}`);
@@ -43,6 +54,10 @@ export class ClientesPage implements OnInit {
       this.vibration.vibrate(2000);
       this.mostrarToast({text: "Debe seleccionar 3 fotos", toast: true, position: 'bottom',timer: 2000,timerProgressBar: true, icon: 'error'});
     }
+  }
+
+  subirEncuesta(){
+    this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, this.form.value);
   }
 
 

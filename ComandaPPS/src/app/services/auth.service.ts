@@ -19,40 +19,73 @@ export class AuthService {
 
   usuarioActual: any;
   loading: boolean = false;
+  
   //Clientes
   clientes : Observable<Cliente[]>;
   clienteCollection : AngularFirestoreCollection<Cliente>;
-  ///Mesas
+  
+  //Mesas
   mesas : Observable<Mesa[]>;
   mesaCollection : AngularFirestoreCollection<Mesa>;
-  ///Productos
+  
+  //Productos
   productos : Observable<Producto[]>;
   productoCollection : AngularFirestoreCollection<Producto>;
+  
   //Empleados
   empleados : Observable<Empleado[]>;
   empleadoCollection : AngularFirestoreCollection<Empleado>;
 
-  //Supervisores / Dueños
+  //Supervisores/Dueños
   supervisores : Observable<Supervisor[]>;
   supervisorCollection : AngularFirestoreCollection<Supervisor>;
 
-  constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) { 
+  //Encuestas
+  encuestas : Observable<any>;
+  encuestaCollection : AngularFirestoreCollection<any>;
+
+  constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) {
     //Clientes
     this.clienteCollection = firestore.collection<Cliente>('clientes');
-    this.clientes = this.clienteCollection.valueChanges({idField: 'id'});
+    
     ///Mesas
     this.mesaCollection = firestore.collection<Mesa>('mesas');
-    this.mesas = this.mesaCollection.valueChanges({idField: 'id'});
+    
     ///Productos
     this.productoCollection = firestore.collection<Producto>('productos');
-    this.productos = this.productoCollection.valueChanges({idField : 'id'});
+    
     //Empleados
     this.empleadoCollection = firestore.collection<Empleado>('empleados');
-    this.empleados = this.empleadoCollection.valueChanges({idField : 'id'});
 
+    //Dueños/Supervisores
     this.supervisorCollection = firestore.collection<Supervisor>('supervisores');
-    this.supervisores = this.supervisorCollection.valueChanges({idField : 'id'});
 
+    //Encuestas
+    this.encuestaCollection = firestore.collection<Supervisor>('encuestas');
+  }
+
+  getSupervisores(){
+    return this.supervisorCollection.valueChanges({idField : 'id'});
+  }
+
+  getEmpleados(){
+    return this.empleadoCollection.valueChanges({idField : 'id'});
+  }
+
+  getEncuestas(){
+    return this.encuestaCollection.valueChanges({idField : 'id'});
+  }
+
+  getProductos(){
+    return this.productoCollection.valueChanges({idField : 'id'});
+  }
+
+  getMesas(){
+    return this.mesaCollection.valueChanges({idField: 'id'});
+  }
+
+  getClientes(){
+    return this.clienteCollection.valueChanges({idField: 'id'});
   }
 
   async borrarUsuarioActual(){
@@ -67,30 +100,18 @@ export class AuthService {
       let clienteFirestore = await this.firestore.collection('supervisor', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
 
       this.firestore.collection("supervisor").doc(clienteFirestore[0].id).delete();
-
-      let fotoFirestore = await this.firestore.collection('supervisorFotos', ref => ref.where('userUID', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
-
-      this.firestore.collection("supervisorFotos").doc(clienteFirestore[0].id).delete();
     }
     else if(this.usuarioActual?.tipo)
     {
       let clienteFirestore = await this.firestore.collection('empleados', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
 
       this.firestore.collection("empleados").doc(clienteFirestore[0].id).delete();
-
-      let fotoFirestore = await this.firestore.collection('empleadosFotos', ref => ref.where('userUID', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
-
-      this.firestore.collection("empleadosFotos").doc(clienteFirestore[0].id).delete();
     }
     else
     {
       let clienteFirestore = await this.firestore.collection('clientes', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
 
       this.firestore.collection("clientes").doc(clienteFirestore[0].id).delete();
-
-      let fotoFirestore = await this.firestore.collection('clientesFotos', ref => ref.where('userUID', '==', this.usuarioActual.uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
-
-      this.firestore.collection("clientesFotos").doc(clienteFirestore[0].id).delete();
     }
   }
 
@@ -115,8 +136,22 @@ export class AuthService {
     return this.supervisorCollection.add({...supervisor});
   }
 
+  AltaEncuesta(encuesta: any){
+    return this.encuestaCollection.add({...encuesta});
+  }
+
   async getCliente(uid: string){
     return await this.firestore.collection('administradores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+  }
+
+  async getSupervisor(uid: string)
+  {
+    return await this.firestore.collection('supervisores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+  }
+
+  async getEmpleado(uid: string)
+  {
+    return await this.firestore.collection('empleados', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
   }
 
   login(user: any){

@@ -106,9 +106,8 @@ export class RegistroSupervisorPage implements OnInit {
       this.mostrarToast({text: 'Sáquese una foto para completar el registro (opcional, puede hacerlo después)',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
 
       setTimeout(()=>{
-        this.fotoS.TakePhoto();
+        this.fotoS.TakePhoto(supervisor);
       },1500)
-      this.authService.AltaSupervisor(supervisor);
       this.controles.reset();
     })
     .catch( err =>{

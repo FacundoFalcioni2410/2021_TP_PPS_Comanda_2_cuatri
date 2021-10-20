@@ -10,6 +10,6 @@ export class FirestoreService {
   }
 
   AltaFoto(coleccion: string, item: any){
-    return this.firestore.collection(coleccion).add(item);
+    return this.firestore.collection(coleccion).doc(item.id).update(item);
   }
 }
