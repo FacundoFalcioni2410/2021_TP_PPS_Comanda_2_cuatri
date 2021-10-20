@@ -38,6 +38,7 @@
     "chart.js": "^3.5.1",
     "cordova-plugin-vibration": "^3.1.1",
     "echarts": "^5.2.1",
+    "emailjs-com": "^3.2.0",
     "firebase": "^9.0.0",
     "ng-lazyload-image": "^9.1.0",
     "ngx-echarts": "^7.0.2",
