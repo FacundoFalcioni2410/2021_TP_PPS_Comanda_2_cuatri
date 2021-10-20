@@ -86,7 +86,7 @@
                 <input class="btn btn-primary" type="file" id="file-upload" multiple accept="image/*" (change)='archivoSeleccionado($event)'>
           </div>
       </div>
-        <button [disabled]="form.invalid" type="submit">Enviar encuesta</button>
+        <ion-button class="d-block m-auto mt-2" size="large" [disabled]="form.invalid" type="submit">Enviar encuesta</ion-button>
       </form>
     </div>
     <div style="width: 7cm; height: 7cm; display: block; margin: auto; background-color: rgb(42, 35, 35);">
