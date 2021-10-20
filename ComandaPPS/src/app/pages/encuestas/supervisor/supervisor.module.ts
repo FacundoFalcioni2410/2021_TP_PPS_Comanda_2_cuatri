@@ -9,6 +9,7 @@ import { SupervisorPageRoutingModule } from './supervisor-routing.module';
 import { SupervisorPage } from './supervisor.page';
 import { ListadoGenericoComponent } from 'src/app/components/listado-generico/listado-generico.component';
 
+
 @NgModule({
   imports: [
     CommonModule,

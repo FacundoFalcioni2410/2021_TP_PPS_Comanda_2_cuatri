@@ -7,11 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'splash',
-    pathMatch: 'full'
-  },
-  {
     path: 'splash',
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
   },
@@ -44,8 +39,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/encuestas/clientes/clientes.module').then( m => m.ClientesPageModule)
   },
   {
-    path: 'supervisor',
+    path: 'supervisores',
     loadChildren: () => import('./pages/encuestas/supervisor/supervisor.module').then( m => m.SupervisorPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'splash',
+    pathMatch: 'full'
   },
 
 ];

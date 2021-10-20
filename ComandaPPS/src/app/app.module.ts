@@ -13,6 +13,8 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 
+
+
 @NgModule({
   declarations: 
   [

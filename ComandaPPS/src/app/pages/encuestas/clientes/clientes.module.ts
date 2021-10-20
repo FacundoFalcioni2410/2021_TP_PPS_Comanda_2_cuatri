@@ -8,6 +8,9 @@ import { ClientesPageRoutingModule } from './clientes-routing.module';
 
 import { ClientesPage } from './clientes.page';
 
+
+
+
 @NgModule({
   imports: [
     CommonModule,
