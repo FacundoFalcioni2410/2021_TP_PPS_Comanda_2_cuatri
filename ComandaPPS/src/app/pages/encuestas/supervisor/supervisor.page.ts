@@ -77,11 +77,11 @@ export class SupervisorPage implements OnInit {
    
   constructor(private userService : AuthService) { 
 
-    this.userService.clientes.subscribe((data : any)=>{
+    this.userService.getClientes().subscribe((data : any)=>{
       console.log(data);
       this.clientes = data;
 
-      this.userService.empleados.subscribe((data :any)=>{
+      this.userService.getEmpleados().subscribe((data :any)=>{
         console.log(data);
         this.empleados = data;
         this.totalPersonas = this.clientes.concat(this.empleados);
