@@ -14,20 +14,20 @@ export class MailService {
 
   constructor() {}
 
-  enviarAviso(){
+  enviarAviso(usuario: any){
     let templateParams = {
-      to_name: "Facundo",
-      message: "test",
-      email_cliente: "facundofalcioni2410@gmail.com",
+      to_name: usuario.nombre,
+      message: "Para acceder a la aplicacion debe aguardar a que su cuenta sea activada",
+      email_cliente: usuario.email,
       from_name: "ComandaPPS"
     };
 
     emailjs.send("service_dqw1u4q", "template_5c1hipl", templateParams)
       .then(res =>{
-        console.log("Correo enviado.", res.status, res.text);
+        console.log("Email enviado.", res.status, res.text);
       })
       .catch(error =>{
-        console.log("Error al enviar.", error);
+        console.log("Error al enviar el email.", error);
       });
   }
 }
