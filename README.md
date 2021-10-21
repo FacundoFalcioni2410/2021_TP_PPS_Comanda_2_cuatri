@@ -1,15 +1,16 @@
 # Churrasic Park
 
-## 🖥 Primera semana 
-✔ Alta empleado - Gaitan  
-✔ Alta supervisor - Falcioni  
-✔ Alta cliente - Gaitan  
-✔ Alta mesa - Gaitan  
-✔ Alta producto - Gaitan  
-✔ Login - Falcioni  
-✔ Subida de fotos a Firestorage - Falcioni  
-✔ Spinner - Gaitan  
-✔ Icono y splash - Falcioni  
-✔ Encuesta cliente - Falcioni  
-✔ Encuesta supervisor - Gaitan  
-✔ Juego ahorcado - Gaitan  
+## 🖥 Primera semana
+#### FECHA INICIO: 16/10/2021 - FECHA FIN: 21/10/2021
+✔ Alta empleado - Agustin Gaitan  
+✔ Alta supervisor - Facundo Falcioni  
+✔ Alta cliente - Agustin Gaitan  
+✔ Alta mesa - Agustin Gaitan  
+✔ Alta producto - Agustin Gaitan  
+✔ Login - Facundo Falcioni  
+✔ Subida de fotos a Firestorage - Facundo Falcioni  
+✔ Spinner - Agustin Gaitan  
+✔ Icono y splash - Facundo Falcioni  
+✔ Encuesta cliente - Facundo Falcioni  
+✔ Encuesta supervisor - Agustin Gaitan  
+✔ Juego ahorcado - Agustin Gaitan / Facundo Falcioni  
