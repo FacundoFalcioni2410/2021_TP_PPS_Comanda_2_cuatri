@@ -9,6 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AhorcadoPage implements OnInit {
 
   arrayPalabras : any = [];
+  firstTime = true;
+  imagenArray: string[] = [
+    "assets/images/ahorcado/ahorcado-1.png",
+    "assets/images/ahorcado/ahorcado-2.png",
+    "assets/images/ahorcado/ahorcado-3.png",
+    "assets/images/ahorcado/ahorcado-4.png",
+    "assets/images/ahorcado/ahorcado-5.png",
+    "assets/images/ahorcado/ahorcado-6.png",
+    "assets/images/ahorcado/ahorcado-7.png",
+    "assets/images/ahorcado/ahorcado-8.png",
+  ]
+  image: string = '';
 
   errores : number = 0;
   alertError : string = "";
@@ -22,11 +34,12 @@ export class AhorcadoPage implements OnInit {
   palabra : string = "";
 
   constructor(private auth : AuthService) {
-    
+   this.image = this.imagenArray[0];
    this.auth.getProductos()
    .subscribe((data : any)=>{
     this.arrayPalabras = data;
     this.SetearPalabra();
+    this.firstTime = false;
    });
    
   }
@@ -69,6 +82,10 @@ export class AhorcadoPage implements OnInit {
       }
     }else{
       this.errores++;
+      if(this.errores < 8)
+      {
+        this.image = this.imagenArray[this.errores];
+      }
     }
 
   }
@@ -76,6 +93,7 @@ export class AhorcadoPage implements OnInit {
   SetearPalabra(){
     console.log(this.arrayPalabras);
     this.errores = 0;
+    this.image = this.imagenArray[0];
     this.arrayGuiones = [];
     let random = this.obtenerRandom();
     this.palabra = this.arrayPalabras[random]?.nombre;
