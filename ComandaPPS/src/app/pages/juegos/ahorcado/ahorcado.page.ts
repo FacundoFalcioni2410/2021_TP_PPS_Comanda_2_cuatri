@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AhorcadoPage implements OnInit {
 
-  arrayPalabras : string[] = ['producto'];
+  arrayPalabras : any = [];
 
   errores : number = 0;
   alertError : string = "";
@@ -26,13 +26,14 @@ export class AhorcadoPage implements OnInit {
    this.auth.getProductos()
    .subscribe((data : any)=>{
     this.arrayPalabras = data;
+    this.SetearPalabra();
    });
    
   }
 
   ngOnInit(): void {
 
-    this.SetearPalabra();
+    // this.SetearPalabra();
 
   }
 
@@ -54,7 +55,7 @@ export class AhorcadoPage implements OnInit {
   }
 
   obtenerRandom(){ 
-    return Math.round(Math.random() * (0 - 6) + 6);
+    return Math.round(Math.random()*(this.arrayPalabras.length - 0));
   }
 
   cambiarLetra(letra : string){
@@ -76,22 +77,19 @@ export class AhorcadoPage implements OnInit {
     console.log(this.arrayPalabras);
     this.errores = 0;
     this.arrayGuiones = [];
-    //let random = this.obtenerRandom();
-    //this.palabra = this.arrayPalabras[random];
-    this.palabra = this.arrayPalabras[0]; 
+    let random = this.obtenerRandom();
+    this.palabra = this.arrayPalabras[random]?.nombre;
+    // this.palabra = this.arrayPalabras[0]; 
     /*PROBLEMA ACÁ. NO PUEDE LEER LENGHT NI ASIGNARLE ALGUN INDEX QUE NO EXISTA,
     HAY QUE VERIFICAR QUE EXISTA EL INDICE YA QUE NO EXISTE AL MOMENTO DE HACER LE SUBSCRIBE, QUIZÁ ALGUN SET TIME OUT
      POR ESO AGREGUÉ UN INDICE 0 PARA PROBAR
     HABRÍA QUE HACER QUE EL RANDOM TIRE ALGUN NUMERO QUE SEA INDICE ASI LO AGARRA EL LENGHT
     */
-  
     for(let i = 0; i < this.palabra.length; i++) {
       
       this.arrayGuiones.push("_");
 
     }
-
-
     //console.log("random numero: " + random);
     console.log("palabra: " + this.palabra);
   }
