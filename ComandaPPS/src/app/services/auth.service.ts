@@ -141,30 +141,34 @@ export class AuthService {
     return this.encuestaCollection.add({...encuesta});
   }
 
+  async updateListaEsperaCliente(id: string){
+    return await this.firestore.collection('clientes').doc(id).update({listaEspera: true});
+  }
+
   async getCliente(uid: string){
-    return await this.firestore.collection('clientes', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    return await this.firestore.collection('clientes', ref => ref.where('uid', '==', uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
   }
 
   async getSupervisor(uid: string)
   {
-    return await this.firestore.collection('supervisores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    return await this.firestore.collection('supervisores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
   }
 
   async getEmpleado(uid: string)
   {
-    return await this.firestore.collection('empleados', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    return await this.firestore.collection('empleados', ref => ref.where('uid', '==', uid).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
   }
 
   async getUsers(email: string)
   {
-    let usuario: any = await this.firestore.collection('clientes', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe(take(1)).toPromise();
+    let usuario: any = await this.firestore.collection('clientes', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
     if(usuario.length === 0)
     {
-      usuario = await this.firestore.collection('empleados', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe(take(1)).toPromise();
+      usuario = await this.firestore.collection('empleados', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
     }
     if(usuario.length === 0)
     {
-      usuario = await this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe(take(1)).toPromise();
+      usuario = await this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
     }
     this.usuarioActual = usuario[0];
     

@@ -30,6 +30,7 @@ import {
   Tooltip,
   SubTitle
 } from 'chart.js';
+import { AuthService } from 'src/app/services/auth.service';
 
 Chart.register(
   ArcElement,
@@ -68,20 +69,23 @@ export class ClientesPage implements OnInit {
   form: FormGroup
   nombresFotos = []
   formDataFotos: FormData = null;
-
+  productos: any;
   //
   myChart: any;
   ctx: any;
   ctx1: any;
   
 
-  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration) {
+  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration, private firestore: AuthService) {
     this.form = this.formBuilder.group({
       nombre: ['',[Validators.required]],
       satisfaccion: ['5',[Validators.required]],
       productoConsumido: ['',[Validators.required]],
       trato: ['bien',[Validators.required]],
       visitar: ['false',[Validators.required]],
+    });
+    this.firestore.getProductos().subscribe(value =>{
+      this.productos = value;
     });
   }
 

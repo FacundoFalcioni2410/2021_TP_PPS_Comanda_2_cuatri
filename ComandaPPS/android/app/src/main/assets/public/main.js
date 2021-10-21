@@ -82,7 +82,7 @@ const routes = [
     },
     {
         path: 'ingreso-local',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_ingreso-local_ingreso-local_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ingreso-local/ingreso-local.module */ 9916)).then(m => m.IngresoLocalPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_auth_service_ts"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_ingreso-local_ingreso-local_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ingreso-local/ingreso-local.module */ 9916)).then(m => m.IngresoLocalPageModule)
     },
     {
         path: 'ahorcado',

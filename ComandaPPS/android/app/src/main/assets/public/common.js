@@ -498,10 +498,8 @@ let QRService = class QRService {
         this.barcodeScanner = barcodeScanner;
     }
     scan() {
-        this.barcodeScanner.scan({ showTorchButton: true, formats: 'QR_CODE,PDF_417', resultDisplayDuration: 0 }).then(barcodeData => {
-            console.log('Scanned data: ' + barcodeData.text);
-        }).catch(err => {
-            console.log('Error: ' + err);
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+            return yield this.barcodeScanner.scan({ showTorchButton: true, formats: 'QR_CODE,PDF_417', resultDisplayDuration: 0 });
         });
     }
     scanDNI() {

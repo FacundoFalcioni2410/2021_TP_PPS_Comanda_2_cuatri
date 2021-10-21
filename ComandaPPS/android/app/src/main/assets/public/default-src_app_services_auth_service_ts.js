@@ -36388,6 +36388,7 @@ let AuthService = class AuthService {
         });
     }
     AltaCliente(cliente) {
+        cliente.listaEspera = false;
         this.usuarioActual = cliente;
         return this.clienteCollection.add(Object.assign({}, cliente));
     }

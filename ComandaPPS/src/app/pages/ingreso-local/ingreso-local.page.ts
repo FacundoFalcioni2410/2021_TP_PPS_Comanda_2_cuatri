@@ -21,7 +21,7 @@ export class IngresoLocalPage implements OnInit {
   EntrarEnListaEspera(){
     this.listaEspera = true;
     this.userService.usuarioActual.listaEspera = true;
-    
+    this.userService.updateListaEsperaCliente(this.userService.usuarioActual?.id);
   }
 
   Scan(){

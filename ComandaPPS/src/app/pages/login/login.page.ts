@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   logo = "../../../assets/restaurant.png";
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -35,6 +36,14 @@ export class LoginPage implements OnInit {
         if(!user?.cuil && !user?.habilitado)
         {
           this.mostrarToast({text: 'Debe aguardar a que su cuenta sea aceptada para ingresar',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
+        }
+        else if(!user?.cuil && user?.habilitado)
+        {
+          this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+          setTimeout(()=>{
+            this.logo = "../../../assets/restaurant.png";
+            this.router.navigate(['/ingreso-local']);
+          },1500);
         }
         else
         {

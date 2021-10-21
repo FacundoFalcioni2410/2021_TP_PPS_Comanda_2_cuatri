@@ -93,15 +93,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ClientesPage": () => (/* binding */ ClientesPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4762);
 /* harmony import */ var _raw_loader_clientes_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./clientes.page.html */ 6790);
 /* harmony import */ var _clientes_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clientes.page.scss */ 272);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 3679);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 4333);
 /* harmony import */ var src_app_services_fotos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/fotos.service */ 1257);
 /* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 7379);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chart.js */ 1965);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/auth.service */ 7556);
+
 
 
 
@@ -113,18 +115,22 @@ __webpack_require__.r(__webpack_exports__);
 
 chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_5__.ArcElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.BarController, chart_js__WEBPACK_IMPORTED_MODULE_5__.BubbleController, chart_js__WEBPACK_IMPORTED_MODULE_5__.DoughnutController, chart_js__WEBPACK_IMPORTED_MODULE_5__.LineController, chart_js__WEBPACK_IMPORTED_MODULE_5__.PieController, chart_js__WEBPACK_IMPORTED_MODULE_5__.PolarAreaController, chart_js__WEBPACK_IMPORTED_MODULE_5__.RadarController, chart_js__WEBPACK_IMPORTED_MODULE_5__.ScatterController, chart_js__WEBPACK_IMPORTED_MODULE_5__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.LogarithmicScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.TimeScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.TimeSeriesScale, chart_js__WEBPACK_IMPORTED_MODULE_5__.Decimation, chart_js__WEBPACK_IMPORTED_MODULE_5__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_5__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_5__.Title, chart_js__WEBPACK_IMPORTED_MODULE_5__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_5__.SubTitle);
 let ClientesPage = class ClientesPage {
-    constructor(formBuilder, fotoS, vibration) {
+    constructor(formBuilder, fotoS, vibration, firestore) {
         this.formBuilder = formBuilder;
         this.fotoS = fotoS;
         this.vibration = vibration;
+        this.firestore = firestore;
         this.nombresFotos = [];
         this.formDataFotos = null;
         this.form = this.formBuilder.group({
-            nombre: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
-            satisfaccion: ['5', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
-            productoConsumido: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
-            trato: ['bien', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
-            visitar: ['false', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
+            nombre: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+            satisfaccion: ['5', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+            productoConsumido: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+            trato: ['bien', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+            visitar: ['false', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+        });
+        this.firestore.getProductos().subscribe(value => {
+            this.productos = value;
         });
     }
     ngOnInit() {
@@ -205,12 +211,13 @@ let ClientesPage = class ClientesPage {
     }
 };
 ClientesPage.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__.FormBuilder },
     { type: src_app_services_fotos_service__WEBPACK_IMPORTED_MODULE_3__.FotosService },
-    { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration }
+    { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_6__.AuthService }
 ];
-ClientesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+ClientesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-clientes',
         template: _raw_loader_clientes_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_clientes_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -247,7 +254,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button>\r\n        <ion-icon name=\"arrow-back\"></ion-icon>\r\n      </ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Encuesta de cliente</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <h3 id=\"title\">Bienvenido a la encuesta de NOMBRE_RESTAURANTE</h3>\r\n    <p id=\"description\">Complete los siguientes datos: </p>\r\n        <form [formGroup]=\"form\" (ngSubmit)=\"this.subirEncuesta()\" id=\"survey-form\">\r\n        <div class=\"\">\r\n          <ion-item>\r\n            <ion-label position=\"floating\" for=\"name\">Nombre</ion-label>\r\n            <ion-input\r\n              type=\"text\"\r\n              formControlName=\"nombre\"\r\n              id=\"name\"\r\n              mode=\"ios\"\r\n              placeholder=\"Ingrese su nombre\"\r\n            ></ion-input>\r\n          </ion-item>\r\n        </div>\r\n    \r\n        <div class=\"mt-1\">\r\n          <ion-label position for=\"satisfaccion\">¿Cual fue tu grado de satisfaccion?</ion-label>\r\n          <ion-item>\r\n            <ion-range formControlName=\"satisfaccion\" id=\"satisfaccion\" (ionChange)='change($event)' value=\"5\" min=\"1\" max=\"10\" color=\"danger\" mode=\"ios\" pin=\"true\">\r\n              <ion-icon slot=\"start\" name=\"sad\"></ion-icon>\r\n              <ion-icon slot=\"end\" name=\"happy\"></ion-icon>\r\n            </ion-range>\r\n          </ion-item>\r\n        </div>\r\n    \r\n        <div class=\"mt-1\">\r\n          <ion-item>\r\n            <ion-label>Producto consumido</ion-label>\r\n            <ion-select formControlName=\"productoConsumido\" mode=\"ios\" interface=\"popover\" placeholder=\"\">\r\n              <ion-select-option value=\"f\">Papa</ion-select-option>\r\n              <ion-select-option value=\"m\">Pure</ion-select-option>\r\n            </ion-select>\r\n          </ion-item>\r\n        </div>\r\n\r\n        <div class=\"mt-1\">\r\n          <ion-list>\r\n              <ion-radio-group formControlName=\"trato\" mode=\"ios\" value=\"bien\">\r\n                \r\n                <ion-list-header>\r\n                  <ion-label>¿Como te trato el personal?</ion-label>\r\n                </ion-list-header>\r\n                \r\n                <ion-item>\r\n                  <ion-label>Excelente</ion-label>\r\n                  <ion-radio slot=\"start\" color=\"success\" value=\"excelente\"></ion-radio>\r\n                </ion-item>\r\n      \r\n                <ion-item>\r\n                  <ion-label>Bien</ion-label>\r\n                  <ion-radio slot=\"start\" color=\"warning\" value=\"bien\"></ion-radio>\r\n                </ion-item>\r\n\r\n                <ion-item>\r\n                  <ion-label>Pesimo</ion-label>\r\n                  <ion-radio slot=\"start\" color=\"danger\" value=\"pesimo\"></ion-radio>\r\n                </ion-item>\r\n              </ion-radio-group>\r\n          </ion-list>\r\n        </div>\r\n\r\n        <div class=\"mt-1\">\r\n          <ion-list>\r\n            <ion-list-header>¿Volveria al local?</ion-list-header>\r\n              <ion-item>\r\n                <ion-label>Si</ion-label>\r\n                <ion-checkbox formControlName=\"visitar\" mode=\"ios\" color=\"primary\" slot=\"start\"></ion-checkbox>\r\n              </ion-item>\r\n          </ion-list>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-12\">\r\n                <label for=\"file-upload\" class=\"custom-file-upload mt-2\">\r\n                    <i class=\"fa fa-cloud-upload\"></i> Custom Upload\r\n                </label>\r\n                <input class=\"btn btn-primary\" type=\"file\" id=\"file-upload\" multiple accept=\"image/*\" (change)='archivoSeleccionado($event)'>\r\n          </div>\r\n      </div>\r\n        <ion-button class=\"d-block m-auto mt-2\" size=\"large\" [disabled]=\"form.invalid\" type=\"submit\">Enviar encuesta</ion-button>\r\n      </form>\r\n    </div>\r\n    <div style=\"width: 7cm; height: 7cm; display: block; margin: auto; background-color: rgb(42, 35, 35);\">\r\n      <canvas id=\"myChart\" width=\"50px\" height=\"50px\"></canvas>\r\n    </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button>\r\n        <ion-icon name=\"arrow-back\"></ion-icon>\r\n      </ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>Encuesta de cliente</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\">\r\n    <h3 id=\"title\">Bienvenido a la encuesta de NOMBRE_RESTAURANTE</h3>\r\n    <p id=\"description\">Complete los siguientes datos: </p>\r\n        <form [formGroup]=\"form\" (ngSubmit)=\"this.subirEncuesta()\" id=\"survey-form\">\r\n        <div class=\"\">\r\n          <ion-item>\r\n            <ion-label position=\"floating\" for=\"name\">Nombre</ion-label>\r\n            <ion-input\r\n              type=\"text\"\r\n              formControlName=\"nombre\"\r\n              id=\"name\"\r\n              mode=\"ios\"\r\n              placeholder=\"Ingrese su nombre\"\r\n            ></ion-input>\r\n          </ion-item>\r\n        </div>\r\n    \r\n        <div class=\"mt-1\">\r\n          <ion-label position for=\"satisfaccion\">¿Cual fue tu grado de satisfaccion?</ion-label>\r\n          <ion-item>\r\n            <ion-range formControlName=\"satisfaccion\" id=\"satisfaccion\" (ionChange)='change($event)' value=\"5\" min=\"1\" max=\"10\" color=\"danger\" mode=\"ios\" pin=\"true\">\r\n              <ion-icon slot=\"start\" name=\"sad\"></ion-icon>\r\n              <ion-icon slot=\"end\" name=\"happy\"></ion-icon>\r\n            </ion-range>\r\n          </ion-item>\r\n        </div>\r\n    \r\n        <div class=\"mt-1\">\r\n          <ion-item>\r\n            <ion-label>Producto consumido</ion-label>\r\n            <ion-select formControlName=\"productoConsumido\" mode=\"ios\" interface=\"popover\" placeholder=\"\">\r\n              <ion-select-option *ngFor=\"let producto of productos\" [value]=\"producto.nombre\">{{producto.nombre}}</ion-select-option>\r\n            </ion-select>\r\n          </ion-item>\r\n        </div>\r\n\r\n        <div class=\"mt-1\">\r\n          <ion-list>\r\n              <ion-radio-group formControlName=\"trato\" mode=\"ios\" value=\"bien\">\r\n                \r\n                <ion-list-header>\r\n                  <ion-label>¿Como te trato el personal?</ion-label>\r\n                </ion-list-header>\r\n                \r\n                <ion-item>\r\n                  <ion-label>Excelente</ion-label>\r\n                  <ion-radio slot=\"start\" color=\"success\" value=\"excelente\"></ion-radio>\r\n                </ion-item>\r\n      \r\n                <ion-item>\r\n                  <ion-label>Bien</ion-label>\r\n                  <ion-radio slot=\"start\" color=\"warning\" value=\"bien\"></ion-radio>\r\n                </ion-item>\r\n\r\n                <ion-item>\r\n                  <ion-label>Pesimo</ion-label>\r\n                  <ion-radio slot=\"start\" color=\"danger\" value=\"pesimo\"></ion-radio>\r\n                </ion-item>\r\n              </ion-radio-group>\r\n          </ion-list>\r\n        </div>\r\n\r\n        <div class=\"mt-1\">\r\n          <ion-list>\r\n            <ion-list-header>¿Volveria al local?</ion-list-header>\r\n              <ion-item>\r\n                <ion-label>Si</ion-label>\r\n                <ion-checkbox formControlName=\"visitar\" mode=\"ios\" color=\"primary\" slot=\"start\"></ion-checkbox>\r\n              </ion-item>\r\n          </ion-list>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-12\">\r\n                <label for=\"file-upload\" class=\"custom-file-upload mt-2\">\r\n                    <i class=\"fa fa-cloud-upload\"></i> Custom Upload\r\n                </label>\r\n                <input class=\"btn btn-primary\" type=\"file\" id=\"file-upload\" multiple accept=\"image/*\" (change)='archivoSeleccionado($event)'>\r\n          </div>\r\n      </div>\r\n        <ion-button class=\"d-block m-auto mt-2\" size=\"large\" [disabled]=\"form.invalid\" type=\"submit\">Enviar encuesta</ion-button>\r\n      </form>\r\n    </div>\r\n    <div style=\"width: 7cm; height: 7cm; display: block; margin: auto; background-color: rgb(42, 35, 35);\">\r\n      <canvas id=\"myChart\" width=\"50px\" height=\"50px\"></canvas>\r\n    </div>\r\n</ion-content>\r\n");
 
 /***/ })
 
