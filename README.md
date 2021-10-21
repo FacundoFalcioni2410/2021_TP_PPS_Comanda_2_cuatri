@@ -1,10 +1,15 @@
-# 2021_TP_PPS_Comanda_2_cuatri
-Trabajo práctico grupal - PPS - segundo parcial
+# Churrasic Park
 
-
-Para registrar el grupo completo con todos sus integrantes: https://forms.gle/199SDyAhLxPejsNo9
-
-Grupos:
-
-Máximo 3 integrantes
-Mínimo 2 integrantes
+## 🖥 Primera semana 
+✔ Alta empleado - Gaitan
+✔ Alta supervisor - Falcioni
+✔ Alta cliente - Gaitan
+✔ Alta mesa - Gaitan
+✔ Alta producto - Gaitan
+✔ Login - Falcioni
+✔ Subida de fotos a Firestorage - Falcioni
+✔ Spinner - Gaitan
+✔ Icono y splash - Falcioni
+✔ Encuesta cliente - Falcioni
+✔ Encuesta supervisor - Gaitan
+✔ Juego ahorcado - Gaitan
