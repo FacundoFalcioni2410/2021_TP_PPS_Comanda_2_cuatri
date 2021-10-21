@@ -27,7 +27,7 @@ export class IngresoLocalPage implements OnInit {
   Scan(){
     
       Swal.fire({
-        title: 'Escaneo DNI!',
+        title: 'Escaneo',
         backdrop: false,
         text: 'Escanee el código QR para ingresar a la lista',
         imageWidth: 400,
