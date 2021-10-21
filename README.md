@@ -4,12 +4,12 @@
 ✔ Alta empleado - Gaitan  
 ✔ Alta supervisor - Falcioni  
 ✔ Alta cliente - Gaitan  
-✔ Alta mesa - Gaitan
+✔ Alta mesa - Gaitan  
 ✔ Alta producto - Gaitan  
-✔ Login - Falcioni
+✔ Login - Falcioni  
 ✔ Subida de fotos a Firestorage - Falcioni  
-✔ Spinner - Gaitan
+✔ Spinner - Gaitan  
 ✔ Icono y splash - Falcioni  
-✔ Encuesta cliente - Falcioni
+✔ Encuesta cliente - Falcioni  
 ✔ Encuesta supervisor - Gaitan  
 ✔ Juego ahorcado - Gaitan  
