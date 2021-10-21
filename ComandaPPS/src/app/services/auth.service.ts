@@ -116,6 +116,7 @@ export class AuthService {
   }
 
   AltaCliente(cliente : Cliente){
+    cliente.listaEspera = false;
     this.usuarioActual = cliente;
     return this.clienteCollection.add({...cliente});
   }

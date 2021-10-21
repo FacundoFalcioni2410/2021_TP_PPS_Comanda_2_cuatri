@@ -19,9 +19,9 @@
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a NOMBRE RESTAURANTE</h1>
         <p class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
+        <i class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button *ngIf="!listaEspera" (click)="EntrarEnListaEspera()" type="button" class="btn btn-primary btn-lg px-4 me-md-2">Entrar a la lista de espera</button>
-          <label *ngIf="listaEspera" class="btn btn-primary btn-lg px-4 me-md-2"  [class.button-disabled]="true">Entraste a la lista de espera!</label>
+          <label *ngIf="listaEspera">Entraste a la lista de espera!</label>
         </div>
       </div>
     </div>

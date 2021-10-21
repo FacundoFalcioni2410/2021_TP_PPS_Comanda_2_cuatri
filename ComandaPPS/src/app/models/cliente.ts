@@ -6,5 +6,6 @@ export interface Cliente {
     apellido? : string;
     dni? : number;
     foto? : string;
-    habilitado: boolean
+    listaEspera ?: boolean;
+    habilitado: boolean;
 }

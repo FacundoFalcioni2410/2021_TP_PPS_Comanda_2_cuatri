@@ -12,12 +12,8 @@ export class QRService {
 
   }
 
-  scan(){
-    this.barcodeScanner.scan({showTorchButton: true,formats:'QR_CODE,PDF_417', resultDisplayDuration: 0}).then(barcodeData => {
-      console.log('Scanned data: ' +  barcodeData.text);
-     }).catch(err => {
-         console.log('Error: ' + err);
-     });
+  async scan(){
+    return await this.barcodeScanner.scan({showTorchButton: true,formats:'QR_CODE,PDF_417', resultDisplayDuration: 0});
  }
 
   async scanDNI(){
