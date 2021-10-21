@@ -45,12 +45,18 @@ const routes: Routes = [
   {
     path: 'ingreso-local',
     loadChildren: () => import('./pages/ingreso-local/ingreso-local.module').then( m => m.IngresoLocalPageModule)
+  }, 
+  {
+    path: 'ahorcado',
+    loadChildren: () => import('./pages/juegos/ahorcado/ahorcado.module').then( m => m.AhorcadoPageModule)
   },
   {
     path: '**',
     redirectTo: 'splash',
     pathMatch: 'full'
   },
+ 
+
 
 
 

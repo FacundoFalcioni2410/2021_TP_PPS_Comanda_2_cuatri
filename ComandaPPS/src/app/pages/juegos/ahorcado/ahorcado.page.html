@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Ahorcado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    
+    
+    
+        <div *ngFor="let letra of abecedario" >
+          
+          
+          <input type="button" class="btn btn-primary btn-sm" value={{letra}} (click)="cambiarLetra(letra)">
+         
+       
+        </div>
+      
+      
+
+      <div class="row justify-content-center" style= "margin-top: 2cm;">
+        <img *ngIf="errores==0" style="height: 80%; width: 80%;" src="assets/images/ahorcado/ahorcado-1.png">
+         <img *ngIf="errores==1" style="height: 80%; width: 80%;" src="assets/images/ahorcado/ahorcado-2.png">
+        <img *ngIf="errores==2"style="height: 80%; width: 80%;" src="assets/images/ahorcado/ahorcado-3.png">
+        <img *ngIf="errores==3" style="height: 80%; width: 80%;"src="assets/images/ahorcado/ahorcado-4.png">
+        <img *ngIf="errores==4" style="height: 80%; width: 80%;"src="assets/images/ahorcado/ahorcado-5.png">
+        <img *ngIf="errores==5" style="height: 80%; width: 80%;"src="assets/images/ahorcado/ahorcado-6.png">
+        <img *ngIf="errores==6" style="height: 80%; width: 80%;"src="assets/images/ahorcado/ahorcado-7.png">
+        <img *ngIf="errores >= 7" style="height: 80%; width: 80%;"src="assets/images/ahorcado/ahorcado-8.png"> 
+        
+      </div>
+
+    <div *ngIf="errores>=7">
+        <div>
+            <div class="text-danger row justify-content-center m-5" style="font-size: 72px; font-family: Verdana, Geneva, Tahoma, sans-serif">GAME OVER!</div>
+        </div>
+    </div>
+    <div *ngIf="!arrayGuiones.includes('_')">
+        <div>
+            <div class="text-success row justify-content-center m-5" style="font-size: 72px; font-family:Verdana, Geneva, Tahoma, sans-serif">GANASTE!</div>
+        </div>
+    </div>
+    <div class="row justify-content-center" class="text-success row justify-content-center m-5" style="font-size: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif">
+    <button (click)="SetearPalabra()">Resetear</button>
+    
+    </div>
+
+    <div *ngIf="errores < 7">
+     <div class="text-light row justify-content-center" style="font-size: 72px; letter-spacing: 3pt">
+         <div *ngFor="let guion of arrayGuiones">
+         
+            {{guion}}
+        </div>
+     </div>
+    </div>
+       
+
+</ion-content>
