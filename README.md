@@ -6,7 +6,7 @@
 ✔ Alta supervisor - Facundo Falcioni  
 ✔ Alta cliente - Agustin Gaitan  
 ✔ Alta mesa - Agustin Gaitan  
-✔ Alta producto - Agustin Gaitan  
+✔ Alta producto - Facundo Falcioni  
 ✔ Login - Facundo Falcioni  
 ✔ Subida de fotos a Firestorage - Facundo Falcioni  
 ✔ Spinner - Agustin Gaitan  
