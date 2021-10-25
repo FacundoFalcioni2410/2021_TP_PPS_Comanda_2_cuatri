@@ -116,8 +116,10 @@ let IngresoLocalPage = class IngresoLocalPage {
     ngOnInit() {
     }
     EntrarEnListaEspera() {
+        var _a;
         this.listaEspera = true;
         this.userService.usuarioActual.listaEspera = true;
+        this.userService.updateListaEsperaCliente((_a = this.userService.usuarioActual) === null || _a === void 0 ? void 0 : _a.id);
     }
     Scan() {
         sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({

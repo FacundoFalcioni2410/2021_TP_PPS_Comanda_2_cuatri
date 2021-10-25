@@ -36407,29 +36407,34 @@ let AuthService = class AuthService {
     AltaEncuesta(encuesta) {
         return this.encuestaCollection.add(Object.assign({}, encuesta));
     }
+    updateListaEsperaCliente(id) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+            return yield this.firestore.collection('clientes').doc(id).update({ listaEspera: true });
+        });
+    }
     getCliente(uid) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            return yield this.firestore.collection('clientes', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+            return yield this.firestore.collection('clientes', ref => ref.where('uid', '==', uid).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
         });
     }
     getSupervisor(uid) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            return yield this.firestore.collection('supervisores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+            return yield this.firestore.collection('supervisores', ref => ref.where('uid', '==', uid).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
         });
     }
     getEmpleado(uid) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            return yield this.firestore.collection('empleados', ref => ref.where('uid', '==', uid).limit(1)).valueChanges().pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+            return yield this.firestore.collection('empleados', ref => ref.where('uid', '==', uid).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
         });
     }
     getUsers(email) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            let usuario = yield this.firestore.collection('clientes', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+            let usuario = yield this.firestore.collection('clientes', ref => ref.where('email', '==', email).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
             if (usuario.length === 0) {
-                usuario = yield this.firestore.collection('empleados', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+                usuario = yield this.firestore.collection('empleados', ref => ref.where('email', '==', email).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
             }
             if (usuario.length === 0) {
-                usuario = yield this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges().pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+                usuario = yield this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
             }
             this.usuarioActual = usuario[0];
             return usuario[0];

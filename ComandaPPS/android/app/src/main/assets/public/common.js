@@ -603,7 +603,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<div>\n  <img src=\"../../../assets/spinner.gif\" alt=\"\" class=\"d-block m-auto\" height=\"100px\" width=\"100px\">\n</div>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<div>\r\n  <img src=\"../../../assets/spinner.gif\" alt=\"\" class=\"d-block m-auto\" height=\"100px\" width=\"100px\">\r\n</div>");
 
 /***/ })
 
