@@ -89,7 +89,7 @@ const routes = [
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_auth_service_ts"), __webpack_require__.e("src_app_pages_juegos_ahorcado_ahorcado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/juegos/ahorcado/ahorcado.module */ 9223)).then(m => m.AhorcadoPageModule)
     },
     {
-        path: '**',
+        path: '',
         redirectTo: 'splash',
         pathMatch: 'full'
     },

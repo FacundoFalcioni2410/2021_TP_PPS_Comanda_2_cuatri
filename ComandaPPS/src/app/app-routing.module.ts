@@ -51,15 +51,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/juegos/ahorcado/ahorcado.module').then( m => m.AhorcadoPageModule)
   },
   {
-    path: '**',
+    path: '',
     redirectTo: 'splash',
     pathMatch: 'full'
+  },  {
+    path: 'lista-cliente-deshabilitados',
+    loadChildren: () => import('./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module').then( m => m.ListaClienteDeshabilitadosPageModule)
   },
- 
-
-
-
-
 
 ];
 
