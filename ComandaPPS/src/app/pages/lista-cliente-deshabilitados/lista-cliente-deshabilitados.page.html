@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>listaClienteDeshabilitados</ion-title>
+    <ion-title>Lista clientes deshabilitados</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf="this.clientes.length; else spinner">
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+      <ion-col style="text-shadow: 6px 6px 6px rgb(0, 0, 0);">
+        Acepte al cliente para que pueda ingresar a la aplicación
+      </ion-col>
+    </ion-row>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+        <ion-col size=6 *ngFor="let item of this.clientes">
+          <ion-card>
+            <img class="d-block m-auto img-circle img-responsive" [src]="item.foto"/>
+            <ion-card-header>
+              <ion-card-title style="font-size:12px;">{{item.nombre}} {{item.apellido}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-toggle (click)="accionar($event, item)" mode="md" slot="start"></ion-toggle>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
 </ion-content>

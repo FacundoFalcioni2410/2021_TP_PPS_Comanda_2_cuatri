@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-lista-cliente-deshabilitados',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaClienteDeshabilitadosPage implements OnInit {
 
-  constructor() { }
+  clientes: any = []
+
+  constructor(private auth: AuthService) {
+    this.auth.TraerClientesDeshabilitados().subscribe(clientes => {
+      this.clientes = clientes;
+      console.log(this.clientes);
+    })
+  }
 
   ngOnInit() {
+  }
+
+  accionar(event, item){
+    if(!event.target.checked)
+    {
+      console.log('fdasfs');
+      item.habilitado = true;
+      setTimeout(() =>{
+        this.auth.UpdateEstadoCliente(item);
+      },300);
+    }
   }
 
 }

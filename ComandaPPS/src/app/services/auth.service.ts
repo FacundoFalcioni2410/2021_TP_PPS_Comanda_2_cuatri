@@ -115,10 +115,12 @@ export class AuthService {
     }
   }
 
-  async TraerClientesDeshabilitados(){
-    this.firestore.collection('clientes', ref => ref.where('habilitado', '==', true).limit(1)).valueChanges({idField: 'id'}).subscribe(clientes =>{
-      console.log(clientes);
-    });
+  TraerClientesDeshabilitados(){
+    return this.firestore.collection('clientes', ref => ref.where('habilitado', '==', false)).valueChanges({idField: 'id'})
+  }
+
+  UpdateEstadoCliente(cliente){
+    this.clienteCollection.doc(cliente.id).update({habilitado: cliente.habilitado});
   }
 
   AltaCliente(cliente : Cliente){

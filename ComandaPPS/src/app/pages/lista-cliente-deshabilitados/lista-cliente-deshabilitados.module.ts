@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ListaClienteDeshabilitadosPageRoutingModule } from './lista-cliente-deshabilitados-routing.module';
 
 import { ListaClienteDeshabilitadosPage } from './lista-cliente-deshabilitados.page';
+import { SharedModule } from 'src/app/sharedComponents/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListaClienteDeshabilitadosPageRoutingModule
+    ListaClienteDeshabilitadosPageRoutingModule,
+    SharedModule
   ],
   declarations: [ListaClienteDeshabilitadosPage]
 })
