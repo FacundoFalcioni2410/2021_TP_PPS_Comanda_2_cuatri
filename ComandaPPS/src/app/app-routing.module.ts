@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'lista-cliente-deshabilitados',
     loadChildren: () => import('./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module').then( m => m.ListaClienteDeshabilitadosPageModule)
   },
+  {
+    path: 'realizar-pedido',
+    loadChildren: () => import('./pages/realizar-pedido/realizar-pedido.module').then( m => m.RealizarPedidoPageModule)
+  },
 
 ];
 
