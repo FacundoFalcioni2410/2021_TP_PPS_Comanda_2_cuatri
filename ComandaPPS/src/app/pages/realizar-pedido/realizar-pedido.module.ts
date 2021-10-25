@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RealizarPedidoPageRoutingModule } from './realizar-pedido-routing.module';
 
 import { RealizarPedidoPage } from './realizar-pedido.page';
+import { ListaProductosComponent } from 'src/app/components/lista-productos/lista-productos.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { RealizarPedidoPage } from './realizar-pedido.page';
     IonicModule,
     RealizarPedidoPageRoutingModule
   ],
-  declarations: [RealizarPedidoPage]
+  declarations: [RealizarPedidoPage,ListaProductosComponent]
 })
 export class RealizarPedidoPageModule {}
