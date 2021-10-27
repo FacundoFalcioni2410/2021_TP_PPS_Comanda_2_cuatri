@@ -118,9 +118,22 @@ export class AuthService {
   TraerClientesDeshabilitados(){
     return this.firestore.collection('clientes', ref => ref.where('habilitado', '==', false)).valueChanges({idField: 'id'})
   }
+  TraerGenerico(coleccion : any, campo : any, valor : any){
 
-  UpdateEstadoCliente(cliente){
+    return this.firestore.collection(coleccion, ref => ref.where(campo, '==', valor)).valueChanges({idField: 'id'})
+  }
+
+  SetearMesaCliente(cliente : any, mesa : any){
+    return this.clienteCollection.doc(cliente.id).update({mesaAsignada: mesa});
+  }
+
+
+  UpdateEstadoCliente(cliente : any){
     this.clienteCollection.doc(cliente.id).update({habilitado: cliente.habilitado});
+  }
+
+  UpdatearIngresoCliente(cliente : any, valor : boolean){
+    return this.clienteCollection.doc(cliente.id).update({'ingresoLocal': valor});
   }
 
   AltaCliente(cliente : Cliente){
@@ -149,8 +162,8 @@ export class AuthService {
     return this.encuestaCollection.add({...encuesta});
   }
 
-  async updateListaEsperaCliente(id: string){
-    return await this.firestore.collection('clientes').doc(id).update({listaEspera: true});
+  async updateListaEsperaCliente(id: string, valor : boolean){
+    return await this.firestore.collection('clientes').doc(id).update({listaEspera: valor});
   }
 
   async getCliente(uid: string){

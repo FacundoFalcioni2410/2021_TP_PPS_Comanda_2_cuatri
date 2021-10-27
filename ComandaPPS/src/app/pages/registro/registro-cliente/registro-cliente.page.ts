@@ -103,6 +103,8 @@ export class RegistroClientePage implements OnInit {
         email : this.getEmail(),
         password: this.getPassword(),
         habilitado: true,
+        listaEspera: false,
+        ingresoLocal: false
       }
     }
     else
@@ -114,6 +116,8 @@ export class RegistroClientePage implements OnInit {
         email : this.getEmail(),
         password: this.getPassword(),
         habilitado: false,
+        listaEspera: false,
+        ingresoLocal: false
       }
     }
     

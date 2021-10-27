@@ -62,6 +62,10 @@ const routes: Routes = [
     path: 'realizar-pedido',
     loadChildren: () => import('./pages/realizar-pedido/realizar-pedido.module').then( m => m.RealizarPedidoPageModule)
   },
+  {
+    path: 'lista-espera',
+    loadChildren: () => import('./pages/lista-espera/lista-espera.module').then( m => m.ListaEsperaPageModule)
+  },
 
 ];
 

@@ -7,5 +7,7 @@ export interface Cliente {
     dni? : number;
     foto? : string;
     listaEspera ?: boolean;
+    ingresoLocal : boolean;
+    mesaAsignada ?: any;
     habilitado: boolean;
 }
