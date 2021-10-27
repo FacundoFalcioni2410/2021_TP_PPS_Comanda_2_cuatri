@@ -6,9 +6,9 @@
   </ion-header>
   <ion-content style="--background: #232323">
     <ion-list *ngIf="!this.auth?.usuarioActual">
-      <ion-item>Registro empleado</ion-item>
-      <ion-item>Registro empleado</ion-item>
-      <ion-item>Registro supervisor</ion-item>
+      <ion-item [routerLink]="['/registro-cliente']">Registro cliente</ion-item>
+      <ion-item [routerLink]="['/registro-empleado']">Registro empleado</ion-item>
+      <ion-item [routerLink]="['/registro-supervisor']">Registro supervisor</ion-item>
     </ion-list>
     <ion-list *ngIf="this.auth?.usuarioActual">
       <ion-item>Pedir producto</ion-item>
