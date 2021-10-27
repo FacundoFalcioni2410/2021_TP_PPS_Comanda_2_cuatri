@@ -13,12 +13,14 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 import { HttpClientModule } from '@angular/common/http'
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
   declarations: 
   [
-    AppComponent
+    AppComponent,
+    NavComponent
   ],
   entryComponents: [],
   imports: 
