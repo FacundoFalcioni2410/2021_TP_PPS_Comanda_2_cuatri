@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de empleados</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="first"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="listaDeEsperaArray; else spinner">
+    <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+      <ion-col style="text-shadow: 6px 6px 6px rgb(0, 0, 0);">
+        Acepte al cliente para concederle una mesa o rechacelo
+      </ion-col>
+    </ion-row>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+        <ion-col size=6 *ngFor="let item of listaDeEsperaArray">
+          <ion-card style="height: 150%; width: 95%;">
+            <img class="d-block m-auto img-circle img-responsive" [src]="item.foto" />
+            <ion-card-header>
+              <ion-card-title style="font-size:12px;">{{item.nombre}} {{item.apellido}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-button color="success" (click)="AceptarLista(item)">Aceptar</ion-button>
+              </ion-item>
+              <ion-item>
+                <ion-button color="danger" (click)="RechazarLista(item)">Rechazar</ion-button>
+              </ion-item>
+              <div *ngIf="aceptado">
+                <form [formGroup]="controles" (ngSubmit)="AsignarMesa(item)">
+                  <ion-item>
+                    <ion-select formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
+                      <ion-select-option *ngFor="let mesa of mesasArray" value={{mesa.numero}}>{{mesa.numero}}
+                      </ion-select-option>
+                    
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-button color="success" type="submit">Asignar</ion-button>
+                  </ion-item>
+                </form>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+</ion-content>
