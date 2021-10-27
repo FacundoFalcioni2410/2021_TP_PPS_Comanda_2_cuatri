@@ -8,14 +8,22 @@ import { RealizarPedidoPageRoutingModule } from './realizar-pedido-routing.modul
 
 import { RealizarPedidoPage } from './realizar-pedido.page';
 import { ListaProductosComponent } from 'src/app/components/lista-productos/lista-productos.component';
+import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RealizarPedidoPageRoutingModule
+    RealizarPedidoPageRoutingModule,
+    LazyLoadImageModule,
   ],
-  declarations: [RealizarPedidoPage,ListaProductosComponent]
+  declarations: [RealizarPedidoPage,ListaProductosComponent],
+  // providers: [
+  //   {
+  //     provide: LAZYLOAD_IMAGE_HOOKS,
+  //     useClass: ScrollHooks
+  //   }
+  // ]
 })
 export class RealizarPedidoPageModule {}

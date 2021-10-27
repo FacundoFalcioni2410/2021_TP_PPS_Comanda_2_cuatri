@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ListaProductosComponent implements OnInit {
 
+  @Output() producto: EventEmitter<any> = new EventEmitter();
+
+  spinner: string = "../../../assets/spinnerImage.gif"
   productos : any;
   constructor(private authService : AuthService) { 
     authService.getProductos()
@@ -17,5 +20,9 @@ export class ListaProductosComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  enviarProducto(producto: any){
+    this.producto.emit(producto);
+  }
 
 }

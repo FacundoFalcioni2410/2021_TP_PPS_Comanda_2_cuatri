@@ -1,18 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button>
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-back-button>
-    </ion-buttons>
     <ion-title>Realizar pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="first" ></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<app-lista-productos></app-lista-productos>
+<ion-content fullscreen class="p-0 m-0" scroll-y="false">
+<app-lista-productos (producto)="recibirProducto($event)"></app-lista-productos>
 </ion-content>
-<ion-footer style="height: 75px;">
-
-
+<ion-footer style="height: 56px;background-color: #232323;">
+  <div *ngFor="let producto of productos; let i = index" class="d-inline">
+    <img *ngIf="i <= 5" [src]="producto.fotos[0]" height="30px" width="30px" class="mt-2 ms-1"  alt="">
+  </div>
+  <button class="btn btn-primary mt-2" style="float:right !important;">Ver pedido</button>
 </ion-footer>
