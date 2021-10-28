@@ -69,4 +69,8 @@ export class ListaEsperaPage implements OnInit {
     });
 
   }
+
+  Refrescar(){
+    
+  }
 }
