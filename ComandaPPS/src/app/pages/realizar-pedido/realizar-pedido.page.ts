@@ -12,6 +12,7 @@ export class RealizarPedidoPage implements OnInit {
 
   component = SpinnerComponent;
   productos: any = [];
+  cantidad: number = 0;
 
   constructor(private modalController: ModalController) { }
 
@@ -20,6 +21,7 @@ export class RealizarPedidoPage implements OnInit {
 
   recibirProducto(producto: any){
     this.productos.push(producto);
+    this.cantidad = this.productos.length;
   }
 
   async verPedido(){
