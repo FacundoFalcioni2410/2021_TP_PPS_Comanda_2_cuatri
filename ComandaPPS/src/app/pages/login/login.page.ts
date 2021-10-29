@@ -24,6 +24,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  accesoRapidoCliente(){
+    this.form.controls.email.setValue('cliente@cliente.com');
+    this.form.controls.password.setValue('clientecliente');
+    this.login();
+  }
+
   login(){
     this.logo = "../../../assets/spinner.gif";
     this.auth.login(this.form.value)

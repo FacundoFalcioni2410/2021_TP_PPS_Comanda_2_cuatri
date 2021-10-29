@@ -44,6 +44,10 @@ export class AuthService {
   encuestas : Observable<any>;
   encuestaCollection : AngularFirestoreCollection<any>;
 
+  //Pedidos
+  pedidos : Observable<any>;
+  pedidosCollection : AngularFirestoreCollection<any>;
+
   constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) {
     //Clientes
     this.clienteCollection = firestore.collection<Cliente>('clientes');
@@ -62,6 +66,9 @@ export class AuthService {
 
     //Encuestas
     this.encuestaCollection = firestore.collection<Supervisor>('encuestas');
+
+    //Pedidos
+    this.pedidosCollection = firestore.collection<any>('pedidos');
   }
 
   getSupervisores(){
@@ -122,8 +129,8 @@ export class AuthService {
   TraerClientesDeshabilitados(){
     return this.firestore.collection('clientes', ref => ref.where('habilitado', '==', false)).valueChanges({idField: 'id'})
   }
-  TraerGenerico(coleccion : any, campo : any, valor : any){
 
+  TraerGenerico(coleccion : any, campo : any, valor : any){
     return this.firestore.collection(coleccion, ref => ref.where(campo, '==', valor)).valueChanges({idField: 'id'})
   }
 
@@ -160,6 +167,10 @@ export class AuthService {
 
   AltaSupervisor(supervisor : Supervisor){
     return this.supervisorCollection.add({...supervisor});
+  }
+
+  SubirPedido(pedido: any){
+    return this.pedidosCollection.add(pedido)
   }
 
   AltaEncuesta(encuesta: any){
