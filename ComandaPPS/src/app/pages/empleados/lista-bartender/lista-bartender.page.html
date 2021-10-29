@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Listado de pedidos de coctelería</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="cocteles; else spinner">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+      
+        <ion-col size=9 *ngFor="let coctel of cocteles">
+          <div>
+            <ion-card style="height: 150%; width: 95%;">
+              <!-- <div *ngFor="let foto of coctel.fotos">
+              <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
+              </div> -->
+              <ion-card-header>
+                <ion-card-title style="font-size:35px;">{{coctel.nombre}}</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="ion-align-items-center">
+                <ion-item class="ion-text-center">
+                  <ion-button color="success" (click)="PrepararCoctel(coctel)">En preparación</ion-button>
+                </ion-item>
+                <ion-item>
+                  <ion-button color="danger" (click)="EntregarCoctel(coctel)">Entregar cóctel</ion-button>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+
+</ion-content>

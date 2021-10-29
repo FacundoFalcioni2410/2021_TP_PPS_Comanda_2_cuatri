@@ -70,6 +70,10 @@ const routes: Routes = [
     path: 'carrito',
     loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
   },
+  {
+    path: 'lista-bartender',
+    loadChildren: () => import('./pages/empleados/lista-bartender/lista-bartender.module').then( m => m.ListaBartenderPageModule)
+  },
 
 ];
 

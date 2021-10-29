@@ -71,6 +71,10 @@ export class AuthService {
     this.pedidosCollection = firestore.collection<any>('pedidos');
   }
 
+  getPedidos(){
+    return this.pedidosCollection.valueChanges({idField : 'id'});
+  }
+
   getSupervisores(){
     return this.supervisorCollection.valueChanges({idField : 'id'});
   }
@@ -147,6 +151,18 @@ export class AuthService {
     return this.clienteCollection.doc(cliente.id).update({'ingresoLocal': valor});
   }
 
+  UpdatearEstadoPedido(idPedido : any, valor : any){
+    return this.pedidosCollection.doc(idPedido).update({'estado': valor})
+  }
+
+  
+  UpdatearEtapasRealizadasPedido(idPedido : any, valor : any){
+    return this.pedidosCollection.doc(idPedido).update({'etapasRealizadas': valor})
+  }
+
+  TraerPedido(idPedido : any){
+    return this.pedidosCollection.doc(idPedido).valueChanges({idField : 'id'});
+  }
   AltaCliente(cliente : Cliente){
     cliente.listaEspera = false;
     // this.usuarioActual = cliente;
