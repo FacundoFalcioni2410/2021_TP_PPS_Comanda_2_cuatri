@@ -18,10 +18,14 @@
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a NOMBRE RESTAURANTE</h1>
-        <p class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
-        <i class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <label *ngIf="listaEspera">Entraste a la lista de espera!</label>
+        <p *ngIf="!userService.usuarioActual.listaEspera" class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
+        <i *ngIf="!userService.usuarioActual.listaEspera" class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
+        <div *ngIf="userService.usuarioActual.listaEspera && !userService.usuarioActual.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <label >Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>
+        </div>
+        <div *ngIf="userService.usuarioActual.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <label>Ya tenes una mesa asignada ({{userService.usuarioActual.mesaAsignada}}), scanea el QR de tu mesa</label>
+          <i class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
         </div>
       </div>
     </div>
