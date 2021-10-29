@@ -88,6 +88,10 @@ export class AuthService {
     return this.clienteCollection.valueChanges({idField: 'id'});
   }
 
+  getUser(){
+    return this.clienteCollection.doc(this.usuarioActual.id).valueChanges({idField: 'id'})
+  }
+
   async borrarUsuarioActual(){
     let user = await this.auth.currentUser;
 
@@ -138,7 +142,7 @@ export class AuthService {
 
   AltaCliente(cliente : Cliente){
     cliente.listaEspera = false;
-    this.usuarioActual = cliente;
+    // this.usuarioActual = cliente;
     return this.clienteCollection.add({...cliente});
   }
 

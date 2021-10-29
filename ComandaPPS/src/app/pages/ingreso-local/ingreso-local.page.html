@@ -17,14 +17,14 @@
         <img src="../../../assets/puerta.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       </div>
       <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a NOMBRE RESTAURANTE</h1>
-        <p *ngIf="!userService.usuarioActual.listaEspera" class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
-        <i *ngIf="!userService.usuarioActual.listaEspera" class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
-        <div *ngIf="userService.usuarioActual.listaEspera && !userService.usuarioActual.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a Churrasic Park</h1>
+        <p *ngIf="!this.usuario?.listaEspera" class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
+        <i *ngIf="!this.usuario?.listaEspera" class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
+        <div *ngIf="this.usuario?.listaEspera && !this.usuario.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
           <label >Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>
         </div>
-        <div *ngIf="userService.usuarioActual.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <label>Ya tenes una mesa asignada ({{userService.usuarioActual.mesaAsignada}}), scanea el QR de tu mesa</label>
+        <div *ngIf="this.usuario?.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <label>Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}), scanea el QR de tu mesa</label>
           <i class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
         </div>
       </div>

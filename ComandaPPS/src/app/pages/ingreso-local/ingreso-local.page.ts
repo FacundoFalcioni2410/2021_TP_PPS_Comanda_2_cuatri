@@ -12,8 +12,12 @@ import Swal from 'sweetalert2';
 export class IngresoLocalPage implements OnInit {
 
   listaEspera : boolean = false;
-
-  constructor(private qrS: QRService, public userService : AuthService, private route : Router) { }
+  usuario: any
+  constructor(private qrS: QRService, public userService : AuthService, private route : Router) {
+    this.userService.getUser().subscribe((res: any) =>{
+      this.usuario = res  
+    })
+  }
 
   ngOnInit() {
   }
@@ -61,7 +65,7 @@ export class IngresoLocalPage implements OnInit {
         Swal.fire({
           title: 'Escaneo',
           backdrop: false,
-          text: `Escanee el código QR de la mesa que se le asignó ${this.userService.usuarioActual.mesaAsignada}.`,
+          text: `Escanee el código QR de la mesa que se le asignó ${this.usuario.mesaAsignada}.`,
           imageWidth: 400,
           imageHeight: 200,
           imageAlt: 'Custom image',
