@@ -33,7 +33,8 @@ export class IngresoLocalPage implements OnInit {
 
   Scan(){
     
-    if(!this.userService.usuarioActual.listaEspera && !this.userService.usuarioActual.mesaAsignada){
+    if(!this.usuario.listaEspera && !this.usuario.mesaAsignada){
+
           Swal.fire({
             title: 'Escaneo',
             backdrop: false,
@@ -74,12 +75,13 @@ export class IngresoLocalPage implements OnInit {
           cancelButtonText: 'Cancelar',
           reverseButtons: true,
         }).then(async (result) => {
-          
+          console.log('then');
           if (result.isConfirmed) {
             let datos = await this.qrS.scan();
-
+            console.log(datos);
             if(datos.text){
-              if(datos.text == this.userService.usuarioActual.mesaAsignada){
+              console.log(datos.text);
+              if(datos.text == this.usuario.mesaAsignada){
                 this.route.navigateByUrl('/realizar-pedido');
               }
             }
