@@ -23,8 +23,8 @@ export class ListaBartenderPage implements OnInit {
           producto.id = pedido.id; 
           if(producto.descripcion == 'coctel'){
             
-            
-            this.cocteles.push(producto);
+          
+            this.cocteles.push(producto); 
           }
         }
         
