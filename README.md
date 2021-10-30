@@ -15,7 +15,7 @@
 ✔ Encuesta supervisor - Agustin Gaitan  
 ✔ Juego ahorcado - Agustin Gaitan / Facundo Falcioni  
 
-## 🖥 Primera semana  
+## 🖥 Segunda semana  
 #### FECHA INICIO: 21/10/2021 - FECHA FIN: 30/10/2021  
 ✔ Asignación de mesa - Agustin Gaitan  
 ✔ Ingreso del local - Agustin Gaitan  
