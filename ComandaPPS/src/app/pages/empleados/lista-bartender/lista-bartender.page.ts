@@ -13,6 +13,8 @@ export class ListaBartenderPage implements OnInit {
   pedidos: any[] = [];
   pedidoContenedor: any;
   terminado: boolean = false;
+  coctelPreparado : boolean = false;
+  coctelFinalizado : boolean = false;
 
   constructor(private userService: AuthService) {
 
@@ -47,6 +49,7 @@ export class ListaBartenderPage implements OnInit {
         this.userService.UpdatearEstadoPedido(idCoctel, 'en preparacion')
           .then(() => {
             console.log('updateado el estado del pedido');
+            this.coctelPreparado = true;
           })
       });
   }
@@ -59,7 +62,10 @@ export class ListaBartenderPage implements OnInit {
         data.etapasRealizadas++;
         this.userService.UpdatearEtapasRealizadasPedido(idCoctel, data.etapasRealizadas)
           .then(() => {
+
+            this.userService.UpdatearEstadoPedido(idCoctel,'entregado al mozo');
             console.log('updateadas las estapas realizadas ');
+            this.coctelFinalizado = true;
           })
       });
   }

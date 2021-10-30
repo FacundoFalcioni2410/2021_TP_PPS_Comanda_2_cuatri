@@ -25,14 +25,14 @@
                 <ion-card-title style="font-size:35px;">
                   {{coctel.nombre}}
                   {{coctel.estado}}
-                  <app-timer [minutos]="1" *ngIf="coctel.estado === 'en preparacion'"></app-timer>
+                  <app-timer  [minutos]="1" *ngIf="coctel.estado === 'en preparacion'"></app-timer>
                 </ion-card-title>
               </ion-card-header>
               <ion-card-content class="ion-align-items-center">
-                <ion-item class="ion-text-center">
+                <ion-item *ngIf="coctel.estado === 'pedido'" class="ion-text-center">
                   <ion-button color="success" (click)="PrepararCoctel(coctel)">En preparación</ion-button>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="coctel.estado === 'en preparacion'" >
                   <ion-button color="danger" (click)="EntregarCoctel(coctel)">Entregar cóctel</ion-button>
                 </ion-item>
               </ion-card-content>
