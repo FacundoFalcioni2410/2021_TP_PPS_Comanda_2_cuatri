@@ -17,7 +17,7 @@
     <ion-button [routerLink]="['/registro-producto']">Producto</ion-button>
     <ion-button [routerLink]="['/registro-empleado']">Empleado</ion-button>
     <ion-button [routerLink]="['/registro-supervisor']">Dueño/Supervisor</ion-button>
-    <!-- <ion-button (click)="this.mailS.enviarAviso()">Mandar Mail</ion-button> -->
-    <ion-button (click)="this.auth.TraerClientesDeshabilitados()">TEST</ion-button>
+    <ion-button [routerLink]="['/lista-espera']">Permitir entrada de clientes a la mesa</ion-button>
+    <ion-button [routerLink]="['/lista-cliente-deshabilitados']">Permitir entrada de clientes al local</ion-button>
   </div>
 </ion-content>

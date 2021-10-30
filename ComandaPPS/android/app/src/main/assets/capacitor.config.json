@@ -9,5 +9,8 @@
 			"launchAutoHide": false,
 			"backgroundColor": "#2D73CE"
 		}
+	},
+	"server": {
+		"url": "http://192.168.0.172:8101"
 	}
 }
