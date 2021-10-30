@@ -14,3 +14,13 @@
 ✔ Encuesta cliente - Facundo Falcioni  
 ✔ Encuesta supervisor - Agustin Gaitan  
 ✔ Juego ahorcado - Agustin Gaitan / Facundo Falcioni  
+
+## 🖥 Primera semana  
+#### FECHA INICIO: 21/10/2021 - FECHA FIN: 30/10/2021  
+✔ Asignación de mesa - Agustin Gaitan  
+✔ Ingreso del local - Agustin Gaitan  
+✔ Solicitar pedido - Facundo Falcioni  
+✔ Carrito de productos solicitados - Facundo Falcioni  
+✔ Sector bartender - Agustin Gaitan y Facundo Falcioni  
+✔ Mostrar tiempo estimado del pedido - Facundo Falcioni  
+✔ Preparar pedido y entregar pedido al mozo - Agustin Gaitan  
