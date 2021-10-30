@@ -22,7 +22,11 @@
               <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
               </div> -->
               <ion-card-header>
-                <ion-card-title style="font-size:35px;">{{coctel.nombre}}</ion-card-title>
+                <ion-card-title style="font-size:35px;">
+                  {{coctel.nombre}}
+                  {{coctel.estado}}
+                  <app-timer [minutos]="1" *ngIf="coctel.estado === 'en preparacion'"></app-timer>
+                </ion-card-title>
               </ion-card-header>
               <ion-card-content class="ion-align-items-center">
                 <ion-item class="ion-text-center">
@@ -41,5 +45,4 @@
   <ng-template #spinner>
     <app-spinner></app-spinner>
   </ng-template>
-
 </ion-content>

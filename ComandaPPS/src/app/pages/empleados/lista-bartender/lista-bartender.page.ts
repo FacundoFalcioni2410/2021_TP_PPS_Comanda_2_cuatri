@@ -12,21 +12,19 @@ export class ListaBartenderPage implements OnInit {
   cocteles: any[] = [];
   pedidos: any[] = [];
   pedidoContenedor: any;
-
-  h = 0;
-  m = 0;
-  s = 0;
-  id: any;
+  terminado: boolean = false;
 
   constructor(private userService: AuthService) {
 
     this.userService.getPedidos()
       .subscribe((data: any) => {
+        this.terminado = false;
         this.cocteles = [];
         for (let pedido of data) {
           console.log('pedido ', pedido);
           for (let producto of pedido.productos) {
             producto.id = pedido.id;
+            producto.estado = pedido.estado;
             if (producto.descripcion == 'coctel') {
               this.cocteles.push(producto);
             }
