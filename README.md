@@ -24,3 +24,8 @@
 ✔ Sector bartender - Agustin Gaitan y Facundo Falcioni  
 ✔ Mostrar tiempo estimado del pedido - Facundo Falcioni  
 ✔ Preparar pedido y entregar pedido al mozo - Agustin Gaitan  
+✔ QR ingreso al local - Agustin Gaitan  
+✔ QR lista de espera - Agustin Gaitan  
+✔ QR de la mesa - Facundo Falcioni  
+✔ Dueño/supervisor habilita entrada de clientes - Facundo Falcioni  
+✔ Metre habilita entrada de la lista de espera - Agustin Gaitan  
