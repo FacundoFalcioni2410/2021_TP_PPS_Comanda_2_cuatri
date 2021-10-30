@@ -65,7 +65,10 @@ export class RealizarPedidoPage implements OnInit {
           'productos': this.productos,
         }
       });
-      return await modal.present();
+      await modal.present();
+      await modal.onDidDismiss().then(res =>{
+        this.productos = res.data.productos
+      })
   }
 
   // eliminarObjetosDuplicados(arr: any, prop: any) {

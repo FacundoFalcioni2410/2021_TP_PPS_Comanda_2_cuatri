@@ -17,7 +17,8 @@ export class CarritoPage implements OnInit {
 
   dismiss(){
     this.modalController.dismiss({
-      'dismissed': true
+      'dismissed': true,
+      'productos': this.productos
     });
   }
 
