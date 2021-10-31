@@ -30,6 +30,12 @@ export class LoginPage implements OnInit {
     this.login();
   }
 
+  accesoRapidoMetre(){
+    this.form.controls.email.setValue('empleado2@empleado.com');
+    this.form.controls.password.setValue('empleado');
+    this.login();
+  }
+
   login(){
     this.logo = "../../../assets/spinner.gif";
     this.auth.login(this.form.value)
@@ -50,6 +56,11 @@ export class LoginPage implements OnInit {
             this.logo = "../../../assets/restaurant.png";
             this.router.navigate(['/ingreso-local']);
           },1500);
+        }
+        else if(user.tipo)
+        {
+          this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
+          this.router.navigate(['/lista-espera']);
         }
         else
         {

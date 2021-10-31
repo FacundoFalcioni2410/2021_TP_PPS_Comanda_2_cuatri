@@ -1,6 +1,6 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["src_app_pages_encuestas_supervisor_supervisor_module_ts"],{
 
-/***/ 5226:
+/***/ 58049:
 /*!***************************************************************************!*\
   !*** ./src/app/components/listado-generico/listado-generico.component.ts ***!
   \***************************************************************************/
@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ListadoGenericoComponent": () => (/* binding */ ListadoGenericoComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _raw_loader_listado_generico_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./listado-generico.component.html */ 3030);
-/* harmony import */ var _listado_generico_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listado-generico.component.scss */ 5007);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_listado_generico_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./listado-generico.component.html */ 13030);
+/* harmony import */ var _listado_generico_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./listado-generico.component.scss */ 85007);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
 
 
 
@@ -56,10 +56,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SupervisorPageRoutingModule": () => (/* binding */ SupervisorPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 9895);
-/* harmony import */ var _supervisor_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supervisor.page */ 7499);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _supervisor_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supervisor.page */ 97499);
 
 
 
@@ -83,7 +83,7 @@ SupervisorPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)(
 
 /***/ }),
 
-/***/ 7950:
+/***/ 97950:
 /*!*****************************************************************!*\
   !*** ./src/app/pages/encuestas/supervisor/supervisor.module.ts ***!
   \*****************************************************************/
@@ -94,14 +94,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SupervisorPageModule": () => (/* binding */ SupervisorPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 8583);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 476);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 80476);
 /* harmony import */ var _supervisor_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./supervisor-routing.module */ 9350);
-/* harmony import */ var _supervisor_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./supervisor.page */ 7499);
-/* harmony import */ var src_app_components_listado_generico_listado_generico_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/components/listado-generico/listado-generico.component */ 5226);
+/* harmony import */ var _supervisor_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./supervisor.page */ 97499);
+/* harmony import */ var src_app_components_listado_generico_listado_generico_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/components/listado-generico/listado-generico.component */ 58049);
 
 
 
@@ -128,7 +128,7 @@ SupervisorPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
-/***/ 7499:
+/***/ 97499:
 /*!***************************************************************!*\
   !*** ./src/app/pages/encuestas/supervisor/supervisor.page.ts ***!
   \***************************************************************/
@@ -139,12 +139,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SupervisorPage": () => (/* binding */ SupervisorPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _raw_loader_supervisor_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./supervisor.page.html */ 3449);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_supervisor_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./supervisor.page.html */ 93449);
 /* harmony import */ var _supervisor_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./supervisor.page.scss */ 1976);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 7556);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ 1965);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ 71965);
 
 
 
@@ -240,7 +240,7 @@ SupervisorPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 5007:
+/***/ 85007:
 /*!*****************************************************************************!*\
   !*** ./src/app/components/listado-generico/listado-generico.component.scss ***!
   \*****************************************************************************/
@@ -270,7 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3030:
+/***/ 13030:
 /*!*******************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/listado-generico/listado-generico.component.html ***!
   \*******************************************************************************************************************/
@@ -285,7 +285,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 3449:
+/***/ 93449:
 /*!*******************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/encuestas/supervisor/supervisor.page.html ***!
   \*******************************************************************************************************/

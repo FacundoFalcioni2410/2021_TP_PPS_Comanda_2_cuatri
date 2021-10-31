@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { PushNotificationsService } from 'src/app/services/push-notifications.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-lista-espera',
@@ -15,7 +17,7 @@ export class ListaEsperaPage implements OnInit {
   aceptado : boolean = false;
   controles !: FormGroup;
 
-  constructor(private authService : AuthService, private fb : FormBuilder) {
+  constructor(private authService : AuthService, private fb : FormBuilder, private pushNotification: PushNotificationsService) {
 
     this.authService.TraerGenerico('clientes','listaEspera',true)
     .subscribe((data)=>{

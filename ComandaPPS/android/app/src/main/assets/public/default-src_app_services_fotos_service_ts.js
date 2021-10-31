@@ -1,6 +1,6 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["default-src_app_services_fotos_service_ts"],{
 
-/***/ 3893:
+/***/ 43893:
 /*!****************************************************************************!*\
   !*** ./node_modules/@angular/fire/fesm2015/angular-fire-compat-storage.js ***!
   \****************************************************************************/
@@ -21,18 +21,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "createUploadTask": () => (/* binding */ createUploadTask),
 /* harmony export */   "fromTask": () => (/* binding */ fromTask)
 /* harmony export */ });
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 9165);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 5917);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 9412);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 4395);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 8002);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 3190);
-/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire */ 7667);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_fire_compat__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/compat */ 8747);
-/* harmony import */ var firebase_compat_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/compat/storage */ 6394);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ 8583);
-/* harmony import */ var firebase_compat_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/compat/app */ 7841);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 69165);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 25917);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs */ 69412);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ 54395);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 88002);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 43190);
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire */ 77667);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_fire_compat__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/compat */ 88939);
+/* harmony import */ var firebase_compat_storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/compat/storage */ 26394);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common */ 38583);
+/* harmony import */ var firebase_compat_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/compat/app */ 37841);
 
 
 
@@ -362,7 +362,7 @@ AngularFireStorageModule.ɵinj = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_
 
 /***/ }),
 
-/***/ 4021:
+/***/ 64021:
 /*!****************************************************************!*\
   !*** ./node_modules/@capacitor/camera/dist/esm/definitions.js ***!
   \****************************************************************/
@@ -405,7 +405,7 @@ var CameraResultType;
 
 /***/ }),
 
-/***/ 7673:
+/***/ 37673:
 /*!**********************************************************!*\
   !*** ./node_modules/@capacitor/camera/dist/esm/index.js ***!
   \**********************************************************/
@@ -419,11 +419,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CameraSource": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraSource),
 /* harmony export */   "Camera": () => (/* binding */ Camera)
 /* harmony export */ });
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 8384);
-/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 4021);
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 68384);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 64021);
 
 const Camera = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Camera', {
-    web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_camera_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 4028)).then(m => new m.CameraWeb()),
+    web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_camera_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 14028)).then(m => new m.CameraWeb()),
 });
 
 
@@ -431,7 +431,7 @@ const Camera = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('
 
 /***/ }),
 
-/***/ 6872:
+/***/ 31257:
 /*!*********************************************************************!*\
   !*** ./node_modules/@firebase/storage-compat/dist/index.esm2017.js ***!
   \*********************************************************************/
@@ -442,9 +442,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "registerStorage": () => (/* binding */ registerStorage)
 /* harmony export */ });
-/* harmony import */ var _firebase_app_compat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/app-compat */ 4486);
-/* harmony import */ var _firebase_storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/storage */ 5761);
-/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/component */ 6034);
+/* harmony import */ var _firebase_app_compat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/app-compat */ 54486);
+/* harmony import */ var _firebase_storage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/storage */ 95761);
+/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/component */ 16034);
 
 
 
@@ -847,7 +847,7 @@ registerStorage(_firebase_app_compat__WEBPACK_IMPORTED_MODULE_0__.default);
 
 /***/ }),
 
-/***/ 5761:
+/***/ 95761:
 /*!**************************************************************!*\
   !*** ./node_modules/@firebase/storage/dist/index.esm2017.js ***!
   \**************************************************************/
@@ -879,9 +879,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "uploadBytesResumable": () => (/* binding */ uploadBytesResumable),
 /* harmony export */   "uploadString": () => (/* binding */ uploadString)
 /* harmony export */ });
-/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/app */ 5452);
-/* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/util */ 3854);
-/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/component */ 6034);
+/* harmony import */ var _firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/app */ 55452);
+/* harmony import */ var _firebase_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @firebase/util */ 33854);
+/* harmony import */ var _firebase_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @firebase/component */ 16034);
 
 
 
@@ -4268,7 +4268,7 @@ registerStorage();
 
 /***/ }),
 
-/***/ 6394:
+/***/ 26394:
 /*!****************************************************************!*\
   !*** ./node_modules/firebase/compat/storage/dist/index.esm.js ***!
   \****************************************************************/
@@ -4276,14 +4276,14 @@ registerStorage();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _firebase_storage_compat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/storage-compat */ 6872);
+/* harmony import */ var _firebase_storage_compat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @firebase/storage-compat */ 31257);
 
 //# sourceMappingURL=index.esm.js.map
 
 
 /***/ }),
 
-/***/ 4395:
+/***/ 54395:
 /*!***********************************************************************!*\
   !*** ./node_modules/rxjs/_esm2015/internal/operators/debounceTime.js ***!
   \***********************************************************************/
@@ -4294,8 +4294,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "debounceTime": () => (/* binding */ debounceTime)
 /* harmony export */ });
-/* harmony import */ var _Subscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Subscriber */ 7393);
-/* harmony import */ var _scheduler_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scheduler/async */ 3637);
+/* harmony import */ var _Subscriber__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Subscriber */ 77393);
+/* harmony import */ var _scheduler_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scheduler/async */ 33637);
 
 
 function debounceTime(dueTime, scheduler = _scheduler_async__WEBPACK_IMPORTED_MODULE_0__.async) {
@@ -4354,7 +4354,7 @@ function dispatchNext(subscriber) {
 
 /***/ }),
 
-/***/ 1343:
+/***/ 91343:
 /*!***********************************************!*\
   !*** ./src/app/services/firestore.service.ts ***!
   \***********************************************/
@@ -4365,9 +4365,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FirestoreService": () => (/* binding */ FirestoreService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/fire/compat/firestore */ 2182);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_fire_compat_firestore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/fire/compat/firestore */ 52182);
 
 
 
@@ -4392,7 +4392,7 @@ FirestoreService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 
 /***/ }),
 
-/***/ 1257:
+/***/ 21106:
 /*!*******************************************!*\
   !*** ./src/app/services/fotos.service.ts ***!
   \*******************************************/
@@ -4403,15 +4403,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FotosService": () => (/* binding */ FotosService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 9895);
-/* harmony import */ var _firestore_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./firestore.service */ 1343);
-/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ 7556);
-/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/compat/storage */ 3893);
-/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/camera */ 7673);
-/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 7379);
-/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 4333);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _firestore_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./firestore.service */ 91343);
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ 37556);
+/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/compat/storage */ 43893);
+/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/camera */ 37673);
+/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
 
 
 

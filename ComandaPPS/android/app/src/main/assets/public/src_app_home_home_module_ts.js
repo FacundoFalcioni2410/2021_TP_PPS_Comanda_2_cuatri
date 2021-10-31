@@ -1,6 +1,6 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["src_app_home_home_module_ts"],{
 
-/***/ 6322:
+/***/ 56322:
 /*!*****************************************************!*\
   !*** ./node_modules/emailjs-com/es/api/sendPost.js ***!
   \*****************************************************/
@@ -11,7 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "sendPost": () => (/* binding */ sendPost)
 /* harmony export */ });
-/* harmony import */ var _models_EmailJSResponseStatus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/EmailJSResponseStatus */ 8334);
+/* harmony import */ var _models_EmailJSResponseStatus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../models/EmailJSResponseStatus */ 78334);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/store */ 8418);
 
 
@@ -41,7 +41,7 @@ const sendPost = (url, data, headers = {}) => {
 
 /***/ }),
 
-/***/ 8343:
+/***/ 98343:
 /*!**********************************************!*\
   !*** ./node_modules/emailjs-com/es/index.js ***!
   \**********************************************/
@@ -55,9 +55,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "sendForm": () => (/* reexport safe */ _methods_sendForm_sendForm__WEBPACK_IMPORTED_MODULE_2__.sendForm),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _methods_init_init__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./methods/init/init */ 9808);
-/* harmony import */ var _methods_send_send__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./methods/send/send */ 1930);
-/* harmony import */ var _methods_sendForm_sendForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./methods/sendForm/sendForm */ 8235);
+/* harmony import */ var _methods_init_init__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./methods/init/init */ 69808);
+/* harmony import */ var _methods_send_send__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./methods/send/send */ 21930);
+/* harmony import */ var _methods_sendForm_sendForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./methods/sendForm/sendForm */ 98235);
 
 
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 9808:
+/***/ 69808:
 /*!**********************************************************!*\
   !*** ./node_modules/emailjs-com/es/methods/init/init.js ***!
   \**********************************************************/
@@ -97,7 +97,7 @@ const init = (userID, origin = 'https://api.emailjs.com') => {
 
 /***/ }),
 
-/***/ 8235:
+/***/ 98235:
 /*!******************************************************************!*\
   !*** ./node_modules/emailjs-com/es/methods/sendForm/sendForm.js ***!
   \******************************************************************/
@@ -109,8 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "sendForm": () => (/* binding */ sendForm)
 /* harmony export */ });
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/store */ 8418);
-/* harmony import */ var _utils_validateParams__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/validateParams */ 4191);
-/* harmony import */ var _api_sendPost__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/sendPost */ 6322);
+/* harmony import */ var _utils_validateParams__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/validateParams */ 34191);
+/* harmony import */ var _api_sendPost__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/sendPost */ 56322);
 
 
 
@@ -150,7 +150,7 @@ const sendForm = (serviceID, templateID, form, userID) => {
 
 /***/ }),
 
-/***/ 1930:
+/***/ 21930:
 /*!**********************************************************!*\
   !*** ./node_modules/emailjs-com/es/methods/send/send.js ***!
   \**********************************************************/
@@ -162,8 +162,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "send": () => (/* binding */ send)
 /* harmony export */ });
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/store */ 8418);
-/* harmony import */ var _utils_validateParams__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/validateParams */ 4191);
-/* harmony import */ var _api_sendPost__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/sendPost */ 6322);
+/* harmony import */ var _utils_validateParams__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/validateParams */ 34191);
+/* harmony import */ var _api_sendPost__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/sendPost */ 56322);
 
 
 
@@ -193,7 +193,7 @@ const send = (serviceID, templateID, templatePrams, userID) => {
 
 /***/ }),
 
-/***/ 8334:
+/***/ 78334:
 /*!*********************************************************************!*\
   !*** ./node_modules/emailjs-com/es/models/EmailJSResponseStatus.js ***!
   \*********************************************************************/
@@ -232,7 +232,7 @@ const store = {
 
 /***/ }),
 
-/***/ 4191:
+/***/ 34191:
 /*!*************************************************************!*\
   !*** ./node_modules/emailjs-com/es/utils/validateParams.js ***!
   \*************************************************************/
@@ -259,7 +259,7 @@ const validateParams = (userID, serviceID, templateID) => {
 
 /***/ }),
 
-/***/ 2003:
+/***/ 52003:
 /*!*********************************************!*\
   !*** ./src/app/home/home-routing.module.ts ***!
   \*********************************************/
@@ -270,10 +270,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomePageRoutingModule": () => (/* binding */ HomePageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 9895);
-/* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.page */ 2267);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.page */ 62267);
 
 
 
@@ -308,13 +308,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomePageModule": () => (/* binding */ HomePageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 8583);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 476);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 38583);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 80476);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.page */ 2267);
-/* harmony import */ var _home_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-routing.module */ 2003);
+/* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.page */ 62267);
+/* harmony import */ var _home_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home-routing.module */ 52003);
 
 
 
@@ -330,7 +330,7 @@ HomePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
             _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
-            _home_routing_module__WEBPACK_IMPORTED_MODULE_1__.HomePageRoutingModule
+            _home_routing_module__WEBPACK_IMPORTED_MODULE_1__.HomePageRoutingModule,
         ],
         declarations: [_home_page__WEBPACK_IMPORTED_MODULE_0__.HomePage]
     })
@@ -340,7 +340,7 @@ HomePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 2267:
+/***/ 62267:
 /*!***********************************!*\
   !*** ./src/app/home/home.page.ts ***!
   \***********************************/
@@ -351,13 +351,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomePage": () => (/* binding */ HomePage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./home.page.html */ 9764);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./home.page.html */ 49764);
 /* harmony import */ var _home_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home.page.scss */ 2610);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _services_fotos_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/fotos.service */ 1257);
-/* harmony import */ var _services_mail_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/mail.service */ 5585);
-/* harmony import */ var _services_qr_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/qr.service */ 2724);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ 37556);
+/* harmony import */ var _services_fotos_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/fotos.service */ 21106);
+/* harmony import */ var _services_mail_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/mail.service */ 65585);
+/* harmony import */ var _services_qr_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/qr.service */ 52724);
+
 
 
 
@@ -366,19 +368,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePage = class HomePage {
-    constructor(fotoS, qrS, mailS) {
+    constructor(fotoS, qrS, mailS, auth) {
         this.fotoS = fotoS;
         this.qrS = qrS;
         this.mailS = mailS;
+        this.auth = auth;
     }
 };
 HomePage.ctorParameters = () => [
-    { type: _services_fotos_service__WEBPACK_IMPORTED_MODULE_2__.FotosService },
-    { type: _services_qr_service__WEBPACK_IMPORTED_MODULE_4__.QRService },
-    { type: _services_mail_service__WEBPACK_IMPORTED_MODULE_3__.MailService }
+    { type: _services_fotos_service__WEBPACK_IMPORTED_MODULE_3__.FotosService },
+    { type: _services_qr_service__WEBPACK_IMPORTED_MODULE_5__.QRService },
+    { type: _services_mail_service__WEBPACK_IMPORTED_MODULE_4__.MailService },
+    { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService }
 ];
-HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-home',
         template: _raw_loader_home_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_home_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -389,7 +393,7 @@ HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 5585:
+/***/ 65585:
 /*!******************************************!*\
   !*** ./src/app/services/mail.service.ts ***!
   \******************************************/
@@ -400,9 +404,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MailService": () => (/* binding */ MailService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emailjs-com */ 8343);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var emailjs_com__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! emailjs-com */ 98343);
 
 
 
@@ -452,7 +456,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 9764:
+/***/ 49764:
 /*!***************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/home/home.page.html ***!
   \***************************************************************************/
@@ -463,7 +467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Home\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Blank</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n\r\n  <div id=\"container\">\r\n    <ion-button [routerLink]=\"['/login']\">Login</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-cliente']\">Cliente</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-mesa']\">Mesa</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-producto']\">Producto</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-empleado']\">Empleado</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-supervisor']\">Dueño/Supervisor</ion-button>\r\n    <!-- <ion-button (click)=\"this.mailS.enviarAviso()\">Mandar Mail</ion-button> -->\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Registro de empleados</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-menu-button menu=\"first\" ></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n\r\n\r\n  <div id=\"container\">\r\n    <ion-button [routerLink]=\"['/login']\">Login</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-cliente']\">Cliente</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-mesa']\">Mesa</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-producto']\">Producto</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-empleado']\">Empleado</ion-button>\r\n    <ion-button [routerLink]=\"['/registro-supervisor']\">Dueño/Supervisor</ion-button>\r\n    <ion-button [routerLink]=\"['/lista-espera']\">Permitir entrada de clientes a la mesa</ion-button>\r\n    <ion-button [routerLink]=\"['/lista-cliente-deshabilitados']\">Permitir entrada de clientes al local</ion-button>\r\n  </div>\r\n</ion-content>\r\n");
 
 /***/ })
 

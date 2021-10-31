@@ -1,6 +1,6 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["src_app_pages_login_login_module_ts"],{
 
-/***/ 3403:
+/***/ 73403:
 /*!*****************************************************!*\
   !*** ./src/app/pages/login/login-routing.module.ts ***!
   \*****************************************************/
@@ -11,9 +11,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPageRoutingModule": () => (/* binding */ LoginPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 9895);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var _login_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login.page */ 3058);
 
 
@@ -38,7 +38,7 @@ LoginPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 
 /***/ }),
 
-/***/ 1053:
+/***/ 21053:
 /*!*********************************************!*\
   !*** ./src/app/pages/login/login.module.ts ***!
   \*********************************************/
@@ -49,12 +49,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPageModule": () => (/* binding */ LoginPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 8583);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 38583);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 476);
-/* harmony import */ var _login_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login-routing.module */ 3403);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _login_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./login-routing.module */ 73403);
 /* harmony import */ var _login_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page */ 3058);
 
 
@@ -93,14 +93,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPage": () => (/* binding */ LoginPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./login.page.html */ 1021);
-/* harmony import */ var _login_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss */ 8781);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./login.page.html */ 31021);
+/* harmony import */ var _login_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss */ 28781);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 9895);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 7556);
-/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 7379);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
 
 
 
@@ -122,6 +122,16 @@ let LoginPage = class LoginPage {
     }
     ngOnInit() {
     }
+    accesoRapidoCliente() {
+        this.form.controls.email.setValue('cliente@cliente.com');
+        this.form.controls.password.setValue('clientecliente');
+        this.login();
+    }
+    accesoRapidoMetre() {
+        this.form.controls.email.setValue('empleado2@empleado.com');
+        this.form.controls.password.setValue('empleado');
+        this.login();
+    }
     login() {
         this.logo = "../../../assets/spinner.gif";
         this.auth.login(this.form.value)
@@ -139,6 +149,10 @@ let LoginPage = class LoginPage {
                         this.logo = "../../../assets/restaurant.png";
                         this.router.navigate(['/ingreso-local']);
                     }, 1500);
+                }
+                else if (user.tipo) {
+                    this.mostrarToast({ text: 'Datos correctos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'success' });
+                    this.router.navigate(['/lista-espera']);
                 }
                 else {
                     this.mostrarToast({ text: 'Datos correctos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'success' });
@@ -179,7 +193,7 @@ LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 8781:
+/***/ 28781:
 /*!*********************************************!*\
   !*** ./src/app/pages/login/login.page.scss ***!
   \*********************************************/
@@ -194,7 +208,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 1021:
+/***/ 31021:
 /*!***********************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html ***!
   \***********************************************************************************/
@@ -205,7 +219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\" style=\"max-height: 100vh !important;\" >\r\n    <form [formGroup]='form' (ngSubmit)='this.login()'>\r\n        <div class=\"containerForm text-white\">\r\n            <img [src]=\"this.logo\" alt=\"\" height=\"150px\" width=\"150px\">\r\n            <h1>Ingreso</h1>\r\n            <h3>Ingrese sus datos:</h3>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <ion-item>\r\n                        <ion-label class=\"ms-1\" position=\"floating\" for=\"email\"><b>Email</b></ion-label>\r\n                        <ion-input type=\"text\" class=\"\" formControlName='email' name=\"email\" required></ion-input>\r\n                    </ion-item>\r\n                    \r\n                    <div class='text-danger p-1 m-0' *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.required\">\r\n                        Ingrese su email\r\n                    </div>\r\n                    <div class='text-danger p-1 m-0' *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.email\">\r\n                        Ingrese un email valido\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-12\">\r\n                    <ion-item>\r\n                        <ion-label class=\"ms-1\" position=\"floating\" for=\"password\"><b>Contraseña</b></ion-label>\r\n                        <ion-input type=\"password\" class=\"\" formControlName='password' name=\"password\" required></ion-input>\r\n                    </ion-item>\r\n                    \r\n                    <div class='text-danger p-1' *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.required\">\r\n                        Ingrese su contraseña\r\n                    </div>\r\n                    <div class='text-danger p-1' *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.minlength\">\r\n                        La contraseña debe tener 8 caracteres o mas\r\n                    </div>\r\n                </div>\r\n            </div>        \r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <ion-button type=\"submit\" [disabled]=\"form.invalid\" class=\"mt-3\" color=\"secondary\" fill=\"solid\" expand=\"block\">Ingresar</ion-button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"container\" style=\"max-height: 100vh !important;\" >\r\n    <form [formGroup]='form' (ngSubmit)='this.login()'>\r\n        <div class=\"containerForm text-white\">\r\n            <img [src]=\"this.logo\" alt=\"\" height=\"150px\" width=\"150px\">\r\n            <h1>Ingreso</h1>\r\n            <h3>Ingrese sus datos:</h3>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <ion-item>\r\n                        <ion-label class=\"ms-1\" position=\"floating\" for=\"email\"><b>Email</b></ion-label>\r\n                        <ion-input type=\"text\" class=\"\" formControlName='email' name=\"email\" required></ion-input>\r\n                    </ion-item>\r\n                    \r\n                    <div class='text-danger p-1 m-0' *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.required\">\r\n                        Ingrese su email\r\n                    </div>\r\n                    <div class='text-danger p-1 m-0' *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.email\">\r\n                        Ingrese un email valido\r\n                    </div>\r\n                </div>\r\n                <div class=\"col-12\">\r\n                    <ion-item>\r\n                        <ion-label class=\"ms-1\" position=\"floating\" for=\"password\"><b>Contraseña</b></ion-label>\r\n                        <ion-input type=\"password\" class=\"\" formControlName='password' name=\"password\" required></ion-input>\r\n                    </ion-item>\r\n                    \r\n                    <div class='text-danger p-1' *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.required\">\r\n                        Ingrese su contraseña\r\n                    </div>\r\n                    <div class='text-danger p-1' *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.minlength\">\r\n                        La contraseña debe tener 8 caracteres o mas\r\n                    </div>\r\n                </div>\r\n            </div>        \r\n            <div class=\"row\">\r\n                <div class=\"col-12\">\r\n                    <ion-button type=\"submit\" [disabled]=\"form.invalid\" class=\"mt-3\" color=\"secondary\" fill=\"solid\" expand=\"block\">Ingresar</ion-button>\r\n                    <ion-button type=\"button\" class=\"mt-3\" color=\"secondary\" fill=\"solid\" expand=\"block\" (click)=\"accesoRapidoCliente()\">Cliente</ion-button>\r\n                    <ion-button type=\"button\" class=\"mt-3\" color=\"secondary\" fill=\"solid\" expand=\"block\" (click)=\"accesoRapidoMetre()\">Metre</ion-button>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n</ion-content>\r\n");
 
 /***/ })
 

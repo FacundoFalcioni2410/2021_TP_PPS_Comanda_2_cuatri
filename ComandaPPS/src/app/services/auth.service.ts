@@ -19,10 +19,11 @@ export class AuthService {
 
   usuarioActual: any;
   loading: boolean = false;
+  tipoUsuario: string = '';
   
   //Clientes
-  clientes : Observable<Cliente[]>;
-  clienteCollection : AngularFirestoreCollection<Cliente>;
+  clientes : Observable<any[]>;
+  clienteCollection : AngularFirestoreCollection<any>;
   
   //Mesas
   mesas : Observable<Mesa[]>;
@@ -33,13 +34,13 @@ export class AuthService {
   productoCollection : AngularFirestoreCollection<Producto>;
   
   //Empleados
-  empleados : Observable<Empleado[]>;
-  empleadoCollection : AngularFirestoreCollection<Empleado>;
+  empleados : Observable<any[]>;
+  empleadoCollection : AngularFirestoreCollection<any>;
 
   //Supervisores/Dueños
-  supervisores : Observable<Supervisor[]>;
-  supervisorCollection : AngularFirestoreCollection<Supervisor>;
-
+  supervisores : Observable<any[]>;
+  supervisorCollection : AngularFirestoreCollection<any>;
+any
   //Encuestas
   encuestas : Observable<any>;
   encuestaCollection : AngularFirestoreCollection<any>;
@@ -50,7 +51,7 @@ export class AuthService {
 
   constructor(private auth: AngularFireAuth, private router: Router, private firestore : AngularFirestore) {
     //Clientes
-    this.clienteCollection = firestore.collection<Cliente>('clientes');
+    this.clienteCollection = firestore.collection<any>('clientes');
     
     ///Mesas
     this.mesaCollection = firestore.collection<Mesa>('mesas');
@@ -59,13 +60,13 @@ export class AuthService {
     this.productoCollection = firestore.collection<Producto>('productos');
     
     //Empleados
-    this.empleadoCollection = firestore.collection<Empleado>('empleados');
+    this.empleadoCollection = firestore.collection<any>('empleados');
 
     //Dueños/Supervisores
-    this.supervisorCollection = firestore.collection<Supervisor>('supervisores');
+    this.supervisorCollection = firestore.collection<any>('supervisores');
 
     //Encuestas
-    this.encuestaCollection = firestore.collection<Supervisor>('encuestas');
+    this.encuestaCollection = firestore.collection<any>('encuestas');
 
     //Pedidos
     this.pedidosCollection = firestore.collection<any>('pedidos');
@@ -214,13 +215,17 @@ export class AuthService {
   async getUsers(email: string)
   {
     let usuario: any = await this.firestore.collection('clientes', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+    this.tipoUsuario = 'cliente';
+
     if(usuario.length === 0)
     {
       usuario = await this.firestore.collection('empleados', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+      this.tipoUsuario = 'empleado';
     }
     if(usuario.length === 0)
     {
       usuario = await this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
+      this.tipoUsuario = 'supervisor';
     }
     this.usuarioActual = usuario[0];
     
@@ -237,5 +242,20 @@ export class AuthService {
 
   mostrarToast(options: any){
     Swal.fire(options);
+  }
+
+  guardarToken(usuario, perfil, token){
+    if(perfil === 'cliente')
+    {
+      this.clienteCollection.doc(usuario.id).update({pushToken: token});
+    }
+    else if(perfil === 'supervisor')
+    {
+      this.supervisorCollection.doc(usuario.id).update({pushToken: token});
+    }
+    else
+    {
+      this.empleadoCollection.doc(usuario.id).update({pushToken: token});
+    }
   }
 }

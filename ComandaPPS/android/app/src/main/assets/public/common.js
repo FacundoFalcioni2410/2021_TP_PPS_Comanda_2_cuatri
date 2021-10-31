@@ -1,6 +1,6 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["common"],{
 
-/***/ 8225:
+/***/ 68225:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-d4bd4f74.js ***!
   \*********************************************************************/
@@ -11,9 +11,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "c": () => (/* binding */ createButtonActiveGesture)
 /* harmony export */ });
-/* harmony import */ var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-7a8b7a1c.js */ 3150);
-/* harmony import */ var _haptic_27b3f981_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-27b3f981.js */ 2954);
-/* harmony import */ var _index_34cb2743_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-34cb2743.js */ 9461);
+/* harmony import */ var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-7a8b7a1c.js */ 23150);
+/* harmony import */ var _haptic_27b3f981_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-27b3f981.js */ 52954);
+/* harmony import */ var _index_34cb2743_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-34cb2743.js */ 39461);
 
 
 
@@ -82,7 +82,7 @@ const createButtonActiveGesture = (el, isButton) => {
 
 /***/ }),
 
-/***/ 7330:
+/***/ 77330:
 /*!**************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-4392cd63.js ***!
   \**************************************************************************/
@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "a": () => (/* binding */ attachComponent),
 /* harmony export */   "d": () => (/* binding */ detachComponent)
 /* harmony export */ });
-/* harmony import */ var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-dd7e4b7b.js */ 2377);
+/* harmony import */ var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-dd7e4b7b.js */ 52377);
 
 
 const attachComponent = async (delegate, container, component, cssClasses, componentProps) => {
@@ -133,7 +133,7 @@ const detachComponent = (delegate, element) => {
 
 /***/ }),
 
-/***/ 2954:
+/***/ 52954:
 /*!**************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/haptic-27b3f981.js ***!
   \**************************************************************/
@@ -258,7 +258,7 @@ const hapticImpact = (options) => {
 
 /***/ }),
 
-/***/ 408:
+/***/ 60408:
 /*!***********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-cd7845af.js ***!
   \***********************************************************************/
@@ -383,7 +383,7 @@ const SPINNERS = spinners;
 
 /***/ }),
 
-/***/ 1269:
+/***/ 61269:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js ***!
   \*************************************************************/
@@ -440,7 +440,7 @@ const openURL = async (url, ev, direction, animation) => {
 
 /***/ }),
 
-/***/ 4132:
+/***/ 94132:
 /*!*********************************************************!*\
   !*** ./src/app/components/spinner/spinner.component.ts ***!
   \*********************************************************/
@@ -451,10 +451,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SpinnerComponent": () => (/* binding */ SpinnerComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _raw_loader_spinner_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./spinner.component.html */ 593);
-/* harmony import */ var _spinner_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spinner.component.scss */ 1799);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_spinner_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./spinner.component.html */ 50593);
+/* harmony import */ var _spinner_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spinner.component.scss */ 91799);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
 
 
 
@@ -476,7 +476,156 @@ SpinnerComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 2724:
+/***/ 35082:
+/*!*****************************************************!*\
+  !*** ./src/app/components/timer/timer.component.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TimerComponent": () => (/* binding */ TimerComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_timer_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./timer.component.html */ 56464);
+/* harmony import */ var _timer_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timer.component.scss */ 60524);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+
+
+
+
+let TimerComponent = class TimerComponent {
+    constructor() {
+        setTimeout(() => {
+            this.resetTimer();
+            setInterval(() => this.tick(), 1000);
+        }, 100);
+    }
+    ngOnInit() {
+    }
+    resetTimer() {
+        this.isPaused = false;
+        this.minutos = this.minutos;
+        this.seconds = 0;
+    }
+    tick() {
+        if (!this.isPaused) {
+            if (--this.seconds < 0) {
+                this.seconds = 59;
+                if (--this.minutos < 0) {
+                    this.resetTimer();
+                }
+            }
+            if (this.minutos === 0 && this.seconds === 0) {
+                this.isPaused = true;
+            }
+        }
+    }
+};
+TimerComponent.ctorParameters = () => [];
+TimerComponent.propDecorators = {
+    minutos: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input }]
+};
+TimerComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Component)({
+        selector: 'app-timer',
+        template: _raw_loader_timer_component_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_timer_component_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], TimerComponent);
+
+
+
+/***/ }),
+
+/***/ 52905:
+/*!***********************************************!*\
+  !*** ./src/app/pages/carrito/carrito.page.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CarritoPage": () => (/* binding */ CarritoPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _raw_loader_carrito_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./carrito.page.html */ 56583);
+/* harmony import */ var _carrito_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carrito.page.scss */ 18397);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+
+
+
+
+
+
+let CarritoPage = class CarritoPage {
+    constructor(modalController, userService) {
+        this.modalController = modalController;
+        this.userService = userService;
+    }
+    ngOnInit() {
+    }
+    dismiss() {
+        this.modalController.dismiss({
+            'dismissed': true,
+            'productos': this.productos
+        });
+    }
+    realizarPedido() {
+        let cantidadCocina = 0;
+        let cantidadCocteleria = 0;
+        let precio = 0;
+        let flag = false;
+        let max = 0;
+        for (let producto of this.productos) {
+            if (!flag || producto.tiempo > max) {
+                flag = true;
+                max = producto.tiempo;
+            }
+            if (producto.descripcion === 'cocteleria') {
+                cantidadCocteleria = 1;
+            }
+            else {
+                cantidadCocina = 1;
+            }
+            precio += producto.precio * producto.cantidad;
+        }
+        //cocteleria, cocina, 
+        let pedido = {
+            estado: 'pedido',
+            productos: this.productos,
+            tiempo: max,
+            etapasRealizadas: 0,
+            etapasTotales: cantidadCocina + cantidadCocteleria,
+            precioTotal: precio
+        };
+        this.userService.SubirPedido(pedido);
+    }
+};
+CarritoPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService }
+];
+CarritoPage.propDecorators = {
+    productos: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.Input }]
+};
+CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+        selector: 'app-carrito',
+        template: _raw_loader_carrito_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
+        styles: [_carrito_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
+    })
+], CarritoPage);
+
+
+
+/***/ }),
+
+/***/ 52724:
 /*!****************************************!*\
   !*** ./src/app/services/qr.service.ts ***!
   \****************************************/
@@ -487,9 +636,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "QRService": () => (/* binding */ QRService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ 2760);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ 92760);
 
 
 
@@ -540,7 +689,7 @@ QRService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 
 /***/ }),
 
-/***/ 4029:
+/***/ 44029:
 /*!**********************************************************!*\
   !*** ./src/app/sharedComponents/shared/shared.module.ts ***!
   \**********************************************************/
@@ -551,24 +700,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SharedModule": () => (/* binding */ SharedModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 7716);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 8583);
-/* harmony import */ var src_app_components_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/components/spinner/spinner.component */ 4132);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 38583);
+/* harmony import */ var src_app_components_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/components/spinner/spinner.component */ 94132);
+/* harmony import */ var src_app_components_timer_timer_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/components/timer/timer.component */ 35082);
+
 
 
 
 
 let SharedModule = class SharedModule {
 };
-SharedModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
-        declarations: [src_app_components_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_0__.SpinnerComponent],
+SharedModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+        declarations: [
+            src_app_components_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_0__.SpinnerComponent,
+            src_app_components_timer_timer_component__WEBPACK_IMPORTED_MODULE_1__.TimerComponent
+        ],
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_3__.CommonModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
         ],
         exports: [
-            src_app_components_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_0__.SpinnerComponent
+            src_app_components_spinner_spinner_component__WEBPACK_IMPORTED_MODULE_0__.SpinnerComponent,
+            src_app_components_timer_timer_component__WEBPACK_IMPORTED_MODULE_1__.TimerComponent,
         ]
     })
 ], SharedModule);
@@ -577,7 +732,7 @@ SharedModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 
 /***/ }),
 
-/***/ 1799:
+/***/ 91799:
 /*!***********************************************************!*\
   !*** ./src/app/components/spinner/spinner.component.scss ***!
   \***********************************************************/
@@ -592,7 +747,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 593:
+/***/ 60524:
+/*!*******************************************************!*\
+  !*** ./src/app/components/timer/timer.component.scss ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ0aW1lci5jb21wb25lbnQuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ 18397:
+/*!*************************************************!*\
+  !*** ./src/app/pages/carrito/carrito.page.scss ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJjYXJyaXRvLnBhZ2Uuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ 50593:
 /*!*************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/spinner/spinner.component.html ***!
   \*************************************************************************************************/
@@ -604,6 +789,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<div>\r\n  <img src=\"../../../assets/spinner.gif\" alt=\"\" class=\"d-block m-auto\" height=\"100px\" width=\"100px\">\r\n</div>");
+
+/***/ }),
+
+/***/ 56464:
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/timer/timer.component.html ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<div class=\"text-center\">\n  <h1 class=\"d-inline\"> {{ minutos | number: '2.0' }}:{{ seconds | number: '2.0' }} </h1>\n</div>");
+
+/***/ }),
+
+/***/ 56583:
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/carrito/carrito.page.html ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Cantidad {{productos?.length}}</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button (click)=\"dismiss()\">Cerrar</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content fullscreen>\r\n  <div class=\"container\" style=\"max-height: 100vh !important;\">\r\n    <ion-list translucent style=\"background: rgba(0,0,0,.5)\" class=\"mt-auto mb-0\">\r\n      <ion-item color=\"none\" style=\"background: transparent\" *ngFor=\"let producto of productos\" translucent>\r\n        <ion-avatar slot=\"start\">\r\n          <img [src]=\"producto.fotos[0]\">\r\n        </ion-avatar>\r\n        <ion-label>\r\n          <ion-grid>\r\n            <ion-row>\r\n              <ion-col size=\"12\">\r\n                Producto: {{producto.nombre}}\r\n              </ion-col>\r\n            </ion-row>\r\n            <ion-row>\r\n              <ion-col size=\"2\">\r\n                Descripción: {{producto.descripcion}}\r\n              </ion-col>\r\n            </ion-row>\r\n            <ion-row>\r\n              <ion-col size=\"2\">\r\n                Precio: {{producto.precio}}\r\n              </ion-col>\r\n            </ion-row>\r\n            <ion-row>\r\n              <ion-col size=\"10\">\r\n                Cantidad: {{producto.cantidad}}\r\n              </ion-col>\r\n            </ion-row>\r\n          </ion-grid>\r\n        </ion-label>\r\n      </ion-item>\r\n    </ion-list>\r\n    <ion-button color='success' shape=\"round\" class=\"m-auto d-block\" (click)=\"realizarPedido()\">Realizar pedido</ion-button> \r\n  </div>\r\n</ion-content>");
 
 /***/ })
 
