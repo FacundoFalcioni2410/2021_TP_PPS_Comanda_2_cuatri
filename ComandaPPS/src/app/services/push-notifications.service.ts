@@ -59,6 +59,9 @@ export class PushNotificationsService  {
             title: notification.title,
             body: notification.body,
             id: 1,
+            extra:{
+              data: notification.data
+            }
           }
         ]})
       },
@@ -67,16 +70,16 @@ export class PushNotificationsService  {
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       (notification: ActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
-        this.router.navigate(['/login']);
+        console.log(notification);
+        this.router.navigate([notification.notification.data.ruta]);
+
       },
     );
 
     LocalNotifications.addListener(
       'localNotificationActionPerformed',
       (notification: localNotificationActionPerformed) => {
-        this.router.navigate(['/login']);
-        alert('Push action performed: ' + JSON.stringify(notification));
+        this.router.navigate([notification.notification.extra.data.ruta]);
       },
     );
   }

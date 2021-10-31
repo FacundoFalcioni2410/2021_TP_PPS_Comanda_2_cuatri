@@ -1,5 +1,77 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["common"],{
 
+/***/ 84264:
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@capacitor/local-notifications/dist/esm/definitions.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/// <reference types="@capacitor/cli" />
+
+//# sourceMappingURL=definitions.js.map
+
+/***/ }),
+
+/***/ 12273:
+/*!***********************************************************************!*\
+  !*** ./node_modules/@capacitor/local-notifications/dist/esm/index.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LocalNotifications": () => (/* binding */ LocalNotifications)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 68384);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 84264);
+
+const LocalNotifications = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('LocalNotifications', {
+    web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_local-notifications_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 81161)).then(m => new m.LocalNotificationsWeb()),
+});
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 94580:
+/*!****************************************************************************!*\
+  !*** ./node_modules/@capacitor/push-notifications/dist/esm/definitions.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/// <reference types="@capacitor/cli" />
+
+//# sourceMappingURL=definitions.js.map
+
+/***/ }),
+
+/***/ 98748:
+/*!**********************************************************************!*\
+  !*** ./node_modules/@capacitor/push-notifications/dist/esm/index.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PushNotifications": () => (/* binding */ PushNotifications)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 68384);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 94580);
+
+const PushNotifications = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('PushNotifications', {});
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ 68225:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-d4bd4f74.js ***!
@@ -620,6 +692,99 @@ CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
         styles: [_carrito_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
     })
 ], CarritoPage);
+
+
+
+/***/ }),
+
+/***/ 45557:
+/*!********************************************************!*\
+  !*** ./src/app/services/push-notifications.service.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PushNotificationsService": () => (/* binding */ PushNotificationsService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/push-notifications */ 98748);
+/* harmony import */ var _capacitor_local_notifications__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @capacitor/local-notifications */ 12273);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth.service */ 37556);
+
+
+
+
+
+
+
+let PushNotificationsService = class PushNotificationsService {
+    constructor(router, platform, userService) {
+        this.router = router;
+        this.platform = platform;
+        this.userService = userService;
+        this.inicializar();
+    }
+    inicializar() {
+        if (this.platform.is('capacitor')) {
+            _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.requestPermissions().then(result => {
+                if (result.receive === 'granted') {
+                    // Register with Apple / Google to receive push via APNS/FCM
+                    _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.register();
+                    this.addListeners();
+                }
+                else {
+                    // Show some error
+                }
+            });
+        }
+    }
+    addListeners() {
+        _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('registration', (token) => {
+            this.userService.guardarToken(this.userService.usuarioActual, this.userService.tipoUsuario, token.value);
+        });
+        _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('registrationError', (error) => {
+            alert('Error on registration: ' + JSON.stringify(error));
+        });
+        _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('pushNotificationReceived', (notification) => {
+            alert('Push received: ' + JSON.stringify(notification));
+            _capacitor_local_notifications__WEBPACK_IMPORTED_MODULE_1__.LocalNotifications.schedule({
+                notifications: [
+                    {
+                        title: notification.title,
+                        body: notification.body,
+                        id: 1,
+                        extra: {
+                            data: notification.data
+                        }
+                    }
+                ]
+            });
+        });
+        _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
+            alert('Push action performed: ' + JSON.stringify(notification));
+            // this.router.navigate(['/login']);
+        });
+        _capacitor_local_notifications__WEBPACK_IMPORTED_MODULE_1__.LocalNotifications.addListener('localNotificationActionPerformed', (notification) => {
+            // this.router.navigate(['/login']);
+            alert('Push action performed: ' + JSON.stringify(notification));
+        });
+    }
+};
+PushNotificationsService.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.Platform },
+    { type: _auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService }
+];
+PushNotificationsService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
+        providedIn: 'root'
+    })
+], PushNotificationsService);
 
 
 

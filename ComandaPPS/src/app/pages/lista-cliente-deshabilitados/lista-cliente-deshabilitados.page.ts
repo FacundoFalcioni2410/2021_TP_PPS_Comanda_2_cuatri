@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { PushNotificationsService } from 'src/app/services/push-notifications.service';
 
 @Component({
   selector: 'app-lista-cliente-deshabilitados',
@@ -10,7 +11,7 @@ export class ListaClienteDeshabilitadosPage implements OnInit {
 
   clientes: any = []
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private pushNotification: PushNotificationsService) {
     this.auth.TraerGenerico('clientes','habilitado',false).subscribe(clientes => {
       this.clientes = clientes;
       console.log(this.clientes);

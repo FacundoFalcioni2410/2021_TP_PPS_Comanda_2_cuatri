@@ -10,6 +10,11 @@
 			"launchShowDuration": 5000,
 			"launchAutoHide": false,
 			"backgroundColor": "#2D73CE"
-		}
+		},
+		"LocalNotifications": {
+			"smallIcon": "ic_stat_restaurant",
+			"iconColor": "#2D73CE",
+			"sound": "notification.wav"
+		  }
 	}
 }

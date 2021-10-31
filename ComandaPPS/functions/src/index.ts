@@ -8,7 +8,6 @@ admin.initializeApp(functions.config().firebase);
 
 exports.ingresoListaEspera = functions.firestore.document('clientes/{clienteID}').onUpdate((change, context) =>{
     const after = change.after.data();
-    var tokens: string[] = [];
     if(after.listaEspera === true)
     {
         let query = admin.firestore().collection('empleados').where('tipo', '==', 'metre');
@@ -23,6 +22,9 @@ exports.ingresoListaEspera = functions.firestore.document('clientes/{clienteID}'
                         notification: {
                             title: 'Actualización en lista de espera',
                             body: 'Un cliente ha entrado a la lista de espera'
+                        },
+                        data:{
+                            ruta: '/lista-espera'
                         }
                     };
 
@@ -34,21 +36,40 @@ exports.ingresoListaEspera = functions.firestore.document('clientes/{clienteID}'
                         return {error: error.code};
                     });
                 });
-                if(tokens.length > 0)
-                {
-                    
-                }
             }
         });
-
-
     }
 });
-    
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+
+exports.registroNotification = functions.firestore.document('clientes/{clienteID}').onCreate((snap, context) => {
+    // Get an object representing the document
+    // e.g. {'name': 'Marie', 'age': 66}
+    let query = admin.firestore().collection('empleados')
+
+    query.get().then(snapshot => {
+        if(!snapshot.empty)
+        {
+            snapshot.forEach(doc =>{
+                let supervisor = doc.data();
+                const payload = {
+                    token: supervisor.pushToken,
+                    notification: {
+                        title: 'Nuevo cliente',
+                        body: 'Un cliente desea ingresar al local, habilitelo para que pueda entrar'
+                    },
+                    data:{
+                        ruta: '/lista-cliente-deshabilitados'
+                    }
+                };
+
+                admin.messaging().send(payload).then((response) => {
+                    // Response is a message ID string.
+                    console.log('Successfully sent message:', response);
+                    return {success: true};
+                }).catch((error) => {
+                    return {error: error.code};
+                });
+            });
+        }
+    });
+});

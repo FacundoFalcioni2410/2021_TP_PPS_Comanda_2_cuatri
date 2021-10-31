@@ -95,7 +95,7 @@ const routes = [
     },
     {
         path: 'lista-cliente-deshabilitados',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-cliente-deshabilitados_lista-cliente-deshabilitados_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module */ 53362)).then(m => m.ListaClienteDeshabilitadosPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-cliente-deshabilitados_lista-cliente-deshabilitados_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module */ 53362)).then(m => m.ListaClienteDeshabilitadosPageModule)
     },
     {
         path: 'realizar-pedido',

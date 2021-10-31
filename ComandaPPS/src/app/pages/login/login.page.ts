@@ -36,6 +36,12 @@ export class LoginPage implements OnInit {
     this.login();
   }
 
+  accesoRapidoSupervisor(){
+    this.form.controls.email.setValue('supervisor@supervisor.com');
+    this.form.controls.password.setValue('12345678');
+    this.login();
+  }
+
   login(){
     this.logo = "../../../assets/spinner.gif";
     this.auth.login(this.form.value)
@@ -64,6 +70,7 @@ export class LoginPage implements OnInit {
         }
         else
         {
+          this.router.navigate(['/lista-cliente-deshabilitados']);
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
         }
 
