@@ -74,7 +74,11 @@ const routes: Routes = [
   {
     path: 'lista-bartender',
     loadChildren: () => import('./pages/empleados/lista-bartender/lista-bartender.module').then( m => m.ListaBartenderPageModule)
+  },  {
+    path: 'chat',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
   },
+
   // {
   //   path: 'chat',
   //   loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)

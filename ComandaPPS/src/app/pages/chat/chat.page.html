@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title style='color:#FF7F50 !important;'>Chat con las mesas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #chat padding>
+  <div *ngFor="let message of items | async">
+    <ion-card style='width:80%;margin:0 auto 10px 10px;' *ngIf="this.userService.usuarioActual?.id !== message.user?.id"
+      color='primary'>
+      <div>
+        <ion-card-header *ngIf="this.userService.tipoUsuario != 'cliente'">
+          Mesa {{message.user.mesaAsignada}}
+        </ion-card-header>
+        <ion-card-header *ngIf="this.userService.tipoUsuario == 'cliente'">
+          {{message.tipo}}
+        </ion-card-header>
+        <ion-card-content style='padding-bottom:5px;'>
+          {{message.message}}
+        </ion-card-content>
+        <ion-card-content>
+          {{message.hour}}
+        </ion-card-content>
+      </div>
+    </ion-card>
+    <ion-card style='width:80%;margin:0 10px 10px auto;' *ngIf="this.userService.usuarioActual?.id === message.user?.id"
+      color='tertiary'>
+      <div class="ion-float-right">
+        <ion-card-content>
+          {{message.message}}
+        </ion-card-content>
+        <ion-card-content>
+          {{message.hour}}
+        </ion-card-content>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <div style="width: auto; padding: 0 10px">
+      <ion-input type="text" class="ingreso-mensaje" maxlenght=21 style="border: 1px solid; border-radius: 10px; "
+        [(ngModel)]="this.mensaje"></ion-input>
+    </div>
+    <ion-button style="width: auto; padding: 0 5px; --background: #FF7F50 !important;" slot="end"
+      (click)="MandarMensaje()">Enviar</ion-button>
+  </ion-toolbar>
+</ion-footer>
