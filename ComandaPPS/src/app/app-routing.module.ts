@@ -54,7 +54,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'splash',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'lista-cliente-deshabilitados',
     loadChildren: () => import('./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module').then( m => m.ListaClienteDeshabilitadosPageModule)
   },
@@ -74,6 +75,10 @@ const routes: Routes = [
     path: 'lista-bartender',
     loadChildren: () => import('./pages/empleados/lista-bartender/lista-bartender.module').then( m => m.ListaBartenderPageModule)
   },
+  // {
+  //   path: 'chat',
+  //   loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  // },
 
 ];
 

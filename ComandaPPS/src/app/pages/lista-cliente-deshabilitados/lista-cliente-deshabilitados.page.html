@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Lista clientes deshabilitados</ion-title>
+    <ion-title>Lista de clientes deshabilitados</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="first" ></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <div *ngIf="this.clientes.length; else spinner">
     <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">

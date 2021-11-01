@@ -52,7 +52,7 @@ export class PushNotificationsService  {
     PushNotifications.addListener(
       'pushNotificationReceived',
       (notification: PushNotificationSchema) => {
-        alert('Push received: ' + JSON.stringify(notification));
+       
         LocalNotifications.schedule({
           notifications:[
             {
