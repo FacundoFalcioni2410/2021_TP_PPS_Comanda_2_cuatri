@@ -751,7 +751,6 @@ let PushNotificationsService = class PushNotificationsService {
             alert('Error on registration: ' + JSON.stringify(error));
         });
         _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('pushNotificationReceived', (notification) => {
-            alert('Push received: ' + JSON.stringify(notification));
             _capacitor_local_notifications__WEBPACK_IMPORTED_MODULE_1__.LocalNotifications.schedule({
                 notifications: [
                     {
@@ -766,12 +765,11 @@ let PushNotificationsService = class PushNotificationsService {
             });
         });
         _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-            alert('Push action performed: ' + JSON.stringify(notification));
-            // this.router.navigate(['/login']);
+            console.log(notification);
+            this.router.navigate([notification.notification.data.ruta]);
         });
         _capacitor_local_notifications__WEBPACK_IMPORTED_MODULE_1__.LocalNotifications.addListener('localNotificationActionPerformed', (notification) => {
-            // this.router.navigate(['/login']);
-            alert('Push action performed: ' + JSON.stringify(notification));
+            this.router.navigate([notification.notification.extra.data.ruta]);
         });
     }
 };

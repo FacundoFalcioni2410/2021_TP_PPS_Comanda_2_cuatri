@@ -113,6 +113,14 @@ const routes = [
         path: 'lista-bartender',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_lista-bartender_lista-bartender_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/lista-bartender/lista-bartender.module */ 27215)).then(m => m.ListaBartenderPageModule)
     },
+    {
+        path: 'chat',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_chat_chat_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/chat/chat.module */ 35501)).then(m => m.ChatPageModule)
+    },
+    // {
+    //   path: 'chat',
+    //   loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+    // },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -859,7 +867,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\n  <ion-header>\n    <ion-toolbar color=\"primary\">\n      <ion-title>Start Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  <ion-content style=\"--background: #232323\">\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\n      <ion-item [routerLink]=\"['/registro-cliente']\">Registro cliente</ion-item>\n      <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\n      <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\n    </ion-list>\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\n      <ion-item>Pedir producto</ion-item>\n      <!-- <ion-item>Registro empleado</ion-item>\n      <ion-item>Registro supervisor</ion-item> -->\n    </ion-list>\n  </ion-content>\n</ion-menu>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title>Start Menu</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n      <ion-item [routerLink]=\"['/home']\" (click)=\"this.menu.close('main')\">Home</ion-item>\r\n      <ion-item [routerLink]=\"['/login']\">Login</ion-item>\r\n      <ion-item [routerLink]=\"['/registro-cliente']\">Registro cliente</ion-item>\r\n      <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\r\n      <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\r\n\r\n    </ion-list>\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n      <ion-item [routerLink]=\"['/home']\">Home</ion-item>\r\n      <!-- <ion-item>Registro empleado</ion-item>\r\n      <ion-item>Registro supervisor</ion-item> -->\r\n      <ion-item [routerLink]=\"['/chat']\">Chat</ion-item>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
 
 /***/ })
 

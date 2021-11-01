@@ -21,5 +21,4 @@ export class SplashPage implements OnInit {
       this.router.navigate(['/home']);
     },2000);
   }
-
 }
