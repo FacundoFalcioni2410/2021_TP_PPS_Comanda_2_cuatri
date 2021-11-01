@@ -25,23 +25,17 @@
                 <ion-card-title style="font-size:12px;">{{item.nombre}} {{item.apellido}}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
-                <ion-item>
-                  <ion-button color="success" (click)="AceptarLista(item)">Aceptar</ion-button>
-                </ion-item>
-                <ion-item>
-                  <ion-button color="danger" (click)="RechazarLista(item)">Rechazar</ion-button>
-                </ion-item>
                 <div>
                   <form [formGroup]="controles" (ngSubmit)="AsignarMesa(item)">
                     <ion-item>
-                      <ion-select [disabled]="!item.habilitado" formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
+                      <ion-select formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
                         <ion-select-option *ngFor="let mesa of mesasArray" value={{mesa.numero}}>{{mesa.numero}}
                         </ion-select-option>
                       
                       </ion-select>
                     </ion-item>
                     <ion-item>
-                      <ion-button [disabled]="!item.habilitado" color="success" type="submit">Asignar</ion-button>
+                      <ion-button [disabled]="controles.invalid" color="success" type="submit">Asignar</ion-button>
                     </ion-item>
                   </form>
                 </div>

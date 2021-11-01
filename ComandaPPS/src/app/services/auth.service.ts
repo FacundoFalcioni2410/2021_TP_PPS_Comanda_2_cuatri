@@ -104,6 +104,10 @@ export class AuthService {
     return this.clienteCollection.doc(this.usuarioActual.id).valueChanges({idField: 'id'})
   }
 
+  async getUserAnonimo(){
+    return this.firestore.collection('clientes', ref => ref.where('uid', '==', this.usuarioActual.uid)).valueChanges({})
+  }
+
   async borrarUsuarioActual(){
     let user = await this.auth.currentUser;
 
@@ -136,6 +140,7 @@ export class AuthService {
   }
 
   TraerGenerico(coleccion : any, campo : any, valor : any){
+    console.log(coleccion,campo,valor);
     return this.firestore.collection(coleccion, ref => ref.where(campo, '==', valor)).valueChanges({idField: 'id'})
   }
 
@@ -149,7 +154,7 @@ export class AuthService {
   }
 
   UpdatearIngresoCliente(cliente : any, valor : boolean){
-    return this.clienteCollection.doc(cliente.id).update({'ingresoLocal': valor});
+    return this.clienteCollection.doc(cliente.id).update({'ingresoMesa': valor});
   }
 
   UpdatearEstadoPedido(idPedido : any, valor : any){

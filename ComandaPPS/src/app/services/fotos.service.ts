@@ -146,10 +146,13 @@ export class FotosService {
         if(objeto?.perfil)
         {
           this.auth.AltaSupervisor(objeto);
+          this.router.navigate(['/login']);
         }
         else if(objeto?.tipo)
         {
           this.auth.AltaEmpleado(objeto);
+          this.router.navigate(['/login']);
+
         }
         else if(objeto?.cantidadComensales){
 
@@ -158,6 +161,15 @@ export class FotosService {
         else
         {
           this.auth.AltaCliente(objeto);
+          if(objeto.tipoCliente === "anonimo")
+          {
+            this.auth.usuarioActual = objeto;
+            this.router.navigate(['/ingreso-local']);
+          }
+          else
+          {
+            this.router.navigate(['/login']);
+          }
         }
 
         this.loading = false;

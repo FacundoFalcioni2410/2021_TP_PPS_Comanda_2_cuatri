@@ -41,20 +41,6 @@ export class ListaEsperaPage implements OnInit {
   ngOnInit() {
   }
 
-  AceptarLista(cliente : any){
-    this.authService.UpdatearIngresoCliente(cliente,true)
-    .then(()=>{
-      this.aceptado = true;
-    });
-    
-  }
-  
-  RechazarLista(cliente : any){
-
-    this.authService.UpdatearIngresoCliente(cliente,false);
-
-  }
-
   AsignarMesa(cliente : any){
     let mesaAsignada = this.controles.get('mesa')?.value;
 

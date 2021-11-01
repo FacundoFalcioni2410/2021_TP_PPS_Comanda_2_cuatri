@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { Cliente } from 'src/app/models/cliente';
 import { AuthService } from 'src/app/services/auth.service';
@@ -21,7 +22,7 @@ export class RegistroClientePage implements OnInit {
   loading = false; 
   anonimo: boolean = false;
 
-  constructor(private formBuilder : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService, private mailS: MailService) { 
+  constructor(private formBuilder : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService, private mailS: MailService, private router: Router) { 
     this.controles = this.formBuilder.group({
       email : ['',[Validators.required, Validators.email]],
       password : ['',Validators.required],
@@ -142,7 +143,6 @@ export class RegistroClientePage implements OnInit {
       // {
       //   this.mailS.enviarAviso(cliente);
       // }
-
       this.controles.reset();
     })
     .catch( err =>{

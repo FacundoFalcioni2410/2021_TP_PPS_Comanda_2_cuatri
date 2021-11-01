@@ -14,19 +14,20 @@ export class IngresoLocalPage implements OnInit {
   listaEspera : boolean = false;
   usuario: any
   constructor(private qrS: QRService, public userService : AuthService, private route : Router) {
-    this.userService.getUser().subscribe((res: any) =>{
-      this.usuario = res  
-    })
+    this.userService.TraerGenerico('clientes','uid', this.userService.usuarioActual.uid).subscribe(res =>{
+      this.usuario = res[0];
+    });
   }
 
   ngOnInit() {
+    console.log(this.usuario);
   }
 
 
   EntrarEnListaEspera(){
     this.listaEspera = true;
-    this.userService.usuarioActual.listaEspera = true;
-    this.userService.updateListaEsperaCliente(this.userService.usuarioActual?.id,true);
+    this.usuario.listaEspera = true;
+    this.userService.updateListaEsperaCliente(this.usuario?.id,true);
   }
 
   
