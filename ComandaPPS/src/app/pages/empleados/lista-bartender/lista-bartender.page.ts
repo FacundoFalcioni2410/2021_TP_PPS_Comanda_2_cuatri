@@ -23,14 +23,19 @@ export class ListaBartenderPage implements OnInit {
         this.terminado = false;
         this.cocteles = [];
         for (let pedido of data) {
-          console.log('pedido ', pedido);
-          for (let producto of pedido.productos) {
-            producto.id = pedido.id;
-            producto.estado = pedido.estado;
-            if (producto.descripcion == 'coctel') {
-              this.cocteles.push(producto);
+          
+          if(pedido.estado == 'aceptado'){
+
+            for (let producto of pedido.productos) {
+              producto.id = pedido.id;
+              producto.estado = pedido.estado;
+              if (producto.descripcion == 'coctel') {
+                this.cocteles.push(producto);
+              }
             }
+
           }
+
         }
 
       });

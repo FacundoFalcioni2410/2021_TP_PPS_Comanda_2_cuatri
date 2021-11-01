@@ -5,37 +5,37 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-back-button>
     </ion-buttons>
-    <ion-title>Listado de pedidos de coctelería</ion-title>
+    <ion-title>Listado de pedidos a confirmar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <div *ngIf="cocteles; else spinner">
+  <div *ngIf="pedidos; else spinner">
     <ion-grid>
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
       
-        <ion-col size=9 *ngFor="let coctel of cocteles">
-          <div>
+        <ion-col size=9 *ngFor="let pedido of pedidos">
+          <div *ngIf="pedido.estado == 'pedido'">
             <ion-card style="height: 150%; width: 95%;">
               <!-- <div *ngFor="let foto of coctel.fotos">
               <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
               </div> -->
               <ion-card-header>
                 <ion-card-title style="font-size:35px;">
-                  {{coctel.nombre}}
-                  {{coctel.estado}}
-                  <app-timer  [minutos]="1" *ngIf="coctel.estado === 'en preparacion'"></app-timer>
+                  <label> Precio del pedido : {{pedido.precioTotal}} </label>
                 </ion-card-title>
+                <h1>Productos:</h1>
               </ion-card-header>
-              <ion-card-content class="ion-align-items-center">
-                <ion-item *ngIf="coctel.estado === 'aceptado'" class="ion-text-center">
-                  <ion-button color="success" (click)="PrepararCoctel(coctel)">Preparar</ion-button>
-                </ion-item>
-                <ion-item *ngIf="coctel.estado === 'en preparacion'" >
-                  <ion-button color="danger" (click)="EntregarCoctel(coctel)">Entregar cóctel</ion-button>
-                </ion-item>
+              <ion-card-content class="ion-align-items-center" *ngFor="let producto of pedido.productos">
+                <h2>{{producto.nombre}}</h2>
+                <h3>Cantidad: {{producto.cantidad}}</h3>
+                  	<img [src]="producto.fotos[0]" width="150px" height="150px"> 
+
               </ion-card-content>
+              <ion-item class="ion-text-center" align="center">
+                <ion-button color="success" (click)="Asignar(pedido)">Asignar pedido</ion-button>
+              </ion-item>
             </ion-card>
           </div>
         </ion-col>

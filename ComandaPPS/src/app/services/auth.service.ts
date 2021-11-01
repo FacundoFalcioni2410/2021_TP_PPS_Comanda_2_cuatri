@@ -104,10 +104,6 @@ export class AuthService {
     return this.clienteCollection.doc(this.usuarioActual.id).valueChanges({idField: 'id'})
   }
 
-  async getUserAnonimo(){
-    return this.firestore.collection('clientes', ref => ref.where('uid', '==', this.usuarioActual.uid)).valueChanges({})
-  }
-
   async borrarUsuarioActual(){
     let user = await this.auth.currentUser;
 
@@ -133,6 +129,11 @@ export class AuthService {
 
       this.firestore.collection("clientes").doc(clienteFirestore[0].id).delete();
     }
+  }
+
+  
+  TraerPedidosGenerico(campo : any , valor : any){
+    return this.firestore.collection('pedidos', ref => ref.where(campo, '==', valor)).valueChanges({idField: 'id'})
   }
 
   TraerClientesDeshabilitados(){
