@@ -29,8 +29,11 @@
                   <form [formGroup]="controles" (ngSubmit)="AsignarMesa(item)">
                     <ion-item>
                       <ion-select formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
-                        <ion-select-option *ngFor="let mesa of mesasArray" value={{mesa.numero}}>{{mesa.numero}}
-                        </ion-select-option>
+                        <div *ngFor="let mesa of mesasArray">
+                          <ion-select-option  *ngIf="!mesa.cliente" value={{mesa.numero}}>{{mesa.numero}}
+                          </ion-select-option>
+                        </div>
+                       
                       
                       </ion-select>
                     </ion-item>

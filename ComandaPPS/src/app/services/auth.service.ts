@@ -145,7 +145,7 @@ export class AuthService {
   }
 
   SetearMesaCliente(cliente : any, mesa : any){
-    return this.clienteCollection.doc(cliente.id).update({mesaAsignada: mesa});
+    return this.clienteCollection.doc(cliente.id).update({mesaAsignada: mesa, cliente : true});
   }
 
 

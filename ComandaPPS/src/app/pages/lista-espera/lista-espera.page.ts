@@ -42,9 +42,9 @@ export class ListaEsperaPage implements OnInit {
   }
 
   AsignarMesa(cliente : any){
-    let mesaAsignada = this.controles.get('mesa')?.value;
+    let mesaAsignada = parseInt(this.controles.get('mesa')?.value);
 
-   
+    
 
     this.authService.SetearMesaCliente(cliente,mesaAsignada)
     .then(()=>{
@@ -54,6 +54,8 @@ export class ListaEsperaPage implements OnInit {
         text:'Mesa asignada con éxito.',
         backdrop: false
       });
+
+
     });
 
   }
