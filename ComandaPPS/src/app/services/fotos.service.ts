@@ -47,7 +47,7 @@ export class FotosService {
 
     let dataUrl = capturedPhoto.dataUrl;
     let time = Date.now().toString();
-    this.nombreFoto = '/' + this.auth.usuarioActual?.email + time;
+    this.nombreFoto = '/' + 'foto' + time; // this.auth.usuarioActual?.email + time;
     let ref = this.storage.ref(`fotos/` + this.nombreFoto);
 
 
@@ -147,9 +147,13 @@ export class FotosService {
         {
           this.auth.AltaSupervisor(objeto);
         }
-        else if(objeto.tipo)
+        else if(objeto?.tipo)
         {
           this.auth.AltaEmpleado(objeto);
+        }
+        else if(objeto?.cantidadComensales){
+
+          this.auth.AltaMesa(objeto);
         }
         else
         {

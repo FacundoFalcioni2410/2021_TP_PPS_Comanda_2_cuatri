@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Mesa } from 'src/app/models/mesa';
 import { AuthService } from 'src/app/services/auth.service';
+import { FotosService } from 'src/app/services/fotos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-mesa',
@@ -12,7 +14,7 @@ export class RegistroMesaPage implements OnInit {
 
   controles !: FormGroup;
 
-  constructor(private form : FormBuilder, private auth : AuthService) {
+  constructor(private form : FormBuilder, private auth : AuthService, private fotoS : FotosService) {
 
     this.controles = this.form.group({
       'numero':['', [Validators.required]],
@@ -37,14 +39,18 @@ export class RegistroMesaPage implements OnInit {
   }
 
   RegistrarMesa(){
-    let mesa : Mesa = {
+    let mesa : any = {
       numero : this.getNumero(),
       cantidadComensales : this.getCantidadComensales(),
-      tipo : this.getTipo(),
-      //foto: aca va la foto
-    };
+      mesaTipo : this.getTipo(),
+      cliente : false
+     };
+     
+     Swal.fire({text: 'Debe sacarse una foto para completar el registro',toast: true,position: 'bottom',timer: 2000,timerProgressBar: true,icon: 'info'});
+     setTimeout(()=>{
+       this.fotoS.TakePhoto(mesa);
+     },2000);
 
-    this.auth.AltaMesa(mesa);
     this.controles.reset();
   }
 }

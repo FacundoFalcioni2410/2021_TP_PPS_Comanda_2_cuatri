@@ -26,8 +26,8 @@ export class AuthService {
   clienteCollection : AngularFirestoreCollection<any>;
   
   //Mesas
-  mesas : Observable<Mesa[]>;
-  mesaCollection : AngularFirestoreCollection<Mesa>;
+  mesas : Observable<any[]>;
+  mesaCollection : AngularFirestoreCollection<any>;
   
   //Productos
   productos : Observable<Producto[]>;
@@ -40,7 +40,7 @@ export class AuthService {
   //Supervisores/Dueños
   supervisores : Observable<any[]>;
   supervisorCollection : AngularFirestoreCollection<any>;
-any
+
   //Encuestas
   encuestas : Observable<any>;
   encuestaCollection : AngularFirestoreCollection<any>;
@@ -170,7 +170,7 @@ any
     return this.clienteCollection.add({...cliente});
   }
 
-  AltaMesa(mesa : Mesa){
+  AltaMesa(mesa : any){
     return this.mesaCollection.add({...mesa});
   }
 

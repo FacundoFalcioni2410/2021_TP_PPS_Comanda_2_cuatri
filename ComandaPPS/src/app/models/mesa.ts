@@ -3,4 +3,5 @@ export interface Mesa {
     cantidadComensales : number;
     tipo : string;
     foto? : string;
+    cliente : boolean;
 }
