@@ -41,34 +41,40 @@ exports.ingresoListaEspera = functions.firestore.document('clientes/{clienteID}'
 });
 
 exports.registroNotification = functions.firestore.document('clientes/{clienteID}').onCreate((snap, context) => {
-    let query = admin.firestore().collection('supervisores');
-    const promises: any = [];
-    query.get().then(snapshot => {
-        if(!snapshot.empty)
-        {
-            snapshot.forEach(doc =>{
-                let supervisor = doc.data();
-                const payload = {
-                    token: supervisor.pushToken,
-                    notification: {
-                        title: 'Nuevo cliente',
-                        body: 'Un cliente desea ingresar al local, habilitelo'
-                    },
-                    data:{
-                        ruta: '/lista-cliente-deshabilitados'
-                    }
-                };
+    const nuevoCliente = snap.data();
 
-                const p = admin.messaging().send(payload);
-                promises.push(p);
-            });
-            return Promise.all(promises);
-        }
-        else
-        {
-            return null;
-        }
-    });
+    if(nuevoCliente.tipoCliente === 'estandar')
+    {
+        let query = admin.firestore().collection('supervisores');
+        const promises: any = [];
+        query.get().then(snapshot => {
+            if(!snapshot.empty)
+            {
+                snapshot.forEach(doc =>{
+                    let supervisor = doc.data();
+                    const payload = {
+                        token: supervisor.pushToken,
+                        notification: {
+                            title: 'Nuevo cliente',
+                            body: 'Un cliente desea ingresar al local, habilitelo'
+                        },
+                        data:{
+                            ruta: '/lista-cliente-deshabilitados'
+                        }
+                    };
+
+                    const p = admin.messaging().send(payload);
+                    promises.push(p);
+                });
+                return Promise.all(promises);
+            }
+            else
+            {
+                return null;
+            }
+        });
+        return null;
+    }
     return null;
 });
 

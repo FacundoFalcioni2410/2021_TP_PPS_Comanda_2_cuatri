@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { FotosService } from 'src/app/services/fotos.service';
+import { MailService } from 'src/app/services/mail.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 
@@ -20,7 +21,7 @@ export class RegistroClientePage implements OnInit {
   loading = false; 
   anonimo: boolean = false;
 
-  constructor(private formBuilder : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService) { 
+  constructor(private formBuilder : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService, private mailS: MailService) { 
     this.controles = this.formBuilder.group({
       email : ['',[Validators.required, Validators.email]],
       password : ['',Validators.required],
@@ -137,6 +138,10 @@ export class RegistroClientePage implements OnInit {
       setTimeout(()=>{
         this.fotoS.TakePhoto(cliente);
       },2000);
+      // if(cliente.tipoCliente === "estandar")
+      // {
+      //   this.mailS.enviarAviso(cliente);
+      // }
 
       this.controles.reset();
     })

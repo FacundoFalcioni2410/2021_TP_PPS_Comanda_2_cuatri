@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MailService } from 'src/app/services/mail.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   logo = "../../../assets/restaurant.png";
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -59,7 +60,7 @@ export class LoginPage implements OnInit {
       {
         if(!user?.cuil && !user?.habilitado)
         {
-          this.mostrarToast({text: 'Debe aguardar a que su cuenta sea aceptada para ingresar',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
+          this.mostrarToast({text: 'Su cuenta todavia no fue habilitada, revise su correo electronico',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
         }
         else if(!user?.cuil && user?.habilitado)
         {

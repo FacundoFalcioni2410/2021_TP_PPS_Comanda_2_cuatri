@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { MailService } from 'src/app/services/mail.service';
 import { PushNotificationsService } from 'src/app/services/push-notifications.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ListaClienteDeshabilitadosPage implements OnInit {
 
   clientes: any = []
 
-  constructor(private auth: AuthService, private pushNotification: PushNotificationsService) {
+  constructor(private auth: AuthService, private pushNotification: PushNotificationsService, private mailS: MailService) {
     this.auth.TraerGenerico('clientes','habilitado',false).subscribe(clientes => {
       this.clientes = clientes;
       console.log(this.clientes);
@@ -24,8 +25,8 @@ export class ListaClienteDeshabilitadosPage implements OnInit {
   accionar(event, item){
     if(!event.target.checked)
     {
-      console.log('fdasfs');
       item.habilitado = true;
+      // this.mailS.enviarConfirmacionHabilitado(item);
       setTimeout(() =>{
         this.auth.UpdateEstadoCliente(item);
       },300);
