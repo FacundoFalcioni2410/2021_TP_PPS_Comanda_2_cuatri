@@ -15,8 +15,8 @@
       </div>
       <div class="col-lg-6 text-center">
         <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a Churrasic Park</h1>
-        <p *ngIf="!this.usuario?.listaEspera" class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
-        <i *ngIf="!this.usuario?.listaEspera" class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
+        <p *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="lead">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>
+        <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
         <div *ngIf="this.usuario?.listaEspera && !this.usuario.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
           <label>Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>
         </div>

@@ -5,7 +5,10 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-back-button>
     </ion-buttons>
-    <ion-title style='color:#FF7F50 !important;'>Chat con las mesas</ion-title>
+    <ion-title style='color:#FF7F50 !important;' *ngIf="this.userService.usuarioActual?.tipoCliente; else chatCliente">Chat con el mozo</ion-title>
+    <ng-template #chatCliente>
+      <ion-title style='color:#FF7F50 !important;'>Chat con las mesas</ion-title>
+    </ng-template>
   </ion-toolbar>
 </ion-header>
 

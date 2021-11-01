@@ -71,6 +71,10 @@ export class RealizarPedidoPage implements OnInit {
       })
   }
 
+  resetearPedido(){
+    this.productos = [];
+  }
+
   // eliminarObjetosDuplicados(arr: any, prop: any) {
   //   var nuevoArray: any = [];
   //   var lookup: any = {};

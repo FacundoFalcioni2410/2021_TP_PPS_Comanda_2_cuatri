@@ -10,9 +10,25 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CarritoPage implements OnInit {
 
   @Input() productos: any;
-  constructor(private modalController: ModalController, private userService: AuthService) { }
+  precio: number = 0;
+  maxTiempo: number;
+
+  constructor(private modalController: ModalController, private userService: AuthService) {
+    
+  }
 
   ngOnInit() {
+    console.log(this.productos);
+    let flag = false;
+    for(let producto of this.productos)
+    {
+      if(!flag || producto.tiempo > this.maxTiempo)
+      {
+        flag = true;
+        this.maxTiempo = producto.tiempo;
+      }
+      this.precio += producto.precio * producto.cantidad;
+    }
   }
 
   dismiss(){
@@ -26,16 +42,8 @@ export class CarritoPage implements OnInit {
 
     let cantidadCocina = 0;
     let cantidadCocteleria = 0;
-    let precio = 0;
-    let flag = false;
-    let max = 0;
     for(let producto of this.productos)
     {
-      if(!flag || producto.tiempo > max)
-      {
-        flag = true;
-        max = producto.tiempo;
-      }
       if(producto.descripcion === 'cocteleria')
       {
         cantidadCocteleria = 1;
@@ -44,7 +52,6 @@ export class CarritoPage implements OnInit {
       {
         cantidadCocina = 1;
       }
-      precio += producto.precio * producto.cantidad;
     }
 
     //cocteleria, cocina, 
@@ -52,10 +59,10 @@ export class CarritoPage implements OnInit {
     let pedido = {
       estado: 'pedido',
       productos: this.productos,
-      tiempo: max,
+      tiempo: this.maxTiempo,
       etapasRealizadas: 0,
       etapasTotales: cantidadCocina + cantidadCocteleria,
-      precioTotal: precio
+      precioTotal: this.precio
     }
 
     this.userService.SubirPedido(pedido);

@@ -16,6 +16,7 @@ export class IngresoLocalPage implements OnInit {
   constructor(private qrS: QRService, public userService : AuthService, private route : Router) {
     this.userService.TraerGenerico('clientes','uid', this.userService.usuarioActual.uid).subscribe(res =>{
       this.usuario = res[0];
+      this.userService.usuarioActual = res[0];
     });
   }
 
