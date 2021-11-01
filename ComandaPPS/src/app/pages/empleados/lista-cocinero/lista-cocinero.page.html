@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Listado de pedidos de cocina</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="pedidos; else spinner">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+      
+        <ion-col size=9>
+          <div>
+            <ion-card style="height: 150%; width: 95%;" *ngFor="let pedido of pedidos" >
+              <!-- <div *ngFor="let foto of coctel.fotos">
+              <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
+              </div> -->
+              <ion-card-header>
+                <ion-card-title style="font-size:35px;">
+ 
+                  <h2>Productos:</h2>
+                  <app-timer  [minutos]="1" *ngIf="pedido.estado === 'en preparacion'"></app-timer>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="ion-align-items-center" *ngFor="let plato of pedido.productos">
+                <p>{{plato.nombre}}</p>
+                <img [src]="plato.fotos[0]" width="100px" height="100px">
+              </ion-card-content>
+              <ion-item *ngIf="pedido.estado == 'aceptado'" class="ion-text-center">
+                <ion-button color="success" (click)="PrepararPlato(pedido)">Preparar pedido</ion-button>
+              </ion-item>
+              <ion-item *ngIf="pedido.estado == 'en preparacion'" >
+                <ion-button color="danger" (click)="EntregarPlato(pedido)">Entregar pedido</ion-button>
+              </ion-item>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ng-template #spinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+</ion-content>
