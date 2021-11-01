@@ -6,11 +6,14 @@
       
         <form [formGroup]='controles' (ngSubmit)='RegistrarCliente()'>
             <div class="containerForm bg-dark text-white">
-
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                    <ion-label color='dark' class="label">Registro anónimo </ion-label>
+                    <ion-toggle (click)="this.registroAnonimo()"></ion-toggle>
+                </ion-row>
                 <h3>Ingrese sus datos:</h3>
   
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" *ngIf='!this.anonimo'>
                         <label for="email"><b>Email</b></label>
                         <input type="text" formControlName='email' name="email" required>
                         
@@ -21,7 +24,7 @@
                             Ingrese un email valido
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" *ngIf='!this.anonimo'>
                         <label for="password"><b>Contraseña</b></label>
                         <input type="password" formControlName='password' name="password" required>
                         
@@ -32,7 +35,7 @@
                             La contraseña debe tener 8 caracteres o mas
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" *ngIf="this.anonimo">
                         <label for="password"><b>Nombre</b></label>
                         <input type="text" formControlName='nombre' name="nombre" required>
                         
@@ -40,10 +43,10 @@
                             Ingrese su nombre
                         </div>
                         <div class='text-danger p-1' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.minlength">
-                            Ingrese un nombre validow
+                            Ingrese un nombre valido
                         </div>
                     </div>
-                <div *ngIf='this.tipoCliente !== "anonimo"'>
+                <div *ngIf='!this.anonimo'>
                     <div class="col-12">
                         <label for="password"><b>Apellido</b></label>
                         <input type="text" formControlName='apellido' name="apellido" required>
@@ -55,7 +58,7 @@
                             Ingrese un apellido valido
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" *ngIf="!this.anonimo">
                         <label for="password"><b>DNI</b></label>
                         <div class="d-flex aling-items-center">
                             <input class='d-inline' type="number" formControlName='dni' name="dni" required style="width: 85%;">

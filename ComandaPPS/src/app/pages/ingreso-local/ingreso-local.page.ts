@@ -52,7 +52,7 @@ export class IngresoLocalPage implements OnInit {
               let datos = await this.qrS.scan();
 
               if(datos.text){
-                if(datos.text =="ingresoListaDeEspera"){
+                if(datos.text == "ingresoListaDeEspera"){
                   this.EntrarEnListaEspera();
                 }
               }

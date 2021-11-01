@@ -42,6 +42,7 @@ export class ChatPage implements OnInit {
 
 
     this.chat.MandarMensaje(mensajeObj);
+    this.mensaje = '';
 
   }
 }

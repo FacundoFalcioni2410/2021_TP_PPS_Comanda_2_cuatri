@@ -83,9 +83,4 @@ export class PushNotificationsService  {
       },
     );
   }
-
-
-
-  
-
 }

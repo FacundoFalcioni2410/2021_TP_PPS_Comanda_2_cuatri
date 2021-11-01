@@ -17,32 +17,17 @@ export class RegistroClientePage implements OnInit {
 
   controles !: FormGroup;
   tipoCliente: any;
-  loading = false;
-  @Input() set tipo(value: any)
-  {
-    this.tipoCliente = value;
-    if(value === 'anonimo')
-    {
-      this.controles = this.form.group({
-        'nombre':['', [Validators.required]],
-        'password': ['', [Validators.required, Validators.minLength(8)]],
-        'email': ['', [Validators.required, Validators.email]],
-      });
-    }
-    else
-    {
-      this.controles = this.form.group({
-        'nombre':['', [Validators.required]],
-        'apellido':['', [Validators.required]],
-        'dni':['', [Validators.required]],
-        'password': ['', [Validators.required, Validators.minLength(8)]],
-        'email': ['', [Validators.required, Validators.email]],
-      });
-    }
-  }
+  loading = false; 
+  anonimo: boolean = false;
 
-  constructor(private form : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService) { 
-    this.controles = this.form.group({});
+  constructor(private formBuilder : FormBuilder, private authService : AuthService, public fotoS: FotosService, private firestore: FirestoreService, private vibration: Vibration, private qrS: QRService) { 
+    this.controles = this.formBuilder.group({
+      email : ['',[Validators.required, Validators.email]],
+      password : ['',Validators.required],
+      nombre: ['',Validators.required],
+      apellido: ['',Validators.required],
+      dni: ['', [Validators.required, Validators.min(1111111), Validators.min(9999999)]],
+    });
   }
 
   ngOnInit() {
@@ -71,6 +56,31 @@ export class RegistroClientePage implements OnInit {
     Swal.fire(options);
   }
 
+  registroAnonimo(){
+    this.anonimo = !this.anonimo;
+    if(this.anonimo){
+      this.formRegistroAnonimo();
+    }else{
+      this.formRegistro();
+    }
+  }
+
+  formRegistroAnonimo(){
+    this.controles = this.formBuilder.group({
+      nombre: ['',Validators.required],
+    });
+  }
+
+  formRegistro(){
+    this.controles = this.formBuilder.group({
+      email : ['',[Validators.required, Validators.email]],
+      password : ['',Validators.required],
+      nombre: ['',Validators.required],
+      apellido: ['',Validators.required],
+      dni: ['', [Validators.required, Validators.min(1111111), Validators.min(9999999)]],
+    });
+  }
+
   async scanDNI(){
     Swal.fire({
       title: 'Escaneo DNI!',
@@ -96,28 +106,24 @@ export class RegistroClientePage implements OnInit {
   RegistrarCliente(){
     this.loading = true;
     let cliente: Cliente;
-    if(this.tipoCliente === "anonimo")
+    if(!this.anonimo)
     {
       cliente = {
         nombre: this.getNombre(),
         email : this.getEmail(),
         password: this.getPassword(),
-        habilitado: true,
+        habilitado: false,
         listaEspera: false,
-        ingresoLocal: false
+        tipoCliente: 'estandar'
       }
     }
     else
     {
       cliente = {
         nombre: this.getNombre(),
-        apellido: this.getApellido(),
-        dni: this.getDni(),
-        email : this.getEmail(),
-        password: this.getPassword(),
-        habilitado: false,
+        habilitado: true,
         listaEspera: false,
-        ingresoLocal: false
+        tipoCliente: 'anonimo'
       }
     }
     

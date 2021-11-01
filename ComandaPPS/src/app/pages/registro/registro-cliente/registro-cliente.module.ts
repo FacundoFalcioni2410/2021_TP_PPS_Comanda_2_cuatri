@@ -8,7 +8,6 @@ import { RegistroClientePageRoutingModule } from './registro-cliente-routing.mod
 
 import { RegistroClientePage } from './registro-cliente.page';
 import { SharedModule } from 'src/app/sharedComponents/shared/shared.module';
-import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   imports: [
@@ -19,6 +18,6 @@ import { RegistroComponent } from './registro/registro.component';
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [RegistroClientePage, RegistroComponent]
+  declarations: [RegistroClientePage]
 })
 export class RegistroClientePageModule {}
