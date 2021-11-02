@@ -9,30 +9,34 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ListaBartenderPage implements OnInit {
 
   productos: any[] = [];
-  cocteles: any[] = [];
   pedidos: any[] = [];
   pedidoContenedor: any;
   terminado: boolean = false;
   coctelPreparado : boolean = false;
   coctelFinalizado : boolean = false;
 
+  productosFiltrados : any[] = [];
+
   constructor(private userService: AuthService) {
 
     this.userService.getPedidos()
       .subscribe((data: any) => {
         this.terminado = false;
-        this.cocteles = [];
+        this.pedidos = [];
         for (let pedido of data) {
-          
-          if(pedido.estado == 'aceptado'){
+          if(pedido.estado == 'aceptado' || pedido.estado == 'en preparacion'){
 
-            for (let producto of pedido.productos) {
-              producto.id = pedido.id;
-              producto.estado = pedido.estado;
-              if (producto.descripcion == 'coctel') {
-                this.cocteles.push(producto);
-              }
-            }
+            this.productosFiltrados = pedido.productos.filter((producto)=>{
+              return producto.descripcion == 'coctel';
+            });
+
+            pedido.productos = this.productosFiltrados;
+            
+             if(pedido.productos.length != 0){
+         
+               this.pedidos.push(pedido);
+               
+             }
 
           }
 

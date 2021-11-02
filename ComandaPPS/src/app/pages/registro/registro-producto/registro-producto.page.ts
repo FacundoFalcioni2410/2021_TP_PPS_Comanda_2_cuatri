@@ -79,7 +79,16 @@ export class RegistroProductoPage implements OnInit {
       //fotos: aca va las fotos
     };
 
-    this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, producto);
+    this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, producto)
+    .then(()=>{
+      Swal.fire({
+        title: 'Registrado',
+        text:'Se registró el producto.',
+        icon :'success',
+        timer: 2000,
+        timerProgressBar: true
+      })
+    });
     this.controles.reset();
   }
 }

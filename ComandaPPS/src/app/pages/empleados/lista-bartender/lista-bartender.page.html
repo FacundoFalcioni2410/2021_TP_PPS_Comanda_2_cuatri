@@ -11,31 +11,33 @@
 
 <ion-content>
 
-  <div *ngIf="cocteles; else spinner">
+  <div *ngIf="pedidos; else spinner">
     <ion-grid>
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
       
-        <ion-col size=9 *ngFor="let coctel of cocteles">
+        <ion-col size=9>
           <div>
-            <ion-card style="height: 150%; width: 95%;">
+            <ion-card style="height: 150%; width: 95%;" *ngFor="let pedido of pedidos" >
               <!-- <div *ngFor="let foto of coctel.fotos">
               <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
               </div> -->
               <ion-card-header>
                 <ion-card-title style="font-size:35px;">
-                  {{coctel.nombre}}
-                  {{coctel.estado}}
-                  <app-timer  [minutos]="1" *ngIf="coctel.estado === 'en preparacion'"></app-timer>
+ 
+                  <h2>Productos:</h2>
+                  <app-timer  [minutos]="1" *ngIf="pedido.estado === 'en preparacion'"></app-timer>
                 </ion-card-title>
               </ion-card-header>
-              <ion-card-content class="ion-align-items-center">
-                <ion-item *ngIf="coctel.estado === 'aceptado'" class="ion-text-center">
-                  <ion-button color="success" (click)="PrepararCoctel(coctel)">Preparar</ion-button>
-                </ion-item>
-                <ion-item *ngIf="coctel.estado === 'en preparacion'" >
-                  <ion-button color="danger" (click)="EntregarCoctel(coctel)">Entregar cóctel</ion-button>
-                </ion-item>
+              <ion-card-content class="ion-align-items-center" *ngFor="let coctel of pedido.productos">
+                <p>{{coctel.nombre}}</p>
+                <img [src]="coctel.fotos[0]" width="100px" height="100px">
               </ion-card-content>
+              <ion-item *ngIf="pedido.estado == 'aceptado'" class="ion-text-center">
+                <ion-button color="success" (click)="PrepararCoctel(pedido)">Preparar pedido</ion-button>
+              </ion-item>
+              <ion-item *ngIf="pedido.estado == 'en preparacion'" >
+                <ion-button color="danger" (click)="EntregarCoctel(pedido)">Entregar pedido</ion-button>
+              </ion-item>
             </ion-card>
           </div>
         </ion-col>

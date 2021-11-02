@@ -14,6 +14,7 @@ export class ListaCocineroPage implements OnInit {
   terminado: boolean = false;
   platoPreparado : boolean = false;
   platoFinalizado : boolean = false;
+  productosFiltrados : any[];
 
   constructor(private userService: AuthService) {
 
@@ -24,18 +25,19 @@ export class ListaCocineroPage implements OnInit {
         for (let pedido of data) {
           if(pedido.estado == 'aceptado' || pedido.estado == 'en preparacion'){
 
-             for (let producto of pedido.productos) {
-              console.log(producto.descripcion);
-              if(producto.descripcion != 'cocina'){
-                let indice = pedido.productos.indexOf(producto);
-                pedido.productos.splice(indice,1);
-                
-              }
-
-             }
-             console.log(pedido);
              
-             this.pedidos.push(pedido);
+            this.productosFiltrados = pedido.productos.filter((producto)=>{
+              return producto.descripcion == 'cocina';
+            });
+
+            pedido.productos = this.productosFiltrados;
+            
+             if(pedido.productos.length != 0){
+         
+               this.pedidos.push(pedido);
+               
+             }
+
 
           }
 
