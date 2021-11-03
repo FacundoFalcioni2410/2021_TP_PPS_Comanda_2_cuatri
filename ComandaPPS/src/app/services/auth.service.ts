@@ -163,7 +163,11 @@ export class AuthService {
   }
 
   UpdatearMesaCliente(mesa: any, valor : boolean){
-    return  this.mesaCollection.doc(mesa.id).update({cliente: valor});
+    return this.mesaCollection.doc(mesa.id).update({cliente: valor});
+  }
+
+  updateClienteActual(cliente: any){
+    return this.clienteCollection.doc(cliente.id).update({mesaAsignada: cliente.mesaAsignada, pedido: cliente.pedido, listaEspera: cliente.listaEspera});
   }
 
   UpdatearIngresoCliente(cliente : any, valor : boolean){
