@@ -63,7 +63,7 @@ export class IngresoLocalPage implements OnInit {
             
           });
 
-    }else{//CASO EN EL QUE EL CLIENTE YA HAYA SIDO ACEPTADO EN LA LISTA Y TIENE MESA ASIGNADA
+    }else if(this.usuario.listaEspera && this.usuario.mesaAsignada != 0){//CASO EN EL QUE EL CLIENTE YA HAYA SIDO ACEPTADO EN LA LISTA Y TIENE MESA ASIGNADA
 
         Swal.fire({
           title: 'Escaneo',
@@ -92,6 +92,34 @@ export class IngresoLocalPage implements OnInit {
           
         });
 
+    }else if(!this.usuario.listaEspera && this.usuario.mesaAsignada == 0){
+      
+      Swal.fire({
+        title: 'Escaneo',
+        backdrop: false,
+        text: `Escanee el código QR de ingreso a la lista de espera para ver los gráficos.`,
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+        showCancelButton: true,
+        confirmButtonText: 'Escanear',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+      }).then(async (result) => {
+  
+        if (result.isConfirmed) {
+          let datos = await this.qrS.scan();
+          console.log(datos);
+
+          if(datos.text){
+            if(datos.text == "ingresoListaDeEspera"){
+              this.route.navigateByUrl('/grafico-cliente');
+            }
+          }
+            
+          }
+        
+      });
     }
   }
 }
