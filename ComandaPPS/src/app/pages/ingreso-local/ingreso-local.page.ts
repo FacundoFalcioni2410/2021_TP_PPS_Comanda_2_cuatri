@@ -85,6 +85,15 @@ export class IngresoLocalPage implements OnInit {
               console.log(datos.text);
               if(datos.text == this.usuario.mesaAsignada){
                 this.route.navigateByUrl('/realizar-pedido');
+              }else{
+                Swal.fire({
+                  title:"Error",
+                  icon: 'error',
+                  text:'No se le asignó esa mesa.',
+                  timer: 4000,
+                  timerProgressBar: true,
+                  backdrop: false,
+                })
               }
             }
               
@@ -114,6 +123,15 @@ export class IngresoLocalPage implements OnInit {
           if(datos.text){
             if(datos.text == "ingresoListaDeEspera"){
               this.route.navigateByUrl('/grafico-cliente');
+            }else{
+              Swal.fire({
+                title:"Error",
+                icon: 'error',
+                text:'No se le asignó esa mesa.',
+                timer: 4000,
+                timerProgressBar: true,
+                backdrop: false,
+              })
             }
           }
             
