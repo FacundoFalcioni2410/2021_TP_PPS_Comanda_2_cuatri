@@ -74,19 +74,4 @@ export class RealizarPedidoPage implements OnInit {
   resetearPedido(){
     this.productos = [];
   }
-
-  // eliminarObjetosDuplicados(arr: any, prop: any) {
-  //   var nuevoArray: any = [];
-  //   var lookup: any = {};
-
-  //   for (let i in arr) {
-  //     lookup[arr[i][prop]] = arr[i];
-  //   }
-
-  //   for (let i in lookup) {
-  //     nuevoArray.push(lookup[i]);
-  //   }
-
-  //   return nuevoArray;
-  // }
 }

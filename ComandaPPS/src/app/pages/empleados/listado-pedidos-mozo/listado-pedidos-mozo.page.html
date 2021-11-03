@@ -16,7 +16,7 @@
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
       
         <ion-col size=9 *ngFor="let pedido of pedidos">
-          <div *ngIf="pedido.estado == 'pedido'">
+          <div *ngIf="pedido.estado == 'pedido' || pedido.estado == 'listo'">
             <ion-card style="height: 150%; width: 95%;">
               <!-- <div *ngFor="let foto of coctel.fotos">
               <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
@@ -34,7 +34,8 @@
 
               </ion-card-content>
               <ion-item class="ion-text-center" align="center">
-                <ion-button color="success" (click)="Asignar(pedido)">Asignar pedido</ion-button>
+                <ion-button *ngIf="pedido.estado == 'pedido'" color="success" (click)="Asignar(pedido)">Asignar pedido</ion-button>
+                <ion-button *ngIf="pedido.estado == 'listo'" color="success" (click)="Entregar(pedido)">Entregar pedido</ion-button>
               </ion-item>
             </ion-card>
           </div>

@@ -13,14 +13,27 @@ export class ListadoPedidosMozoPage implements OnInit {
 
   constructor(public userService : AuthService) {
 
-    this.userService.TraerPedidosGenerico('estado','pedido')
+    this.userService.TraerPedidos()
     .subscribe((data)=>{
       console.log(data);
       this.pedidos = data;
+      for(let pedido of this.pedidos)
+      {
+        if(pedido.etapasRealizadas === pedido.etapasTotales && pedido.estado !== 'listo')
+        {
+          pedido.estado = 'listo';
+          this.userService.UpdatearEstadoPedido(pedido.id, pedido.estado);
+        }
+      }
     });
   }
 
   ngOnInit() {
+  }
+
+  Entregar(pedido: any){
+    pedido.estado = 'entregado';
+    this.userService.UpdatearEstadoPedido(pedido.id, pedido.estado);
   }
 
   Asignar(pedido : any){

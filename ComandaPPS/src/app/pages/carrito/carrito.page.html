@@ -50,7 +50,7 @@
         </ion-col>
       </ion-row>
     </ion-item>
-    <ion-button color='success' shape="round" class="m-auto d-block" (click)="realizarPedido()">Realizar pedido</ion-button> 
+    <ion-button color='success' *ngIf="this.productos.length" shape="round" class="m-auto d-block" (click)="realizarPedido()">Realizar pedido</ion-button> 
   </div>
 </ion-content>
 <ion-footer>TEST</ion-footer>

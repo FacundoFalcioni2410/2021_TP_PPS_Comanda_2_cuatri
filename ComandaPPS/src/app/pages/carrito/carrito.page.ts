@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carrito',
@@ -54,18 +55,38 @@ export class CarritoPage implements OnInit {
       }
     }
 
-    //cocteleria, cocina, 
+    let etapasTotales = cantidadCocina + cantidadCocteleria;
+    let tipo: string = '';
+
+    if(etapasTotales > 1)
+    {
+      tipo = 'mixto'
+    }
+    else if(cantidadCocina === 1)
+    {
+      tipo = 'cocina';
+    }
+    else
+    {
+      tipo = 'cocteleria'
+    }
+
 
     let pedido = {
       estado: 'pedido',
       productos: this.productos,
       tiempo: this.maxTiempo,
       etapasRealizadas: 0,
-      etapasTotales: cantidadCocina + cantidadCocteleria,
-      precioTotal: this.precio
+      etapasTotales: etapasTotales,
+      precioTotal: this.precio,
     }
 
-    this.userService.SubirPedido(pedido);
+    this.userService.SubirPedido(pedido)
+    .then(doc =>{
+      this.userService.PedidoCliente(this.userService?.usuarioActual?.id, doc.id);
+      this.userService.usuarioActual.pedido = doc.id;
+      Swal.fire({text: `Pedido realizado con exito, recuerde que el tiempo estimado de su entrega es de: ${this.maxTiempo}`, toast: true, timer: 3000, timerProgressBar: true, icon: 'success', position: 'bottom'});
+    });
   }
 
 }

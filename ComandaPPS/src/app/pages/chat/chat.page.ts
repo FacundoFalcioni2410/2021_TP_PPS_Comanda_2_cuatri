@@ -20,29 +20,28 @@ export class ChatPage implements OnInit {
   }
 
   MandarMensaje() {
+    if(this.mensaje.length)
+    {
+      let fecha = new Date();
+      let day: any = fecha.getDate();
+      let month: any = fecha.getMonth() + 1;
+      let year: any = fecha.getFullYear();
+      let hora: string = `${day}/${month}/${year}`;
+
+      let mensajeObj: any = {
+        message: this.mensaje,
+        hour: hora,
+        user: this.userService.usuarioActual,
+        tipo: this.userService.tipoUsuario
+      }
+
+      if (this.userService.usuarioActual == 'cliente') {
+        mensajeObj.mesa = this.userService.usuarioActual.mesaAsignada;
+      }
 
 
-
-    let fecha = new Date();
-    let day: any = fecha.getDate();
-    let month: any = fecha.getMonth() + 1;
-    let year: any = fecha.getFullYear();
-    let hora: string = `${day}/${month}/${year}`;
-
-    let mensajeObj: any = {
-      message: this.mensaje,
-      hour: hora,
-      user: this.userService.usuarioActual,
-      tipo: this.userService.tipoUsuario
+      this.chat.MandarMensaje(mensajeObj);
+      this.mensaje = '';
     }
-
-    if (this.userService.usuarioActual == 'cliente') {
-      mensajeObj.mesa = this.userService.usuarioActual.mesaAsignada;
-    }
-
-
-    this.chat.MandarMensaje(mensajeObj);
-    this.mensaje = '';
-
   }
 }

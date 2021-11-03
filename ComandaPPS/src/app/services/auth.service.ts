@@ -136,6 +136,14 @@ export class AuthService {
     return this.firestore.collection('pedidos', ref => ref.where(campo, '==', valor)).valueChanges({idField: 'id'})
   }
 
+  TraerPedidos(){
+    return this.firestore.collection('pedidos').valueChanges({idField: 'id'});
+  }
+
+  PedidoCliente(clienteID: string, pedido){
+    return this.firestore.collection('clientes').doc(clienteID).update({pedido: pedido});
+  }
+
   TraerClientesDeshabilitados(){
     return this.firestore.collection('clientes', ref => ref.where('habilitado', '==', false)).valueChanges({idField: 'id'})
   }

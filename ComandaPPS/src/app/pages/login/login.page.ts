@@ -37,6 +37,12 @@ export class LoginPage implements OnInit {
     this.login();
   }
 
+  accesoRapidoCocinero(){
+    this.form.controls.email.setValue('cocinero@cocinero.com');
+    this.form.controls.password.setValue('cocinero');
+    this.login();
+  }
+
   accesoRapidoMozo(){
     this.form.controls.email.setValue('mozo@mozo.com');
     this.form.controls.password.setValue('mozomozo');
