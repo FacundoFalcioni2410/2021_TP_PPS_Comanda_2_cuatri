@@ -101,6 +101,44 @@ exports.nuevaTareaNotification = functions.firestore.document('pedidos/{pedidoID
     return null;
 });
 
+
+exports.nuevoPlatoParaEntregarNotification = functions.firestore.document('pedidos/{pedidoID}').onUpdate((change, context) =>{
+    const after = change.after.data();
+    const promises: any = [];
+
+    if(after.estado == 'listo'){
+
+        let query = admin.firestore().collection('empleados').where('tipo', '==', 'mozo');
+        
+        query.get().then(snapshot => {
+            if(!snapshot.empty)
+            {
+                snapshot.forEach(doc =>{
+                    let metre = doc.data();
+                    const payload = {
+                        token: metre.pushToken,
+                        notification: {
+                            title: 'Actualización en lista de pedidos',
+                            body: 'Nuevo pedido para entregar'
+                        },
+                        data:{
+                            ruta: '/lista-pedidos-mozo'
+                        }
+                    };
+
+                    const p = admin.messaging().send(payload);
+                    promises.push(p);
+                });
+                return Promise.all(promises);
+            }
+            return null;
+        });
+
+    }
+
+    return null;
+});
+
 exports.registroNotification = functions.firestore.document('clientes/{clienteID}').onCreate((snap, context) => {
     const nuevoCliente = snap.data();
 
