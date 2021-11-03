@@ -69,13 +69,8 @@ export class ListaBartenderPage implements OnInit {
       .subscribe((data) => {
         console.log(data);
         data.etapasRealizadas++;
-        this.userService.UpdatearEtapasRealizadasPedido(idCoctel, data.etapasRealizadas)
-          .then(() => {
+        this.userService.UpdatearEtapasRealizadasPedido(idCoctel, data.etapasRealizadas);
 
-            this.userService.UpdatearEstadoPedido(idCoctel,'entregado al mozo');
-            console.log('updateadas las estapas realizadas ');
-            this.coctelFinalizado = true;
-          })
       });
   }
 }

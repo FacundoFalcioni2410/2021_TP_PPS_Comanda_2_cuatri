@@ -70,13 +70,7 @@ export class ListaCocineroPage implements OnInit {
       .subscribe((data) => {
         console.log(data);
         data.etapasRealizadas++;
-        this.userService.UpdatearEtapasRealizadasPedido(idPlato, data.etapasRealizadas)
-          .then(() => {
-
-            this.userService.UpdatearEstadoPedido(idPlato,'entregado al mozo');
-            console.log('updateadas las estapas realizadas ');
-            this.platoFinalizado = true;
-          })
+        this.userService.UpdatearEtapasRealizadasPedido(idPlato, data.etapasRealizadas);
       });
   }
 

@@ -176,7 +176,7 @@ export class AuthService {
   }
 
   TraerPedido(idPedido : any){
-    return this.pedidosCollection.doc(idPedido).valueChanges({idField : 'id'}).pipe(take(1));
+    return this.pedidosCollection.doc(idPedido).valueChanges({idField : 'id'});
   }
   AltaCliente(cliente : Cliente){
     cliente.listaEspera = false;
