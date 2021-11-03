@@ -40,6 +40,66 @@ exports.ingresoListaEspera = functions.firestore.document('clientes/{clienteID}'
     return null;
 });
 
+exports.nuevaTareaNotification = functions.firestore.document('pedidos/{pedidoID}').onUpdate((change, context) =>{
+    const after = change.after.data();
+    const promises: any = [];
+
+    if(after.estado == 'aceptado'){
+
+        let query = admin.firestore().collection('empleados');
+
+        query.get().then(snapshot => {
+            if(!snapshot.empty)
+            {
+                snapshot.forEach(doc =>{
+                    let empleado = doc.data();
+                    let payload : any = '';
+
+                    if(empleado.tipo == 'bartender' || empleado.tipo == 'cocinero'){
+                        
+                        if(empleado.tipo == 'bartender'){
+
+                            payload = {
+                                token: empleado.pushToken,
+                                notification: {
+                                    title: 'Nuevo cóctel',
+                                    body: 'Tenés un nuevo cóctel para hacer'
+                                },
+                                data:{
+                                    ruta: '/lista-bartender'
+                                }
+                            };
+                        }else{
+                            payload = {
+                                token: empleado.pushToken,
+                                notification: {
+                                    title: 'Nuevo plato',
+                                    body: 'Tenés un nuevo plato para hacer'
+                                },
+                                data:{
+                                    ruta: '/lista-cocinero'
+                                }
+                            };
+                          
+
+                        }
+
+                        const p = admin.messaging().send(payload);
+                        promises.push(p);
+                        
+                    }
+                   
+                });
+                return Promise.all(promises);
+            }
+            return null;
+        });
+
+    }
+
+    return null;
+});
+
 exports.registroNotification = functions.firestore.document('clientes/{clienteID}').onCreate((snap, context) => {
     const nuevoCliente = snap.data();
 
@@ -78,6 +138,8 @@ exports.registroNotification = functions.firestore.document('clientes/{clienteID
     return null;
 });
 
+
+
 exports.nuevoMensaje = functions.database.ref('/chat/{pushID}')
     .onCreate( (snapshot, context) =>{
         const mensaje = snapshot.val();
@@ -115,3 +177,6 @@ exports.nuevoMensaje = functions.database.ref('/chat/{pushID}')
         }
         return null;
     });
+
+
+   
