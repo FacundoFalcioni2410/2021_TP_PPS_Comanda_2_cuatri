@@ -53,7 +53,7 @@ export class ListaBartenderPage implements OnInit {
   PrepararCoctel(coctel: any) {
     let idCoctel = coctel.id;
     this.userService.TraerPedido(idCoctel)
-      .then((data) => {
+      .subscribe((data) => {
         console.log(data);
         this.userService.UpdatearEstadoPedido(idCoctel, 'en preparacion')
           .then(() => {
@@ -66,7 +66,7 @@ export class ListaBartenderPage implements OnInit {
   EntregarCoctel(coctel: any) {
     let idCoctel = coctel.id;
     this.userService.TraerPedido(idCoctel)
-      .then((data) => {
+      .subscribe((data) => {
         console.log(data);
         data.etapasRealizadas++;
         this.userService.UpdatearEtapasRealizadasPedido(idCoctel, data.etapasRealizadas)

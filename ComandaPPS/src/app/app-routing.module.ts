@@ -89,6 +89,10 @@ const routes: Routes = [
   },  {
     path: 'mesa-asignada-cliente',
     loadChildren: () => import('./pages/mesa-asignada-cliente/mesa-asignada-cliente.module').then( m => m.MesaAsignadaClientePageModule)
+  },
+  {
+    path: 'cliente-espera-pedido',
+    loadChildren: () => import('./pages/cliente-espera-pedido/cliente-espera-pedido.module').then( m => m.ClienteEsperaPedidoPageModule)
   }
 
 

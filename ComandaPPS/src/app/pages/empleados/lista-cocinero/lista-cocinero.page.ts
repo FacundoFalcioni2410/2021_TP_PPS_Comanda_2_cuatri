@@ -54,7 +54,7 @@ export class ListaCocineroPage implements OnInit {
   PrepararPlato(plato: any) {
     let idPlato = plato.id;
     this.userService.TraerPedido(idPlato)
-      .then((data) => {
+      .subscribe((data) => {
         console.log(data);
         this.userService.UpdatearEstadoPedido(idPlato, 'en preparacion')
           .then(() => {
@@ -67,7 +67,7 @@ export class ListaCocineroPage implements OnInit {
   EntregarPlato(plato: any) {
     let idPlato = plato.id;
     this.userService.TraerPedido(idPlato)
-      .then((data) => {
+      .subscribe((data) => {
         console.log(data);
         data.etapasRealizadas++;
         this.userService.UpdatearEtapasRealizadasPedido(idPlato, data.etapasRealizadas)
