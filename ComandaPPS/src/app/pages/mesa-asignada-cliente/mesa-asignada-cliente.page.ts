@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-mesa-asignada-cliente',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MesaAsignadaClientePage implements OnInit {
 
-  constructor() { }
+  pedido: any;
+
+  constructor(public userService: AuthService) {
+    this.userService.TraerPedido(this.userService?.usuarioActual?.pedido).subscribe(res =>{
+      this.pedido = res[0];
+    });
+  }
 
   ngOnInit() {
   }
-
 }
