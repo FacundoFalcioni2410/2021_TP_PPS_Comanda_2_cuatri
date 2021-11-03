@@ -114,15 +114,15 @@ exports.nuevoPlatoParaEntregarNotification = functions.firestore.document('pedid
             if(!snapshot.empty)
             {
                 snapshot.forEach(doc =>{
-                    let metre = doc.data();
+                    let mozo = doc.data();
                     const payload = {
-                        token: metre.pushToken,
+                        token: mozo.pushToken,
                         notification: {
                             title: 'Actualización en lista de pedidos',
                             body: 'Nuevo pedido para entregar'
                         },
                         data:{
-                            ruta: '/lista-pedidos-mozo'
+                            ruta: '/listado-pedidos-mozo'
                         }
                     };
 

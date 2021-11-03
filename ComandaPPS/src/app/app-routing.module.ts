@@ -86,7 +86,11 @@ const routes: Routes = [
   {
     path: 'lista-cocinero',
     loadChildren: () => import('./pages/empleados/lista-cocinero/lista-cocinero.module').then(m => m.ListaCocineroPageModule)
+  },  {
+    path: 'mesa-asignada-cliente',
+    loadChildren: () => import('./pages/mesa-asignada-cliente/mesa-asignada-cliente.module').then( m => m.MesaAsignadaClientePageModule)
   }
+
 
 
 ];
