@@ -24,17 +24,9 @@ export class GraficoClientePage implements OnInit {
   }
 
   generateChart(){
-    // let encuestas = this.encuestas;
-    // this.chart = {
-    //   pieChartLabel: ['caca','caca2'],
-    //   pieChartData: ['7', '6'],
-    //   pieChartType: 'pie'
-    // }
     let encuestas = this.encuestas.filter(item =>{
       return item?.satisfaccion ? item : null;
     });
-    console.log(encuestas);
-    console.log('entra');
     this.chart = {
       primero:{
         pieChartLabels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
