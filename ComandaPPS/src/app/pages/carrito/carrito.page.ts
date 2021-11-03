@@ -79,13 +79,14 @@ export class CarritoPage implements OnInit {
       etapasRealizadas: 0,
       etapasTotales: etapasTotales,
       precioTotal: this.precio,
+      tipo: tipo
     }
 
     this.userService.SubirPedido(pedido)
     .then(doc =>{
       this.userService.PedidoCliente(this.userService?.usuarioActual?.id, doc.id);
       this.userService.usuarioActual.pedido = doc.id;
-      Swal.fire({text: `Pedido realizado con exito, recuerde que el tiempo estimado de su entrega es de: ${this.maxTiempo}`, toast: true, timer: 3000, timerProgressBar: true, icon: 'success', position: 'bottom'});
+      Swal.fire({text: `Pedido realizado con exito, recuerde que el tiempo estimado de su entrega es de: ${this.maxTiempo} minutos`, toast: true, timer: 3000, timerProgressBar: true, icon: 'success', position: 'bottom'});
     });
   }
 
