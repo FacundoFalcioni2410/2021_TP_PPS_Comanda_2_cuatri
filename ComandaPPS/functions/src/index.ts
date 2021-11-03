@@ -50,39 +50,40 @@ exports.nuevaTareaNotification = functions.firestore.document('pedidos/{pedidoID
 
         query.get().then(snapshot => {
             if(!snapshot.empty)
-            {
+            {   
                 snapshot.forEach(doc =>{
                     let empleado = doc.data();
                     let payload : any = '';
 
-                    if(empleado.tipo == 'bartender' || empleado.tipo == 'cocinero'){
-                        
-                        if(empleado.tipo == 'bartender'){
 
-                            payload = {
-                                token: empleado.pushToken,
-                                notification: {
-                                    title: 'Nuevo cóctel',
-                                    body: 'Tenés un nuevo cóctel para hacer'
-                                },
-                                data:{
-                                    ruta: '/lista-bartender'
-                                }
-                            };
-                        }else{
-                            payload = {
-                                token: empleado.pushToken,
-                                notification: {
-                                    title: 'Nuevo plato',
-                                    body: 'Tenés un nuevo plato para hacer'
-                                },
-                                data:{
-                                    ruta: '/lista-cocinero'
-                                }
-                            };
-                          
+                        if(empleado.tipo == 'bartender' || empleado.tipo == 'cocinero'){
 
-                        }
+                            if(empleado.tipo == 'bartender' && (after.tipo == 'cocteleria' || after.tipo == 'mixto') ){
+
+                                payload = {
+                                    token: empleado.pushToken,
+                                    notification: {
+                                        title: 'Nuevo cóctel',
+                                        body: 'Tenés un nuevo cóctel para hacer'
+                                    },
+                                    data:{
+                                        ruta: '/lista-bartender'
+                                    }
+                                };
+                            }else if(empleado.tipo == 'cocinero'  && (after.tipo == 'cocina' || after.tipo == 'mixto')){
+                                
+                                payload = {
+                                    token: empleado.pushToken,
+                                    notification: {
+                                        title: 'Nuevo plato',
+                                        body: 'Tenés un nuevo plato para hacer'
+                                    },
+                                    data:{
+                                        ruta: '/lista-cocinero'
+                                    }
+                                };
+
+                            }
 
                         const p = admin.messaging().send(payload);
                         promises.push(p);
