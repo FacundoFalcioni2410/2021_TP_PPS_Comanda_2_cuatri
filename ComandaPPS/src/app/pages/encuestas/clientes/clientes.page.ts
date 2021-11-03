@@ -1,63 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { AuthService } from 'src/app/services/auth.service';
 import { FotosService } from 'src/app/services/fotos.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
-import {
-  Chart,
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-  SubTitle
-} from 'chart.js';
-import { AuthService } from 'src/app/services/auth.service';
-
-Chart.register(
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-  SubTitle
-);
 
 @Component({
   selector: 'app-clientes',
@@ -70,13 +16,9 @@ export class ClientesPage implements OnInit {
   nombresFotos = []
   formDataFotos: FormData = null;
   productos: any;
-  //
-  myChart: any;
-  ctx: any;
-  ctx1: any;
-  
 
-  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration, private firestore: AuthService) {
+
+  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration, private firestore: AuthService, private userService: AuthService) {
     this.form = this.formBuilder.group({
       nombre: ['',[Validators.required]],
       satisfaccion: ['5',[Validators.required]],
@@ -90,13 +32,14 @@ export class ClientesPage implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
-  ionViewDidEnter(){
-    this.ctx = document.getElementById('myChart') as any;
-    this.ctx1 = this.ctx.getContext('2d');
-    this.ctx.fillStyle = 'black';
-    this.ActualizarGrafico();
+  obtenerCantidad(encuesta, valor, clave){
+    let filtrado = encuesta.filter((item: any)=>{
+      return item[clave] == valor;
+    });
+    return filtrado.length;
   }
 
   change(value){
@@ -130,54 +73,4 @@ export class ClientesPage implements OnInit {
   subirEncuesta(){
     this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, this.form.value);
   }
-
-  ActualizarGrafico(){
-
-    var myChart = new Chart(this.ctx, {
-      type: 'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 3
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
-
-  }
-
-  graphClickEvent(event, array){
-     
-    //console.log(array[0].index);
-   // console.log(arrayDatos[array[0].index]);
-    //let imagen = document.getElementById('imagen') as HTMLImageElement
-    //let card = document.getElementById('card') as HTMLElement;
-    //card.style.display = 'block';
-    //imagen.src = url[array[0].index];
-  }
-
 }

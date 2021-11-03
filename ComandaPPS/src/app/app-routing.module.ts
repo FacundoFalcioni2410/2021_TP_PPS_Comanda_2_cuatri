@@ -93,6 +93,10 @@ const routes: Routes = [
   {
     path: 'cliente-espera-pedido',
     loadChildren: () => import('./pages/cliente-espera-pedido/cliente-espera-pedido.module').then( m => m.ClienteEsperaPedidoPageModule)
+  },
+  {
+    path: 'grafico-cliente',
+    loadChildren: () => import('./pages/grafico-cliente/grafico-cliente.module').then( m => m.GraficoClientePageModule)
   }
 
 

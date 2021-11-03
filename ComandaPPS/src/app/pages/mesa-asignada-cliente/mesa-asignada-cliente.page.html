@@ -18,11 +18,13 @@
           <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2" (click)="Scan()" style="font-size: 32px;"></i>
           <div *ngIf="this.usuario?.listaEspera && !this.usuario.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
             <label>Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>
+          </div>-->
+          <div *ngIf="this.pedido?.estado === 'recibido'" class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <ion-button color="primary" [routerLink]="['/clientes']">Encuesta</ion-button>
           </div>
-          <div *ngIf="this.usuario?.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <label>Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}), scanea el QR de tu mesa</label>
-            <i class="fas fa-qrcode pt-3 ps-2 mb-5" (click)="Scan()" style="font-size: 32px;"></i>
-          </div> -->
+          <div *ngIf="this.pedido?.estado === 'recibido'" class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <ion-button color="success">Pedir cuenta</ion-button>
+          </div> 
         </div>
       </div>
     </div>

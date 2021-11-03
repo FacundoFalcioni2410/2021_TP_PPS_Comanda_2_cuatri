@@ -39,9 +39,12 @@
     
         <div class="mt-1">
           <ion-item>
-            <ion-label>Producto consumido</ion-label>
+            <ion-label>¿Pidió cocteles y postres?</ion-label>
             <ion-select formControlName="productoConsumido" mode="ios" interface="popover" placeholder="">
-              <ion-select-option *ngFor="let producto of productos" [value]="producto.nombre">{{producto.nombre}}</ion-select-option>
+              <ion-select-option value="cocteles">Pedi cocteles</ion-select-option>
+              <ion-select-option value="postres">Pedi postres</ion-select-option>
+              <ion-select-option value="ambos">Ambos</ion-select-option>
+              <ion-select-option value="ninguno">Ninguno de los 2</ion-select-option>
             </ion-select>
           </ion-item>
         </div>
@@ -92,8 +95,5 @@
       </div>
         <ion-button class="d-block m-auto mt-2" size="large" [disabled]="form.invalid" type="submit">Enviar encuesta</ion-button>
       </form>
-    </div>
-    <div style="width: 7cm; height: 7cm; display: block; margin: auto; background-color: rgb(42, 35, 35);">
-      <canvas id="myChart" width="50px" height="50px"></canvas>
     </div>
 </ion-content>

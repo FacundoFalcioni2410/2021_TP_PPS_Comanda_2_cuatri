@@ -106,6 +106,7 @@ export class FotosService {
                 else
                 {
                   this.auth.AltaEncuesta(objeto);
+                  this.router.navigate(['grafico-cliente']);
                 }
               });
           });
@@ -121,6 +122,7 @@ export class FotosService {
             objeto.fotos.push(url1);
             
             this.auth.AltaEncuesta(objeto);
+            this.router.navigate(['grafico-cliente']);
                 
           });
       }); 
@@ -130,8 +132,9 @@ export class FotosService {
       referencia0.getDownloadURL().subscribe((url0: any) => {
         objeto.fotos = [];
         objeto.fotos.push(url0);
-        this.auth.AltaEncuesta(objeto);     
-      }); 
+        this.auth.AltaEncuesta(objeto);
+        this.router.navigate(['grafico-cliente']);
+      });
     }
   }
 

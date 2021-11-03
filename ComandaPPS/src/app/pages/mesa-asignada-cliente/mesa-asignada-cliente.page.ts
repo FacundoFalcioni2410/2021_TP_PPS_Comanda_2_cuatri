@@ -12,7 +12,7 @@ export class MesaAsignadaClientePage implements OnInit {
 
   constructor(public userService: AuthService) {
     this.userService.TraerPedido(this.userService?.usuarioActual?.pedido).subscribe(res =>{
-      this.pedido = res[0];
+      this.pedido = res;
     });
   }
 
