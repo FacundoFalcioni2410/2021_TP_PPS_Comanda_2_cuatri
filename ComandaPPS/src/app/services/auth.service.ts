@@ -154,12 +154,16 @@ export class AuthService {
   }
 
   SetearMesaCliente(cliente : any, mesa : any){
-    return this.clienteCollection.doc(cliente.id).update({mesaAsignada: mesa, cliente : true});
+    return this.clienteCollection.doc(cliente.id).update({mesaAsignada: mesa});
   }
 
 
   UpdateEstadoCliente(cliente : any){
     this.clienteCollection.doc(cliente.id).update({habilitado: cliente.habilitado});
+  }
+
+  UpdatearMesaCliente(mesa: any, valor : boolean){
+    return  this.mesaCollection.doc(mesa.id).update({cliente: valor});
   }
 
   UpdatearIngresoCliente(cliente : any, valor : boolean){

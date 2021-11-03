@@ -43,17 +43,29 @@ export class ListaEsperaPage implements OnInit {
 
   AsignarMesa(cliente : any){
     let mesaAsignada = parseInt(this.controles.get('mesa')?.value);
+    let mesaObj : any;
 
+    for(let mesa of this.mesasArray){
+      if(mesa.numero == mesaAsignada){
+        mesaObj = mesa;
+        break;
+      }
+    }
     
 
     this.authService.SetearMesaCliente(cliente,mesaAsignada)
     .then(()=>{
-      Swal.fire({
-        title: 'Exito',
-        icon:'success',
-        text:'Mesa asignada con éxito.',
-        backdrop: false
+
+      this.authService.UpdatearMesaCliente(mesaObj.id,true)
+      .then(()=>{
+        Swal.fire({
+          title: 'Exito',
+          icon:'success',
+          text:'Mesa asignada con éxito.',
+          backdrop: false
+        });
       });
+
 
 
     });

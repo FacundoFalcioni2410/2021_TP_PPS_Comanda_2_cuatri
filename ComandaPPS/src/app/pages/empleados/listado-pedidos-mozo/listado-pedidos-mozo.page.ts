@@ -50,4 +50,21 @@ export class ListadoPedidosMozoPage implements OnInit {
       });
     });
   }
+
+
+  ConfirmarPago(pedido : any){
+    this.userService.UpdatearEstadoPedido(pedido.id,'finalizado')
+    .then(()=>{
+    
+      Swal.fire({
+        title:'Pedido finalizado',
+        text: 'Se confirmó el pago y finalizó el pedido',
+        icon:'success',
+        toast: true,
+        position: 'bottom',
+        timer:2000,
+        timerProgressBar: true
+      });
+    });
+  }
 }

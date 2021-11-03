@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Lista de espera</ion-title>
     <ion-buttons slot="end">
-      <ion-menu-button menu="first" ></ion-menu-button>
+      <ion-menu-button menu="first"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
     </ion-row>
     <ion-grid>
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
-      
+
         <ion-col size=6 *ngFor="let item of listaDeEsperaArray" [ngClass]="{'d-none' : item.mesaAsignada }">
           <div>
             <ion-card style="height: 150%; width: 95%;">
@@ -30,11 +30,11 @@
                     <ion-item>
                       <ion-select formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
                         <div *ngFor="let mesa of mesasArray">
-                          <ion-select-option  *ngIf="!mesa.cliente" value={{mesa.numero}}>{{mesa.numero}}
+                          <ion-select-option *ngIf="!mesa.cliente" value={{mesa.numero}}>{{mesa.numero}}
                           </ion-select-option>
                         </div>
-                       
-                      
+
+
                       </ion-select>
                     </ion-item>
                     <ion-item>
