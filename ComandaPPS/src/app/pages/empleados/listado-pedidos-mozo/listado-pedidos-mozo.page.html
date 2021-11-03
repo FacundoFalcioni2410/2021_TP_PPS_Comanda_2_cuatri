@@ -16,7 +16,7 @@
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
       
         <ion-col size=9 *ngFor="let pedido of pedidos">
-          <div *ngIf="pedido.estado == 'pedido' || pedido.estado == 'listo' || pedido.estado == 'confirmado'">
+          <div *ngIf="pedido.estado == 'pedido' || pedido.estado == 'listo' || pedido.estado == 'recibido' || pedido.estado == 'pagado'">
             <ion-card style="height: 150%; width: 95%;">
               <!-- <div *ngFor="let foto of coctel.fotos">
               <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
