@@ -99,6 +99,10 @@ const routes: Routes = [
     path: 'grafico-cliente',
     loadChildren: () => import('./pages/grafico-cliente/grafico-cliente.module').then( m => m.GraficoClientePageModule)
   },
+  {
+    path: 'cuenta-del-pedido',
+    loadChildren: () => import('./pages/cuenta-del-pedido/cuenta-del-pedido.module').then( m => m.CuentaDelPedidoPageModule)
+  }
 ];
 
 @NgModule({
