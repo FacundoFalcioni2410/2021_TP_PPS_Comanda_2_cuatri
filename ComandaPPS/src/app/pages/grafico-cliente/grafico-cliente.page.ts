@@ -1,59 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Chart,
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-  SubTitle
-} from 'chart.js';
 import { AuthService } from 'src/app/services/auth.service';
-
-Chart.register(
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-  SubTitle
-);
 
 @Component({
   selector: 'app-grafico-cliente',
@@ -67,18 +13,28 @@ export class GraficoClientePage implements OnInit {
   constructor(private userService: AuthService) {
     this.userService.getEncuestas().subscribe(res =>{
       this.encuestas = res;
-      this.getChartData();
+      this.generateChart();
     });
   }
 
   chart: any = null;
-
+  chartTerminado: boolean = false
 
   ngOnInit() {
   }
 
-  getChartData(){
-    let encuestas = this.encuestas;
+  generateChart(){
+    // let encuestas = this.encuestas;
+    // this.chart = {
+    //   pieChartLabel: ['caca','caca2'],
+    //   pieChartData: ['7', '6'],
+    //   pieChartType: 'pie'
+    // }
+    let encuestas = this.encuestas.filter(item =>{
+      return item?.satisfaccion ? item : null;
+    });
+    console.log(encuestas);
+    console.log('entra');
     this.chart = {
       primero:{
         pieChartLabels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
@@ -124,6 +80,7 @@ export class GraficoClientePage implements OnInit {
         pieChartType: 'pie',
       },
     }
+    this.chartTerminado = true;
   }
 
   obtenerCantidad(encuesta, valor, clave){
@@ -132,5 +89,4 @@ export class GraficoClientePage implements OnInit {
     });
     return filtrado.length;
   }
-
 }

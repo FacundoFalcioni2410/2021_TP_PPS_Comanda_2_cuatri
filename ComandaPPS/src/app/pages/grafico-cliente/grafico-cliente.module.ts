@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { GraficoClientePageRoutingModule } from './grafico-cliente-routing.module';
 
 import { GraficoClientePage } from './grafico-cliente.page';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GraficoClientePageRoutingModule
+    GraficoClientePageRoutingModule,
+    ChartsModule
   ],
   declarations: [GraficoClientePage]
 })
