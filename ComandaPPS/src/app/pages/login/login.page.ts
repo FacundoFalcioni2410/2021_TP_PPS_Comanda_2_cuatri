@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MailService } from 'src/app/services/mail.service';
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   logo = "../../../assets/restaurant.png";
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService, private audioS : AudioService) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService, private audioS : AudioService, private vibration: Vibration) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -73,6 +74,7 @@ export class LoginPage implements OnInit {
         if(!user?.cuil && !user?.habilitado)
         {
           this.mostrarToast({text: 'Su cuenta todavia no fue habilitada, revise su correo electronico',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
+          this.vibration.vibrate(2000);
         }
         else if(!user?.cuil && user?.habilitado)
         {
@@ -115,6 +117,7 @@ export class LoginPage implements OnInit {
       },1500);
     })
     .catch( err =>{
+      this.vibration.vibrate(2000);
       this.mostrarToast({text: 'Datos incorrectos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       setTimeout(()=>{
         this.logo = "../../../assets/restaurant.png";

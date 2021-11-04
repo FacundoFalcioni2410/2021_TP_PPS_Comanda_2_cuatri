@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
@@ -13,7 +14,7 @@ export class IngresoLocalPage implements OnInit {
 
   listaEspera : boolean = false;
   usuario: any
-  constructor(private qrS: QRService, public userService : AuthService, private route : Router) {
+  constructor(private qrS: QRService, public userService : AuthService, private route : Router, private vibration: Vibration) {
     this.userService.TraerGenerico('clientes','uid', this.userService.usuarioActual.uid).subscribe(res =>{
       this.usuario = res[0];
       this.userService.usuarioActual = res[0];
@@ -56,6 +57,18 @@ export class IngresoLocalPage implements OnInit {
                 if(datos.text == "ingresoListaDeEspera"){
                   this.EntrarEnListaEspera();
                 }
+                else
+                {
+                  this.vibration.vibrate(2000);
+                  Swal.fire({
+                    title:"Error",
+                    icon: 'error',
+                    text:'Escanee el codigo correcto.',
+                    timer: 4000,
+                    timerProgressBar: true,
+                    backdrop: false,
+                  });
+                }
               }
                 
               }
@@ -85,6 +98,7 @@ export class IngresoLocalPage implements OnInit {
               if(datos.text == this.usuario.mesaAsignada){
                 this.route.navigateByUrl('/realizar-pedido');
               }else{
+                this.vibration.vibrate(2000);
                 Swal.fire({
                   title:"Error",
                   icon: 'error',
@@ -123,6 +137,7 @@ export class IngresoLocalPage implements OnInit {
             if(datos.text == "ingresoListaDeEspera"){
               this.route.navigateByUrl('/grafico-cliente');
             }else{
+              this.vibration.vibrate(2000);
               Swal.fire({
                 title:"Error",
                 icon: 'error',
@@ -130,7 +145,8 @@ export class IngresoLocalPage implements OnInit {
                 timer: 4000,
                 timerProgressBar: true,
                 backdrop: false,
-              })
+
+              });
             }
           }
             

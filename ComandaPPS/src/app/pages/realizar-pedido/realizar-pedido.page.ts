@@ -5,6 +5,7 @@ import { CarritoPage } from '../carrito/carrito.page';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 @Component({
   selector: 'app-realizar-pedido',
@@ -19,7 +20,7 @@ export class RealizarPedidoPage implements OnInit {
   cantidadMaxima: number = 0;
   usuario: any;
 
-  constructor(private modalController: ModalController, private userService: AuthService) {
+  constructor(private modalController: ModalController, private userService: AuthService, private vibration: Vibration) {
     this.usuario = this.userService.usuarioActual;
     this.userService.TraerGenerico('mesas', 'numero', this.usuario.mesaAsignada).subscribe((res: any) =>{
       this.cantidadMaxima = res[0]?.cantidadComensales;
@@ -49,6 +50,7 @@ export class RealizarPedidoPage implements OnInit {
           }
           else
           {
+            this.vibration.vibrate(2000);
             Swal.fire({position: 'bottom', text:'Cantidad maxima del producto alcanzada', timer: 1500, timerProgressBar: true, icon: 'error', toast: true});
           }
         }

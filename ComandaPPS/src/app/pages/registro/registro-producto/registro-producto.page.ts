@@ -76,7 +76,6 @@ export class RegistroProductoPage implements OnInit {
       descripcion: this.getDescripcion(),
       tiempo: this.getTiempoElaboracion(),
       precio: this.getPrecio(),
-      //fotos: aca va las fotos
     };
 
     this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, producto)

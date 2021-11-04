@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Vibration } from '@ionic-native/vibration/ngx';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
@@ -13,7 +14,7 @@ export class ClienteEsperaPedidoPage implements OnInit {
 
   pedidoDelCliente : any;
 
-  constructor(public userService : AuthService, private qrS : QRService, private router : Router) { 
+  constructor(public userService : AuthService, private qrS : QRService, private router : Router, private vibration: Vibration) { 
     console.log('pedido dentro del clinte ', this.userService.usuarioActual.pedido);
     this.userService.TraerPedido(this.userService.usuarioActual.pedido)
     .subscribe((data)=>{
@@ -48,6 +49,19 @@ export class ClienteEsperaPedidoPage implements OnInit {
           if(datos.text == this.userService.usuarioActual.mesaAsignada){
             this.router.navigateByUrl('/mesa-asignada-cliente');
           }
+          else
+          {
+            this.vibration.vibrate(2000);
+            Swal.fire({
+              title: 'Error',
+              text:'Esa no es su mesa!',
+              icon: 'error',
+              toast: true,
+              timer: 2000,
+              timerProgressBar: true,
+              position: 'bottom'
+            });
+          }
         }
           
       }
@@ -67,7 +81,8 @@ export class ClienteEsperaPedidoPage implements OnInit {
           icon: 'success',
           toast: true,
           timer: 2000,
-          timerProgressBar: true
+          timerProgressBar: true,
+          position: 'bottom'
         });
     });
   }
