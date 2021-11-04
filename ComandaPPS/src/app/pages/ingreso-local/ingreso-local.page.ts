@@ -21,7 +21,6 @@ export class IngresoLocalPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.usuario);
   }
 
 

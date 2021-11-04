@@ -149,7 +149,6 @@ export class AuthService {
   }
 
   TraerGenerico(coleccion : any, campo : any, valor : any){
-    console.log(coleccion,campo,valor);
     return this.firestore.collection(coleccion, ref => ref.where(campo, '==', valor)).valueChanges({idField: 'id'})
   }
 

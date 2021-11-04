@@ -18,19 +18,16 @@
         <ion-col size=9 *ngFor="let pedido of pedidos">
           <div *ngIf="pedido.estado == 'pedido' || pedido.estado == 'listo' || pedido.estado == 'recibido' || pedido.estado == 'pagado'">
             <ion-card style="height: 150%; width: 95%;">
-              <!-- <div *ngFor="let foto of coctel.fotos">
-              <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
-              </div> -->
               <ion-card-header>
                 <ion-card-title style="font-size:35px;">
-                  <label> Precio del pedido : {{pedido.precioTotal}} </label>
+                  <label> Precio del pedido: {{pedido.precioTotal}} </label>
                 </ion-card-title>
-                <h1>Productos:</h1>
+                <h3 class="fs-3 mb-1 text-light">Productos:</h3>
               </ion-card-header>
               <ion-card-content class="ion-align-items-center" *ngFor="let producto of pedido.productos">
-                <h2>{{producto.nombre}}</h2>
-                <h3>Cantidad: {{producto.cantidad}}</h3>
-                  	<img [src]="producto.fotos[0]" width="150px" height="150px"> 
+                <h2 class="fs-3 mb-1 text-light">{{producto.nombre}}</h2>
+                <h3 class="fs-3 mb-1 text-light">Cantidad: {{producto.cantidad}}</h3>
+                  	<img [src]="producto.fotos[0]" style="height:200px !important; width: 250px !important;"> 
 
               </ion-card-content>
               <ion-item class="ion-text-center" align="center">

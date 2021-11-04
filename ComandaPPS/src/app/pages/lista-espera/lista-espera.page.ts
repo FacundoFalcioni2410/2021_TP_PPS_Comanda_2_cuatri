@@ -27,9 +27,7 @@ export class ListaEsperaPage implements OnInit {
 
     this.authService.getMesas()
     .subscribe((data)=>{
-
       this.mesasArray = data;
-
     });
 
     this.controles = this.fb.group({
@@ -48,15 +46,14 @@ export class ListaEsperaPage implements OnInit {
     for(let mesa of this.mesasArray){
       if(mesa.numero == mesaAsignada){
         mesaObj = mesa;
+        console.log(mesaObj);
         break;
       }
     }
-    
 
     this.authService.SetearMesaCliente(cliente,mesaAsignada)
     .then(()=>{
-
-      this.authService.UpdatearMesaCliente(mesaObj.id,true)
+      this.authService.UpdatearMesaCliente(mesaObj,true)
       .then(()=>{
         Swal.fire({
           title: 'Exito',
@@ -65,14 +62,9 @@ export class ListaEsperaPage implements OnInit {
           backdrop: false
         });
       });
-
-
-
     });
-
   }
 
   Refrescar(){
-    
   }
 }

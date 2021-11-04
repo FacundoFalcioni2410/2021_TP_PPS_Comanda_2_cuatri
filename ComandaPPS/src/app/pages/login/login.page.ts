@@ -65,9 +65,7 @@ export class LoginPage implements OnInit {
     this.logo = "../../../assets/spinner.gif";
     this.auth.login(this.form.value)
     .then( async res =>{
-      console.log(res);
       let user = await this.auth.getUsers(res.user.email);
-      console.log(user);
       if(user)
       {
         if(!user?.cuil && !user?.habilitado)
@@ -96,8 +94,6 @@ export class LoginPage implements OnInit {
           {
             this.router.navigate(['/lista-cocinero']);
           }
-          
-   
         }
         else
         {
