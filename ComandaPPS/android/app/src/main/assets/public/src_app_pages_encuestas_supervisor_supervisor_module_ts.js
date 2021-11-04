@@ -139,19 +139,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SupervisorPage": () => (/* binding */ SupervisorPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_supervisor_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./supervisor.page.html */ 93449);
 /* harmony import */ var _supervisor_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./supervisor.page.scss */ 1976);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ 71965);
 
 
 
 
 
-
-chart_js__WEBPACK_IMPORTED_MODULE_3__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_3__.ArcElement, chart_js__WEBPACK_IMPORTED_MODULE_3__.LineElement, chart_js__WEBPACK_IMPORTED_MODULE_3__.BarElement, chart_js__WEBPACK_IMPORTED_MODULE_3__.PointElement, chart_js__WEBPACK_IMPORTED_MODULE_3__.BarController, chart_js__WEBPACK_IMPORTED_MODULE_3__.BubbleController, chart_js__WEBPACK_IMPORTED_MODULE_3__.DoughnutController, chart_js__WEBPACK_IMPORTED_MODULE_3__.LineController, chart_js__WEBPACK_IMPORTED_MODULE_3__.PieController, chart_js__WEBPACK_IMPORTED_MODULE_3__.PolarAreaController, chart_js__WEBPACK_IMPORTED_MODULE_3__.RadarController, chart_js__WEBPACK_IMPORTED_MODULE_3__.ScatterController, chart_js__WEBPACK_IMPORTED_MODULE_3__.CategoryScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.LinearScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.LogarithmicScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.RadialLinearScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.TimeScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.TimeSeriesScale, chart_js__WEBPACK_IMPORTED_MODULE_3__.Decimation, chart_js__WEBPACK_IMPORTED_MODULE_3__.Filler, chart_js__WEBPACK_IMPORTED_MODULE_3__.Legend, chart_js__WEBPACK_IMPORTED_MODULE_3__.Title, chart_js__WEBPACK_IMPORTED_MODULE_3__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_3__.SubTitle);
 let SupervisorPage = class SupervisorPage {
     constructor(userService) {
         this.userService = userService;
@@ -168,11 +165,11 @@ let SupervisorPage = class SupervisorPage {
     }
     ngOnInit() {
     }
-    ionViewDidEnter() {
-        this.ctx = document.getElementById('myChart');
-        this.ctx1 = this.ctx.getContext('2d');
-        this.ActualizarGrafico();
-    }
+    //   ionViewDidEnter(){
+    //     this.ctx = document.getElementById('myChart') as any;
+    //     this.ctx1 = this.ctx.getContext('2d');
+    //     this.ActualizarGrafico();
+    //   }
     PersonaClickeada(event) {
         this.personaClickeada = event;
         this.clickeado = true;
@@ -180,56 +177,12 @@ let SupervisorPage = class SupervisorPage {
     change(value) {
         console.log(value.detail.value);
     }
-    ActualizarGrafico() {
-        var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_3__.Chart(this.ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-    graphClickEvent(event, array) {
-        //console.log(array[0].index);
-        // console.log(arrayDatos[array[0].index]);
-        //let imagen = document.getElementById('imagen') as HTMLImageElement
-        //let card = document.getElementById('card') as HTMLElement;
-        //card.style.display = 'block';
-        //imagen.src = url[array[0].index];
-    }
 };
 SupervisorPage.ctorParameters = () => [
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService }
 ];
-SupervisorPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+SupervisorPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
         selector: 'app-supervisor',
         template: _raw_loader_supervisor_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_supervisor_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]

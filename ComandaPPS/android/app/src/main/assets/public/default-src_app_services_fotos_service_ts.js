@@ -4436,7 +4436,6 @@ let FotosService = class FotosService {
         this.loading = false;
     }
     TakePhoto(objeto) {
-        var _a;
         return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
             let capturedPhoto;
             try {
@@ -4455,7 +4454,7 @@ let FotosService = class FotosService {
             }
             let dataUrl = capturedPhoto.dataUrl;
             let time = Date.now().toString();
-            this.nombreFoto = '/' + ((_a = this.auth.usuarioActual) === null || _a === void 0 ? void 0 : _a.email) + time;
+            this.nombreFoto = '/' + 'foto' + time; // this.auth.usuarioActual?.email + time;
             let ref = this.storage.ref(`fotos/` + this.nombreFoto);
             ref.putString(dataUrl, 'data_url', {
                 contentType: 'image/jpeg',
@@ -4500,6 +4499,7 @@ let FotosService = class FotosService {
                             }
                             else {
                                 this.auth.AltaEncuesta(objeto);
+                                this.router.navigate(['grafico-cliente']);
                             }
                         });
                     });
@@ -4512,6 +4512,7 @@ let FotosService = class FotosService {
                     referencia1.getDownloadURL().subscribe((url1) => {
                         objeto.fotos.push(url1);
                         this.auth.AltaEncuesta(objeto);
+                        this.router.navigate(['grafico-cliente']);
                     });
                 });
             }
@@ -4520,6 +4521,7 @@ let FotosService = class FotosService {
                     objeto.fotos = [];
                     objeto.fotos.push(url0);
                     this.auth.AltaEncuesta(objeto);
+                    this.router.navigate(['grafico-cliente']);
                 });
             }
         });
@@ -4531,12 +4533,24 @@ let FotosService = class FotosService {
             objeto.foto = url;
             if (objeto === null || objeto === void 0 ? void 0 : objeto.perfil) {
                 this.auth.AltaSupervisor(objeto);
+                this.router.navigate(['/login']);
             }
-            else if (objeto.tipo) {
+            else if (objeto === null || objeto === void 0 ? void 0 : objeto.tipo) {
                 this.auth.AltaEmpleado(objeto);
+                this.router.navigate(['/login']);
+            }
+            else if (objeto === null || objeto === void 0 ? void 0 : objeto.cantidadComensales) {
+                this.auth.AltaMesa(objeto);
             }
             else {
                 this.auth.AltaCliente(objeto);
+                if (objeto.tipoCliente === "anonimo") {
+                    this.auth.usuarioActual = objeto;
+                    this.router.navigate(['/ingreso-local']);
+                }
+                else {
+                    this.router.navigate(['/login']);
+                }
             }
             this.loading = false;
             this.mostrarToast({ text: 'Datos correctos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'success' });

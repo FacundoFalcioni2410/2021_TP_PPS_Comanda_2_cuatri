@@ -150,7 +150,7 @@ let SplashPage = class SplashPage {
     ionViewDidEnter() {
         _capacitor_splash_screen__WEBPACK_IMPORTED_MODULE_2__.SplashScreen.hide();
         setTimeout(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/login']);
         }, 2000);
     }
 };
@@ -195,7 +195,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div class='div'>\r\n    <h3 class=\"nombre1 text-dark\">Agustin Gaitan</h3>\r\n    <h3 class=\"nombre text-dark\">Facundo Falcioni</h3>\r\n    <h3 class=\"nombre2 text-dark\">Bogdan Krylov</h3>\r\n    <img src=\"./assets/icon.png\" alt=\"\" height=\"400\" width=\"400\" style=\"display:block;margin:auto;\" class='wobble-hor-bottom'>\r\n    <h3 class=\"division text-dark\">4 A</h3>\r\n  </div>\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\r\n  <div class='div'>\r\n    <h3 class=\"nombre1 text-dark\">Agustín Gaitán</h3>\r\n    <h3 class=\"nombre text-dark\">Facundo Falcioni</h3>\r\n    <h3 class=\"nombre2 text-dark\">Bogdan Krylov</h3>\r\n    <img src=\"./assets/icon.png\" alt=\"\" height=\"400\" width=\"400\" style=\"display:block;margin:auto;\" class='wobble-hor-bottom'>\r\n    <h3 class=\"division text-dark\">4 A</h3>\r\n  </div>\r\n</ion-content>\r\n");
 
 /***/ })
 

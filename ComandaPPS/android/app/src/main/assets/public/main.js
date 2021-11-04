@@ -50,7 +50,7 @@ const routes = [
     },
     {
         path: 'login',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_login_login_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 21053)).then(m => m.LoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 21053)).then(m => m.LoginPageModule)
     },
     {
         path: 'registro-cliente',
@@ -62,23 +62,23 @@ const routes = [
     },
     {
         path: 'registro-mesa',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-mesa_registro-mesa_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-mesa/registro-mesa.module */ 37942)).then(m => m.RegistroMesaPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-mesa_registro-mesa_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-mesa/registro-mesa.module */ 37942)).then(m => m.RegistroMesaPageModule)
     },
     {
         path: 'registro-empleado',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-empleado_registro-empleado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-empleado/registro-empleado.module */ 99056)).then(m => m.RegistroEmpleadoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-empleado_registro-empleado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-empleado/registro-empleado.module */ 99056)).then(m => m.RegistroEmpleadoPageModule)
     },
     {
         path: 'registro-supervisor',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-supervisor_registro-supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-supervisor/registro-supervisor.module */ 1912)).then(m => m.RegistroSupervisorPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-supervisor_registro-supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-supervisor/registro-supervisor.module */ 1912)).then(m => m.RegistroSupervisorPageModule)
     },
     {
         path: 'clientes',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("default-node_modules_chart_js_dist_chart_esm_js"), __webpack_require__.e("src_app_pages_encuestas_clientes_clientes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/encuestas/clientes/clientes.module */ 18682)).then(m => m.ClientesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("src_app_pages_encuestas_clientes_clientes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/encuestas/clientes/clientes.module */ 18682)).then(m => m.ClientesPageModule)
     },
     {
         path: 'supervisores',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_chart_js_dist_chart_esm_js"), __webpack_require__.e("src_app_pages_encuestas_supervisor_supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/encuestas/supervisor/supervisor.module */ 97950)).then(m => m.SupervisorPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_encuestas_supervisor_supervisor_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/encuestas/supervisor/supervisor.module */ 97950)).then(m => m.SupervisorPageModule)
     },
     {
         path: 'ingreso-local',
@@ -103,11 +103,11 @@ const routes = [
     },
     {
         path: 'lista-espera',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-espera_lista-espera_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-espera/lista-espera.module */ 42934)).then(m => m.ListaEsperaPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-espera_lista-espera_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-espera/lista-espera.module */ 42934)).then(m => m.ListaEsperaPageModule)
     },
     {
         path: 'carrito',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/carrito/carrito.module */ 74646)).then(m => m.CarritoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/carrito/carrito.module */ 74646)).then(m => m.CarritoPageModule)
     },
     {
         path: 'lista-bartender',
@@ -117,10 +117,30 @@ const routes = [
         path: 'chat',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_chat_chat_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/chat/chat.module */ 35501)).then(m => m.ChatPageModule)
     },
-    // {
-    //   path: 'chat',
-    //   loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
-    // },
+    {
+        path: 'listado-pedidos-mozo',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_listado-pedidos-mozo_listado-pedidos-mozo_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/listado-pedidos-mozo/listado-pedidos-mozo.module */ 76895)).then(m => m.ListadoPedidosMozoPageModule)
+    },
+    {
+        path: 'lista-cocinero',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_lista-cocinero_lista-cocinero_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/lista-cocinero/lista-cocinero.module */ 70221)).then(m => m.ListaCocineroPageModule)
+    },
+    {
+        path: 'mesa-asignada-cliente',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_mesa-asignada-cliente_mesa-asignada-cliente_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/mesa-asignada-cliente/mesa-asignada-cliente.module */ 88037)).then(m => m.MesaAsignadaClientePageModule)
+    },
+    {
+        path: 'cliente-espera-pedido',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_cliente-espera-pedido_cliente-espera-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cliente-espera-pedido/cliente-espera-pedido.module */ 23262)).then(m => m.ClienteEsperaPedidoPageModule)
+    },
+    {
+        path: 'grafico-cliente',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_grafico-cliente_grafico-cliente_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/grafico-cliente/grafico-cliente.module */ 47628)).then(m => m.GraficoClientePageModule)
+    },
+    {
+        path: 'cuenta-del-pedido',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_cuenta-del-pedido_cuenta-del-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cuenta-del-pedido/cuenta-del-pedido.module */ 11831)).then(m => m.CuentaDelPedidoPageModule)
+    }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -158,7 +178,6 @@ __webpack_require__.r(__webpack_exports__);
 
 let AppComponent = class AppComponent {
     constructor() {
-        console.log('test');
     }
 };
 AppComponent.ctorParameters = () => [];
@@ -395,6 +414,15 @@ let AuthService = class AuthService {
             }
         });
     }
+    TraerPedidosGenerico(campo, valor) {
+        return this.firestore.collection('pedidos', ref => ref.where(campo, '==', valor)).valueChanges({ idField: 'id' });
+    }
+    TraerPedidos() {
+        return this.firestore.collection('pedidos').valueChanges({ idField: 'id' });
+    }
+    PedidoCliente(clienteID, pedido) {
+        return this.firestore.collection('clientes').doc(clienteID).update({ pedido: pedido });
+    }
     TraerClientesDeshabilitados() {
         return this.firestore.collection('clientes', ref => ref.where('habilitado', '==', false)).valueChanges({ idField: 'id' });
     }
@@ -407,17 +435,26 @@ let AuthService = class AuthService {
     UpdateEstadoCliente(cliente) {
         this.clienteCollection.doc(cliente.id).update({ habilitado: cliente.habilitado });
     }
+    UpdatearMesaCliente(mesa, valor) {
+        return this.mesaCollection.doc(mesa.id).update({ cliente: valor });
+    }
+    updateClienteActual(cliente) {
+        return this.clienteCollection.doc(cliente.id).update({ mesaAsignada: cliente.mesaAsignada, pedido: cliente.pedido, listaEspera: cliente.listaEspera });
+    }
     UpdatearIngresoCliente(cliente, valor) {
-        return this.clienteCollection.doc(cliente.id).update({ 'ingresoLocal': valor });
+        return this.clienteCollection.doc(cliente.id).update({ 'ingresoMesa': valor });
     }
     UpdatearEstadoPedido(idPedido, valor) {
         return this.pedidosCollection.doc(idPedido).update({ 'estado': valor });
     }
     UpdatearEtapasRealizadasPedido(idPedido, valor) {
-        return this.pedidosCollection.doc(idPedido).update({ 'etapasRealizadas': valor });
+        return this.pedidosCollection.doc(idPedido).update({ 'etapasRealizadas': valor, cocteleriaEntregado: true });
+    }
+    UpdatearEtapasRealizadasPedidoCocina(idPedido, valor) {
+        return this.pedidosCollection.doc(idPedido).update({ 'etapasRealizadas': valor, cocinaEntregado: true });
     }
     TraerPedido(idPedido) {
-        return this.pedidosCollection.doc(idPedido).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
+        return this.pedidosCollection.doc(idPedido).valueChanges({ idField: 'id' });
     }
     AltaCliente(cliente) {
         cliente.listaEspera = false;
@@ -675,7 +712,7 @@ var map = {
 		"node_modules_ionic_core_dist_esm_ion-loading_entry_js"
 	],
 	"./ion-menu_3.entry.js": [
-		76272,
+		86030,
 		"common",
 		"node_modules_ionic_core_dist_esm_ion-menu_3_entry_js"
 	],
@@ -867,7 +904,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title>Start Menu</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n      <ion-item [routerLink]=\"['/home']\" (click)=\"this.menu.close('main')\">Home</ion-item>\r\n      <ion-item [routerLink]=\"['/login']\">Login</ion-item>\r\n      <ion-item [routerLink]=\"['/registro-cliente']\">Registro cliente</ion-item>\r\n      <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\r\n      <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\r\n\r\n    </ion-list>\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n      <ion-item [routerLink]=\"['/home']\">Home</ion-item>\r\n      <!-- <ion-item>Registro empleado</ion-item>\r\n      <ion-item>Registro supervisor</ion-item> -->\r\n      <ion-item [routerLink]=\"['/chat']\">Chat</ion-item>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='dueno'\">Churrasic Park Dueño </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='supervisor'\">Churrasic Park Supervisor</ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipo\">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\" (click)=\"this.menu.close('main')\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n\r\n    </ion-list>\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/lista-espera']\">Lista de espera</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/mesa-asignada-cliente']\">Asignar mesas</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/registro-cliente']\">Registrar cliente</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'\">\r\n        <ion-item [routerLink]=\"['/registro-producto']\">Registrar producto</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-mesa']\">Alta de mesa</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth?.usuarioActual?.tipo === 'mozo'\">\r\n        <ion-item [routerLink]=\"['/chat']\">Chat</ion-item>\r\n      </ion-menu-toggle>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
 
 /***/ })
 

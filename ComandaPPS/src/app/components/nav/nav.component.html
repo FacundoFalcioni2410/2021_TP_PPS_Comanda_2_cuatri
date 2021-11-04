@@ -4,6 +4,7 @@
       <ion-title *ngIf="this.auth.usuarioActual?.perfil=='dueno'">Churrasic Park Dueño </ion-title>
       <ion-title *ngIf="this.auth.usuarioActual?.perfil=='supervisor'">Churrasic Park Supervisor</ion-title>
       <ion-title *ngIf="this.auth.usuarioActual?.tipo">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.tipoCliente">Churrasic Park - Cliente</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content style="--background: #232323">
@@ -50,6 +51,10 @@
       <ion-menu-toggle *ngIf="this.auth?.usuarioActual?.tipo === 'mozo'">
         <ion-item [routerLink]="['/chat']">Chat</ion-item>
       </ion-menu-toggle>
+
+      <ion-footer class="bar-stable">
+        <ion-item [routerLink]="['/login']" style="left:0;right:0;margin:0; width: 100%;position: fixed;">fsafasfas</ion-item>
+      </ion-footer>
     </ion-list>
   </ion-content>
 </ion-menu>

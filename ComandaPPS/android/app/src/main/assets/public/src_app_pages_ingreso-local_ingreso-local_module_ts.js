@@ -115,8 +115,9 @@ let IngresoLocalPage = class IngresoLocalPage {
         this.userService = userService;
         this.route = route;
         this.listaEspera = false;
-        this.userService.getUser().subscribe((res) => {
-            this.usuario = res;
+        this.userService.TraerGenerico('clientes', 'uid', this.userService.usuarioActual.uid).subscribe(res => {
+            this.usuario = res[0];
+            this.userService.usuarioActual = res[0];
         });
     }
     ngOnInit() {
@@ -124,11 +125,11 @@ let IngresoLocalPage = class IngresoLocalPage {
     EntrarEnListaEspera() {
         var _a;
         this.listaEspera = true;
-        this.userService.usuarioActual.listaEspera = true;
-        this.userService.updateListaEsperaCliente((_a = this.userService.usuarioActual) === null || _a === void 0 ? void 0 : _a.id, true);
+        this.usuario.listaEspera = true;
+        this.userService.updateListaEsperaCliente((_a = this.usuario) === null || _a === void 0 ? void 0 : _a.id, true);
     }
     Scan() {
-        if (!this.usuario.listaEspera && !this.usuario.mesaAsignada) {
+        if (!this.usuario.listaEspera && this.usuario.mesaAsignada !== 0) {
             sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
                 title: 'Escaneo',
                 backdrop: false,
@@ -151,7 +152,7 @@ let IngresoLocalPage = class IngresoLocalPage {
                 }
             }));
         }
-        else { //CASO EN EL QUE EL CLIENTE YA HAYA SIDO ACEPTADO EN LA LISTA Y TIENE MESA ASIGNADA
+        else if (this.usuario.listaEspera && this.usuario.mesaAsignada != 0) { //CASO EN EL QUE EL CLIENTE YA HAYA SIDO ACEPTADO EN LA LISTA Y TIENE MESA ASIGNADA
             sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
                 title: 'Escaneo',
                 backdrop: false,
@@ -172,6 +173,50 @@ let IngresoLocalPage = class IngresoLocalPage {
                         console.log(datos.text);
                         if (datos.text == this.usuario.mesaAsignada) {
                             this.route.navigateByUrl('/realizar-pedido');
+                        }
+                        else {
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
+                                title: "Error",
+                                icon: 'error',
+                                text: 'No se le asignó esa mesa.',
+                                timer: 4000,
+                                timerProgressBar: true,
+                                backdrop: false,
+                            });
+                        }
+                    }
+                }
+            }));
+        }
+        else if (!this.usuario.listaEspera && this.usuario.mesaAsignada == 0) {
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
+                title: 'Escaneo',
+                backdrop: false,
+                text: `Escanee el código QR de ingreso a la lista de espera para ver los gráficos.`,
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+                showCancelButton: true,
+                confirmButtonText: 'Escanear',
+                cancelButtonText: 'Cancelar',
+                reverseButtons: true,
+            }).then((result) => (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+                if (result.isConfirmed) {
+                    let datos = yield this.qrS.scan();
+                    console.log(datos);
+                    if (datos.text) {
+                        if (datos.text == "ingresoListaDeEspera") {
+                            this.route.navigateByUrl('/grafico-cliente');
+                        }
+                        else {
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({
+                                title: "Error",
+                                icon: 'error',
+                                text: 'No se le asignó esa mesa.',
+                                timer: 4000,
+                                timerProgressBar: true,
+                                backdrop: false,
+                            });
                         }
                     }
                 }
@@ -207,7 +252,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmdyZXNvLWxvY2FsLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("ion-content {\n  --background: url('a.jpg') left 100%;\n  background-repeat: no-repeat;\n  background-attachment: fixed !important;\n}\n\n.bg {\n  background-color: #232323a1;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZ3Jlc28tbG9jYWwucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0NBQUE7RUFDQSw0QkFBQTtFQUNBLHVDQUFBO0FBQ0o7O0FBRUE7RUFDSSwyQkFBQTtBQUNKIiwiZmlsZSI6ImluZ3Jlc28tbG9jYWwucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnR7XHJcbiAgICAtLWJhY2tncm91bmQ6IHVybCgnLi4vLi4vLi4vYXNzZXRzL2EuanBnJykgbGVmdCAxMDAlO1xyXG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmJne1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzIzMjMyM2ExO1xyXG59Il19 */");
 
 /***/ }),
 
@@ -222,7 +267,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Ingreso al local</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-menu-button menu=\"first\" ></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <div class=\"container mt-3 bg-dark\">\r\n    <div class=\"row flex-lg-row-reverse align-items-center justify-content-center g-5\">\r\n      <div class=\"col-12 col-sm-8 col-lg-6 align-items-center justify-content-center\">\r\n        <img src=\"../../../assets/puerta.png\" class=\"d-block mt-5 mx-lg-auto img-fluid\" alt=\"Bootstrap Themes\" width=\"700\" height=\"500\" loading=\"lazy\">\r\n      </div>\r\n      <div class=\"col-lg-6 text-center\">\r\n        <h1 class=\"display-5 fw-bold lh-1 mb-3\">Bienvenido a Churrasic Park</h1>\r\n        <p *ngIf=\"!this.usuario?.listaEspera\" class=\"lead\">Por favor, ingrese a la lista de espera y espere a que un metre le asigne una mesa.</p>\r\n        <i *ngIf=\"!this.usuario?.listaEspera\" class=\"fas fa-qrcode pt-3 ps-2\" (click)=\"Scan()\" style=\"font-size: 32px;\"></i>\r\n        <div *ngIf=\"this.usuario?.listaEspera && !this.usuario.mesaAsignada\" class=\"d-grid gap-2 d-md-flex justify-content-md-start\">\r\n          <label>Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>\r\n        </div>\r\n        <div *ngIf=\"this.usuario?.mesaAsignada\" class=\"d-grid gap-2 d-md-flex justify-content-md-start\">\r\n          <label>Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}), scanea el QR de tu mesa</label>\r\n          <i class=\"fas fa-qrcode pt-3 ps-2 mb-5\" (click)=\"Scan()\" style=\"font-size: 32px;\"></i>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>\r\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>Ingreso al local</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-menu-button menu=\"first\"></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <div class=\"container text-light\">\r\n    <div class=\"row align-items-center justify-content-center\" style=\"height:90vh;\">\r\n      <div class=\"col-12 text-center bg\">\r\n        <h1 class=\"display-5 fw-bold lh-1 m-0 p-0\">Bienvenido a Churrasic Park</h1>\r\n        <p *ngIf=\"!this.usuario?.listaEspera && !this.usuario?.mesaAsignada\" class=\"lead fw-bold\">Por favor, ingrese a\r\n          la lista de espera y espere a que un metre le asigne una mesa.</p>\r\n        <i *ngIf=\"!this.usuario?.listaEspera && !this.usuario?.mesaAsignada\" class=\"fas fa-qrcode pt-3 ps-2 mb-3\"\r\n          (click)=\"Scan()\" style=\"font-size: 55px;\"></i>\r\n        <div *ngIf=\"this.usuario?.listaEspera && !this.usuario?.mesaAsignada\"\r\n          class=\"d-grid d-md-flex justify-content-md-start\">\r\n          <label class=\"fw-bold\">Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>\r\n        </div>\r\n        <div *ngIf=\"this.usuario?.mesaAsignada\" class=\"d-grid gap-2 d-md-flex justify-content-md-start\">\r\n          <label class=\"fw-bold\">Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}), scanea el QR de tu\r\n            mesa</label>\r\n          <i class=\"fas fa-qrcode pt-3 ps-2 mb-3\" (click)=\"Scan()\" style=\"font-size: 55px !important;\"></i>\r\n        </div>\r\n        <div *ngIf=\"!this.usuario?.listaEspera && this.usuario?.mesaAsignada === 0\"\r\n          class=\"d-grid gap-2 d-md-flex justify-content-md-start\">\r\n          <label class=\"fw-bold mb-2\">Escaneá el código QR de la lista de espera para visualizar los gráficos de las\r\n            encuestas.</label>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</ion-content>");
 
 /***/ })
 
