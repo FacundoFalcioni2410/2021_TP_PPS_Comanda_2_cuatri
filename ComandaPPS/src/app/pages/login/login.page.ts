@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   logo = "../../../assets/restaurant.png";
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService, private audioS : AudioService, private vibration: Vibration) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService, public audioS : AudioService, private vibration: Vibration) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -80,6 +80,7 @@ export class LoginPage implements OnInit {
         {
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
           setTimeout(()=>{
+            this.audioS.PlayAudio();
             this.logo = "../../../assets/restaurant.png";
             this.router.navigate(['/ingreso-local']);
           },1500);

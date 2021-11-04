@@ -6,6 +6,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { AudioService } from 'src/app/services/audio.service';
 
 @Component({
   selector: 'app-realizar-pedido',
@@ -20,7 +21,7 @@ export class RealizarPedidoPage implements OnInit {
   cantidadMaxima: number = 0;
   usuario: any;
 
-  constructor(private modalController: ModalController, private userService: AuthService, private vibration: Vibration) {
+  constructor(private modalController: ModalController, private userService: AuthService, private vibration: Vibration, public audio : AudioService) {
     this.usuario = this.userService.usuarioActual;
     this.userService.TraerGenerico('mesas', 'numero', this.usuario.mesaAsignada).subscribe((res: any) =>{
       this.cantidadMaxima = res[0]?.cantidadComensales;

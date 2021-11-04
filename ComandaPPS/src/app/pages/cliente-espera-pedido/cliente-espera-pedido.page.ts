@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,8 @@ export class ClienteEsperaPedidoPage implements OnInit {
 
   pedidoDelCliente : any;
 
-  constructor(public userService : AuthService, private qrS : QRService, private router : Router, private vibration: Vibration) { 
+  constructor(public userService : AuthService, private qrS : QRService, private router : Router, private vibration: Vibration,
+              public audio : AudioService) { 
     console.log('pedido dentro del clinte ', this.userService.usuarioActual.pedido);
     this.userService.TraerPedido(this.userService.usuarioActual.pedido)
     .subscribe((data)=>{
@@ -47,6 +49,7 @@ export class ClienteEsperaPedidoPage implements OnInit {
 
         if(datos.text){
           if(datos.text == this.userService.usuarioActual.mesaAsignada){
+            this.audio.PlayAudio();
             this.router.navigateByUrl('/mesa-asignada-cliente');
           }
           else

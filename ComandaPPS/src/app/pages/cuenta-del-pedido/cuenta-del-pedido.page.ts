@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,8 @@ export class CuentaDelPedidoPage implements OnInit {
   scaneo: boolean = false;
   totalPagar;
 
-  constructor(private userService: AuthService, private qrS: QRService, private router: Router) {
+  constructor(private userService: AuthService, private qrS: QRService, private router: Router,
+              public audio : AudioService) {
     this.userService.TraerPedido(this.userService?.usuarioActual?.pedido).subscribe(res =>{
       this.pedido = res;
 
@@ -27,6 +29,7 @@ export class CuentaDelPedidoPage implements OnInit {
       {
         Swal.fire({text: 'Su pago ha sido confirmado por el mozo, muchas gracias por visitarnos', toast: true, timer:3500, icon: 'success', timerProgressBar: true, position: 'bottom'})
         setTimeout(() =>{
+          this.audio.PlayAudio();
           this.router.navigate(['ingreso-local']);
         },3500)
       }

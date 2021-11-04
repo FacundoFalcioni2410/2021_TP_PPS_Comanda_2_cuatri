@@ -4,7 +4,7 @@
     <ion-buttons slot="end">
       <ion-menu-button menu="first" style="font-size:14px;">Menu</ion-menu-button>
     </ion-buttons>
-    <ion-button slot="secondary" color="primary" style="font-size:10px;" [routerLink]="['/chat']">Consultar al mozo
+    <ion-button slot="secondary" color="primary" style="font-size:10px;" (click)="audio.PlayAudio()"[routerLink]="['/chat']">Consultar al mozo
     </ion-button>
   </ion-toolbar>
 </ion-header>

@@ -12,6 +12,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 //Toast
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { AudioService } from './audio.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class FotosService {
   disable: boolean = false;
   loading = false;
 
-  constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService, private vibration: Vibration) {
+  constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService, private vibration: Vibration,
+              public audio : AudioService) {
   }
 
   async TakePhoto(objeto: any){
@@ -106,6 +108,7 @@ export class FotosService {
                 else
                 {
                   this.auth.AltaEncuesta(objeto);
+                  this.audio.PlayAudio();
                   this.router.navigate(['grafico-cliente']);
                 }
               });
@@ -122,6 +125,7 @@ export class FotosService {
             objeto.fotos.push(url1);
             
             this.auth.AltaEncuesta(objeto);
+            this.audio.PlayAudio();
             this.router.navigate(['grafico-cliente']);
                 
           });
@@ -133,6 +137,7 @@ export class FotosService {
         objeto.fotos = [];
         objeto.fotos.push(url0);
         this.auth.AltaEncuesta(objeto);
+        this.audio.PlayAudio();
         this.router.navigate(['grafico-cliente']);
       });
     }
@@ -149,11 +154,13 @@ export class FotosService {
         if(objeto?.perfil)
         {
           this.auth.AltaSupervisor(objeto);
+          this.audio.PlayAudio();
           this.router.navigate(['/login']);
         }
         else if(objeto?.tipo)
         {
           this.auth.AltaEmpleado(objeto);
+          this.audio.PlayAudio();
           this.router.navigate(['/login']);
 
         }
@@ -167,10 +174,12 @@ export class FotosService {
           if(objeto.tipoCliente === "anonimo")
           {
             this.auth.usuarioActual = objeto;
+            this.audio.PlayAudio();
             this.router.navigate(['/ingreso-local']);
           }
           else
           {
+            this.audio.PlayAudio();
             this.router.navigate(['/login']);
           }
         }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vibration } from '@ionic-native/vibration/ngx';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,8 @@ export class IngresoLocalPage implements OnInit {
 
   listaEspera : boolean = false;
   usuario: any
-  constructor(private qrS: QRService, public userService : AuthService, private route : Router, private vibration: Vibration) {
+  constructor(private qrS: QRService, public userService : AuthService, private route : Router, private vibration: Vibration,
+              public audio : AudioService) {
     this.userService.TraerGenerico('clientes','uid', this.userService.usuarioActual.uid).subscribe(res =>{
       this.usuario = res[0];
       this.userService.usuarioActual = res[0];
@@ -96,6 +98,7 @@ export class IngresoLocalPage implements OnInit {
             if(datos.text){
               console.log(datos.text);
               if(datos.text == this.usuario.mesaAsignada){
+                this.audio.PlayAudio();
                 this.route.navigateByUrl('/realizar-pedido');
               }else{
                 this.vibration.vibrate(2000);
@@ -135,6 +138,7 @@ export class IngresoLocalPage implements OnInit {
 
           if(datos.text){
             if(datos.text == "ingresoListaDeEspera"){
+              this.audio.PlayAudio();
               this.route.navigateByUrl('/grafico-cliente');
             }else{
               this.vibration.vibrate(2000);

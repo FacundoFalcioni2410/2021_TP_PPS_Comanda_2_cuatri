@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChatService } from 'src/app/services/chat.service';
 
@@ -10,7 +11,7 @@ import { ChatService } from 'src/app/services/chat.service';
 export class ChatPage implements OnInit {
   items: any;
   mensaje: any;
-  constructor(private chat: ChatService, public userService: AuthService) {
+  constructor(private chat: ChatService, public userService: AuthService, public audio : AudioService) {
 
     this.items = this.chat.items;
 
