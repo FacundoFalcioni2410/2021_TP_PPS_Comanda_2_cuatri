@@ -9,45 +9,54 @@
 
 <ion-content>
   <div *ngIf="listaDeEsperaArray; else spinner">
-    <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
-      <ion-col class="bg">
-        Acepte al cliente para concederle una mesa o rechacelo
-      </ion-col>
-    </ion-row>
-    <ion-grid>
+    <div *ngIf="listaDeEsperaArray.length; else vacio">
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
-
-        <ion-col size=6 *ngFor="let item of listaDeEsperaArray" [ngClass]="{'d-none' : item.mesaAsignada }">
-          <div>
-            <ion-card style="height: 150%; width: 95%;">
-              <img class="d-block m-auto img-circle img-responsive" [src]="item.foto" />
-              <ion-card-header>
-                <ion-card-title style="font-size:12px;">{{item.nombre}} {{item.apellido}}</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div>
-                  <form [formGroup]="controles" (ngSubmit)="AsignarMesa(item)">
-                    <ion-item>
-                      <ion-select formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
-                        <div *ngFor="let mesa of mesasArray">
-                          <ion-select-option *ngIf="!mesa.cliente" value={{mesa.numero}}>{{mesa.numero}}
-                          </ion-select-option>
-                        </div>
-                      </ion-select>
-                    </ion-item>
-                    <ion-item>
-                      <ion-button [disabled]="controles.invalid" color="success" type="submit">Asignar</ion-button>
-                    </ion-item>
-                  </form>
-                </div>
-              </ion-card-content>
-            </ion-card>
-          </div>
+        <ion-col class="bg">
+          Acepte al cliente para concederle una mesa o rechacelo
         </ion-col>
       </ion-row>
-    </ion-grid>
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
+
+          <ion-col size=6 *ngFor="let item of listaDeEsperaArray" [ngClass]="{'d-none' : item.mesaAsignada }">
+            <div>
+              <ion-card style="height: 150%; width: 95%;">
+                <img class="d-block m-auto img-circle img-responsive" [src]="item.foto" />
+                <ion-card-header>
+                  <ion-card-title style="font-size:12px;">{{item.nombre}} {{item.apellido}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <div>
+                    <form [formGroup]="controles" (ngSubmit)="AsignarMesa(item)">
+                      <ion-item>
+                        <ion-select formControlName="mesa" type="ios" interface="popover" placeholder="N° Mesa">
+                          <div *ngFor="let mesa of mesasArray">
+                            <ion-select-option *ngIf="!mesa.cliente" value={{mesa.numero}}>{{mesa.numero}}
+                            </ion-select-option>
+                          </div>
+                        </ion-select>
+                      </ion-item>
+                      <ion-item>
+                        <ion-button [disabled]="controles.invalid" color="success" type="submit">Asignar</ion-button>
+                      </ion-item>
+                    </form>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
   <ng-template #spinner>
     <app-spinner></app-spinner>
+  </ng-template>
+  <ng-template #vacio>
+    <div class="container">
+      <div class="row align-items-center justify-content-center g-5 vh-100">
+          <h4 class="bg text-center">Por el momento no hay clientes en la lista de espera</h4>
+      </div>
+    </div>
   </ng-template>
 </ion-content>

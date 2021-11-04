@@ -22,7 +22,7 @@ export class RealizarPedidoPage implements OnInit {
   constructor(private modalController: ModalController, private userService: AuthService) {
     this.usuario = this.userService.usuarioActual;
     this.userService.TraerGenerico('mesas', 'numero', this.usuario.mesaAsignada).subscribe((res: any) =>{
-      this.cantidadMaxima = res[0].cantidadComensales;
+      this.cantidadMaxima = res[0]?.cantidadComensales;
     });
   }
 

@@ -20,9 +20,15 @@ export class ListaEsperaPage implements OnInit {
   constructor(private authService : AuthService, private fb : FormBuilder, private pushNotification: PushNotificationsService) {
 
     this.authService.TraerGenerico('clientes','listaEspera',true)
-    .subscribe((data)=>{
-      console.log(data);
-      this.listaDeEsperaArray = data;
+    .subscribe((data: any)=>{
+      this.listaDeEsperaArray = [];
+      for(let item of data)
+      {
+        if(item?.mesaAsignada === 0 || !item?.mesaAsignada)
+        {
+          this.listaDeEsperaArray.push(item);
+        }
+      }
     });
 
     this.authService.getMesas()
