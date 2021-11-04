@@ -1,7 +1,11 @@
 <ion-menu side="start" menuId="first" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Start Menu</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.perfil">Dueño</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'metre'">Metre</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'mozo'">Mozo</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'bartender'">Bartender</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'cocinero'">Cocinero</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content style="--background: #232323">
@@ -10,6 +14,13 @@
         <ion-item [routerLink]="['/home']" (click)="this.menu.close('main')">Home</ion-item>
       </ion-menu-toggle>
       
+
+    </ion-list>
+    <ion-list *ngIf="this.auth?.usuarioActual">
+      <ion-menu-toggle>
+        <ion-item [routerLink]="['/home']">Home</ion-item>
+      </ion-menu-toggle>
+
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
         <ion-item [routerLink]="['/lista-espera']">Lista de espera</ion-item>
       </ion-menu-toggle>
@@ -25,10 +36,6 @@
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'">
         <ion-item [routerLink]="['/registro-producto']">Registrar producto</ion-item>
       </ion-menu-toggle>
-
-      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
-        <ion-item [routerLink]="['/registro-cliente']">Registrar cliente</ion-item>
-      </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
         <ion-item [routerLink]="['/registro-empleado']">Registro empleado</ion-item>
@@ -40,12 +47,6 @@
 
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
         <ion-item [routerLink]="['/registro-mesa']">Alta de mesa</ion-item>
-      </ion-menu-toggle>
-
-    </ion-list>
-    <ion-list *ngIf="this.auth?.usuarioActual">
-      <ion-menu-toggle>
-        <ion-item [routerLink]="['/home']">Home</ion-item>
       </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth?.usuarioActual?.tipo === 'mozo'">
