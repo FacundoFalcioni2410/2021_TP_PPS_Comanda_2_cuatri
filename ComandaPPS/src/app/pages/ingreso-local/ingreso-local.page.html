@@ -8,22 +8,22 @@
 </ion-header>
 <ion-content>
 
-  <div class="container mt-3 text-light">
-    <div class="row align-items-center justify-content-center g-5 vh-100">
-      <div class="col-lg-6 text-center bg">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a Churrasic Park</h1>
+  <div class="container text-light">
+    <div class="row align-items-center justify-content-center" style="height:90vh;">
+      <div class="col-12 text-center bg">
+        <h1 class="display-5 fw-bold lh-1 m-0 p-0">Bienvenido a Churrasic Park</h1>
         <p *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="lead fw-bold">Por favor, ingrese a
           la lista de espera y espere a que un metre le asigne una mesa.</p>
-        <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2 mb-5"
+        <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2 mb-3"
           (click)="Scan()" style="font-size: 55px;"></i>
         <div *ngIf="this.usuario?.listaEspera && !this.usuario?.mesaAsignada"
-          class="d-grid gap-2 d-md-flex justify-content-md-start">
+          class="d-grid d-md-flex justify-content-md-start">
           <label class="fw-bold">Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>
         </div>
         <div *ngIf="this.usuario?.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
           <label class="fw-bold">Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}), scanea el QR de tu
             mesa</label>
-          <i class="fas fa-qrcode pt-3 ps-2 mb-5" (click)="Scan()" style="font-size: 55px !important;"></i>
+          <i class="fas fa-qrcode pt-3 ps-2 mb-3" (click)="Scan()" style="font-size: 55px !important;"></i>
         </div>
         <div *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada === 0"
           class="d-grid gap-2 d-md-flex justify-content-md-start">

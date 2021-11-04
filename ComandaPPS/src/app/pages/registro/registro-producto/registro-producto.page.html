@@ -1,13 +1,11 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button>
-          <ion-icon name="arrow-back"></ion-icon>
-        </ion-back-button>
+  <ion-toolbar>
+      <ion-title>Agregar producto</ion-title>
+      <ion-buttons slot="end">
+          <ion-menu-button menu="first"></ion-menu-button>
       </ion-buttons>
-      <ion-title>Registro de producto</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
@@ -25,10 +23,10 @@
                       <label for="nombre"><b>Nombre del producto</b></label>
                       <input type="text" formControlName='nombre' name="nombre" required>
                       
-                      <div class='text-danger p-1 m-0' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.required">
+                      <div class='text-light p-1 m-0' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.required">
                           Ingrese el nombre del producto
                       </div>
-                      <div class='text-danger p-1 m-0' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.minlength">
+                      <div class='text-light p-1 m-0' *ngIf="controles.get('nombre')?.touched && controles.get('nombre')?.errors?.minlength">
                         Ingrese un nombre del producto valido
                       </div>
                   </div>
@@ -36,10 +34,10 @@
                         <label for="descripcion"><b>Descripcion</b></label>
                         <input type="text" formControlName='descripcion' name="descripcion" required>
                         
-                        <div class='text-danger p-1' *ngIf="controles.get('descripcion')?.touched && controles.get('descripcion')?.errors?.required">
+                        <div class='text-light p-1' *ngIf="controles.get('descripcion')?.touched && controles.get('descripcion')?.errors?.required">
                             Ingrese la descripcion
                         </div>
-                        <div class='text-danger p-1' *ngIf="controles.get('descripcion')?.touched && controles.get('descripcion')?.errors?.minlength">
+                        <div class='text-light p-1' *ngIf="controles.get('descripcion')?.touched && controles.get('descripcion')?.errors?.minlength">
                             Ingrese una descripcion valida.
                         </div>
                     </div>
@@ -47,10 +45,10 @@
                         <label for="tiempo"><b>Tiempo de elaboracion</b></label>
                         <input type="number" formControlName='TElaboracion' name="TElaboracion" required>
                         
-                        <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.required">
+                        <div class='text-light p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.required">
                             Ingrese un tiempo de elaboracion
                         </div>
-                        <div class='text-danger p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.maxlength">
+                        <div class='text-light p-1' *ngIf="controles.get('TElaboracion')?.touched && controles.get('TElaboracion')?.errors?.maxlength">
                             Ingrese un tiempo de elaboracion valido.
                         </div>
                     </div>
@@ -58,10 +56,10 @@
                         <label for="precio"><b>Precio</b></label>
                         <input type="number" formControlName='precio' name="precio" required>
                         
-                        <div class='text-danger p-1' *ngIf="controles.get('precio')?.touched && controles.get('precio')?.errors?.required">
+                        <div class='text-light p-1' *ngIf="controles.get('precio')?.touched && controles.get('precio')?.errors?.required">
                             Ingrese el precio
                         </div>
-                        <div class='text-danger p-1' *ngIf="controles.get('precio')?.touched && controles.get('precio')?.errors?.minlength">
+                        <div class='text-light p-1' *ngIf="controles.get('precio')?.touched && controles.get('precio')?.errors?.minlength">
                             Ingrese un precio valido
                         </div>
                     </div>

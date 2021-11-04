@@ -67,7 +67,7 @@ export class RealizarPedidoPage implements OnInit {
       });
       await modal.present();
       await modal.onDidDismiss().then(res =>{
-        this.productos = res.data.productos
+        this.productos = res.data.productos;
       })
   }
 

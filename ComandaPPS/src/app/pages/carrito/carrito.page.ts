@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,7 @@ export class CarritoPage implements OnInit {
   precio: number = 0;
   maxTiempo: number;
 
-  constructor(private modalController: ModalController, private userService: AuthService) {
+  constructor(private modalController: ModalController, private userService: AuthService, private router: Router) {
     
   }
 
@@ -87,6 +88,9 @@ export class CarritoPage implements OnInit {
       this.userService.PedidoCliente(this.userService?.usuarioActual?.id, doc.id);
       this.userService.usuarioActual.pedido = doc.id;
       Swal.fire({text: `Pedido realizado con exito, recuerde que el tiempo estimado de su entrega es de: ${this.maxTiempo} minutos`, toast: true, timer: 3000, timerProgressBar: true, icon: 'success', position: 'bottom'});
+      setTimeout(() =>{
+        this.router.navigate(['/cliente-espera-pedido']);
+      },3000)
     });
   }
 

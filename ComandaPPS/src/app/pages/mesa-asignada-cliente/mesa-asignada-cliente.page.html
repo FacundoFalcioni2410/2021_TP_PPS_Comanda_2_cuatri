@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="container mt-3">
-    <div class="row vh-100 align-items-center justify-content-center g-5">
+    <div class="row align-items-center justify-content-center g-5" style="height:90vh;">
       <div class="col-lg-6 text-center bg">
         <h1 class="display-5 fw-bold lh-1 mb-3">Estado de su pedido: {{this.pedido?.estado}}</h1>
         <div *ngIf="this.pedido?.estado === 'recibido'" class="d-grid gap-2 d-md-flex justify-content-md-start">

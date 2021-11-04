@@ -1,14 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button>
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-back-button>
-    </ion-buttons>
-    <ion-title>Registro de mesa</ion-title>
+      <ion-title>Agregar mesa</ion-title>
+      <ion-buttons slot="end">
+          <ion-menu-button menu="first"></ion-menu-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
   <ion-content>
     <div class="container" style="max-height: 100vh !important;" >
 
@@ -23,10 +20,10 @@
                       <label for="nombre"><b>Número de la mesa</b></label>
                       <input type="number" formControlName='numero' name="numero" required>
                       
-                      <div class='text-danger p-1 m-0' *ngIf="controles.get('numero')?.touched && controles.get('numero')?.errors?.required">
+                      <div class='text-light p-1 m-0' *ngIf="controles.get('numero')?.touched && controles.get('numero')?.errors?.required">
                           Ingrese el número de la mesa
                       </div>
-                      <div class='text-danger p-1 m-0' *ngIf="controles.get('numero')?.touched && controles.get('numero')?.errors?.minlength">
+                      <div class='text-light p-1 m-0' *ngIf="controles.get('numero')?.touched && controles.get('numero')?.errors?.minlength">
                         Ingrese un número válido.
                       </div>
                   </div>
@@ -34,21 +31,23 @@
                         <label for="cantidadComensales"><b>Cantidad de comensales</b></label>
                         <input type="number" formControlName='cantidadComensales' name="cantidadComensales" required>
                         
-                        <div class='text-danger p-1' *ngIf="controles.get('cantidadComensales')?.touched && controles.get('cantidadComensales')?.errors?.required">
+                        <div class='text-light p-1' *ngIf="controles.get('cantidadComensales')?.touched && controles.get('cantidadComensales')?.errors?.required">
                             Ingrese la cantidad de comensales.
                         </div>
-                        <div class='text-danger p-1' *ngIf="controles.get('cantidadComensales')?.touched && controles.get('cantidadComensales')?.errors?.minlength">
+                        <div class='text-light p-1' *ngIf="controles.get('cantidadComensales')?.touched && controles.get('cantidadComensales')?.errors?.minlength">
                             Ingrese una cantidad de comensales valida.
                         </div>
                     </div>
-                    <div class="col-12">
-                        <label for="tipo" ><b>Tipo</b></label>
-                        <select class="text-dark"  formControlName='tipo' name="tipo" required>
-                          <option value="Estandar">Estándar</option>
-                          <option value="VIP">VIP</option>
-                          <option value="Discapacitados">Discapacitados</option>
-                        </select>
-                    </div>
+                    <div class="col-12 mt-3">
+                      <ion-item>
+                          <ion-label>Tipo de mesa:</ion-label>
+                          <ion-select formControlName="tipo" mode="ios" interface="popover" placeholder="">
+                            <ion-select-option value="estandar">Estándar</ion-select-option>
+                            <ion-select-option value="VIP">VIP</ion-select-option>
+                            <ion-select-option value="discapacitados">Discapacitados</ion-select-option>
+                          </ion-select>
+                      </ion-item>
+                  </div>
               </div>
                   <div class="row">
                       <div class="col-12">

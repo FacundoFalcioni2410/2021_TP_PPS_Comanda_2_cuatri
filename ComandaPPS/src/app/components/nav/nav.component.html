@@ -31,10 +31,8 @@
       <ion-menu-toggle>
         <ion-item [routerLink]="['/home']">Home</ion-item>
       </ion-menu-toggle>
-      <!-- <ion-item>Registro empleado</ion-item>
-      <ion-item>Registro supervisor</ion-item> -->
       
-      <ion-menu-toggle>
+      <ion-menu-toggle *ngIf="this.auth?.usuarioActual?.tipo === 'mozo'">
         <ion-item [routerLink]="['/chat']">Chat</ion-item>
       </ion-menu-toggle>
     </ion-list>

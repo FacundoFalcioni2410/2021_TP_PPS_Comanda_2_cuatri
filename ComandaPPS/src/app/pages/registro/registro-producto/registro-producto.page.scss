@@ -6,21 +6,33 @@ body {
 }
 * {box-sizing: border-box}
 
+ion-content{
+  --background: url('../../../../assets/fotoRegistro.jpg') 20%;
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+}
+
 /* Add padding to container elements */
 .containerForm {
-    padding: 20px;
-    width: 800px;
-    min-width: 300px;
-    left: 50%;
-    top: 120%;
-    margin: 1% auto;
-    border:1px solid #ccc;
-    border-radius:10px;
-    background:white;
-    -webkit-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
-    -moz-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
-    box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 800px;
+  min-width: 300px;
+  left: 50%;
+  top: 120%;
+  margin: 8% auto;
+  border:1px solid #ccc;
+  border-radius:10px;
+  background-color: #120711b3 !important;
+  background:white;
+  -webkit-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
+  -moz-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
+  box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
+}
+
 
 /* Full-width input fields */
 input[type=text], input[type=password], input[type=number] {
@@ -93,11 +105,11 @@ input[type=file] {
 }
 
 @media screen and (max-width: 510px) {
-    .signupbtn {
-       width: 100%;
-    }
-    
-    .containerForm{
-        width: 250px;
-    }
+  .signupbtn {
+     width: 100%;
   }
+  
+  .containerForm{
+      width: 300px;
+  }
+}
