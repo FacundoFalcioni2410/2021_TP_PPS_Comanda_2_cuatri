@@ -35,7 +35,7 @@ export class IngresoLocalPage implements OnInit {
 
   Scan(){
     
-    if(!this.usuario.listaEspera && !this.usuario.mesaAsignada){
+    if(!this.usuario.listaEspera && this.usuario.mesaAsignada !== 0){
 
           Swal.fire({
             title: 'Escaneo',
@@ -93,7 +93,7 @@ export class IngresoLocalPage implements OnInit {
                   timer: 4000,
                   timerProgressBar: true,
                   backdrop: false,
-                })
+                });
               }
             }
               

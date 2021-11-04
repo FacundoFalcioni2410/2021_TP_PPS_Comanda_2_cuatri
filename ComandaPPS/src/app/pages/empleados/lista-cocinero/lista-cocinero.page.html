@@ -11,32 +11,31 @@
 
 <ion-content>
 
-  <div *ngIf="pedidos; else spinner">
+  <div *ngIf="pedidos.length else spinner">
     <ion-grid>
       <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
-      
+
         <ion-col size=9>
           <div>
-            <ion-card style="height: 150%; width: 95%;" *ngFor="let pedido of pedidos" >
-              <!-- <div *ngFor="let foto of coctel.fotos">
-              <img   class="img-circle img-responsive" [src]="foto" width="100px" height="100px" />
-              </div> -->
+            <ion-card style="height: 150%; width: 95%;" *ngFor="let pedido of pedidos">
               <ion-card-header>
                 <ion-card-title style="font-size:35px;">
- 
-                  <h2>Productos:</h2>
-                  <app-timer  [minutos]="1" *ngIf="pedido.estado === 'en preparacion'"></app-timer>
+
+                  <h3>Productos:</h3>
+                  <app-timer (terminado)="recibirTimer($event, pedido)" [segundos]="pedido.tiempoCocina"
+                    *ngIf="pedido?.timer === true && !pedido?.terminado"></app-timer>
                 </ion-card-title>
               </ion-card-header>
               <ion-card-content class="ion-align-items-center" *ngFor="let plato of pedido.productos">
-                <p>{{plato.nombre}}</p>
-                <img [src]="plato.fotos[0]" width="100px" height="100px">
+                <label class="fs-3 mb-1 text-light">{{plato.nombre}}</label>
+                <img [src]="plato.fotos[0]" style="height:200px !important; width: 250px !important;">
               </ion-card-content>
-              <ion-item *ngIf="pedido.estado == 'aceptado'" class="ion-text-center">
+              <ion-item *ngIf="!pedido?.timer && !pedido?.terminado" class="ion-text-center">
                 <ion-button color="success" (click)="PrepararPlato(pedido)">Preparar pedido</ion-button>
               </ion-item>
-              <ion-item *ngIf="pedido.estado == 'en preparacion'" >
-                <ion-button color="danger" (click)="EntregarPlato(pedido)">Entregar pedido</ion-button>
+              <ion-item *ngIf="pedido?.timer === true">
+                <ion-button color="danger" [disabled]="!pedido?.terminado" (click)="EntregarPlato(pedido)">Entregar
+                  pedido</ion-button>
               </ion-item>
             </ion-card>
           </div>

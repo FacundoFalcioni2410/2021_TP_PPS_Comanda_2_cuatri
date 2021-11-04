@@ -24,53 +24,58 @@ export class ListaBartenderPage implements OnInit {
         this.terminado = false;
         this.pedidos = [];
         for (let pedido of data) {
-          if(pedido.estado == 'aceptado' || pedido.estado == 'en preparacion'){
+          if(pedido.estado == 'aceptado' && pedido.cocteleriaEntregado === false){
 
             this.productosFiltrados = pedido.productos.filter((producto)=>{
               return producto.descripcion == 'coctel';
             });
+            let max = 0;
+
+
+            console.log(pedido.tiempoCoctel);
 
             pedido.productos = this.productosFiltrados;
             
              if(pedido.productos.length != 0){
-         
-               this.pedidos.push(pedido);
-               
+              for(let p of pedido.productos)
+              {
+                let flag = false;
+  
+                if(!flag || p.tiempo > max)
+                {
+                  flag = true;
+                  max = p.tiempo
+                }
+              }
+              pedido.tiempoCoctel = max;
+
+               this.pedidos.push(pedido); 
              }
-
           }
-
         }
-
       });
-
-
   }
 
   ngOnInit() {
   }
 
   PrepararCoctel(coctel: any) {
-    let idCoctel = coctel.id;
-    this.userService.TraerPedido(idCoctel)
-      .subscribe((data) => {
-        console.log(data);
-        this.userService.UpdatearEstadoPedido(idCoctel, 'en preparacion')
-          .then(() => {
-            console.log('updateado el estado del pedido');
-            this.coctelPreparado = true;
-          })
-      });
+    coctel.timer = true;
   }
 
   EntregarCoctel(coctel: any) {
     let idCoctel = coctel.id;
     this.userService.TraerPedido(idCoctel)
       .subscribe((data) => {
-        console.log(data);
-        data.etapasRealizadas++;
-        this.userService.UpdatearEtapasRealizadasPedido(idCoctel, data.etapasRealizadas);
-
+        if(data.cocteleriaEntregado === false)
+        {
+          data.etapasRealizadas++;
+          this.userService.UpdatearEtapasRealizadasPedido(idCoctel, data.etapasRealizadas);
+        }
       });
+  }
+
+  recibirTimer(value, pedido){
+    pedido.terminado = true;
   }
 }

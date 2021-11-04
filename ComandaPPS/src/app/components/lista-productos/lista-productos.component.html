@@ -3,13 +3,13 @@
 
   <ion-slides>
     <ion-slide *ngFor='let producto of productos; index as i;' class="mt-4" style="display:flex; justify-content: center; align-items: center;">
-      <div class="slide">
+      <div class="slide bg-dark">
         <div class="card img-fluid" style="width: 15rem;background-color: transparent;">
           <div id="carousel{{i}}" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item" *ngFor='let image of producto?.fotos; first as isFirst;'
                 [ngClass]="{'active': isFirst}">
-                <img [src]="image" alt="" class="d-block m-auto" height="100px" width="100px">
+                <img [src]="image" alt="" class="d-block m-auto" style="height:200px !important; width: 250px !important;">
               </div>
               <!-- [default]="spinner" [lazyload]="image -->
             </div>

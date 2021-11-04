@@ -92,6 +92,10 @@ export class LoginPage implements OnInit {
           }else if(user.tipo =='mozo'){
             this.router.navigate(['/listado-pedidos-mozo']);
           }
+          else
+          {
+            this.router.navigate(['/lista-cocinero']);
+          }
           
    
         }

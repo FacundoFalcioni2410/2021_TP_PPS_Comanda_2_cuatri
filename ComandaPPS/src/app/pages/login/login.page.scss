@@ -6,6 +6,12 @@ body {
 }
 * {box-sizing: border-box}
 
+ion-content{
+  --background: url('../../../assets/background.jpg') 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+}
+
 /* Add padding to container elements */
 .containerForm {
     display: flex;
@@ -17,10 +23,10 @@ body {
     min-width: 300px;
     left: 50%;
     top: 120%;
-    margin: 1% auto;
+    margin: 15% auto;
     border:1px solid #ccc;
     border-radius:10px;
-    background-color: #120711 !important;
+    background-color: #120711b3 !important;
     background:white;
     -webkit-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
     -moz-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
@@ -55,6 +61,10 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus, se
 }
 
 
+
+.error-text{
+  font-size: 14px;
+}
 
 /* Set a style for all buttons */
 button {
@@ -93,6 +103,6 @@ button:hover {
     
     .containerForm{
         width: 250px;
-        height: 600px;
+        height: 570px;
     }
   }

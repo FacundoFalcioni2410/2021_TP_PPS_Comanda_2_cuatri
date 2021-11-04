@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -7,15 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TimerComponent implements OnInit {
 
-  @Input() minutos: number;
-  seconds: number;
+  @Input() minutos: number = 0;
+  @Input() segundos: number;
+  @Output() terminado: EventEmitter<any> = new EventEmitter();
   isPaused: boolean;
 
   constructor() {
     setTimeout(() =>{
       this.resetTimer();
       setInterval(() => this.tick(), 1000);
-    },100);
+    },200);
   }
 
   ngOnInit() {
@@ -25,22 +26,21 @@ export class TimerComponent implements OnInit {
   resetTimer(): void {
     this.isPaused = false;
     this.minutos = this.minutos;
-    this.seconds = 0;
+    this.segundos = this.segundos;
   }
 
   private tick(): void {
     if (!this.isPaused) {
 
-      if (--this.seconds < 0) {
-        this.seconds = 59;
-        if (--this.minutos < 0) {
-          this.resetTimer();
-        }
-      }
-      if(this.minutos === 0 && this.seconds === 0)
-      {
+      if (--this.segundos < 0) {
         this.isPaused = true;
+        this.terminado.emit(true);
       }
+      // if(this.minutos === 0 && this.segundos === 0)
+      // {
+      //   this.isPaused = true;
+      //   this.terminado.emit(true);
+      // }
     }
   }
 

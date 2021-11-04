@@ -180,7 +180,11 @@ export class AuthService {
 
   
   UpdatearEtapasRealizadasPedido(idPedido : any, valor : any){
-    return this.pedidosCollection.doc(idPedido).update({'etapasRealizadas': valor})
+    return this.pedidosCollection.doc(idPedido).update({'etapasRealizadas': valor, cocteleriaEntregado: true})
+  }
+
+  UpdatearEtapasRealizadasPedidoCocina(idPedido : any, valor : any){
+    return this.pedidosCollection.doc(idPedido).update({'etapasRealizadas': valor, cocinaEntregado: true})
   }
 
   TraerPedido(idPedido : any){

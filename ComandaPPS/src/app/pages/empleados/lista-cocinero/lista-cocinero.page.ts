@@ -23,17 +23,32 @@ export class ListaCocineroPage implements OnInit {
         this.terminado = false;
         this.pedidos = [];
         for (let pedido of data) {
-          if(pedido.estado == 'aceptado' || pedido.estado == 'en preparacion'){
+          if(pedido.estado == 'aceptado' && pedido.cocinaEntregado === false){
 
-             
             this.productosFiltrados = pedido.productos.filter((producto)=>{
               return producto.descripcion == 'cocina';
             });
 
+            let max = 0;
+
+
+
             pedido.productos = this.productosFiltrados;
             
              if(pedido.productos.length != 0){
-         
+              
+              for(let p of pedido.productos)
+              {
+                let flag = false;
+  
+                if(!flag || p.tiempo > max)
+                {
+                  flag = true;
+                  max = p.tiempo
+                }
+              }
+  
+              pedido.tiempoCocina = max;
                this.pedidos.push(pedido);
                
              }
@@ -52,26 +67,23 @@ export class ListaCocineroPage implements OnInit {
   }
 
   PrepararPlato(plato: any) {
-    let idPlato = plato.id;
-    this.userService.TraerPedido(idPlato)
-      .subscribe((data) => {
-        console.log(data);
-        this.userService.UpdatearEstadoPedido(idPlato, 'en preparacion')
-          .then(() => {
-            console.log('updateado el estado del pedido');
-            this.platoPreparado = true;
-          })
-      });
+    plato.timer = true;
   }
 
   EntregarPlato(plato: any) {
     let idPlato = plato.id;
     this.userService.TraerPedido(idPlato)
       .subscribe((data) => {
-        console.log(data);
-        data.etapasRealizadas++;
-        this.userService.UpdatearEtapasRealizadasPedido(idPlato, data.etapasRealizadas);
+        if(data.cocinaEntregado === false)
+        {
+          data.etapasRealizadas++;
+          this.userService.UpdatearEtapasRealizadasPedidoCocina(idPlato, data.etapasRealizadas);
+        }
       });
+  }
+
+  recibirTimer(value, pedido){
+    pedido.terminado = true;
   }
 
 }

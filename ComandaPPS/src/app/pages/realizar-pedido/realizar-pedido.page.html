@@ -1,14 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Realizar pedido</ion-title>
+    <ion-title>Hacer pedido</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button menu="first" style="font-size:14px;">Menu</ion-menu-button>
     </ion-buttons>
-      <ion-button slot="secondary" color="primary" style="font-size:10px;" [routerLink]="['/chat']">Consultar al mozo</ion-button>
+    <ion-button slot="secondary" color="primary" style="font-size:10px;" [routerLink]="['/chat']">Consultar al mozo
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen class="p-0 m-0" scroll-y="false">
+<ion-content [fullscreen]="true" class="p-0 m-0" scroll-y="false">
   <app-lista-productos (producto)="recibirProducto($event)"></app-lista-productos>
 </ion-content>
 <ion-footer style="height: 56px;background-color: #232323;">
