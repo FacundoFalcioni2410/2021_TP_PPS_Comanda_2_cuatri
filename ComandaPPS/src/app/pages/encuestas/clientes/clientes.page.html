@@ -11,89 +11,91 @@
 
 <ion-content>
   <div class="container">
-    <h3 id="title">Bienvenido a la encuesta de NOMBRE_RESTAURANTE</h3>
-    <p id="description">Complete los siguientes datos: </p>
-        <form [formGroup]="form" (ngSubmit)="this.subirEncuesta()" id="survey-form">
-        <div class="">
-          <ion-item>
-            <ion-label position="floating" for="name">Nombre</ion-label>
-            <ion-input
-              type="text"
-              formControlName="nombre"
-              id="name"
-              mode="ios"
-              placeholder="Ingrese su nombre"
-            ></ion-input>
-          </ion-item>
-        </div>
-    
-        <div class="mt-1">
-          <ion-label position for="satisfaccion">¿Cual fue tu grado de satisfaccion?</ion-label>
-          <ion-item>
-            <ion-range formControlName="satisfaccion" id="satisfaccion" (ionChange)='change($event)' value="5" min="1" max="10" color="danger" mode="ios" pin="true">
-              <ion-icon slot="start" name="sad"></ion-icon>
-              <ion-icon slot="end" name="happy"></ion-icon>
-            </ion-range>
-          </ion-item>
-        </div>
-    
-        <div class="mt-1">
-          <ion-item>
-            <ion-label>¿Pidió cocteles y postres?</ion-label>
-            <ion-select formControlName="productoConsumido" mode="ios" interface="popover" placeholder="">
-              <ion-select-option value="cocteles">Pedi cocteles</ion-select-option>
-              <ion-select-option value="postres">Pedi postres</ion-select-option>
-              <ion-select-option value="ambos">Ambos</ion-select-option>
-              <ion-select-option value="ninguno">Ninguno de los 2</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </div>
-
-        <div class="mt-1">
-          <ion-list>
-              <ion-radio-group formControlName="trato" mode="ios" value="bien">
-                
-                <ion-list-header>
-                  <ion-label>¿Como te trato el personal?</ion-label>
-                </ion-list-header>
-                
-                <ion-item>
-                  <ion-label>Excelente</ion-label>
-                  <ion-radio slot="start" color="success" value="excelente"></ion-radio>
-                </ion-item>
-      
-                <ion-item>
-                  <ion-label>Bien</ion-label>
-                  <ion-radio slot="start" color="warning" value="bien"></ion-radio>
-                </ion-item>
-
-                <ion-item>
-                  <ion-label>Pesimo</ion-label>
-                  <ion-radio slot="start" color="danger" value="pesimo"></ion-radio>
-                </ion-item>
-              </ion-radio-group>
-          </ion-list>
-        </div>
-
-        <div class="mt-1">
-          <ion-list>
-            <ion-list-header>¿Volveria al local?</ion-list-header>
-              <ion-item>
-                <ion-label>Si</ion-label>
-                <ion-checkbox formControlName="visitar" mode="ios" color="primary" slot="start"></ion-checkbox>
-              </ion-item>
-          </ion-list>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-                <label for="file-upload" class="custom-file-upload mt-2">
-                    <i class="fa fa-cloud-upload"></i> Custom Upload
-                </label>
-                <input class="btn btn-primary" type="file" id="file-upload" multiple accept="image/*" (change)='archivoSeleccionado($event)'>
+    <div class="containerForm">
+      <h3 id="title">Bienvenido a la encuesta de Churrasic Park</h3>
+      <p id="description">Complete los siguientes datos: </p>
+          <form [formGroup]="form" (ngSubmit)="this.subirEncuesta()" id="survey-form">
+          <div class="">
+            <ion-item>
+              <ion-label position="floating" for="name">Nombre</ion-label>
+              <ion-input
+                type="text"
+                formControlName="nombre"
+                id="name"
+                mode="ios"
+                placeholder="Ingrese su nombre"
+              ></ion-input>
+            </ion-item>
           </div>
+      
+          <div class="mt-1">
+            <ion-label position for="satisfaccion">¿Cual fue tu grado de satisfaccion?</ion-label>
+            <ion-item>
+              <ion-range formControlName="satisfaccion" id="satisfaccion" (ionChange)='change($event)' value="5" min="1" max="10" color="danger" mode="ios" pin="true">
+                <ion-icon slot="start" name="sad"></ion-icon>
+                <ion-icon slot="end" name="happy"></ion-icon>
+              </ion-range>
+            </ion-item>
+          </div>
+      
+          <div class="mt-1">
+            <ion-label class="my-1">¿Pidió cocteles y postres?</ion-label>
+            <ion-item>
+              <ion-select formControlName="productoConsumido" mode="ios" interface="popover" placeholder="">
+                <ion-select-option value="cocteles">Pedi cocteles</ion-select-option>
+                <ion-select-option value="postres">Pedi postres</ion-select-option>
+                <ion-select-option value="ambos">Ambos</ion-select-option>
+                <ion-select-option value="ninguno">Ninguno de los 2</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+  
+          <div class="mt-1">
+            <ion-list>
+                <ion-radio-group formControlName="trato" mode="ios" value="bien">
+                  
+                  <ion-list-header>
+                    <ion-label>¿Como te trato el personal?</ion-label>
+                  </ion-list-header>
+                  
+                  <ion-item>
+                    <ion-label>Excelente</ion-label>
+                    <ion-radio slot="start" color="success" value="excelente"></ion-radio>
+                  </ion-item>
+        
+                  <ion-item>
+                    <ion-label>Bien</ion-label>
+                    <ion-radio slot="start" color="warning" value="bien"></ion-radio>
+                  </ion-item>
+  
+                  <ion-item>
+                    <ion-label>Pesimo</ion-label>
+                    <ion-radio slot="start" color="danger" value="pesimo"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+            </ion-list>
+          </div>
+  
+          <div class="mt-1">
+            <ion-list>
+              <ion-list-header>¿Volveria al local?</ion-list-header>
+                <ion-item>
+                  <ion-label>Si</ion-label>
+                  <ion-checkbox formControlName="visitar" mode="ios" color="primary" slot="start"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+          </div>
+  
+          <div class="row">
+            <div class="col-12">
+                  <label for="file-upload" class="custom-file-upload mt-2 text-center">
+                      <i class="fa fa-cloud-upload"></i> Podes subir hasta 3 fotos relacionadas con la encuesta
+                  </label>
+                  <input class="btn btn-primary" type="file" id="file-upload" multiple accept="image/*" (change)='archivoSeleccionado($event)'>
+            </div>
+        </div>
+          <ion-button class="d-block m-auto mt-2" size="large" [disabled]="form.invalid" type="submit">Enviar encuesta</ion-button>
+        </form>
       </div>
-        <ion-button class="d-block m-auto mt-2" size="large" [disabled]="form.invalid" type="submit">Enviar encuesta</ion-button>
-      </form>
-    </div>
+  </div>
 </ion-content>
