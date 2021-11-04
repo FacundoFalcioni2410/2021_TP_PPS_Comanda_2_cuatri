@@ -10,20 +10,36 @@
         <ion-item [routerLink]="['/home']" (click)="this.menu.close('main')">Home</ion-item>
       </ion-menu-toggle>
       
-      <ion-menu-toggle>
-        <ion-item [routerLink]="['/login']">Login</ion-item>
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
+        <ion-item [routerLink]="['/lista-espera']">Lista de espera</ion-item>
       </ion-menu-toggle>
       
-      <ion-menu-toggle>
-        <ion-item [routerLink]="['/registro-cliente']">Registro cliente</ion-item>
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
+        <ion-item [routerLink]="['/mesa-asignada-cliente']">Asignar mesas</ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
+        <ion-item [routerLink]="['/registro-cliente']">Registrar cliente</ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'">
+        <ion-item [routerLink]="['/registro-producto']">Registrar producto</ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
+        <ion-item [routerLink]="['/registro-cliente']">Registrar cliente</ion-item>
       </ion-menu-toggle>
       
-      <ion-menu-toggle>
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
         <ion-item [routerLink]="['/registro-empleado']">Registro empleado</ion-item>
       </ion-menu-toggle>
       
-      <ion-menu-toggle>
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
         <ion-item [routerLink]="['/registro-supervisor']">Registro supervisor</ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
+        <ion-item [routerLink]="['/registro-mesa']">Alta de mesa</ion-item>
       </ion-menu-toggle>
 
     </ion-list>
