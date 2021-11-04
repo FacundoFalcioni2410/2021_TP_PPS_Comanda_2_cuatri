@@ -83,9 +83,17 @@ export class LoginPage implements OnInit {
           },1500);
         }
         else if(user.tipo)
-        {
+        { 
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
-          this.router.navigate(['/lista-espera']);
+          if(user.tipo=='bartender'){
+            this.router.navigate(['/lista-bartender']);
+          }else if(user.tipo == 'metre'){
+            this.router.navigate(['/lista-espera']);
+          }else if(user.tipo =='mozo'){
+            this.router.navigate(['/listado-pedidos-mozo']);
+          }
+          
+   
         }
         else
         {
