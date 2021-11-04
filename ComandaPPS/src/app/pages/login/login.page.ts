@@ -84,7 +84,7 @@ export class LoginPage implements OnInit {
         }
         else if(user.tipo)
         { 
-          this.audioS.PlayAudio()
+          this.audioS.PlayAudio();
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
           if(user.tipo=='bartender'){
             this.router.navigate(['/lista-bartender']);

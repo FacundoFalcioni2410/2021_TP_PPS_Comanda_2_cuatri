@@ -93,15 +93,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPage": () => (/* binding */ LoginPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./login.page.html */ 31021);
 /* harmony import */ var _login_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss */ 28781);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
-/* harmony import */ var src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/mail.service */ 65585);
-/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/mail.service */ 65585);
+/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+
 
 
 
@@ -112,15 +114,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(auth, formBuilder, router, mailS) {
+    constructor(auth, formBuilder, router, mailS, audioS) {
         this.auth = auth;
         this.formBuilder = formBuilder;
         this.router = router;
         this.mailS = mailS;
+        this.audioS = audioS;
         this.logo = "../../../assets/restaurant.png";
         this.form = this.formBuilder.group({
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.email]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.minLength(8)]]
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.email]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.minLength(8)]]
         });
     }
     ngOnInit() {
@@ -158,7 +161,7 @@ let LoginPage = class LoginPage {
     login() {
         this.logo = "../../../assets/spinner.gif";
         this.auth.login(this.form.value)
-            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
             let user = yield this.auth.getUsers(res.user.email);
             if (user) {
                 if (!(user === null || user === void 0 ? void 0 : user.cuil) && !(user === null || user === void 0 ? void 0 : user.habilitado)) {
@@ -172,6 +175,7 @@ let LoginPage = class LoginPage {
                     }, 1500);
                 }
                 else if (user.tipo) {
+                    this.audioS.PlayAudio();
                     this.mostrarToast({ text: 'Datos correctos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'success' });
                     if (user.tipo == 'bartender') {
                         this.router.navigate(['/lista-bartender']);
@@ -206,17 +210,18 @@ let LoginPage = class LoginPage {
         });
     }
     mostrarToast(options) {
-        sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_4__.default.fire(options);
+        sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_5__.default.fire(options);
     }
 };
 LoginPage.ctorParameters = () => [
-    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router },
-    { type: src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_3__.MailService }
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router },
+    { type: src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_4__.MailService },
+    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__.AudioService }
 ];
-LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-login',
         template: _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_login_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]

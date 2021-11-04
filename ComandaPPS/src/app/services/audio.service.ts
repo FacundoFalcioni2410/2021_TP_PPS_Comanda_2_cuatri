@@ -13,7 +13,7 @@ export class AudioService {
   }
 
   async Cargar(){
-    await this.nativeAudio.preloadComplex('transicion', 'assets/sounds/transicion.mp3',1,1,0);
+    await this.nativeAudio.preloadComplex('transicion', 'assets/sounds/transicion.wav',1,1,0);
   }
 
   Descargar(){
@@ -21,18 +21,12 @@ export class AudioService {
   }
 
   async PlayAudio(){
-    
     if(this.activado){
-
       await this.nativeAudio.play('transicion');
     }
   }
 
-  ActivarDesactivarAudio(){
-    if(this.activado){
-      this.activado = false;
-    }else{
-      this.activado = true;
-    }
+  toggleAudio(){
+    this.activado = !this.activado;
   }
 }

@@ -168,21 +168,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./app.component.html */ 91106);
 /* harmony import */ var _app_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.scss */ 43069);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var _services_audio_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/audio.service */ 16425);
+
+
 
 
 
 
 let AppComponent = class AppComponent {
-    constructor() {
+    constructor(audio, platform) {
+        this.audio = audio;
+        this.platform = platform;
+        this.InicializarApp();
+    }
+    InicializarApp() {
+        this.platform.ready().then(() => {
+            this.audio.Cargar();
+        });
     }
 };
-AppComponent.ctorParameters = () => [];
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+AppComponent.ctorParameters = () => [
+    { type: _services_audio_service__WEBPACK_IMPORTED_MODULE_2__.AudioService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.Platform }
+];
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-root',
         template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_app_component_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -204,20 +219,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser */ 39075);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser */ 39075);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ 80476);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component */ 55041);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-routing.module */ 90158);
-/* harmony import */ var _angular_fire_compat__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/compat */ 88939);
+/* harmony import */ var _angular_fire_compat__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/fire/compat */ 88939);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 92340);
-/* harmony import */ var _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @sweetalert2/ngx-sweetalert2 */ 60845);
+/* harmony import */ var _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @sweetalert2/ngx-sweetalert2 */ 60845);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
 /* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ 92760);
-/* harmony import */ var ng_lazyload_image__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ng-lazyload-image */ 27260);
+/* harmony import */ var ng_lazyload_image__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ng-lazyload-image */ 27260);
 /* harmony import */ var _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/nav/nav.component */ 40994);
+/* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ 37125);
+
 
 
 
@@ -234,28 +251,29 @@ __webpack_require__.r(__webpack_exports__);
 
 let AppModule = class AppModule {
 };
-AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.NgModule)({
+AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.NgModule)({
         declarations: [
             _app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent,
             _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_5__.NavComponent
         ],
         entryComponents: [],
         imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_8__.BrowserModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.IonicModule.forRoot(),
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__.BrowserModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.IonicModule.forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
-            _angular_fire_compat__WEBPACK_IMPORTED_MODULE_10__.AngularFireModule.initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.firebaseConfig),
-            _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_11__.SweetAlert2Module.forRoot(),
+            _angular_fire_compat__WEBPACK_IMPORTED_MODULE_11__.AngularFireModule.initializeApp(src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.firebaseConfig),
+            _sweetalert2_ngx_sweetalert2__WEBPACK_IMPORTED_MODULE_12__.SweetAlert2Module.forRoot(),
         ],
         providers: [
+            _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_6__.NativeAudio,
             _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_4__.BarcodeScanner,
             _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_3__.Vibration,
             {
-                provide: _angular_router__WEBPACK_IMPORTED_MODULE_12__.RouteReuseStrategy,
-                useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.IonicRouteStrategy
+                provide: _angular_router__WEBPACK_IMPORTED_MODULE_13__.RouteReuseStrategy,
+                useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.IonicRouteStrategy
             },
-            { provide: ng_lazyload_image__WEBPACK_IMPORTED_MODULE_13__.LAZYLOAD_IMAGE_HOOKS, useClass: ng_lazyload_image__WEBPACK_IMPORTED_MODULE_13__.ScrollHooks }
+            { provide: ng_lazyload_image__WEBPACK_IMPORTED_MODULE_14__.LAZYLOAD_IMAGE_HOOKS, useClass: ng_lazyload_image__WEBPACK_IMPORTED_MODULE_14__.ScrollHooks }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
     })
@@ -317,6 +335,60 @@ NavComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
         styles: [_nav_component_scss__WEBPACK_IMPORTED_MODULE_1__.default]
     })
 ], NavComponent);
+
+
+
+/***/ }),
+
+/***/ 16425:
+/*!*******************************************!*\
+  !*** ./src/app/services/audio.service.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AudioService": () => (/* binding */ AudioService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ 37125);
+
+
+
+let AudioService = class AudioService {
+    constructor(nativeAudio) {
+        this.nativeAudio = nativeAudio;
+        this.activado = true;
+    }
+    Cargar() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+            yield this.nativeAudio.preloadComplex('transicion', 'assets/sounds/transicion.wav', 1, 1, 0);
+        });
+    }
+    Descargar() {
+        this.nativeAudio.unload('transicion');
+    }
+    PlayAudio() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+            if (this.activado) {
+                yield this.nativeAudio.play('transicion');
+            }
+        });
+    }
+    toggleAudio() {
+        this.activado = !this.activado;
+    }
+};
+AudioService.ctorParameters = () => [
+    { type: _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_0__.NativeAudio }
+];
+AudioService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root'
+    })
+], AudioService);
 
 
 
@@ -712,7 +784,7 @@ var map = {
 		"node_modules_ionic_core_dist_esm_ion-loading_entry_js"
 	],
 	"./ion-menu_3.entry.js": [
-		86030,
+		76272,
 		"common",
 		"node_modules_ionic_core_dist_esm_ion-menu_3_entry_js"
 	],
@@ -904,7 +976,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='dueno'\">Churrasic Park Dueño </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='supervisor'\">Churrasic Park Supervisor</ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipo\">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\" (click)=\"this.menu.close('main')\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n\r\n    </ion-list>\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/lista-espera']\">Lista de espera</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/mesa-asignada-cliente']\">Asignar mesas</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/registro-cliente']\">Registrar cliente</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'\">\r\n        <ion-item [routerLink]=\"['/registro-producto']\">Registrar producto</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-mesa']\">Alta de mesa</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth?.usuarioActual?.tipo === 'mozo'\">\r\n        <ion-item [routerLink]=\"['/chat']\">Chat</ion-item>\r\n      </ion-menu-toggle>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='dueno'\">Churrasic Park Dueño </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='supervisor'\">Churrasic Park Supervisor</ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipo\">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipoCliente\">Churrasic Park - Cliente</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\" (click)=\"this.menu.close('main')\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n\r\n    </ion-list>\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/lista-espera']\">Lista de espera</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/mesa-asignada-cliente']\">Asignar mesas</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/registro-cliente']\">Registrar cliente</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'\">\r\n        <ion-item [routerLink]=\"['/registro-producto']\">Registrar producto</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-mesa']\">Alta de mesa</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth?.usuarioActual?.tipo === 'mozo'\">\r\n        <ion-item [routerLink]=\"['/chat']\">Chat</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-footer class=\"bar-stable\">\r\n        <ion-item [routerLink]=\"['/login']\" style=\"left:0;right:0;margin:0; width: 100%;position: fixed;\">fsafasfas</ion-item>\r\n      </ion-footer>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
 
 /***/ })
 

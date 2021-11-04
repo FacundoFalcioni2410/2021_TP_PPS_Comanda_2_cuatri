@@ -14,7 +14,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 import { HttpClientModule } from '@angular/common/http'
 import { NavComponent } from './components/nav/nav.component';
-
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 @NgModule({
   declarations: 
@@ -33,6 +33,7 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   providers: 
   [
+    NativeAudio,
     BarcodeScanner,
     Vibration,
     {

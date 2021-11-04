@@ -13,11 +13,8 @@ export class AppComponent {
   }
   
   InicializarApp(){
-
     this.platform.ready().then(()=>{
-
       this.audio.Cargar();
-  
     });
   }
 }
