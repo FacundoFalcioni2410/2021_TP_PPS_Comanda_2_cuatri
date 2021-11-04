@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { AudioService } from './services/audio.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
+  constructor(public audio : AudioService, public platform : Platform) {
+    this.InicializarApp();
+  }
+  
+  InicializarApp(){
+
+    this.platform.ready().then(()=>{
+
+      this.audio.Cargar();
+  
+    });
   }
 }

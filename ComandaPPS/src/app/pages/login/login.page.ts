@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MailService } from 'src/app/services/mail.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
   form: FormGroup;
   logo = "../../../assets/restaurant.png";
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService) {
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private mailS: MailService, private audioS : AudioService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
@@ -68,6 +69,7 @@ export class LoginPage implements OnInit {
       let user = await this.auth.getUsers(res.user.email);
       if(user)
       {
+        
         if(!user?.cuil && !user?.habilitado)
         {
           this.mostrarToast({text: 'Su cuenta todavia no fue habilitada, revise su correo electronico',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
@@ -82,6 +84,7 @@ export class LoginPage implements OnInit {
         }
         else if(user.tipo)
         { 
+          this.audioS.PlayAudio()
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
           if(user.tipo=='bartender'){
             this.router.navigate(['/lista-bartender']);
@@ -97,6 +100,7 @@ export class LoginPage implements OnInit {
         }
         else
         {
+          
           this.router.navigate(['/lista-cliente-deshabilitados']);
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
         }
