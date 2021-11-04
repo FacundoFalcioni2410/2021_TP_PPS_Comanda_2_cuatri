@@ -1,5 +1,6 @@
 <ion-header>
     <ion-toolbar>
+        
         <ion-title>Iniciar sesión</ion-title>
         <ion-buttons slot="end">
             <ion-menu-button menu="first"></ion-menu-button>
@@ -54,6 +55,10 @@
                             <ion-col size='12'>
                                 <ion-button type="submit" [disabled]="form.invalid" class="mt-2" color="success"
                                     style="font-size:12px;" fill="solid" expand="block">Ingresar</ion-button>
+                            </ion-col>
+                            <ion-col size='12'>
+                                <ion-button type="button" class="mt-2" color="success"
+                                    style="font-size:12px;" fill="solid" expand="block" [routerLink]="['/registro-cliente']">Registrarse</ion-button>
                             </ion-col>
                             <ion-col size='4'>
                                 <ion-button type="button" class="mt-2 text-light" color="primary" fill="solid" expand="block"

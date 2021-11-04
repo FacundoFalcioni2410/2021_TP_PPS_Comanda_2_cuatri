@@ -7,3 +7,10 @@ img{
 .bg{
     background-color: #232323a1;
 }
+
+ion-content{
+    --background: url('../../../assets/fondo-deshabilitado.jpg')  10% top;
+    background-repeat: no-repeat;
+    background-attachment: fixed !important;
+  }
+  

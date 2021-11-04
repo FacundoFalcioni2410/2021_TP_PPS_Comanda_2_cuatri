@@ -1,11 +1,9 @@
 <ion-menu side="start" menuId="first" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title *ngIf="this.auth.usuarioActual?.perfil">Dueño</ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'metre'">Metre</ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'mozo'">Mozo</ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'bartender'">Bartender</ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.tipo == 'cocinero'">Cocinero</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.perfil=='dueno'">Churrasic Park Dueño </ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.perfil=='supervisor'">Churrasic Park Supervisor</ion-title>
+      <ion-title *ngIf="this.auth.usuarioActual?.tipo">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content style="--background: #232323">
