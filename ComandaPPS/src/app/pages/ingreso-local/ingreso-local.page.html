@@ -2,17 +2,18 @@
   <ion-toolbar>
     <ion-title>Ingreso al local</ion-title>
     <ion-buttons slot="end">
-      <ion-menu-button menu="first"></ion-menu-button>
+      <ion-menu-button menu="first" style="font-size:14px;">Menu</ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
 
   <div class="container text-light">
     <div class="row align-items-center justify-content-center" style="height:90vh;">
       <div class="col-12 text-center bg">
         <h1 class="display-5 fw-bold lh-1 m-0 p-0">Bienvenido a Churrasic Park</h1>
-        <p *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="lead fw-bold">Por favor, ingrese a
+        <p *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada !== 0" class="lead fw-bold">Por favor, ingrese a
           la lista de espera y espere a que un metre le asigne una mesa.</p>
         <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2 mb-3"
           (click)="Scan()" style="font-size: 55px;"></i>

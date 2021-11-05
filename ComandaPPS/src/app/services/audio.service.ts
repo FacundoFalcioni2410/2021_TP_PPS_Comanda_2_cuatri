@@ -27,6 +27,14 @@ export class AudioService {
   }
 
   toggleAudio(){
-    this.activado = !this.activado;
+    if(!this.activado)
+    {
+      this.activado = true;
+      this.PlayAudio();
+    }
+    else
+    {
+      this.activado = false;
+    }
   }
 }

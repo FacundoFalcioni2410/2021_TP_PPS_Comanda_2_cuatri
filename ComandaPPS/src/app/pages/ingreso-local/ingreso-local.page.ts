@@ -91,12 +91,9 @@ export class IngresoLocalPage implements OnInit {
           cancelButtonText: 'Cancelar',
           reverseButtons: true,
         }).then(async (result) => {
-          console.log('then');
           if (result.isConfirmed) {
             let datos = await this.qrS.scan();
-            console.log(datos);
             if(datos.text){
-              console.log(datos.text);
               if(datos.text == this.usuario.mesaAsignada){
                 this.audio.PlayAudio();
                 this.route.navigateByUrl('/realizar-pedido');
@@ -134,7 +131,6 @@ export class IngresoLocalPage implements OnInit {
   
         if (result.isConfirmed) {
           let datos = await this.qrS.scan();
-          console.log(datos);
 
           if(datos.text){
             if(datos.text == "ingresoListaDeEspera"){

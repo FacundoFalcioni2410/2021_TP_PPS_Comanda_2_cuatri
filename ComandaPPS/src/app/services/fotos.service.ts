@@ -13,6 +13,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AudioService } from './audio.service';
+import { QRService } from './qr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class FotosService {
   loading = false;
 
   constructor(private auth: AuthService, private router: Router, private storage: AngularFireStorage, private firestore: FirestoreService, private vibration: Vibration,
-              public audio : AudioService) {
+              public audio : AudioService, private qrS: QRService) {
   }
 
   async TakePhoto(objeto: any){
@@ -167,6 +168,7 @@ export class FotosService {
         else if(objeto?.cantidadComensales){
 
           this.auth.AltaMesa(objeto);
+          this.qrS.generateQR(objeto);
         }
         else
         {

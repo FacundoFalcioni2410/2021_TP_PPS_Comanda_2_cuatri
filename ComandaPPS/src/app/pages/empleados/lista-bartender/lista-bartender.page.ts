@@ -31,9 +31,6 @@ export class ListaBartenderPage implements OnInit {
             });
             let max = 0;
 
-
-            console.log(pedido.tiempoCoctel);
-
             pedido.productos = this.productosFiltrados;
             
              if(pedido.productos.length != 0){

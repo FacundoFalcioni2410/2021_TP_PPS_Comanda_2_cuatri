@@ -6,10 +6,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 })
 export class QRService {
 
-  dni: string;
-
   constructor(private barcodeScanner: BarcodeScanner) {
-
   }
 
   async scan(){
@@ -21,7 +18,6 @@ export class QRService {
 
     if(scannedData.text)
     {
-      console.log(scannedData.text);
       if(scannedData.text.includes('@'))
       {
         let dniArr = scannedData.text.split('@');
@@ -37,10 +33,9 @@ export class QRService {
     return null;
   }
 
-  generateQR(){
-    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, 'caca')
+  generateQR(mesa: any){
+    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, mesa.numero)
     .then(data =>{
-      console.log(data);
     });
 
   }

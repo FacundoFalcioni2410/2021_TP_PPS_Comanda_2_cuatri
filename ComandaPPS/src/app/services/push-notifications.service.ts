@@ -70,7 +70,6 @@ export class PushNotificationsService  {
     PushNotifications.addListener(
       'pushNotificationActionPerformed',
       (notification: ActionPerformed) => {
-        console.log(notification);
         this.router.navigate([notification.notification.data.ruta]);
 
       },

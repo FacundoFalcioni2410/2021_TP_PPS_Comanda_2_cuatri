@@ -21,7 +21,6 @@ export class CarritoPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.productos);
     let flag = false;
     for(let producto of this.productos)
     {

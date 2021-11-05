@@ -17,10 +17,8 @@ export class ClienteEsperaPedidoPage implements OnInit {
 
   constructor(public userService : AuthService, private qrS : QRService, private router : Router, private vibration: Vibration,
               public audio : AudioService) { 
-    console.log('pedido dentro del clinte ', this.userService.usuarioActual.pedido);
     this.userService.TraerPedido(this.userService.usuarioActual.pedido)
     .subscribe((data)=>{
-      console.log('data ', data);
       this.pedidoDelCliente = data;
     });
   }

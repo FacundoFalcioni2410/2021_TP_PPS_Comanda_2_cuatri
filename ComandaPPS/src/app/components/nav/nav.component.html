@@ -9,52 +9,71 @@
   </ion-header>
   <ion-content style="--background: #232323">
     <ion-list *ngIf="!this.auth?.usuarioActual">
+
+      <ion-item *ngIf="this.audioS.activado">
+        <i class="fas fa-volume-up" (click)="this.audioS.toggleAudio()"></i>
+      </ion-item>
+
+      <ion-item *ngIf="!this.audioS.activado">
+        <i class="fas fa-volume-mute" (click)="this.audioS.toggleAudio()"></i>
+      </ion-item>
+
       <ion-menu-toggle>
-        <ion-item [routerLink]="['/home']" (click)="this.menu.close('main')">Home</ion-item>
+        <ion-item [routerLink]="['/login']" (click)="this.audioS.PlayAudio()">Iniciar sesión</ion-item>
       </ion-menu-toggle>
       
+      <ion-menu-toggle>
+        <ion-item [routerLink]="['/registro-cliente']" (click)="this.audioS.PlayAudio()">Registro</ion-item>
+      </ion-menu-toggle>
 
     </ion-list>
+
     <ion-list *ngIf="this.auth?.usuarioActual">
-      <ion-menu-toggle>
-        <ion-item [routerLink]="['/home']">Home</ion-item>
-      </ion-menu-toggle>
+
+      <ion-item *ngIf="this.audioS.activado">
+        <i class="fas fa-volume-up" (click)="this.audioS.toggleAudio()"></i>
+      </ion-item>
+
+      <ion-item *ngIf="!this.audioS.activado">
+        <i class="fas fa-volume-mute" (click)="this.audioS.toggleAudio()"></i>
+      </ion-item>
 
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
-        <ion-item [routerLink]="['/lista-espera']">Lista de espera</ion-item>
+        <ion-item [routerLink]="['/lista-espera']" (click)="this.audioS.PlayAudio()">Lista de espera</ion-item>
       </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
-        <ion-item [routerLink]="['/mesa-asignada-cliente']">Asignar mesas</ion-item>
+        <ion-item [routerLink]="['/mesa-asignada-cliente']" (click)="this.audioS.PlayAudio()">Asignar mesas</ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
-        <ion-item [routerLink]="['/registro-cliente']">Registrar cliente</ion-item>
+        <ion-item [routerLink]="['/registro-cliente']" (click)="this.audioS.PlayAudio()">Registrar cliente</ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'">
-        <ion-item [routerLink]="['/registro-producto']">Registrar producto</ion-item>
+        <ion-item [routerLink]="['/registro-producto']" (click)="this.audioS.PlayAudio()">Registrar producto</ion-item>
       </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
-        <ion-item [routerLink]="['/registro-empleado']">Registro empleado</ion-item>
+        <ion-item [routerLink]="['/registro-empleado']" (click)="this.audioS.PlayAudio()">Registro empleado</ion-item>
       </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
-        <ion-item [routerLink]="['/registro-supervisor']">Registro supervisor</ion-item>
+        <ion-item [routerLink]="['/registro-supervisor']" (click)="this.audioS.PlayAudio()">Registro supervisor</ion-item>
       </ion-menu-toggle>
 
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
-        <ion-item [routerLink]="['/registro-mesa']">Alta de mesa</ion-item>
+        <ion-item [routerLink]="['/registro-mesa']" (click)="this.audioS.PlayAudio()">Alta de mesa</ion-item>
       </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth?.usuarioActual?.tipo === 'mozo'">
-        <ion-item [routerLink]="['/chat']">Chat</ion-item>
+        <ion-item [routerLink]="['/chat']" (click)="this.audioS.PlayAudio()">Chat</ion-item>
       </ion-menu-toggle>
 
-      <ion-footer class="bar-stable">
-        <ion-item [routerLink]="['/login']" style="left:0;right:0;margin:0; width: 100%;position: fixed;">fsafasfas</ion-item>
-      </ion-footer>
+      <ion-menu-toggle *ngIf="this.auth?.usuarioActual">
+        <ion-item (click)="this.logOut()">Cerrar sesión</ion-item>
+      </ion-menu-toggle>
+
     </ion-list>
   </ion-content>
 </ion-menu>

@@ -42,10 +42,6 @@ export class ClientesPage implements OnInit {
     return filtrado.length;
   }
 
-  change(value){
-    console.log(value.detail.value);
-  }
-
   mostrarToast(options: any){
     Swal.fire(options);
   }

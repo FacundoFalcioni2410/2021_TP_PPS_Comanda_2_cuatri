@@ -72,7 +72,6 @@ export class AhorcadoPage implements OnInit {
   }
 
   cambiarLetra(letra : string){
-    console.log(this.arrayPalabras);
     let indiceACambiar = this.getIndicesOf(letra,this.palabra,false);
 
     if(indiceACambiar.length){
@@ -91,7 +90,6 @@ export class AhorcadoPage implements OnInit {
   }
 
   SetearPalabra(){
-    console.log(this.arrayPalabras);
     this.errores = 0;
     this.image = this.imagenArray[0];
     this.arrayGuiones = [];
@@ -108,8 +106,6 @@ export class AhorcadoPage implements OnInit {
       this.arrayGuiones.push("_");
 
     }
-    //console.log("random numero: " + random);
-    console.log("palabra: " + this.palabra);
   }
 
 

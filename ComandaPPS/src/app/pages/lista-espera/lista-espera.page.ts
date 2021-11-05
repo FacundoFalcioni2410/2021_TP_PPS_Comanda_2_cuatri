@@ -52,7 +52,6 @@ export class ListaEsperaPage implements OnInit {
     for(let mesa of this.mesasArray){
       if(mesa.numero == mesaAsignada){
         mesaObj = mesa;
-        console.log(mesaObj);
         break;
       }
     }

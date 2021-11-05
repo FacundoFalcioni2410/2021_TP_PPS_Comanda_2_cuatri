@@ -108,7 +108,6 @@ export class AuthService {
     let user = await this.auth.currentUser;
 
     user.delete().then( () =>{
-      console.log('deleted');
     });
 
     if(this.usuarioActual?.perfil)
@@ -259,6 +258,10 @@ export class AuthService {
 
   login(user: any){
     return this.auth.signInWithEmailAndPassword(user.email, user.password)
+  }
+
+  logOut(){
+    return this.auth.signOut();
   }
 
   registro(user: any){

@@ -15,7 +15,6 @@ export class ListadoPedidosMozoPage implements OnInit {
 
     this.userService.TraerPedidos()
     .subscribe((data)=>{
-      console.log(data);
       this.pedidos = data;
       for(let pedido of this.pedidos)
       {

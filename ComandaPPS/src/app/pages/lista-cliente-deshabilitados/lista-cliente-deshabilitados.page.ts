@@ -15,7 +15,6 @@ export class ListaClienteDeshabilitadosPage implements OnInit {
   constructor(private auth: AuthService, private pushNotification: PushNotificationsService, private mailS: MailService) {
     this.auth.TraerGenerico('clientes','habilitado',false).subscribe(clientes => {
       this.clientes = clientes;
-      console.log(this.clientes);
     })
   }
 
