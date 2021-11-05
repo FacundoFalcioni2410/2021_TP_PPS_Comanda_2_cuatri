@@ -13,28 +13,27 @@
 </ion-header>
 
 <ion-content #chat padding>
-  <div *ngFor="let message of items | async">
+  <div *ngFor="let message of items | async" class="cht">
     <ion-card style='width:80%;margin:0 auto 10px 10px;' *ngIf="this.userService.usuarioActual?.id !== message.user?.id"
-      color='primary'>
-      <div>
-        <ion-card-header *ngIf="this.userService.tipoUsuario != 'cliente'">
+      class="chat">
+      <div id="chat_content">
+        <ion-card-header *ngIf="this.userService.tipoUsuario != 'cliente'" id="header">
           Mesa {{message.user.mesaAsignada}}
         </ion-card-header>
         <ion-card-header *ngIf="this.userService.tipoUsuario == 'cliente'">
           {{message.tipo}}
         </ion-card-header>
-        <ion-card-content style='padding-bottom:5px;'>
+        <ion-card-content style='padding-bottom:5px;' class="sms">
           {{message.message}}
         </ion-card-content>
-        <ion-card-content>
+        <ion-card-content class="hour">
           {{message.hour}}
         </ion-card-content>
       </div>
     </ion-card>
-    <ion-card style='width:80%;margin:0 10px 10px auto;' *ngIf="this.userService.usuarioActual?.id === message.user?.id"
-      color='tertiary'>
-      <div class="ion-float-right">
-        <ion-card-content>
+    <ion-card *ngIf="this.userService.usuarioActual?.id === message.user?.id" class="cht_right" align="right" id="right">
+      <div class="ion-float-right" align="right">
+        <ion-card-content class="sms">
           {{message.message}}
         </ion-card-content>
         <ion-card-content>
@@ -45,12 +44,11 @@
   </div>
 </ion-content>
 <ion-footer class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="tool">
     <div style="width: auto; padding: 0 10px">
-      <ion-input type="text" class="ingreso-mensaje" maxlenght=21 style="border: 1px solid; border-radius: 10px; "
+      <ion-input type="text" class="ingreso-mensaje" maxlength="21" style="border: 1px solid; border-radius: 10px; background: rgb(240, 228, 220); color: rgb(0, 0, 0);"
         [(ngModel)]="this.mensaje"></ion-input>
     </div>
-    <ion-button style="width: auto; padding: 0 5px; --background: #FF7F50 !important;" slot="end"
-      (click)="MandarMensaje()">Enviar</ion-button>
+    <ion-icon name="send-outline" style="font-size: 28px; padding: 5px; color: rgb(4, 161, 4);" slot="end" (click)="MandarMensaje()"></ion-icon>
   </ion-toolbar>
 </ion-footer>
