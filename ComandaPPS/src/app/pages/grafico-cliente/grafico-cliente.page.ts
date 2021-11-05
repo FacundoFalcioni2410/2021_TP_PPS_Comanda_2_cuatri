@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class GraficoClientePage implements OnInit {
 
   encuestas: any;
 
-  constructor(private userService: AuthService) {
+  constructor(private userService: AuthService, public audioService : AudioService) {
     this.userService.getEncuestas().subscribe(res =>{
       this.encuestas = res;
       this.generateChart();
