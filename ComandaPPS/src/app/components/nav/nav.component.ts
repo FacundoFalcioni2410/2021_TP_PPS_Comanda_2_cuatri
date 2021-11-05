@@ -33,7 +33,7 @@ export class NavComponent implements OnInit {
     this.auth.logOut()
     .then(res =>{
       this.audioS.PlayAudio();
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
       this.auth.usuarioActual = null;
     });
   }

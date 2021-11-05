@@ -1091,16 +1091,8 @@ let PushNotificationsService = class PushNotificationsService {
     }
     inicializar() {
         if (this.platform.is('capacitor')) {
-            _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.requestPermissions().then(result => {
-                if (result.receive === 'granted') {
-                    // Register with Apple / Google to receive push via APNS/FCM
-                    _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.register();
-                    this.addListeners();
-                }
-                else {
-                    // Show some error
-                }
-            });
+            _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.register();
+            this.addListeners();
         }
     }
     addListeners() {

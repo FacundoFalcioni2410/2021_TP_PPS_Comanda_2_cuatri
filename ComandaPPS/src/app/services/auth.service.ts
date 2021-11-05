@@ -157,7 +157,7 @@ export class AuthService {
 
 
   UpdateEstadoCliente(cliente : any){
-    this.clienteCollection.doc(cliente.id).update({habilitado: cliente.habilitado});
+    return this.clienteCollection.doc(cliente.id).update({habilitado: cliente.habilitado});
   }
 
   UpdatearMesaCliente(mesa: any, valor : boolean){
@@ -273,6 +273,7 @@ export class AuthService {
   }
 
   guardarToken(usuario, perfil, token){
+    console.log(usuario, perfil, token);
     if(perfil === 'cliente')
     {
       this.clienteCollection.doc(usuario.id).update({pushToken: token});

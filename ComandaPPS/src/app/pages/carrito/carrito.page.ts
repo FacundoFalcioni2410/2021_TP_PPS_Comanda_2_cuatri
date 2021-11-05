@@ -80,6 +80,8 @@ export class CarritoPage implements OnInit {
       etapasRealizadas: 0,
       etapasTotales: etapasTotales,
       precioTotal: this.precio,
+      cocteleriaEntregado: false,
+      cocinaEntregado: false,
       tipo: tipo
     }
 

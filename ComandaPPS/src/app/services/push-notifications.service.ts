@@ -28,15 +28,8 @@ export class PushNotificationsService  {
   inicializar(){
     if(this.platform.is('capacitor'))
     {
-      PushNotifications.requestPermissions().then(result => {
-        if (result.receive === 'granted') {
-          // Register with Apple / Google to receive push via APNS/FCM
-          PushNotifications.register();
-          this.addListeners();
-        } else {
-          // Show some error
-        }
-      });
+      PushNotifications.register();
+      this.addListeners();
     }
   }
 

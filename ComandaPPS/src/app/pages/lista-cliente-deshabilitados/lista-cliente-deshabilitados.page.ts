@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MailService } from 'src/app/services/mail.service';
 import { PushNotificationsService } from 'src/app/services/push-notifications.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-cliente-deshabilitados',
@@ -27,7 +28,18 @@ export class ListaClienteDeshabilitadosPage implements OnInit {
       item.habilitado = true;
       // this.mailS.enviarConfirmacionHabilitado(item);
       setTimeout(() =>{
-        this.auth.UpdateEstadoCliente(item);
+        this.auth.UpdateEstadoCliente(item).then(()=>{
+          Swal.fire({
+            title: 'Exito',
+            icon:'success',
+            text:'Usuario aceptado con éxito.',
+            backdrop: false,
+            toast: true,
+            position: 'bottom',
+            timer: 2500,
+            timerProgressBar: true
+          });
+        });
       },300);
     }
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { PushNotificationsService } from 'src/app/services/push-notifications.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-cocinero',
@@ -16,7 +18,7 @@ export class ListaCocineroPage implements OnInit {
   platoFinalizado : boolean = false;
   productosFiltrados : any[];
 
-  constructor(private userService: AuthService) {
+  constructor(private userService: AuthService, private pushNotification: PushNotificationsService) {
 
     this.userService.getPedidos()
       .subscribe((data: any) => {
@@ -77,7 +79,19 @@ export class ListaCocineroPage implements OnInit {
         if(data.cocinaEntregado === false)
         {
           data.etapasRealizadas++;
-          this.userService.UpdatearEtapasRealizadasPedidoCocina(idPlato, data.etapasRealizadas);
+          this.userService.UpdatearEtapasRealizadasPedidoCocina(idPlato, data.etapasRealizadas)
+          .then(() =>{
+            Swal.fire({
+              title: 'Exito',
+              icon: 'success',
+              text: 'Pedido devuelvo al mozo',
+              backdrop: false,
+              toast: true,
+              position: 'bottom',
+              timer: 2500,
+              timerProgressBar: true,
+            });
+          });
         }
       });
   }

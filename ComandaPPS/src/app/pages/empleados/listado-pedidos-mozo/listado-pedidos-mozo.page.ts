@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { PushNotificationsService } from 'src/app/services/push-notifications.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +12,7 @@ export class ListadoPedidosMozoPage implements OnInit {
 
   pedidos : any;
 
-  constructor(public userService : AuthService) {
+  constructor(public userService : AuthService, private pushNotification: PushNotificationsService) {
 
     this.userService.TraerPedidos()
     .subscribe((data)=>{
