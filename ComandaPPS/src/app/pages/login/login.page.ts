@@ -104,7 +104,7 @@ export class LoginPage implements OnInit {
         }
         else
         {
-          
+          this.audioS.PlayAudio();
           this.router.navigate(['/lista-cliente-deshabilitados']);
           this.mostrarToast({text: 'Datos correctos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'success'});
         }

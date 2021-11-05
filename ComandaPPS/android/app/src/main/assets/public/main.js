@@ -58,19 +58,19 @@ const routes = [
     },
     {
         path: 'registro-producto',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-producto_registro-producto_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-producto/registro-producto.module */ 8190)).then(m => m.RegistroProductoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("src_app_pages_registro_registro-producto_registro-producto_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-producto/registro-producto.module */ 8190)).then(m => m.RegistroProductoPageModule)
     },
     {
         path: 'registro-mesa',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-mesa_registro-mesa_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-mesa/registro-mesa.module */ 37942)).then(m => m.RegistroMesaPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("src_app_pages_registro_registro-mesa_registro-mesa_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-mesa/registro-mesa.module */ 37942)).then(m => m.RegistroMesaPageModule)
     },
     {
         path: 'registro-empleado',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-empleado_registro-empleado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-empleado/registro-empleado.module */ 99056)).then(m => m.RegistroEmpleadoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("src_app_pages_registro_registro-empleado_registro-empleado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-empleado/registro-empleado.module */ 99056)).then(m => m.RegistroEmpleadoPageModule)
     },
     {
         path: 'registro-supervisor',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-supervisor_registro-supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-supervisor/registro-supervisor.module */ 1912)).then(m => m.RegistroSupervisorPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("src_app_pages_registro_registro-supervisor_registro-supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-supervisor/registro-supervisor.module */ 1912)).then(m => m.RegistroSupervisorPageModule)
     },
     {
         path: 'clientes',
@@ -95,11 +95,11 @@ const routes = [
     },
     {
         path: 'lista-cliente-deshabilitados',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-cliente-deshabilitados_lista-cliente-deshabilitados_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module */ 53362)).then(m => m.ListaClienteDeshabilitadosPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-cliente-deshabilitados_lista-cliente-deshabilitados_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-cliente-deshabilitados/lista-cliente-deshabilitados.module */ 53362)).then(m => m.ListaClienteDeshabilitadosPageModule)
     },
     {
         path: 'realizar-pedido',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_realizar-pedido_realizar-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/realizar-pedido/realizar-pedido.module */ 89588)).then(m => m.RealizarPedidoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_pages_carrito_carrito_page_ts-src_app_sharedComponents_shared_shared_module_ts"), __webpack_require__.e("src_app_pages_realizar-pedido_realizar-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/realizar-pedido/realizar-pedido.module */ 89588)).then(m => m.RealizarPedidoPageModule)
     },
     {
         path: 'lista-espera',
@@ -107,11 +107,11 @@ const routes = [
     },
     {
         path: 'carrito',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/carrito/carrito.module */ 74646)).then(m => m.CarritoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_pages_carrito_carrito_page_ts-src_app_sharedComponents_shared_shared_module_ts"), __webpack_require__.e("src_app_pages_carrito_carrito_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/carrito/carrito.module */ 74646)).then(m => m.CarritoPageModule)
     },
     {
         path: 'lista-bartender',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_lista-bartender_lista-bartender_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/lista-bartender/lista-bartender.module */ 27215)).then(m => m.ListaBartenderPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_lista-bartender_lista-bartender_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/lista-bartender/lista-bartender.module */ 27215)).then(m => m.ListaBartenderPageModule)
     },
     {
         path: 'chat',
@@ -123,7 +123,7 @@ const routes = [
     },
     {
         path: 'lista-cocinero',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_lista-cocinero_lista-cocinero_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/lista-cocinero/lista-cocinero.module */ 70221)).then(m => m.ListaCocineroPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_empleados_lista-cocinero_lista-cocinero_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/empleados/lista-cocinero/lista-cocinero.module */ 70221)).then(m => m.ListaCocineroPageModule)
     },
     {
         path: 'mesa-asignada-cliente',
@@ -333,7 +333,7 @@ let NavComponent = class NavComponent {
         this.auth.logOut()
             .then(res => {
             this.audioS.PlayAudio();
-            this.router.navigate(['/home']);
+            this.router.navigate(['/login']);
             this.auth.usuarioActual = null;
         });
     }
@@ -526,7 +526,7 @@ let AuthService = class AuthService {
         return this.clienteCollection.doc(cliente.id).update({ mesaAsignada: mesa });
     }
     UpdateEstadoCliente(cliente) {
-        this.clienteCollection.doc(cliente.id).update({ habilitado: cliente.habilitado });
+        return this.clienteCollection.doc(cliente.id).update({ habilitado: cliente.habilitado });
     }
     UpdatearMesaCliente(mesa, valor) {
         return this.mesaCollection.doc(mesa.id).update({ cliente: valor });

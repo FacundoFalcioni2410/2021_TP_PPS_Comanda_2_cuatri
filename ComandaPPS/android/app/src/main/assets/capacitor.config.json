@@ -5,7 +5,7 @@
 	"bundledWebRuntime": false,
 	"plugins": {
 		"SplashScreen": {
-			"launchShowDuration": 6000,
+			"launchShowDuration": 8000,
 			"launchAutoHide": false,
 			"backgroundColor": "#2D73CE"
 		},
