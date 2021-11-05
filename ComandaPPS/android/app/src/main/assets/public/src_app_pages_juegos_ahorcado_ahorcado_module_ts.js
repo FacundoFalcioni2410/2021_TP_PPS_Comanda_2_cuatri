@@ -158,7 +158,6 @@ let AhorcadoPage = class AhorcadoPage {
         return Math.round(Math.random() * (this.arrayPalabras.length - 0));
     }
     cambiarLetra(letra) {
-        console.log(this.arrayPalabras);
         let indiceACambiar = this.getIndicesOf(letra, this.palabra, false);
         if (indiceACambiar.length) {
             for (let indice of indiceACambiar) {
@@ -174,7 +173,6 @@ let AhorcadoPage = class AhorcadoPage {
     }
     SetearPalabra() {
         var _a;
-        console.log(this.arrayPalabras);
         this.errores = 0;
         this.image = this.imagenArray[0];
         this.arrayGuiones = [];
@@ -189,8 +187,6 @@ let AhorcadoPage = class AhorcadoPage {
         for (let i = 0; i < this.palabra.length; i++) {
             this.arrayGuiones.push("_");
         }
-        //console.log("random numero: " + random);
-        console.log("palabra: " + this.palabra);
     }
 };
 AhorcadoPage.ctorParameters = () => [

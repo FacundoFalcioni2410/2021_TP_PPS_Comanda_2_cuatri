@@ -9,6 +9,7 @@ import { FotosService } from 'src/app/services/fotos.service';
 import { MailService } from 'src/app/services/mail.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-registro-cliente',
@@ -149,11 +150,11 @@ export class RegistroClientePage implements OnInit {
       setTimeout(()=>{
         this.loading = false;
       },1000);
-      this.vibration.vibrate(2000);
+      Haptics.vibrate({duration: 2000});
       if(err.code === "auth/email-already-in-use")
       {
         this.mostrarToast({text: 'La cuenta ya existe',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
-        this.vibration.vibrate(2000);
+        Haptics.vibrate({duration: 2000});
       }
       this.controles.reset();
       // this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});

@@ -5,6 +5,8 @@ import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+
 
 @Component({
   selector: 'app-cliente-espera-pedido',
@@ -52,7 +54,7 @@ export class ClienteEsperaPedidoPage implements OnInit {
           }
           else
           {
-            this.vibration.vibrate(2000);
+            Haptics.vibrate({duration: 2000});
             Swal.fire({
               title: 'Error',
               text:'Esa no es su mesa!',

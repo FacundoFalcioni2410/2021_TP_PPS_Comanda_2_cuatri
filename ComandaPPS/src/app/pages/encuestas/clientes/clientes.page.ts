@@ -4,6 +4,9 @@ import { Vibration } from '@ionic-native/vibration/ngx';
 import { AuthService } from 'src/app/services/auth.service';
 import { FotosService } from 'src/app/services/fotos.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { Router } from '@angular/router';
+import { AudioService } from 'src/app/services/audio.service';
 
 @Component({
   selector: 'app-clientes',
@@ -18,7 +21,7 @@ export class ClientesPage implements OnInit {
   productos: any;
 
 
-  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration, private firestore: AuthService, private userService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private fotoS: FotosService, private vibration: Vibration, private firestore: AuthService, private userService: AuthService, private router: Router, private audioS: AudioService) {
     this.form = this.formBuilder.group({
       nombre: ['',[Validators.required]],
       satisfaccion: ['5',[Validators.required]],
@@ -61,12 +64,20 @@ export class ClientesPage implements OnInit {
     else
     {
       this.formDataFotos = null;
-      this.vibration.vibrate(2000);
+      Haptics.vibrate({duration: 2000});
       this.mostrarToast({text: "Debe seleccionar 3 fotos", toast: true, position: 'bottom',timer: 2000,timerProgressBar: true, icon: 'error'});
     }
   }
 
   subirEncuesta(){
-    this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, this.form.value);
+    if(this.nombresFotos.length)
+    {
+      this.fotoS.subirArchivos(this.formDataFotos, this.nombresFotos, this.form.value);
+    }
+    else
+    {
+      this.audioS.PlayAudio();
+      this.router.navigate(['/grafico-cliente']);
+    }
   }
 }

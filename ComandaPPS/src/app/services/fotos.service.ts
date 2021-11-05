@@ -14,6 +14,7 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AudioService } from './audio.service';
 import { QRService } from './qr.service';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ export class FotosService {
     catch(e){
       this.loading = false;
       this.auth.borrarUsuarioActual();
-      this.vibration.vibrate(2000);
+      Haptics.vibrate({duration: 2000});
       this.mostrarToast({text: 'La foto es obligatorio, se cancela el registro', title: 'Error registro', icon: 'error', time: 1500, timerProgressBar: true})
     }
 
@@ -191,7 +192,7 @@ export class FotosService {
 
       }).catch(()=>{
         this.mostrarToast({title: "Error", text:"Error al subir la foto, intentenlo nuevamente", icon: 'error', time: 1500,timeProgressBar:true})
-        this.vibration.vibrate(2000);
+        Haptics.vibrate({duration: 2000});
         this.auth.borrarUsuarioActual();
         this.loading = false;
       });

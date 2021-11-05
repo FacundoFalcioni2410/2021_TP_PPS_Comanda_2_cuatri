@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { AudioService } from 'src/app/services/audio.service';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+
 
 @Component({
   selector: 'app-realizar-pedido',
@@ -51,7 +53,7 @@ export class RealizarPedidoPage implements OnInit {
           }
           else
           {
-            this.vibration.vibrate(2000);
+            Haptics.vibrate({duration: 2000});
             Swal.fire({position: 'bottom', text:'Cantidad maxima del producto alcanzada', timer: 1500, timerProgressBar: true, icon: 'error', toast: true});
           }
         }

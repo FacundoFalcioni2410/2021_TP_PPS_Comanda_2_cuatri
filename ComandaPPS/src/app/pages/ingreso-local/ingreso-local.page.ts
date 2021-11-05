@@ -5,6 +5,8 @@ import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { QRService } from 'src/app/services/qr.service';
 import Swal from 'sweetalert2';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
+
 
 @Component({
   selector: 'app-ingreso-local',
@@ -14,8 +16,10 @@ import Swal from 'sweetalert2';
 export class IngresoLocalPage implements OnInit {
 
   listaEspera : boolean = false;
-  usuario: any
-  constructor(private qrS: QRService, public userService : AuthService, private route : Router, private vibration: Vibration,
+  usuario: any;
+  flag = false;
+
+  constructor(private qrS: QRService, public userService : AuthService, private route : Router,
               public audio : AudioService) {
     this.userService.TraerGenerico('clientes','uid', this.userService.usuarioActual.uid).subscribe(res =>{
       this.usuario = res[0];
@@ -36,7 +40,6 @@ export class IngresoLocalPage implements OnInit {
   
 
   Scan(){
-    
     if(!this.usuario.listaEspera && this.usuario.mesaAsignada !== 0){
 
           Swal.fire({
@@ -61,7 +64,8 @@ export class IngresoLocalPage implements OnInit {
                 }
                 else
                 {
-                  this.vibration.vibrate(2000);
+                  console.log(datos.text);
+                  this.flag = true;
                   Swal.fire({
                     title:"Error",
                     icon: 'error',
@@ -76,6 +80,8 @@ export class IngresoLocalPage implements OnInit {
               }
             
           });
+
+
 
     }else if(this.usuario.listaEspera && this.usuario.mesaAsignada != 0){//CASO EN EL QUE EL CLIENTE YA HAYA SIDO ACEPTADO EN LA LISTA Y TIENE MESA ASIGNADA
 
@@ -98,7 +104,8 @@ export class IngresoLocalPage implements OnInit {
                 this.audio.PlayAudio();
                 this.route.navigateByUrl('/realizar-pedido');
               }else{
-                this.vibration.vibrate(2000);
+                Haptics.vibrate({duration: 2000});
+                this.flag = true;
                 Swal.fire({
                   title:"Error",
                   icon: 'error',
@@ -107,12 +114,16 @@ export class IngresoLocalPage implements OnInit {
                   timerProgressBar: true,
                   backdrop: false,
                 });
+                Haptics.vibrate({duration: 2000});
+
               }
             }
               
             }
           
         });
+
+
 
     }else if(!this.usuario.listaEspera && this.usuario.mesaAsignada == 0){
       
@@ -137,7 +148,8 @@ export class IngresoLocalPage implements OnInit {
               this.audio.PlayAudio();
               this.route.navigateByUrl('/grafico-cliente');
             }else{
-              this.vibration.vibrate(2000);
+
+              this.flag = true;
               Swal.fire({
                 title:"Error",
                 icon: 'error',
@@ -147,12 +159,19 @@ export class IngresoLocalPage implements OnInit {
                 backdrop: false,
 
               });
+              if(this.flag)
+              {
+                Haptics.vibrate({duration: 2000});
+                this.flag = false;
+              }
             }
           }
             
           }
         
       });
+
+
     }
   }
 }

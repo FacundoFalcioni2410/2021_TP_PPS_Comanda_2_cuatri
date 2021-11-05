@@ -4403,15 +4403,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FotosService": () => (/* binding */ FotosService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var _firestore_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./firestore.service */ 91343);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ 37556);
-/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/compat/storage */ 43893);
+/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/fire/compat/storage */ 43893);
 /* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/camera */ 37673);
 /* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
+/* harmony import */ var _audio_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./audio.service */ 16425);
+/* harmony import */ var _qr_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./qr.service */ 52724);
 
 
 
@@ -4424,19 +4426,23 @@ __webpack_require__.r(__webpack_exports__);
 //Toast
 
 
+
+
 let FotosService = class FotosService {
-    constructor(auth, router, storage, firestore, vibration) {
+    constructor(auth, router, storage, firestore, vibration, audio, qrS) {
         this.auth = auth;
         this.router = router;
         this.storage = storage;
         this.firestore = firestore;
         this.vibration = vibration;
+        this.audio = audio;
+        this.qrS = qrS;
         this.nombreFoto = '';
         this.disable = false;
         this.loading = false;
     }
     TakePhoto(objeto) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
             let capturedPhoto;
             try {
                 capturedPhoto = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_2__.Camera.getPhoto({
@@ -4464,7 +4470,7 @@ let FotosService = class FotosService {
         });
     }
     subirArchivos(formData, nombres, objeto) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
             let archivo0 = formData.get('archivo0');
             let referencia0;
             let referencia1;
@@ -4499,6 +4505,7 @@ let FotosService = class FotosService {
                             }
                             else {
                                 this.auth.AltaEncuesta(objeto);
+                                this.audio.PlayAudio();
                                 this.router.navigate(['grafico-cliente']);
                             }
                         });
@@ -4512,6 +4519,7 @@ let FotosService = class FotosService {
                     referencia1.getDownloadURL().subscribe((url1) => {
                         objeto.fotos.push(url1);
                         this.auth.AltaEncuesta(objeto);
+                        this.audio.PlayAudio();
                         this.router.navigate(['grafico-cliente']);
                     });
                 });
@@ -4521,6 +4529,7 @@ let FotosService = class FotosService {
                     objeto.fotos = [];
                     objeto.fotos.push(url0);
                     this.auth.AltaEncuesta(objeto);
+                    this.audio.PlayAudio();
                     this.router.navigate(['grafico-cliente']);
                 });
             }
@@ -4533,22 +4542,27 @@ let FotosService = class FotosService {
             objeto.foto = url;
             if (objeto === null || objeto === void 0 ? void 0 : objeto.perfil) {
                 this.auth.AltaSupervisor(objeto);
+                this.audio.PlayAudio();
                 this.router.navigate(['/login']);
             }
             else if (objeto === null || objeto === void 0 ? void 0 : objeto.tipo) {
                 this.auth.AltaEmpleado(objeto);
+                this.audio.PlayAudio();
                 this.router.navigate(['/login']);
             }
             else if (objeto === null || objeto === void 0 ? void 0 : objeto.cantidadComensales) {
                 this.auth.AltaMesa(objeto);
+                this.qrS.generateQR(objeto);
             }
             else {
                 this.auth.AltaCliente(objeto);
                 if (objeto.tipoCliente === "anonimo") {
                     this.auth.usuarioActual = objeto;
+                    this.audio.PlayAudio();
                     this.router.navigate(['/ingreso-local']);
                 }
                 else {
+                    this.audio.PlayAudio();
                     this.router.navigate(['/login']);
                 }
             }
@@ -4567,16 +4581,80 @@ let FotosService = class FotosService {
 };
 FotosService.ctorParameters = () => [
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_1__.AuthService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
-    { type: _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_7__.AngularFireStorage },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router },
+    { type: _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_9__.AngularFireStorage },
     { type: _firestore_service__WEBPACK_IMPORTED_MODULE_0__.FirestoreService },
-    { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__.Vibration }
+    { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__.Vibration },
+    { type: _audio_service__WEBPACK_IMPORTED_MODULE_5__.AudioService },
+    { type: _qr_service__WEBPACK_IMPORTED_MODULE_6__.QRService }
 ];
-FotosService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Injectable)({
+FotosService = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Injectable)({
         providedIn: 'root'
     })
 ], FotosService);
+
+
+
+/***/ }),
+
+/***/ 52724:
+/*!****************************************!*\
+  !*** ./src/app/services/qr.service.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "QRService": () => (/* binding */ QRService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ 92760);
+
+
+
+let QRService = class QRService {
+    constructor(barcodeScanner) {
+        this.barcodeScanner = barcodeScanner;
+    }
+    scan() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+            return yield this.barcodeScanner.scan({ showTorchButton: true, formats: 'QR_CODE,PDF_417', resultDisplayDuration: 0 });
+        });
+    }
+    scanDNI() {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
+            let scannedData = yield this.barcodeScanner.scan({ showTorchButton: true, formats: 'QR_CODE,PDF_417', resultDisplayDuration: 0 });
+            if (scannedData.text) {
+                if (scannedData.text.includes('@')) {
+                    let dniArr = scannedData.text.split('@');
+                    let digitosCUIL = dniArr[8];
+                    let cuil = digitosCUIL[0] + digitosCUIL[1] + dniArr[4] + digitosCUIL[2];
+                    return {
+                        dni: dniArr[4],
+                        cuil: cuil
+                    };
+                }
+            }
+            return null;
+        });
+    }
+    generateQR(mesa) {
+        this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, mesa.numero)
+            .then(data => {
+        });
+    }
+};
+QRService.ctorParameters = () => [
+    { type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_0__.BarcodeScanner }
+];
+QRService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
+        providedIn: 'root'
+    })
+], QRService);
 
 
 

@@ -154,10 +154,8 @@ let SupervisorPage = class SupervisorPage {
         this.userService = userService;
         this.clickeado = false;
         this.userService.getClientes().subscribe((data) => {
-            console.log(data);
             this.clientes = data;
             this.userService.getEmpleados().subscribe((data) => {
-                console.log(data);
                 this.empleados = data;
                 this.totalPersonas = this.clientes.concat(this.empleados);
             });

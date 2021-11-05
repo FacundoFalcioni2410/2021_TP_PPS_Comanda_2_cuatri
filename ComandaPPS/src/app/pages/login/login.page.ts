@@ -6,6 +6,7 @@ import { AudioService } from 'src/app/services/audio.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MailService } from 'src/app/services/mail.service';
 import Swal from 'sweetalert2/src/sweetalert2.js'
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-login',
@@ -74,7 +75,7 @@ export class LoginPage implements OnInit {
         if(!user?.cuil && !user?.habilitado)
         {
           this.mostrarToast({text: 'Su cuenta todavia no fue habilitada, revise su correo electronico',toast: true,position: 'bottom',timer: 2500,timerProgressBar: true,icon: 'error'});
-          this.vibration.vibrate(2000);
+          Haptics.vibrate({duration: 2000});
         }
         else if(!user?.cuil && user?.habilitado)
         {
@@ -118,7 +119,7 @@ export class LoginPage implements OnInit {
       },1500);
     })
     .catch( err =>{
-      this.vibration.vibrate(2000);
+      Haptics.vibrate({duration: 2000});
       this.mostrarToast({text: 'Datos incorrectos',toast: true,position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
       setTimeout(()=>{
         this.logo = "../../../assets/restaurant.png";

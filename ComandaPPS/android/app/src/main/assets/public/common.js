@@ -885,15 +885,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CarritoPage": () => (/* binding */ CarritoPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_carrito_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./carrito.page.html */ 56583);
 /* harmony import */ var _carrito_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carrito.page.scss */ 18397);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 80476);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ 88259);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2 */ 88259);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -903,14 +905,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CarritoPage = class CarritoPage {
-    constructor(modalController, userService, router) {
+    constructor(modalController, userService, router, audioS) {
         this.modalController = modalController;
         this.userService = userService;
         this.router = router;
+        this.audioS = audioS;
         this.precio = 0;
     }
     ngOnInit() {
-        console.log(this.productos);
         let flag = false;
         for (let producto of this.productos) {
             if (!flag || producto.tiempo > this.maxTiempo) {
@@ -962,23 +964,26 @@ let CarritoPage = class CarritoPage {
             var _a, _b;
             this.userService.PedidoCliente((_b = (_a = this.userService) === null || _a === void 0 ? void 0 : _a.usuarioActual) === null || _b === void 0 ? void 0 : _b.id, doc.id);
             this.userService.usuarioActual.pedido = doc.id;
-            sweetalert2__WEBPACK_IMPORTED_MODULE_3___default().fire({ text: `Pedido realizado con exito, recuerde que el tiempo estimado de su entrega es de: ${this.maxTiempo} minutos`, toast: true, timer: 3000, timerProgressBar: true, icon: 'success', position: 'bottom' });
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default().fire({ text: `Pedido realizado con exito, recuerde que el tiempo estimado de su entrega es de: ${this.maxTiempo} minutos`, toast: true, timer: 3000, timerProgressBar: true, icon: 'success', position: 'bottom' });
             setTimeout(() => {
+                this.audioS.PlayAudio();
+                this.dismiss();
                 this.router.navigate(['/cliente-espera-pedido']);
             }, 3000);
         });
     }
 };
 CarritoPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController },
-    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
+    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__.AudioService }
 ];
 CarritoPage.propDecorators = {
-    productos: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_6__.Input }]
+    productos: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_7__.Input }]
 };
-CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+CarritoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-carrito',
         template: _raw_loader_carrito_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_carrito_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -1120,7 +1125,6 @@ let PushNotificationsService = class PushNotificationsService {
             });
         });
         _capacitor_push_notifications__WEBPACK_IMPORTED_MODULE_0__.PushNotifications.addListener('pushNotificationActionPerformed', (notification) => {
-            console.log(notification);
             this.router.navigate([notification.notification.data.ruta]);
         });
         _capacitor_local_notifications__WEBPACK_IMPORTED_MODULE_1__.LocalNotifications.addListener('localNotificationActionPerformed', (notification) => {
@@ -1138,70 +1142,6 @@ PushNotificationsService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
         providedIn: 'root'
     })
 ], PushNotificationsService);
-
-
-
-/***/ }),
-
-/***/ 52724:
-/*!****************************************!*\
-  !*** ./src/app/services/qr.service.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "QRService": () => (/* binding */ QRService)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ 92760);
-
-
-
-let QRService = class QRService {
-    constructor(barcodeScanner) {
-        this.barcodeScanner = barcodeScanner;
-    }
-    scan() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            return yield this.barcodeScanner.scan({ showTorchButton: true, formats: 'QR_CODE,PDF_417', resultDisplayDuration: 0 });
-        });
-    }
-    scanDNI() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            let scannedData = yield this.barcodeScanner.scan({ showTorchButton: true, formats: 'QR_CODE,PDF_417', resultDisplayDuration: 0 });
-            if (scannedData.text) {
-                console.log(scannedData.text);
-                if (scannedData.text.includes('@')) {
-                    let dniArr = scannedData.text.split('@');
-                    let digitosCUIL = dniArr[8];
-                    let cuil = digitosCUIL[0] + digitosCUIL[1] + dniArr[4] + digitosCUIL[2];
-                    return {
-                        dni: dniArr[4],
-                        cuil: cuil
-                    };
-                }
-            }
-            return null;
-        });
-    }
-    generateQR() {
-        this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, 'caca')
-            .then(data => {
-            console.log(data);
-        });
-    }
-};
-QRService.ctorParameters = () => [
-    { type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_0__.BarcodeScanner }
-];
-QRService = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable)({
-        providedIn: 'root'
-    })
-], QRService);
 
 
 
@@ -1321,7 +1261,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<div class=\"text-center\">\n  <h1 class=\"d-inline\"> {{ minutos | number: '2.0' }}:{{ segundos | number: '2.0' }} </h1>\n</div>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<div class=\"text-center\">\r\n  <h1 class=\"d-inline\"> {{ minutos | number: '2.0' }}:{{ segundos | number: '2.0' }} </h1>\r\n</div>");
 
 /***/ }),
 

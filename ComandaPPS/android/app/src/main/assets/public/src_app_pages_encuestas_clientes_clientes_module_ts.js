@@ -139,9 +139,6 @@ let ClientesPage = class ClientesPage {
         });
         return filtrado.length;
     }
-    change(value) {
-        console.log(value.detail.value);
-    }
     mostrarToast(options) {
         sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_5__.default.fire(options);
     }

@@ -82,7 +82,7 @@ const routes = [
     },
     {
         path: 'ingreso-local',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_ingreso-local_ingreso-local_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ingreso-local/ingreso-local.module */ 9916)).then(m => m.IngresoLocalPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_ingreso-local_ingreso-local_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ingreso-local/ingreso-local.module */ 9916)).then(m => m.IngresoLocalPageModule)
     },
     {
         path: 'ahorcado',
@@ -131,7 +131,7 @@ const routes = [
     },
     {
         path: 'cliente-espera-pedido',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_cliente-espera-pedido_cliente-espera-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cliente-espera-pedido/cliente-espera-pedido.module */ 23262)).then(m => m.ClienteEsperaPedidoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_cliente-espera-pedido_cliente-espera-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cliente-espera-pedido/cliente-espera-pedido.module */ 23262)).then(m => m.ClienteEsperaPedidoPageModule)
     },
     {
         path: 'grafico-cliente',
@@ -139,7 +139,7 @@ const routes = [
     },
     {
         path: 'cuenta-del-pedido',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_cuenta-del-pedido_cuenta-del-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cuenta-del-pedido/cuenta-del-pedido.module */ 11831)).then(m => m.CuentaDelPedidoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_cuenta-del-pedido_cuenta-del-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cuenta-del-pedido/cuenta-del-pedido.module */ 11831)).then(m => m.CuentaDelPedidoPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -294,12 +294,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "NavComponent": () => (/* binding */ NavComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_nav_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./nav.component.html */ 9717);
 /* harmony import */ var _nav_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav.component.scss */ 27235);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 80476);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 80476);
+/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+
+
 
 
 
@@ -307,9 +311,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let NavComponent = class NavComponent {
-    constructor(menu, auth) {
+    constructor(menu, auth, audioS, router) {
         this.menu = menu;
         this.auth = auth;
+        this.audioS = audioS;
+        this.router = router;
     }
     ngOnInit() { }
     openFirst() {
@@ -323,13 +329,23 @@ let NavComponent = class NavComponent {
         this.menu.enable(true, 'custom');
         this.menu.open('custom');
     }
+    logOut() {
+        this.auth.logOut()
+            .then(res => {
+            this.audioS.PlayAudio();
+            this.router.navigate(['/home']);
+            this.auth.usuarioActual = null;
+        });
+    }
 };
 NavComponent.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.MenuController },
-    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.MenuController },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
+    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__.AudioService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router }
 ];
-NavComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+NavComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-nav',
         template: _raw_loader_nav_component_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_nav_component_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -378,7 +394,13 @@ let AudioService = class AudioService {
         });
     }
     toggleAudio() {
-        this.activado = !this.activado;
+        if (!this.activado) {
+            this.activado = true;
+            this.PlayAudio();
+        }
+        else {
+            this.activado = false;
+        }
     }
 };
 AudioService.ctorParameters = () => [
@@ -470,7 +492,6 @@ let AuthService = class AuthService {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
             let user = yield this.auth.currentUser;
             user.delete().then(() => {
-                console.log('deleted');
             });
             if ((_a = this.usuarioActual) === null || _a === void 0 ? void 0 : _a.perfil) {
                 let clienteFirestore = yield this.firestore.collection('supervisor', ref => ref.where('uid', '==', this.usuarioActual.uid).limit(1)).valueChanges({ idField: 'id' }).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_2__.take)(1)).toPromise();
@@ -589,6 +610,9 @@ let AuthService = class AuthService {
     }
     login(user) {
         return this.auth.signInWithEmailAndPassword(user.email, user.password);
+    }
+    logOut() {
+        return this.auth.signOut();
     }
     registro(user) {
         return this.auth.createUserWithEmailAndPassword(user.email, user.password);
@@ -976,7 +1000,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='dueno'\">Churrasic Park Dueño </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='supervisor'\">Churrasic Park Supervisor</ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipo\">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipoCliente\">Churrasic Park - Cliente</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\" (click)=\"this.menu.close('main')\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n\r\n    </ion-list>\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/home']\">Home</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/lista-espera']\">Lista de espera</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/mesa-asignada-cliente']\">Asignar mesas</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/registro-cliente']\">Registrar cliente</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'\">\r\n        <ion-item [routerLink]=\"['/registro-producto']\">Registrar producto</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-empleado']\">Registro empleado</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-supervisor']\">Registro supervisor</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-mesa']\">Alta de mesa</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth?.usuarioActual?.tipo === 'mozo'\">\r\n        <ion-item [routerLink]=\"['/chat']\">Chat</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-footer class=\"bar-stable\">\r\n        <ion-item [routerLink]=\"['/login']\" style=\"left:0;right:0;margin:0; width: 100%;position: fixed;\">fsafasfas</ion-item>\r\n      </ion-footer>\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-menu side=\"start\" menuId=\"first\" contentId=\"main\">\r\n  <ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='dueno'\">Churrasic Park Dueño </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.perfil=='supervisor'\">Churrasic Park Supervisor</ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipo\">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>\r\n      <ion-title *ngIf=\"this.auth.usuarioActual?.tipoCliente\">Churrasic Park - Cliente</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <ion-content style=\"--background: #232323\">\r\n    <ion-list *ngIf=\"!this.auth?.usuarioActual\">\r\n\r\n      <ion-item *ngIf=\"this.audioS.activado\">\r\n        <i class=\"fas fa-volume-up\" (click)=\"this.audioS.toggleAudio()\"></i>\r\n      </ion-item>\r\n\r\n      <ion-item *ngIf=\"!this.audioS.activado\">\r\n        <i class=\"fas fa-volume-mute\" (click)=\"this.audioS.toggleAudio()\"></i>\r\n      </ion-item>\r\n\r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/login']\" (click)=\"this.audioS.PlayAudio()\">Iniciar sesión</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle>\r\n        <ion-item [routerLink]=\"['/registro-cliente']\" (click)=\"this.audioS.PlayAudio()\">Registro</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n    </ion-list>\r\n\r\n    <ion-list *ngIf=\"this.auth?.usuarioActual\">\r\n\r\n      <ion-item *ngIf=\"this.audioS.activado\">\r\n        <i class=\"fas fa-volume-up\" (click)=\"this.audioS.toggleAudio()\"></i>\r\n      </ion-item>\r\n\r\n      <ion-item *ngIf=\"!this.audioS.activado\">\r\n        <i class=\"fas fa-volume-mute\" (click)=\"this.audioS.toggleAudio()\"></i>\r\n      </ion-item>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/lista-espera']\" (click)=\"this.audioS.PlayAudio()\">Lista de espera</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/mesa-asignada-cliente']\" (click)=\"this.audioS.PlayAudio()\">Asignar mesas</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'metre'\">\r\n        <ion-item [routerLink]=\"['/registro-cliente']\" (click)=\"this.audioS.PlayAudio()\">Registrar cliente</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.tipo == 'bartender' || this.auth.usuarioActual?.tipo == 'cocinero'\">\r\n        <ion-item [routerLink]=\"['/registro-producto']\" (click)=\"this.audioS.PlayAudio()\">Registrar producto</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-empleado']\" (click)=\"this.audioS.PlayAudio()\">Registro empleado</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-supervisor']\" (click)=\"this.audioS.PlayAudio()\">Registro supervisor</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth.usuarioActual?.perfil\">\r\n        <ion-item [routerLink]=\"['/registro-mesa']\" (click)=\"this.audioS.PlayAudio()\">Alta de mesa</ion-item>\r\n      </ion-menu-toggle>\r\n      \r\n      <ion-menu-toggle *ngIf=\"this.auth?.usuarioActual?.tipo === 'mozo'\">\r\n        <ion-item [routerLink]=\"['/chat']\" (click)=\"this.audioS.PlayAudio()\">Chat</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n      <ion-menu-toggle *ngIf=\"this.auth?.usuarioActual\">\r\n        <ion-item (click)=\"this.logOut()\">Cerrar sesión</ion-item>\r\n      </ion-menu-toggle>\r\n\r\n    </ion-list>\r\n  </ion-content>\r\n</ion-menu>");
 
 /***/ })
 

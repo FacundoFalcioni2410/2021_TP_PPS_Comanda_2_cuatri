@@ -93,16 +93,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginPage": () => (/* binding */ LoginPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./login.page.html */ 31021);
 /* harmony import */ var _login_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login.page.scss */ 28781);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
-/* harmony import */ var src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/mail.service */ 65585);
-/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
+/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/mail.service */ 65585);
+/* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+
 
 
 
@@ -114,16 +116,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(auth, formBuilder, router, mailS, audioS) {
+    constructor(auth, formBuilder, router, mailS, audioS, vibration) {
         this.auth = auth;
         this.formBuilder = formBuilder;
         this.router = router;
         this.mailS = mailS;
         this.audioS = audioS;
+        this.vibration = vibration;
         this.logo = "../../../assets/restaurant.png";
         this.form = this.formBuilder.group({
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.email]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.minLength(8)]]
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.email]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.minLength(8)]]
         });
     }
     ngOnInit() {
@@ -161,15 +164,17 @@ let LoginPage = class LoginPage {
     login() {
         this.logo = "../../../assets/spinner.gif";
         this.auth.login(this.form.value)
-            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
+            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
             let user = yield this.auth.getUsers(res.user.email);
             if (user) {
                 if (!(user === null || user === void 0 ? void 0 : user.cuil) && !(user === null || user === void 0 ? void 0 : user.habilitado)) {
                     this.mostrarToast({ text: 'Su cuenta todavia no fue habilitada, revise su correo electronico', toast: true, position: 'bottom', timer: 2500, timerProgressBar: true, icon: 'error' });
+                    this.vibration.vibrate(2000);
                 }
                 else if (!(user === null || user === void 0 ? void 0 : user.cuil) && (user === null || user === void 0 ? void 0 : user.habilitado)) {
                     this.mostrarToast({ text: 'Datos correctos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'success' });
                     setTimeout(() => {
+                        this.audioS.PlayAudio();
                         this.logo = "../../../assets/restaurant.png";
                         this.router.navigate(['/ingreso-local']);
                     }, 1500);
@@ -203,6 +208,7 @@ let LoginPage = class LoginPage {
             }, 1500);
         }))
             .catch(err => {
+            this.vibration.vibrate(2000);
             this.mostrarToast({ text: 'Datos incorrectos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'error' });
             setTimeout(() => {
                 this.logo = "../../../assets/restaurant.png";
@@ -210,18 +216,19 @@ let LoginPage = class LoginPage {
         });
     }
     mostrarToast(options) {
-        sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_5__.default.fire(options);
+        sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_6__.default.fire(options);
     }
 };
 LoginPage.ctorParameters = () => [
-    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router },
-    { type: src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_4__.MailService },
-    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__.AudioService }
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__.AuthService },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__.FormBuilder },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router },
+    { type: src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_5__.MailService },
+    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_3__.AudioService },
+    { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration }
 ];
-LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
+LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
         selector: 'app-login',
         template: _raw_loader_login_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_login_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -258,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n    <ion-toolbar>\r\n        \r\n        <ion-title>Iniciar sesión</ion-title>\r\n        <ion-buttons slot=\"end\">\r\n            <ion-menu-button menu=\"first\"></ion-menu-button>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <div class=\"container\" style=\"max-height: 100vh !important;\">\r\n        <form [formGroup]='form' (ngSubmit)='this.login()'>\r\n            <div class=\"containerForm text-white\">\r\n                <img [src]=\"this.logo\" alt=\"\" height=\"100px\" width=\"100px\">\r\n                <h1>Ingreso</h1>\r\n                <h3>Ingrese sus datos:</h3>\r\n\r\n                <div class=\"row\">\r\n                    <div class=\"col-12\">\r\n                        <ion-item>\r\n                            <ion-label class=\"ms-1\" position=\"floating\" for=\"email\"><b>Email</b></ion-label>\r\n                            <ion-input type=\"text\" class=\"\" formControlName='email' name=\"email\" required></ion-input>\r\n                        </ion-item>\r\n\r\n                        <div class='text-light px-1 error-text m-0'\r\n                            *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.required\">\r\n                            Ingrese su email\r\n                        </div>\r\n                        <div class='text-light px-1 error-text m-0'\r\n                            *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.email\">\r\n                            Ingrese un email valido\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-12\">\r\n                        <ion-item>\r\n                            <ion-label class=\"ms-1\" position=\"floating\" for=\"password\"><b>Contraseña</b></ion-label>\r\n                            <ion-input type=\"password\" class=\"\" formControlName='password' name=\"password\" required>\r\n                            </ion-input>\r\n                        </ion-item>\r\n\r\n                        <div class='text-light px-1 error-text'\r\n                            *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.required\">\r\n                            Ingrese su contraseña\r\n                        </div>\r\n                        <div class='text-light px-1 error-text'\r\n                            *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.minlength\">\r\n                            La contraseña debe tener 8 caracteres o mas\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    <div class=\"col-12\">\r\n                        <ion-row>\r\n                            <ion-col size='12'>\r\n                                <ion-button type=\"submit\" [disabled]=\"form.invalid\" class=\"mt-2\" color=\"success\"\r\n                                    style=\"font-size:12px;\" fill=\"solid\" expand=\"block\">Ingresar</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='12'>\r\n                                <ion-button type=\"button\" class=\"mt-2\" color=\"success\"\r\n                                    style=\"font-size:12px;\" fill=\"solid\" expand=\"block\" [routerLink]=\"['/registro-cliente']\">Registrarse</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoCliente()\">\r\n                                    Cliente</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoMetre()\">Metre\r\n                                </ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoSupervisor()\">\r\n                                    Dueño</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoMozo()\">Mozo\r\n                                </ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoCocinero()\">\r\n                                    Cocinero</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:10px;\" (click)=\"accesoRapidoBartender()\">\r\n                                    Bartender</ion-button>\r\n                            </ion-col>\r\n                        </ion-row>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</ion-content>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n    <ion-toolbar>\r\n        \r\n        <ion-title>Iniciar sesión</ion-title>\r\n        <ion-buttons slot=\"end\">\r\n            <ion-menu-button menu=\"first\" style=\"font-size:14px;\">Menu</ion-menu-button>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <div class=\"container\" style=\"max-height: 100vh !important;\">\r\n        <form [formGroup]='form' (ngSubmit)='this.login()'>\r\n            <div class=\"containerForm text-white\">\r\n                <img [src]=\"this.logo\" alt=\"\" height=\"100px\" width=\"100px\">\r\n                <h1>Ingreso</h1>\r\n                <h3>Ingrese sus datos:</h3>\r\n\r\n                <div class=\"row\">\r\n                    <div class=\"col-12\">\r\n                        <ion-item>\r\n                            <ion-label class=\"ms-1\" position=\"floating\" for=\"email\"><b>Email</b></ion-label>\r\n                            <ion-input type=\"text\" class=\"\" formControlName='email' name=\"email\" required></ion-input>\r\n                        </ion-item>\r\n\r\n                        <div class='text-light px-1 error-text m-0'\r\n                            *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.required\">\r\n                            Ingrese su email\r\n                        </div>\r\n                        <div class='text-light px-1 error-text m-0'\r\n                            *ngIf=\"form.get('email')?.touched && form.get('email')?.errors?.email\">\r\n                            Ingrese un email valido\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-12\">\r\n                        <ion-item>\r\n                            <ion-label class=\"ms-1\" position=\"floating\" for=\"password\"><b>Contraseña</b></ion-label>\r\n                            <ion-input type=\"password\" class=\"\" formControlName='password' name=\"password\" required>\r\n                            </ion-input>\r\n                        </ion-item>\r\n\r\n                        <div class='text-light px-1 error-text'\r\n                            *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.required\">\r\n                            Ingrese su contraseña\r\n                        </div>\r\n                        <div class='text-light px-1 error-text'\r\n                            *ngIf=\"form.get('password')?.touched && form.get('password')?.errors?.minlength\">\r\n                            La contraseña debe tener 8 caracteres o mas\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    <div class=\"col-12\">\r\n                        <ion-row>\r\n                            <ion-col size='12'>\r\n                                <ion-button type=\"submit\" [disabled]=\"form.invalid\" class=\"mt-2\" color=\"success\"\r\n                                    style=\"font-size:12px;\" fill=\"solid\" expand=\"block\">Ingresar</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='12'>\r\n                                <ion-button type=\"button\" class=\"mt-2\" color=\"success\"\r\n                                    style=\"font-size:12px;\" fill=\"solid\" expand=\"block\" (click)=\"audioS.PlayAudio()\" [routerLink]=\"['/registro-cliente']\">Registrarse</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoCliente()\">\r\n                                    Cliente</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoMetre()\">Metre\r\n                                </ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoSupervisor()\">\r\n                                    Dueño</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoMozo()\">Mozo\r\n                                </ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:12px;\" (click)=\"accesoRapidoCocinero()\">\r\n                                    Cocinero</ion-button>\r\n                            </ion-col>\r\n                            <ion-col size='4'>\r\n                                <ion-button type=\"button\" class=\"mt-2 text-light\" color=\"primary\" fill=\"solid\" expand=\"block\"\r\n                                    style=\"font-size:10px;\" (click)=\"accesoRapidoBartender()\">\r\n                                    Bartender</ion-button>\r\n                            </ion-col>\r\n                        </ion-row>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</ion-content>");
 
 /***/ })
 

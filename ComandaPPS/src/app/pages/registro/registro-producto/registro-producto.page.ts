@@ -5,6 +5,7 @@ import { Producto } from 'src/app/models/producto';
 import { AuthService } from 'src/app/services/auth.service';
 import { FotosService } from 'src/app/services/fotos.service';
 import Swal from 'sweetalert2/src/sweetalert2.js';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-registro-producto',
@@ -60,7 +61,7 @@ export class RegistroProductoPage implements OnInit {
     else
     {
       this.formDataFotos = null;
-      this.vibration.vibrate(2000);
+      Haptics.vibrate({duration: 2000});
       this.mostrarToast({text: "Debe seleccionar 3 fotos", toast: true, position: 'bottom',timer: 2000,timerProgressBar: true, icon: 'error'});
     }
   }
