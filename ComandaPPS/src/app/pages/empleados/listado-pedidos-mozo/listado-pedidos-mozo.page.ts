@@ -19,7 +19,7 @@ export class ListadoPedidosMozoPage implements OnInit {
       this.pedidos = data;
       for(let pedido of this.pedidos)
       {
-        if(pedido.etapasRealizadas === pedido.etapasTotales && pedido.estado !== 'listo' && pedido.estado !== 'entregado')
+        if(pedido.etapasRealizadas === pedido.etapasTotales && pedido.estado === 'aceptado')
         {
           pedido.estado = 'listo';
           this.userService.UpdatearEstadoPedido(pedido.id, pedido.estado);

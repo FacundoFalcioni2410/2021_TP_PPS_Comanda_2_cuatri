@@ -46,7 +46,7 @@ export class CarritoPage implements OnInit {
     let cantidadCocteleria = 0;
     for(let producto of this.productos)
     {
-      if(producto.descripcion === 'cocteleria')
+      if(producto.descripcion === 'coctel')
       {
         cantidadCocteleria = 1;
       }

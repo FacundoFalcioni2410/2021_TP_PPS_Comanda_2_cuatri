@@ -43,10 +43,6 @@
       </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
-        <ion-item [routerLink]="['/mesa-asignada-cliente']" (click)="this.audioS.PlayAudio()">Asignar mesas</ion-item>
-      </ion-menu-toggle>
-
-      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.tipo == 'metre'">
         <ion-item [routerLink]="['/registro-cliente']" (click)="this.audioS.PlayAudio()">Registrar cliente</ion-item>
       </ion-menu-toggle>
 

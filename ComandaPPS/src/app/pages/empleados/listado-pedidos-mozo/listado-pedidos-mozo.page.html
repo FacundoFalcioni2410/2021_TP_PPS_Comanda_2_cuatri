@@ -15,7 +15,7 @@
         <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center">
         
           <ion-col size=9 *ngFor="let pedido of pedidos">
-            <div *ngIf="pedido.estado == 'pedido' || pedido.estado == 'listo' || pedido.estado == 'recibido' || pedido.estado == 'pagado'">
+            <div *ngIf="pedido.estado == 'pedido' || pedido.estado == 'listo' || pedido.estado == 'pagado'">
               <ion-card style="height: 150%; width: 95%;">
                 <ion-card-header>
                   <ion-card-title style="font-size:35px;">
@@ -27,7 +27,6 @@
                   <h2 class="fs-3 mb-1 text-light">{{producto.nombre}}</h2>
                   <h3 class="fs-3 mb-1 text-light">Cantidad: {{producto.cantidad}}</h3>
                       <img [src]="producto.fotos[0]" style="height:200px !important; width: 250px !important;"> 
-  
                 </ion-card-content>
                 <ion-item class="ion-text-center" align="center">
                   <ion-button *ngIf="pedido.estado == 'pedido'" color="success" (click)="Asignar(pedido)">Asignar pedido</ion-button>
