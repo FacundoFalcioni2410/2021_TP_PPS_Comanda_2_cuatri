@@ -1,0 +1,21 @@
+{
+	"appId": "pps.pst.comanda",
+	"appName": "Churrasic Park",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 8000,
+			"launchAutoHide": false,
+			"backgroundColor": "#2D73CE"
+		},
+		"LocalNotifications": {
+			"smallIcon": "ic_stat_restaurant",
+			"iconColor": "#2D73CE",
+			"sound": "notification.wav"
+		}
+	},
+	"server": {
+		"url": "http://192.168.0.172:8100"
+	}
+}
