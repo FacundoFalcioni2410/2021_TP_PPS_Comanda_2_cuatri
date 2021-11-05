@@ -431,6 +431,103 @@ const Camera = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('
 
 /***/ }),
 
+/***/ 54789:
+/*!*****************************************************************!*\
+  !*** ./node_modules/@capacitor/haptics/dist/esm/definitions.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImpactStyle": () => (/* binding */ ImpactStyle),
+/* harmony export */   "NotificationType": () => (/* binding */ NotificationType),
+/* harmony export */   "HapticsNotificationType": () => (/* binding */ HapticsNotificationType),
+/* harmony export */   "HapticsImpactStyle": () => (/* binding */ HapticsImpactStyle)
+/* harmony export */ });
+var ImpactStyle;
+(function (ImpactStyle) {
+    /**
+     * A collision between small, light user interface elements
+     *
+     * @since 1.0.0
+     */
+    ImpactStyle["Heavy"] = "HEAVY";
+    /**
+     * A collision between moderately sized user interface elements
+     *
+     * @since 1.0.0
+     */
+    ImpactStyle["Medium"] = "MEDIUM";
+    /**
+     * A collision between small, light user interface elements
+     *
+     * @since 1.0.0
+     */
+    ImpactStyle["Light"] = "LIGHT";
+})(ImpactStyle || (ImpactStyle = {}));
+var NotificationType;
+(function (NotificationType) {
+    /**
+     * A notification feedback type indicating that a task has completed successfully
+     *
+     * @since 1.0.0
+     */
+    NotificationType["Success"] = "SUCCESS";
+    /**
+     * A notification feedback type indicating that a task has produced a warning
+     *
+     * @since 1.0.0
+     */
+    NotificationType["Warning"] = "WARNING";
+    /**
+     * A notification feedback type indicating that a task has failed
+     *
+     * @since 1.0.0
+     */
+    NotificationType["Error"] = "ERROR";
+})(NotificationType || (NotificationType = {}));
+/**
+ * @deprecated Use `NotificationType`.
+ * @since 1.0.0
+ */
+const HapticsNotificationType = NotificationType;
+/**
+ * @deprecated Use `ImpactStyle`.
+ * @since 1.0.0
+ */
+const HapticsImpactStyle = ImpactStyle;
+//# sourceMappingURL=definitions.js.map
+
+/***/ }),
+
+/***/ 81583:
+/*!***********************************************************!*\
+  !*** ./node_modules/@capacitor/haptics/dist/esm/index.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HapticsImpactStyle": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.HapticsImpactStyle),
+/* harmony export */   "HapticsNotificationType": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.HapticsNotificationType),
+/* harmony export */   "ImpactStyle": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.ImpactStyle),
+/* harmony export */   "NotificationType": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.NotificationType),
+/* harmony export */   "Haptics": () => (/* binding */ Haptics)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 68384);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 54789);
+
+const Haptics = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Haptics', {
+    web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_haptics_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 49414)).then(m => new m.HapticsWeb()),
+});
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ 31257:
 /*!*********************************************************************!*\
   !*** ./node_modules/@firebase/storage-compat/dist/index.esm2017.js ***!
@@ -4403,17 +4500,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FotosService": () => (/* binding */ FotosService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var _firestore_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./firestore.service */ 91343);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.service */ 37556);
-/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/fire/compat/storage */ 43893);
+/* harmony import */ var _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/fire/compat/storage */ 43893);
 /* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @capacitor/camera */ 37673);
 /* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
 /* harmony import */ var _audio_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./audio.service */ 16425);
 /* harmony import */ var _qr_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./qr.service */ 52724);
+/* harmony import */ var _capacitor_haptics__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @capacitor/haptics */ 81583);
 
 
 
@@ -4424,6 +4522,7 @@ __webpack_require__.r(__webpack_exports__);
 //Plugins
 
 //Toast
+
 
 
 
@@ -4442,7 +4541,7 @@ let FotosService = class FotosService {
         this.loading = false;
     }
     TakePhoto(objeto) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
             let capturedPhoto;
             try {
                 capturedPhoto = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_2__.Camera.getPhoto({
@@ -4455,7 +4554,7 @@ let FotosService = class FotosService {
             catch (e) {
                 this.loading = false;
                 this.auth.borrarUsuarioActual();
-                this.vibration.vibrate(2000);
+                _capacitor_haptics__WEBPACK_IMPORTED_MODULE_7__.Haptics.vibrate({ duration: 2000 });
                 this.mostrarToast({ text: 'La foto es obligatorio, se cancela el registro', title: 'Error registro', icon: 'error', time: 1500, timerProgressBar: true });
             }
             let dataUrl = capturedPhoto.dataUrl;
@@ -4470,7 +4569,7 @@ let FotosService = class FotosService {
         });
     }
     subirArchivos(formData, nombres, objeto) {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(this, void 0, void 0, function* () {
             let archivo0 = formData.get('archivo0');
             let referencia0;
             let referencia1;
@@ -4570,7 +4669,7 @@ let FotosService = class FotosService {
             this.mostrarToast({ text: 'Datos correctos', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'success' });
         }).catch(() => {
             this.mostrarToast({ title: "Error", text: "Error al subir la foto, intentenlo nuevamente", icon: 'error', time: 1500, timeProgressBar: true });
-            this.vibration.vibrate(2000);
+            _capacitor_haptics__WEBPACK_IMPORTED_MODULE_7__.Haptics.vibrate({ duration: 2000 });
             this.auth.borrarUsuarioActual();
             this.loading = false;
         });
@@ -4581,15 +4680,15 @@ let FotosService = class FotosService {
 };
 FotosService.ctorParameters = () => [
     { type: _auth_service__WEBPACK_IMPORTED_MODULE_1__.AuthService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router },
-    { type: _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_9__.AngularFireStorage },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router },
+    { type: _angular_fire_compat_storage__WEBPACK_IMPORTED_MODULE_10__.AngularFireStorage },
     { type: _firestore_service__WEBPACK_IMPORTED_MODULE_0__.FirestoreService },
     { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_4__.Vibration },
     { type: _audio_service__WEBPACK_IMPORTED_MODULE_5__.AudioService },
     { type: _qr_service__WEBPACK_IMPORTED_MODULE_6__.QRService }
 ];
-FotosService = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Injectable)({
+FotosService = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Injectable)({
         providedIn: 'root'
     })
 ], FotosService);

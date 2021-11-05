@@ -98,11 +98,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RegistroEmpleadoPage": () => (/* binding */ RegistroEmpleadoPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_registro_empleado_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./registro-empleado.page.html */ 8753);
 /* harmony import */ var _registro_empleado_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registro-empleado.page.scss */ 83163);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ 3679);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
 /* harmony import */ var src_app_services_firestore_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/firestore.service */ 91343);
@@ -110,6 +110,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/qr.service */ 52724);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! sweetalert2 */ 88259);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _capacitor_haptics__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @capacitor/haptics */ 81583);
+
 
 
 
@@ -131,13 +133,13 @@ let RegistroEmpleadoPage = class RegistroEmpleadoPage {
         this.qrS = qrS;
         this.loading = false;
         this.controles = this.form.group({
-            nombre: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
-            apellido: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
-            dni: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
-            cuil: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
-            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.minLength(8)]],
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.email]],
-            tipo: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
+            nombre: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
+            apellido: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
+            dni: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
+            cuil: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
+            password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.minLength(8)]],
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.email]],
+            tipo: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
         });
     }
     ngOnInit() {
@@ -174,7 +176,7 @@ let RegistroEmpleadoPage = class RegistroEmpleadoPage {
         sweetalert2__WEBPACK_IMPORTED_MODULE_7___default().fire(options);
     }
     scanDNI() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
             sweetalert2__WEBPACK_IMPORTED_MODULE_7___default().fire({
                 title: 'Escaneo DNI!',
                 backdrop: false,
@@ -187,7 +189,7 @@ let RegistroEmpleadoPage = class RegistroEmpleadoPage {
                 confirmButtonText: 'Escanear',
                 cancelButtonText: 'Cancelar',
                 reverseButtons: true,
-            }).then((result) => (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function* () {
+            }).then((result) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
                 var _a, _b;
                 if (result.isConfirmed) {
                     let datos = yield this.qrS.scanDNI();
@@ -209,7 +211,7 @@ let RegistroEmpleadoPage = class RegistroEmpleadoPage {
             password: this.getPassword()
         };
         this.authService.registro(empleado)
-            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function* () {
+            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
             this.fotoS.loading = true;
             empleado.uid = res.user.uid;
             this.authService.usuarioActual = empleado;
@@ -253,7 +255,7 @@ let RegistroEmpleadoPage = class RegistroEmpleadoPage {
             setTimeout(() => {
                 this.loading = false;
             }, 1000);
-            this.vibration.vibrate(2000);
+            _capacitor_haptics__WEBPACK_IMPORTED_MODULE_8__.Haptics.vibrate({ duration: 2000 });
             if (err.code === "auth/email-already-in-use") {
                 this.mostrarToast({ text: 'La cuenta ya existe', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'error' });
             }
@@ -262,15 +264,15 @@ let RegistroEmpleadoPage = class RegistroEmpleadoPage {
     }
 };
 RegistroEmpleadoPage.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormBuilder },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormBuilder },
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
     { type: src_app_services_fotos_service__WEBPACK_IMPORTED_MODULE_5__.FotosService },
     { type: src_app_services_firestore_service__WEBPACK_IMPORTED_MODULE_4__.FirestoreService },
     { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration },
     { type: src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_6__.QRService }
 ];
-RegistroEmpleadoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
+RegistroEmpleadoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
         selector: 'app-registro-empleado',
         template: _raw_loader_registro_empleado_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_registro_empleado_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]

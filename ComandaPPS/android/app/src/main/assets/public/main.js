@@ -50,7 +50,7 @@ const routes = [
     },
     {
         path: 'login',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 21053)).then(m => m.LoginPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_login_login_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/login/login.module */ 21053)).then(m => m.LoginPageModule)
     },
     {
         path: 'registro-cliente',
@@ -62,15 +62,15 @@ const routes = [
     },
     {
         path: 'registro-mesa',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-mesa_registro-mesa_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-mesa/registro-mesa.module */ 37942)).then(m => m.RegistroMesaPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-mesa_registro-mesa_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-mesa/registro-mesa.module */ 37942)).then(m => m.RegistroMesaPageModule)
     },
     {
         path: 'registro-empleado',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-empleado_registro-empleado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-empleado/registro-empleado.module */ 99056)).then(m => m.RegistroEmpleadoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-empleado_registro-empleado_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-empleado/registro-empleado.module */ 99056)).then(m => m.RegistroEmpleadoPageModule)
     },
     {
         path: 'registro-supervisor',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-supervisor_registro-supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-supervisor/registro-supervisor.module */ 1912)).then(m => m.RegistroSupervisorPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-src_app_services_fotos_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_registro_registro-supervisor_registro-supervisor_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/registro/registro-supervisor/registro-supervisor.module */ 1912)).then(m => m.RegistroSupervisorPageModule)
     },
     {
         path: 'clientes',
@@ -82,7 +82,7 @@ const routes = [
     },
     {
         path: 'ingreso-local',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_ingreso-local_ingreso-local_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ingreso-local/ingreso-local.module */ 9916)).then(m => m.IngresoLocalPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_ingreso-local_ingreso-local_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/ingreso-local/ingreso-local.module */ 9916)).then(m => m.IngresoLocalPageModule)
     },
     {
         path: 'ahorcado',
@@ -99,11 +99,11 @@ const routes = [
     },
     {
         path: 'realizar-pedido',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_realizar-pedido_realizar-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/realizar-pedido/realizar-pedido.module */ 89588)).then(m => m.RealizarPedidoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_realizar-pedido_realizar-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/realizar-pedido/realizar-pedido.module */ 89588)).then(m => m.RealizarPedidoPageModule)
     },
     {
         path: 'lista-espera',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-espera_lista-espera_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-espera/lista-espera.module */ 42934)).then(m => m.ListaEsperaPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_lista-espera_lista-espera_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/lista-espera/lista-espera.module */ 42934)).then(m => m.ListaEsperaPageModule)
     },
     {
         path: 'carrito',
@@ -131,7 +131,7 @@ const routes = [
     },
     {
         path: 'cliente-espera-pedido',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_cliente-espera-pedido_cliente-espera-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cliente-espera-pedido/cliente-espera-pedido.module */ 23262)).then(m => m.ClienteEsperaPedidoPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_sweetalert2_dist_sweetalert2_all_js"), __webpack_require__.e("src_app_pages_cliente-espera-pedido_cliente-espera-pedido_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/cliente-espera-pedido/cliente-espera-pedido.module */ 23262)).then(m => m.ClienteEsperaPedidoPageModule)
     },
     {
         path: 'grafico-cliente',

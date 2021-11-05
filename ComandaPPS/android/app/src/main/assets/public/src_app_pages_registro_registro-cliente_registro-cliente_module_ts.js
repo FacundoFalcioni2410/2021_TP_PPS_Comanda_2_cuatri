@@ -96,12 +96,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RegistroClientePage": () => (/* binding */ RegistroClientePage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_registro_cliente_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./registro-cliente.page.html */ 34986);
 /* harmony import */ var _registro_cliente_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registro-cliente.page.scss */ 17346);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ 3679);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ 39895);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ 39895);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
 /* harmony import */ var src_app_services_firestore_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/firestore.service */ 91343);
@@ -109,6 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/mail.service */ 65585);
 /* harmony import */ var src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/qr.service */ 52724);
 /* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+/* harmony import */ var _capacitor_haptics__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @capacitor/haptics */ 81583);
+
 
 
 
@@ -135,11 +137,11 @@ let RegistroClientePage = class RegistroClientePage {
         this.loading = false;
         this.anonimo = false;
         this.controles = this.formBuilder.group({
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.email]],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
-            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
-            apellido: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
-            dni: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.min(1111111), _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.min(9999999)]],
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.email]],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
+            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
+            apellido: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
+            dni: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.min(1111111), _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.min(9999999)]],
         });
     }
     ngOnInit() {
@@ -178,20 +180,20 @@ let RegistroClientePage = class RegistroClientePage {
     }
     formRegistroAnonimo() {
         this.controles = this.formBuilder.group({
-            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
+            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
         });
     }
     formRegistro() {
         this.controles = this.formBuilder.group({
-            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.email]],
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
-            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
-            apellido: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required],
-            dni: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.min(1111111), _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.min(9999999)]],
+            email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.email]],
+            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
+            nombre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
+            apellido: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required],
+            dni: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.min(1111111), _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.min(9999999)]],
         });
     }
     scanDNI() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_8__.default.fire({
                 title: 'Escaneo DNI!',
                 backdrop: false,
@@ -204,7 +206,7 @@ let RegistroClientePage = class RegistroClientePage {
                 confirmButtonText: 'Escanear',
                 cancelButtonText: 'Cancelar',
                 reverseButtons: true,
-            }).then((result) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+            }).then((result) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
                 var _a;
                 if (result.isConfirmed) {
                     let datos = yield this.qrS.scanDNI();
@@ -235,7 +237,7 @@ let RegistroClientePage = class RegistroClientePage {
             };
         }
         this.authService.registro(cliente)
-            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__awaiter)(this, void 0, void 0, function* () {
+            .then((res) => (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__awaiter)(this, void 0, void 0, function* () {
             this.fotoS.loading = true;
             cliente.uid = res.user.uid;
             this.authService.usuarioActual = cliente;
@@ -253,10 +255,10 @@ let RegistroClientePage = class RegistroClientePage {
             setTimeout(() => {
                 this.loading = false;
             }, 1000);
-            this.vibration.vibrate(2000);
+            _capacitor_haptics__WEBPACK_IMPORTED_MODULE_9__.Haptics.vibrate({ duration: 2000 });
             if (err.code === "auth/email-already-in-use") {
                 this.mostrarToast({ text: 'La cuenta ya existe', toast: true, position: 'bottom', timer: 1500, timerProgressBar: true, icon: 'error' });
-                this.vibration.vibrate(2000);
+                _capacitor_haptics__WEBPACK_IMPORTED_MODULE_9__.Haptics.vibrate({ duration: 2000 });
             }
             this.controles.reset();
             // this.mostrarToast({text: 'Datos incorrectos',toast: true, position: 'bottom',timer: 1500,timerProgressBar: true,icon: 'error'});
@@ -264,17 +266,17 @@ let RegistroClientePage = class RegistroClientePage {
     }
 };
 RegistroClientePage.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormBuilder },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_10__.FormBuilder },
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
     { type: src_app_services_fotos_service__WEBPACK_IMPORTED_MODULE_5__.FotosService },
     { type: src_app_services_firestore_service__WEBPACK_IMPORTED_MODULE_4__.FirestoreService },
     { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration },
     { type: src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_7__.QRService },
     { type: src_app_services_mail_service__WEBPACK_IMPORTED_MODULE_6__.MailService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_11__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_12__.Router }
 ];
-RegistroClientePage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_12__.Component)({
+RegistroClientePage = (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_13__.Component)({
         selector: 'app-registro-cliente',
         template: _raw_loader_registro_cliente_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_registro_cliente_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]

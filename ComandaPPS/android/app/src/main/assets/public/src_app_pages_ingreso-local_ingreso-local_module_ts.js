@@ -1,5 +1,102 @@
 (self["webpackChunkPPSComanda"] = self["webpackChunkPPSComanda"] || []).push([["src_app_pages_ingreso-local_ingreso-local_module_ts"],{
 
+/***/ 54789:
+/*!*****************************************************************!*\
+  !*** ./node_modules/@capacitor/haptics/dist/esm/definitions.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImpactStyle": () => (/* binding */ ImpactStyle),
+/* harmony export */   "NotificationType": () => (/* binding */ NotificationType),
+/* harmony export */   "HapticsNotificationType": () => (/* binding */ HapticsNotificationType),
+/* harmony export */   "HapticsImpactStyle": () => (/* binding */ HapticsImpactStyle)
+/* harmony export */ });
+var ImpactStyle;
+(function (ImpactStyle) {
+    /**
+     * A collision between small, light user interface elements
+     *
+     * @since 1.0.0
+     */
+    ImpactStyle["Heavy"] = "HEAVY";
+    /**
+     * A collision between moderately sized user interface elements
+     *
+     * @since 1.0.0
+     */
+    ImpactStyle["Medium"] = "MEDIUM";
+    /**
+     * A collision between small, light user interface elements
+     *
+     * @since 1.0.0
+     */
+    ImpactStyle["Light"] = "LIGHT";
+})(ImpactStyle || (ImpactStyle = {}));
+var NotificationType;
+(function (NotificationType) {
+    /**
+     * A notification feedback type indicating that a task has completed successfully
+     *
+     * @since 1.0.0
+     */
+    NotificationType["Success"] = "SUCCESS";
+    /**
+     * A notification feedback type indicating that a task has produced a warning
+     *
+     * @since 1.0.0
+     */
+    NotificationType["Warning"] = "WARNING";
+    /**
+     * A notification feedback type indicating that a task has failed
+     *
+     * @since 1.0.0
+     */
+    NotificationType["Error"] = "ERROR";
+})(NotificationType || (NotificationType = {}));
+/**
+ * @deprecated Use `NotificationType`.
+ * @since 1.0.0
+ */
+const HapticsNotificationType = NotificationType;
+/**
+ * @deprecated Use `ImpactStyle`.
+ * @since 1.0.0
+ */
+const HapticsImpactStyle = ImpactStyle;
+//# sourceMappingURL=definitions.js.map
+
+/***/ }),
+
+/***/ 81583:
+/*!***********************************************************!*\
+  !*** ./node_modules/@capacitor/haptics/dist/esm/index.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HapticsImpactStyle": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.HapticsImpactStyle),
+/* harmony export */   "HapticsNotificationType": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.HapticsNotificationType),
+/* harmony export */   "ImpactStyle": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.ImpactStyle),
+/* harmony export */   "NotificationType": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.NotificationType),
+/* harmony export */   "Haptics": () => (/* binding */ Haptics)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 68384);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 54789);
+
+const Haptics = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Haptics', {
+    web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_haptics_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 49414)).then(m => new m.HapticsWeb()),
+});
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
 /***/ 47937:
 /*!*********************************************************************!*\
   !*** ./src/app/pages/ingreso-local/ingreso-local-routing.module.ts ***!
@@ -97,12 +194,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ingreso_local_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ingreso-local.page.scss */ 73291);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 39895);
-/* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
-/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
-/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
-/* harmony import */ var src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/qr.service */ 52724);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2 */ 88259);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/audio.service */ 16425);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
+/* harmony import */ var src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/qr.service */ 52724);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2 */ 88259);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _capacitor_haptics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @capacitor/haptics */ 81583);
 
 
 
@@ -114,13 +211,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let IngresoLocalPage = class IngresoLocalPage {
-    constructor(qrS, userService, route, vibration, audio) {
+    constructor(qrS, userService, route, audio) {
         this.qrS = qrS;
         this.userService = userService;
         this.route = route;
-        this.vibration = vibration;
         this.audio = audio;
         this.listaEspera = false;
+        this.flag = false;
         this.userService.TraerGenerico('clientes', 'uid', this.userService.usuarioActual.uid).subscribe(res => {
             this.usuario = res[0];
             this.userService.usuarioActual = res[0];
@@ -136,7 +233,7 @@ let IngresoLocalPage = class IngresoLocalPage {
     }
     Scan() {
         if (!this.usuario.listaEspera && this.usuario.mesaAsignada !== 0) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().fire({
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
                 title: 'Escaneo',
                 backdrop: false,
                 text: 'Escanee el código QR para ingresar a la lista',
@@ -155,8 +252,9 @@ let IngresoLocalPage = class IngresoLocalPage {
                             this.EntrarEnListaEspera();
                         }
                         else {
-                            this.vibration.vibrate(2000);
-                            sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().fire({
+                            console.log(datos.text);
+                            this.flag = true;
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
                                 title: "Error",
                                 icon: 'error',
                                 text: 'Escanee el codigo correcto.',
@@ -170,7 +268,7 @@ let IngresoLocalPage = class IngresoLocalPage {
             }));
         }
         else if (this.usuario.listaEspera && this.usuario.mesaAsignada != 0) { //CASO EN EL QUE EL CLIENTE YA HAYA SIDO ACEPTADO EN LA LISTA Y TIENE MESA ASIGNADA
-            sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().fire({
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
                 title: 'Escaneo',
                 backdrop: false,
                 text: `Escanee el código QR de la mesa que se le asignó ${this.usuario.mesaAsignada}.`,
@@ -190,8 +288,9 @@ let IngresoLocalPage = class IngresoLocalPage {
                             this.route.navigateByUrl('/realizar-pedido');
                         }
                         else {
-                            this.vibration.vibrate(2000);
-                            sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().fire({
+                            _capacitor_haptics__WEBPACK_IMPORTED_MODULE_6__.Haptics.vibrate({ duration: 2000 });
+                            this.flag = true;
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
                                 title: "Error",
                                 icon: 'error',
                                 text: 'No se le asignó esa mesa.',
@@ -199,13 +298,14 @@ let IngresoLocalPage = class IngresoLocalPage {
                                 timerProgressBar: true,
                                 backdrop: false,
                             });
+                            _capacitor_haptics__WEBPACK_IMPORTED_MODULE_6__.Haptics.vibrate({ duration: 2000 });
                         }
                     }
                 }
             }));
         }
         else if (!this.usuario.listaEspera && this.usuario.mesaAsignada == 0) {
-            sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().fire({
+            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
                 title: 'Escaneo',
                 backdrop: false,
                 text: `Escanee el código QR de ingreso a la lista de espera para ver los gráficos.`,
@@ -225,8 +325,8 @@ let IngresoLocalPage = class IngresoLocalPage {
                             this.route.navigateByUrl('/grafico-cliente');
                         }
                         else {
-                            this.vibration.vibrate(2000);
-                            sweetalert2__WEBPACK_IMPORTED_MODULE_6___default().fire({
+                            this.flag = true;
+                            sweetalert2__WEBPACK_IMPORTED_MODULE_5___default().fire({
                                 title: "Error",
                                 icon: 'error',
                                 text: 'No se le asignó esa mesa.',
@@ -234,6 +334,10 @@ let IngresoLocalPage = class IngresoLocalPage {
                                 timerProgressBar: true,
                                 backdrop: false,
                             });
+                            if (this.flag) {
+                                _capacitor_haptics__WEBPACK_IMPORTED_MODULE_6__.Haptics.vibrate({ duration: 2000 });
+                                this.flag = false;
+                            }
                         }
                     }
                 }
@@ -242,11 +346,10 @@ let IngresoLocalPage = class IngresoLocalPage {
     }
 };
 IngresoLocalPage.ctorParameters = () => [
-    { type: src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_5__.QRService },
-    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__.AuthService },
+    { type: src_app_services_qr_service__WEBPACK_IMPORTED_MODULE_4__.QRService },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router },
-    { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration },
-    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_3__.AudioService }
+    { type: src_app_services_audio_service__WEBPACK_IMPORTED_MODULE_2__.AudioService }
 ];
 IngresoLocalPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({

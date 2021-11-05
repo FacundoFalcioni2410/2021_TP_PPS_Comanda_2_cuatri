@@ -18,7 +18,7 @@ export class ListadoPedidosMozoPage implements OnInit {
       this.pedidos = data;
       for(let pedido of this.pedidos)
       {
-        if(pedido.etapasRealizadas === pedido.etapasTotales && pedido.estado !== 'listo')
+        if(pedido.etapasRealizadas === pedido.etapasTotales && pedido.estado !== 'listo' && pedido.estado !== 'entregado')
         {
           pedido.estado = 'listo';
           this.userService.UpdatearEstadoPedido(pedido.id, pedido.estado);
@@ -32,7 +32,18 @@ export class ListadoPedidosMozoPage implements OnInit {
 
   Entregar(pedido: any){
     pedido.estado = 'entregado';
-    this.userService.UpdatearEstadoPedido(pedido.id, pedido.estado);
+    this.userService.UpdatearEstadoPedido(pedido.id, pedido.estado)
+    .then(() =>{
+      Swal.fire({
+        title:'Asignado',
+        text: 'El pedido fue entregado al cliente correspondiente',
+        icon:'success',
+        toast: true,
+        position: 'bottom',
+        timer:2000,
+        timerProgressBar: true
+      });
+    });
   }
 
   Asignar(pedido : any){

@@ -96,15 +96,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RegistroProductoPage": () => (/* binding */ RegistroProductoPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 64762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 64762);
 /* harmony import */ var _raw_loader_registro_producto_page_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./registro-producto.page.html */ 1123);
 /* harmony import */ var _registro_producto_page_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registro-producto.page.scss */ 55425);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 37716);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 3679);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 37716);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 3679);
 /* harmony import */ var _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/vibration/ngx */ 94333);
 /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ 37556);
 /* harmony import */ var src_app_services_fotos_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/fotos.service */ 21106);
 /* harmony import */ var sweetalert2_src_sweetalert2_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2/src/sweetalert2.js */ 90110);
+/* harmony import */ var _capacitor_haptics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @capacitor/haptics */ 81583);
+
 
 
 
@@ -122,10 +124,10 @@ let RegistroProductoPage = class RegistroProductoPage {
         this.vibration = vibration;
         this.nombresFotos = [];
         this.controles = this.form.group({
-            'nombre': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
-            'descripcion': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
-            'TElaboracion': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.maxLength(3)]],
-            'precio': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.maxLength(8)]],
+            'nombre': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+            'descripcion': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required]],
+            'TElaboracion': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.maxLength(3)]],
+            'precio': ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.Validators.maxLength(8)]],
         });
     }
     ngOnInit() {
@@ -157,7 +159,7 @@ let RegistroProductoPage = class RegistroProductoPage {
         }
         else {
             this.formDataFotos = null;
-            this.vibration.vibrate(2000);
+            _capacitor_haptics__WEBPACK_IMPORTED_MODULE_6__.Haptics.vibrate({ duration: 2000 });
             this.mostrarToast({ text: "Debe seleccionar 3 fotos", toast: true, position: 'bottom', timer: 2000, timerProgressBar: true, icon: 'error' });
         }
     }
@@ -185,13 +187,13 @@ let RegistroProductoPage = class RegistroProductoPage {
     }
 };
 RegistroProductoPage.ctorParameters = () => [
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_7__.FormBuilder },
     { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__.AuthService },
     { type: src_app_services_fotos_service__WEBPACK_IMPORTED_MODULE_4__.FotosService },
     { type: _ionic_native_vibration_ngx__WEBPACK_IMPORTED_MODULE_2__.Vibration }
 ];
-RegistroProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+RegistroProductoPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-registro-producto',
         template: _raw_loader_registro_producto_page_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_registro_producto_page_scss__WEBPACK_IMPORTED_MODULE_1__.default]
