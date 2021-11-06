@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { database } from 'firebase-admin';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +21,17 @@ export class QRService {
     {
       if(scannedData.text.includes('@'))
       {
-        let dniArr = scannedData.text.split('@');
-        let digitosCUIL = dniArr[8];
-        let cuil = digitosCUIL[0] + digitosCUIL[1] + dniArr[4] + digitosCUIL[2];
+        let data = scannedData.text.split('@');
 
-        return {
-          dni: dniArr[4],
-          cuil: cuil
-        };
+          let digitosCUIL = data[8];
+          let cuil = digitosCUIL[0] + digitosCUIL[1] + data[4] + digitosCUIL[2];
+
+          return {
+            dni: data[4].trim(),
+            nombre: data[2].trim(),
+            apellido: data[1].trim(),
+            cuil: cuil.trim(),
+          };
       }
     }
     return null;

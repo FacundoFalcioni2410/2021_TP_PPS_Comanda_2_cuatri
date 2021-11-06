@@ -101,6 +101,8 @@ export class RegistroClientePage implements OnInit {
       if (result.isConfirmed) {
         let datos = await this.qrS.scanDNI();
         this.controles.get('dni')?.setValue(datos?.dni);
+        this.controles.get('nombre')?.setValue(datos?.nombre);
+        this.controles.get('apellido')?.setValue(datos?.apellido);
       }
     });
   }
