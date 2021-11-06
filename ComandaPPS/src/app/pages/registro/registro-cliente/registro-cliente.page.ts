@@ -140,10 +140,10 @@ export class RegistroClientePage implements OnInit {
       setTimeout(()=>{
         this.fotoS.TakePhoto(cliente);
       },2000);
-      // if(cliente.tipoCliente === "estandar")
-      // {
-      //   this.mailS.enviarAviso(cliente);
-      // }
+      if(cliente.tipoCliente === "estandar")
+      {
+        this.mailS.enviarAviso(cliente);
+      }
       this.controles.reset();
     })
     .catch( err =>{

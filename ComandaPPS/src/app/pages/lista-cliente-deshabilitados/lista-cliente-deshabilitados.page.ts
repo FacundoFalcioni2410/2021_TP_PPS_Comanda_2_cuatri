@@ -26,7 +26,7 @@ export class ListaClienteDeshabilitadosPage implements OnInit {
     if(!event.target.checked)
     {
       item.habilitado = true;
-      // this.mailS.enviarConfirmacionHabilitado(item);
+      this.mailS.enviarConfirmacionHabilitado(item);
       setTimeout(() =>{
         this.auth.UpdateEstadoCliente(item).then(()=>{
           Swal.fire({

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "769727808847",
+    "project_id": "comandapps-f0233",
+    "storage_bucket": "comandapps-f0233.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769727808847:android:35865b42df8c2d8ec3313a",
+        "android_client_info": {
+          "package_name": "pps.pst.comanda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769727808847-762galrfck76g2kubnaocjr5kh3vv4ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSpwwvyBbkn2se5CQwv-nLzzqnjGhoN5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769727808847-762galrfck76g2kubnaocjr5kh3vv4ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
