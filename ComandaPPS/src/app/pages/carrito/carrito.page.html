@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <div class="container" *ngIf="productos.length; else vacio" style="max-height: 100vh !important;">
     <div class="row align-items-center justify-content-center">
-      <ion-list translucent style="background: rgba(0,0,0,.5)" class="">
+      <ion-list translucent style="background: rgba(0, 0, 0, 0.9)" class="">
         <ion-item color="none" style="background: transparent" *ngFor="let producto of productos" translucent>
           <ion-avatar slot="start">
             <img [src]="producto.fotos[0]">
@@ -40,14 +40,16 @@
             </ion-grid>
           </ion-label>
         </ion-item>
-        <div style="margin-top:100px !important;">
+        <div style="margin-top:120px !important;">
 
         </div>
       </ion-list>
     </div>
+    <div class="bg-success text-center" style="position: fixed; bottom: 90px;left:0; height: 50px;width: 100%;display: block;margin:0 !important;padding:0 !important;">
+      <h4 class="fs-2 mb-1">Importe total: ${{precio}}</h4>
+    </div>
     <footer style="position: fixed; bottom: 0;left:0;background-color: #232323; height: 90px;width: 100%;display: block;margin:0 !important;padding:0 !important;">
-      <h4 class="d-inline ion-float-right me-2">Importe: ${{precio}}</h4>
-      <h4 class="d-inline ion-float-left ms-2">Tiempo estimado: {{maxTiempo}}</h4>
+      <h4 class="text-center">Tiempo estimado: {{maxTiempo}}</h4>
       <ion-button color='success' *ngIf="this.productos.length" shape="round" expand="block"
       (click)="realizarPedido()">Realizar pedido</ion-button>
     </footer>

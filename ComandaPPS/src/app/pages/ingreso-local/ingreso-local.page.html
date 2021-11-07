@@ -12,26 +12,30 @@
   <div class="container text-light">
     <div class="row align-items-center justify-content-center" style="height:70vh;">
       <div class="col-12 col-sm-8 col-lg-6 text-center">
-        <img src="../../../assets/restaurant.png" class="img-fluid" alt="Bootstrap Themes" width="300" height="100" loading="lazy">
+        <img src="../../../assets/restaurant.png" class="img-fluid" alt="Bootstrap Themes" width="300" height="100"
+          loading="lazy">
       </div>
       <div class="col-12 text-center bg">
         <h1 class="display-5 fw-bold lh-1 m-0 p-0">¡Bienvenido a Churrasic Park!</h1>
-        <p *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada !== 0" class="lead fw-bold fs-3">Por favor, ingrese a
+        <p *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada !== 0" class="lead fw-bold fs-3">Por favor,
+          ingrese a
           la lista de espera y espere a que un metre le asigne una mesa.</p>
         <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2 mb-3"
           (click)="Scan()" style="font-size: 55px;"></i>
         <div *ngIf="this.usuario?.listaEspera && !this.usuario?.mesaAsignada"
           class="d-grid d-md-flex justify-content-md-start">
-          <label class="fw-bold fs-3">¡Entraste a la lista de espera! Esperá a que un empleado te asigne una mesa.</label>
+          <label class="fw-bold fs-3">¡Entraste a la lista de espera! Esperá a que un empleado te asigne una
+            mesa.</label>
         </div>
         <div *ngIf="this.usuario?.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <label class="fw-bold fs-3">Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}), scanea el QR de tu
+          <label class="fw-bold fs-3">Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}). Escanea el QR de tu
             mesa</label>
           <i class="fas fa-qrcode pt-3 ps-2 mb-3" (click)="Scan()" style="font-size: 55px !important;"></i>
         </div>
         <div *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada === 0"
           class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <label class="fw-bold mb-2 fs-3">Escaneá el código QR de la lista de espera para visualizar los gráficos de las
+          <label class="fw-bold mb-2 fs-3">Escaneá el código QR de la lista de espera para visualizar los gráficos de
+            las
             encuestas.</label>
         </div>
       </div>

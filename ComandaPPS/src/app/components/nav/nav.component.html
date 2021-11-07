@@ -9,7 +9,6 @@
   </ion-header>
   <ion-content style="--background: #232323">
     <ion-list *ngIf="!this.auth.usuarioActual">
-
       <ion-item *ngIf="this.audioS.activado">
         <i class="fas fa-volume-up" (click)="this.audioS.toggleAudio()"></i>
       </ion-item>
@@ -29,6 +28,10 @@
     </ion-list>
 
     <ion-list *ngIf="this.auth.usuarioActual">
+
+      <ion-item [routerLink]="['/realizar-pedido']">
+        PEDIDO
+      </ion-item>
 
       <ion-item *ngIf="this.audioS.activado">
         <i class="fas fa-volume-up" (click)="this.audioS.toggleAudio()"></i>

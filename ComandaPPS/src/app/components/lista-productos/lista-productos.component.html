@@ -2,14 +2,14 @@
   <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
 
   <ion-slides>
-    <ion-slide *ngFor='let producto of productos; index as i;' class="mt-4" style="display:flex; justify-content: center; align-items: center;">
+    <ion-slide *ngFor='let producto of productos; index as i;' class="mt-2" style="display:flex; justify-content: center; align-items: center;">
       <div class="slide bg-dark">
-        <div class="card img-fluid" style="width: 15rem;background-color: transparent;">
+        <div class="card img-fluid" style="width: 20rem;background-color: transparent;">
           <div id="carousel{{i}}" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item" *ngFor='let image of producto?.fotos; first as isFirst;'
                 [ngClass]="{'active': isFirst}">
-                <img [src]="image" alt="" class="d-block m-auto" style="height:200px !important; width: 250px !important;">
+                <img [src]="image" alt="" class="d-block m-auto" style="height:400px !important; width: 450px !important;">
               </div>
               <!-- [default]="spinner" [lazyload]="image -->
             </div>
