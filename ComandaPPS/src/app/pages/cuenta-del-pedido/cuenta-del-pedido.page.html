@@ -21,32 +21,6 @@
         </ion-row>
       </ion-grid>
     </ion-card>
-    <ion-item>
-      <ion-grid>
-        <ion-row>
-          <ion-col size='6'>
-            <ion-label>SubTotal</ion-label>
-          </ion-col>
-          <ion-col size='6'>
-            <ion-label class="ion-text-end">
-              <h1>${{pedido?.precioTotal}}</h1>
-            </ion-label>
-          </ion-col>
-        </ion-row>
-
-        <ion-row *ngIf="scaneo">
-          <ion-col size='8'>
-            <ion-label>Total + Propina {{descuento}}%</ion-label>
-          </ion-col>
-          <ion-col size='4'>
-            <ion-label class="ion-text-end">
-              <h1>${{this.totalPagar}}</h1>
-            </ion-label>
-          </ion-col>
-        </ion-row>
-  
-      </ion-grid>
-    </ion-item>
   </div>
   <div *ngIf="pagado" class="container text-dark">
       <div class="row align-items-center justify-content-center g-5" style="height:90vh;">
@@ -57,16 +31,37 @@
       </div>
   </div>
   
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="!pagado">
+    <ion-fab *ngIf="!scaneo && !pagado" vertical="bottom" horizontal="center" slot="fixed">
       <ion-fab-button class="mb-5" (click)="scanPropina()" size="large">
         <ion-icon name="qr-code-outline" size=large></ion-icon>
       </ion-fab-button>
     </ion-fab>
     
-    <ion-footer>
-  
-    <ion-button *ngIf="!pagado" expand="block" color="success" (click)="pagar()"
-        style=" height: 3em; color: white; margin-left: 0 !important;">Pagar</ion-button>
-    </ion-footer>
-  
+    <div *ngIf="!pagado" class="bg-warning text-center text-dark" style="position: fixed; bottom: 0px;left:0;width: 100%;display: block;margin:0 !important;padding:0 !important;" [ngClass]="{'bottomSizeNoScaneo': !scaneo, 'bottomSizeScaneo': scaneo}">
+      <ion-grid>
+        <ion-row>
+          <ion-col size='3'>
+            <ion-label>SubTotal</ion-label>
+          </ion-col>
+          <ion-col size='9'>
+            <ion-label class="ion-text-end">
+              <h1>${{pedido?.precioTotal}}</h1>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="scaneo">
+          <ion-col size='5'>
+            <ion-label>Total + Propina {{descuento}}%</ion-label>
+          </ion-col>
+          <ion-col size='7'>
+            <ion-label class="ion-text-end">
+              <h1>${{this.totalPagar}}</h1>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+          <ion-button *ngIf="!pagado" expand="block" color="success" (click)="pagar()"
+          style=" height: 3em; color: white; margin-left: 0 !important;">Pagar</ion-button>
+      </ion-grid>
+    </div>
+
   </ion-content>

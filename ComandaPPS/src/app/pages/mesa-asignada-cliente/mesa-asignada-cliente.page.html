@@ -22,11 +22,11 @@
       <div class="col-lg-6 text-center bg">
         <h1 class="display-5 fw-bold lh-1 mb-3" style="font-size: 50px;">Estado de su pedido: {{this.pedido?.estado}}</h1>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <ion-button color="primary" class="fw-bold" (click)="audio.PlayAudio()" [routerLink]="['/clientes']">Encuesta</ion-button>
+          <ion-button color="primary" class="fw-bold" (click)="audio.PlayAudio()" style="height:100px;" [routerLink]="['/clientes']">Encuesta</ion-button>
         </div>
         <div *ngIf="this.pedido?.estado === 'recibido'" class="fw-bold" (click)="audio.PlayAudio()" [routerLink]="['/cuenta-del-pedido']"
           class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <ion-button color="success">Pedir cuenta</ion-button>
+          <ion-button color="success" style="height:100px;">Pedir cuenta</ion-button>
         </div>
       </div>
     </div>
