@@ -20,6 +20,7 @@ export class AuthService {
   usuarioActual: any;
   loading: boolean = false;
   tipoUsuario: string = '';
+  logeado: boolean = false;
   
   //Clientes
   clientes : Observable<any[]>;
@@ -251,7 +252,9 @@ export class AuthService {
       usuario = await this.firestore.collection('supervisores', ref => ref.where('email', '==', email).limit(1)).valueChanges({idField: 'id'}).pipe(take(1)).toPromise();
       this.tipoUsuario = 'supervisor';
     }
+
     this.usuarioActual = usuario[0];
+    this.logeado = true;
     
     return usuario[0];
   }

@@ -1,14 +1,19 @@
 <ion-menu side="start" menuId="first" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title *ngIf="this.auth.usuarioActual?.perfil=='dueno'">Churrasic Park Dueño </ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.perfil=='supervisor'">Churrasic Park Supervisor</ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.tipo">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>
-      <ion-title *ngIf="this.auth.usuarioActual?.tipoCliente">Churrasic Park - Cliente</ion-title>
+      <div *ngIf="this.auth.logeado">
+        <ion-title *ngIf="this.auth.usuarioActual?.perfil=='dueno'">Churrasic Park Dueño </ion-title>
+        <ion-title *ngIf="this.auth.usuarioActual?.perfil=='supervisor'">Churrasic Park Supervisor</ion-title>
+        <ion-title *ngIf="this.auth.usuarioActual?.tipo">Churrasic Park {{auth.usuarioActual?.tipo | titlecase}} </ion-title>
+        <ion-title *ngIf="this.auth.usuarioActual?.tipoCliente">Churrasic Park - Cliente</ion-title>
+      </div>
+      <div *ngIf="!this.auth.logeado">
+        <ion-title>Churrasic Park</ion-title>
+      </div>
     </ion-toolbar>
   </ion-header>
   <ion-content style="--background: #232323">
-    <ion-list *ngIf="!this.auth.usuarioActual">
+    <ion-list *ngIf="!this.auth.logeado">
 
       <ion-item *ngIf="this.audioS.activado">
         <i class="fas fa-volume-up" (click)="this.audioS.toggleAudio()"></i>
@@ -28,7 +33,7 @@
 
     </ion-list>
 
-    <ion-list *ngIf="this.auth.usuarioActual">
+    <ion-list *ngIf="this.auth.logeado">
 
       <ion-item *ngIf="this.audioS.activado">
         <i class="fas fa-volume-up" (click)="this.audioS.toggleAudio()"></i>

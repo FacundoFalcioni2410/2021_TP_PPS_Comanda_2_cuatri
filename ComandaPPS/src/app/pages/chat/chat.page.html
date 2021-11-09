@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content #chat padding>
-  <div *ngFor="let message of items | async" class="cht">
+  <div *ngFor="let message of items | async">
     <ion-card style='width:80%;margin:0 auto 10px 10px;' *ngIf="this.userService.usuarioActual?.id !== message.user?.id"
       class="chat">
       <div id="chat_content">
@@ -31,8 +31,8 @@
         </ion-card-content>
       </div>
     </ion-card>
-    <ion-card *ngIf="this.userService.usuarioActual?.id === message.user?.id" class="cht_right" align="right" id="right">
-      <div class="ion-float-right" align="right">
+    <ion-card style='width:80%;margin:0 10px 10px auto;background: rgba(226, 182, 182, 0.808);border-radius: 20px;'  *ngIf="this.userService.usuarioActual?.id === message.user?.id">
+      <div class="ion-float-right">
         <ion-card-content class="sms">
           {{message.message}}
         </ion-card-content>

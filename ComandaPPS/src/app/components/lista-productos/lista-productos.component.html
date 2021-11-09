@@ -4,7 +4,7 @@
   <ion-slides>
     <ion-slide *ngFor='let producto of productos; index as i;' class="mt-2" style="display:flex; justify-content: center; align-items: center;">
       <div class="slide bg-dark">
-        <div class="card img-fluid" style="width: 20rem;background-color: transparent;">
+        <div class="card img-fluid" style="width: 18rem;background-color: transparent;">
           <div id="carousel{{i}}" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item" *ngFor='let image of producto?.fotos; first as isFirst;'

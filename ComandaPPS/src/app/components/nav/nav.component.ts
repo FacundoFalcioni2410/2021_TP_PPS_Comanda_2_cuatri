@@ -11,7 +11,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(public menu: MenuController, public auth: AuthService, public audioS: AudioService, private router: Router) { }
+  constructor(public menu: MenuController, public auth: AuthService, public audioS: AudioService, private router: Router) {
+    // this.auth.getUsers('');
+  }
 
   ngOnInit() {}
 
@@ -33,8 +35,9 @@ export class NavComponent implements OnInit {
     this.auth.logOut()
     .then(res =>{
       this.audioS.PlayAudio();
+      this.auth.usuarioActual = undefined;
+      this.auth.logeado = false;
       this.router.navigate(['/login']);
-      this.auth.usuarioActual = null;
     });
   }
 }
