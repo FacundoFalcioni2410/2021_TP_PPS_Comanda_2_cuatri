@@ -35,21 +35,6 @@
 ✔ Dueño/supervisor habilita entrada de clientes - Facundo Falcioni  
 ✔ Metre habilita entrada de la lista de espera - Agustin Gaitan  
 
-## 🖥 Segunda semana  
-#### FECHA INICIO: 21/10/2021 - FECHA FIN: 30/10/2021  
-✔ Asignación de mesa - Agustin Gaitan  
-✔ Ingreso del local - Agustin Gaitan  
-✔ Solicitar pedido - Facundo Falcioni  
-✔ Carrito de productos solicitados - Facundo Falcioni  
-✔ Sector bartender - Agustin Gaitan y Facundo Falcioni  
-✔ Mostrar tiempo estimado del pedido - Facundo Falcioni  
-✔ Preparar pedido y entregar pedido al mozo - Agustin Gaitan  
-✔ QR ingreso al local - Agustin Gaitan  
-✔ QR lista de espera - Agustin Gaitan  
-✔ QR de la mesa - Facundo Falcioni  
-✔ Dueño/supervisor habilita entrada de clientes - Facundo Falcioni  
-✔ Metre habilita entrada de la lista de espera - Agustin Gaitan  
-
 ## 🖥 Tercera semana  
 #### FECHA INICIO: 30/10/2021 - FECHA FIN: 6/11/2021  
 ✔ Envio de correo electronico - Facundo Falcioni  
