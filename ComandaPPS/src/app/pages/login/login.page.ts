@@ -69,6 +69,7 @@ export class LoginPage implements OnInit {
     this.auth.login(this.form.value)
     .then( async res =>{
       let user = await this.auth.getUsers(res.user.email);
+      localStorage.setItem("clu",res.user.uid);// Setting user UID
       if(user)
       {
         

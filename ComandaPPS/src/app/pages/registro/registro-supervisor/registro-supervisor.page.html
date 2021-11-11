@@ -23,14 +23,14 @@
   
               <div class="row">
                   <div class="col-6">
-                      <label for="email"><b>Email</b></label>
+                      <label for="email"><b>Correo</b></label>
                       <input type="text" formControlName='email' name="email" required>
                       
                       <div class='text-light p-1 m-0' *ngIf="controles.get('email')?.touched && controles.get('email')?.errors?.required">
-                          Ingrese su email
+                          Ingrese su correo
                       </div>
                       <div class='text-light p-1 m-0' *ngIf="controles.get('email')?.touched && controles.get('email')?.errors?.email">
-                          Ingrese un email valido
+                          Ingrese un correo valido
                       </div>
                   </div>
                   <div class="col-6">

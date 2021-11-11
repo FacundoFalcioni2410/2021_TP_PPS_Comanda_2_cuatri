@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AhorcadoPage implements OnInit {
 
-  arrayPalabras : any = [];
+  /* arrayPalabras : any = [];
   firstTime = true;
   imagenArray: string[] = [
     "assets/images/ahorcado/ahorcado-1.png",
@@ -31,82 +31,74 @@ export class AhorcadoPage implements OnInit {
   public arrayGuiones : string[]  = [];
   
   letra : string = "";
-  palabra : string = "";
+  palabra : string = ""; */
+
+  numero: number;
+  ganado = false;
+  perdido = false;
+  intentos = 3;
+
+  descuento = 0;
+  jugado = 0;
 
   constructor(private auth : AuthService) {
-   this.image = this.imagenArray[0];
-   this.auth.getProductos()
-   .subscribe((data : any)=>{
-    this.arrayPalabras = data;
-    this.SetearPalabra();
-    this.firstTime = false;
-   });
-   
+    this.numero = 0;
+    
   }
 
   ngOnInit(): void {
 
-    // this.SetearPalabra();
+    this.obtenerRandom();
 
   }
 
-  getIndicesOf(searchStr: string, str: string, caseSensitive: boolean) {
-    var searchStrLen = searchStr.length;
-    if (searchStrLen == 0) {
-        return [];
-    }
-    var startIndex = 0, index, indices:any = [];
-    if (!caseSensitive) {
-        str = str.toLowerCase();
-        searchStr = searchStr.toLowerCase();
-    }
-    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
-        indices.push(index);
-        startIndex = index + searchStrLen;
-    }
-    return indices;
-  }
+  
 
   obtenerRandom(){ 
-    return Math.round(Math.random()*(this.arrayPalabras.length - 0));
+    this.numero =  Math.round(Math.random() * 6);
+    if(this.numero == 0){this.numero ++;}
   }
 
-  cambiarLetra(letra : string){
-    let indiceACambiar = this.getIndicesOf(letra,this.palabra,false);
+  sonar2(key: any){
+    
+    /* Jugado 1 vez */
 
-    if(indiceACambiar.length){
-
-      for(let indice of indiceACambiar){
-        this.arrayGuiones[indice] = letra;
+    if(this.jugado == 0){
+      if(this.intentos > 0){
+        this.intentos --;
+        if(key == this.numero){
+          this.ganado = true;
+          this.descuento = 10;
+          localStorage.setItem("descuento",this.descuento.toString());
+          this.jugado ++;
+        }
       }
-    }else{
-      this.errores++;
-      if(this.errores < 8)
-      {
-        this.image = this.imagenArray[this.errores];
+      if(this.intentos == 0 && this.ganado == false){
+        this.perdido = true;
+        this.jugado ++;
+      }
+    } else { /* Sigue jugando */
+      if(this.intentos > 0){
+        this.intentos --;
+        if(key == this.numero){
+          this.ganado = true;
+          this.jugado ++;
+        }
+      }
+      if(this.intentos == 0 && this.ganado == false){
+        this.perdido = true;
+        this.jugado ++;
       }
     }
 
+    
   }
 
-  SetearPalabra(){
-    this.errores = 0;
-    this.image = this.imagenArray[0];
-    this.arrayGuiones = [];
-    let random = this.obtenerRandom();
-    this.palabra = this.arrayPalabras[random]?.nombre;
-    // this.palabra = this.arrayPalabras[0]; 
-    /*PROBLEMA ACÁ. NO PUEDE LEER LENGHT NI ASIGNARLE ALGUN INDEX QUE NO EXISTA,
-    HAY QUE VERIFICAR QUE EXISTA EL INDICE YA QUE NO EXISTE AL MOMENTO DE HACER LE SUBSCRIBE, QUIZÁ ALGUN SET TIME OUT
-     POR ESO AGREGUÉ UN INDICE 0 PARA PROBAR
-    HABRÍA QUE HACER QUE EL RANDOM TIRE ALGUN NUMERO QUE SEA INDICE ASI LO AGARRA EL LENGHT
-    */
-    for(let i = 0; i < this.palabra.length; i++) {
-      
-      this.arrayGuiones.push("_");
-
-    }
+  Rejugar(){
+    this.obtenerRandom();
+    this.ganado = false;
+    this.perdido = false;
+    this.intentos = 3;
   }
-
 
 }

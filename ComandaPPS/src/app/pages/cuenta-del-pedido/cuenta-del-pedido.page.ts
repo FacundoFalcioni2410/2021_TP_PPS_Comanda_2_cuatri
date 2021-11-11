@@ -78,12 +78,20 @@ export class CuentaDelPedidoPage implements OnInit {
         this.propina = 0;
         this.descuento = 0;
       }
-      this.totalPagar = this.pedido.precioTotal + this.propina;
-      this.scaneo = true;
+      var d = localStorage.getItem("descuento");
+      if(d == "10"){
+        this.totalPagar = this.pedido.precioTotal - (this.pedido.precioTotal * 10 / 100) + this.propina;
+        this.scaneo = true;
+      } else{
+        this.totalPagar = this.pedido.precioTotal + this.propina;
+        this.scaneo = true;
+      }
+      
     }
   }
 
   pagar(){
+    
     this.userService.UpdatearEstadoPedido(this.pedido.id, 'pagado');
     
     Swal.fire({text: 'Se ha realizado su pago, aguarde a que sea confirmado por el mozo', toast: true, timer:2500, icon: 'warning', timerProgressBar: true, position: 'bottom'})

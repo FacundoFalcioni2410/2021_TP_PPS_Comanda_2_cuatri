@@ -5,40 +5,48 @@
         <ion-icon name="arrow-back"></ion-icon>
       </ion-back-button>
     </ion-buttons>
-    <ion-title>Ahorcado</ion-title>
+    <ion-title>Adivina número</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-      <div class="col-1 d-inline">
-        <div id="keyboard" *ngFor='let letra of abecedario' class='d-inline'>
-          <button class="btn btn-lg btn-primary m-2 d-inline" id='letter' (click)="this.cambiarLetra(letra)">{{letra}}</button>
-        </div>
-      </div>
+  <h4 align="center">Ganá un 10% de descuento en 1 jugada</h4>
+  <ion-grid class="num">
+    <ion-row>
+      <ion-col size="4" size-lg size="6" size-sm>
+        <ion-button class="numero1" size="large" (click)="sonar2(1)"></ion-button>
+      </ion-col>
+      <ion-col size="4" size-lg size="6" size-sm>
+        <ion-button class="numero2" size="large" (click)="sonar2(2)"></ion-button>
+      </ion-col>
+      <ion-col size="4" size-lg size="6" size-sm>
+        <ion-button class="numero3" size="large" (click)="sonar2(3)"></ion-button>
+      </ion-col>
+      <ion-col size="4" size-lg size="6" size-sm>
+        <ion-button class="numero4" size="large" (click)="sonar2(4)"></ion-button>
+      </ion-col>
+      <ion-col size="4" size-lg size="6" size-sm>
+        <ion-button class="numero5" size="large" (click)="sonar2(5)"></ion-button>
+      </ion-col>
+      <ion-col size="4" size-lg size="6" size-sm>
+        <ion-button class="numero6" size="large" (click)="sonar2(6)"></ion-button>
+      </ion-col>
+    </ion-row>
 
-      <div class="row justify-content-center">
-        <img style="height: 80%; width: 80%;" [src]="image">
-      </div>
+  </ion-grid>
+  <div>
+    <h1 align="center" style="color: rgb(0, 26, 143); font-weight: 900;">TE QUEDA {{intentos}} INTENTOS</h1>
+    <h1 *ngIf="ganado == true && jugado == 1" align="center" style="color: rgb(5, 1, 39); font-weight: 900;">GANASTE UN 10% DE DESCUENTO</h1>
+    <h1 *ngIf="perdido == true && jugado == 1" align="center" style="color: rgb(107, 1, 1); font-weight: 400;">xx EL NÚMERO ERA {{this.numero}}. NO HAY DESCUENTO</h1>
+    <h1 *ngIf="ganado == true && jugado != 1" align="center" style="color: rgb(5, 1, 39); font-weight: 900;">ADIVINASTE</h1>
+    <h1 *ngIf="perdido == true && jugado != 1" align="center" style="color: rgb(107, 1, 1); font-weight: 600;">PERDISTE, EL NÚMERO ERA {{this.numero}}</h1>
+  </div>
+  <!-- <div *ngIf="this.jugado == true">
+    <h1 *ngIf="!ganado" align="center" style="color: rgb(0, 26, 143); font-weight: 900;">TE QUEDA {{intentos}} INTENTOS</h1>
+    <h1 *ngIf="ganado" align="center" style="color: rgb(5, 1, 39); font-weight: 900;">ADIVINASTE</h1>
+    <h1 *ngIf="perdido" align="center" style="color: rgb(107, 1, 1); font-weight: 600;">PERDISTE, EL NÚMERO ERA {{this.numero}}</h1>
+  </div> -->
 
-    <div *ngIf="errores>=7">
-        <div>
-            <div class="text-danger row justify-content-center m-5" style="font-size: 72px; font-family: Verdana, Geneva, Tahoma, sans-serif">GAME OVER!</div>
-        </div>
-    </div>
-    <div *ngIf="!arrayGuiones.includes('_') && !firstTime">
-        <div>
-            <div class="text-success row justify-content-center m-5" style="font-size: 72px; font-family:Verdana, Geneva, Tahoma, sans-serif">GANASTE!</div>
-        </div>
-    </div>
-    <div class="row justify-content-center" class="text-success row justify-content-center m-5" style="font-size: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif">
-      <button (click)="SetearPalabra()">Resetear</button>
-    </div>
-
-    <div class="text-light text-center">
-      <div *ngIf="errores < 7">
-        <div *ngFor='let espacio of this.arrayGuiones' class='espacios d-inline'>
-          <p class="d-inline px-1">{{espacio}}</p>
-        </div>
-      </div>
-    </div>
+  <ion-button size="large" expand="block" style="height: 120px; font-weight: 900; font-size: 50px;" (click)="Rejugar()">
+    Reiniciar</ion-button>
 </ion-content>

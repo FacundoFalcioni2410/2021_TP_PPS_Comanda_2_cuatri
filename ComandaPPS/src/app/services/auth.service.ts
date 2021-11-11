@@ -102,7 +102,8 @@ export class AuthService {
   }
 
   getUser(){
-    return this.clienteCollection.doc(this.usuarioActual.id).valueChanges({idField: 'id'})
+    var usr = this.clienteCollection.doc(this.usuarioActual.id).valueChanges({idField: 'id'})
+    return usr;
   }
 
   async borrarUsuarioActual(){
@@ -264,6 +265,8 @@ export class AuthService {
   }
 
   logOut(){
+    localStorage.removeItem("clu");
+    localStorage.clear();
     return this.auth.signOut();
   }
 

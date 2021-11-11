@@ -1,21 +1,107 @@
-.btn-group button {
-    background-color: #04AA6D; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
-  }
-
-  input{
-    width:100%;
+ion-content{
+    --background: url('/assets/fondo.png') 0 0/100% 100% no-repeat;
+    --background: rgb(154, 168, 91);
+    --background-repeat: no-repeat;
+    --background-size: cover;
+}
+#header{
+    --background: rgb(5, 1, 15) !important;
+    color: rgb(216, 53, 53);
+}
+#footer{
+    --background: rgb(5, 1, 15) !important;
+    color: rgb(216, 53, 53);
+}
+#spinner{
+    img{
+            width: auto;
+            height: 40px !important;
+    }
+    
+}
+.esp{
+    margin-left: 20px;
+    border: 2px solid rgba(30, 89, 122, 0.829);
 }
 
-.espacios{
-    margin:auto;
+.num{
+    margin-top: -10px;
 }
 
-.col-2{
-    margin:0;
-    padding:0;
+
+/* Numeros */
+.numero1{
+    --background: url('/assets/number1.jpg') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+    height: 135px;
+    min-width: 90%;
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 2px 1px 2px rgb(0, 0, 0);
+}
+.numero2{
+    --background: url('/assets/number2.jpg') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+    height: 135px;
+    min-width: 90%;
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 2px 1px 2px rgb(0, 0, 0);
+}
+.numero3{
+    --background: url('/assets/number3.jpg') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+    height: 135px;
+    min-width: 90%;
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 2px 1px 2px rgb(0, 0, 0);
+}
+.numero4{
+    --background: url('/assets/number4.jpg') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+    height: 135px;
+    min-width: 90%;
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 2px 1px 2px rgb(0, 0, 0);
+}
+.numero5{
+    --background: url('/assets/number5.png') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+    height: 135px;
+    min-width: 90%;
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 2px 1px 2px rgb(0, 0, 0);
+}
+.numero6{
+    --background: url('/assets/number6.jpg') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+    height: 135px;
+    min-width: 90%;
+    border: 1px solid rgb(255, 0, 0);
+    box-shadow: 0px 2px 1px 2px rgb(0, 0, 0);
+}
+
+
+.selected{
+    margin-left: 20px;
+    border: 3px solid rgb(123, 255, 0);
+}
+
+/* .numeros{
+    background: url('../../assets/numeros.jpg') 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;   
+    border-radius: 100%;
+    box-shadow: 0px 2px 1px 1px rgba(227, 251, 9, 0.664);
+    border: 2px solid rgb(89, 5, 122);
+} */
+// To adjust items
+@media screen and (min-width: 800px) {
+    .numero1, .numero2, .numero3, .numero4, .numero5, .numero6{
+        height: 110px;
+    }
 }

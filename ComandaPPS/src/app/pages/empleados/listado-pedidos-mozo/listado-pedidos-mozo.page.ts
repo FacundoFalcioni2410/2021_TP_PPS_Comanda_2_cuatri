@@ -64,6 +64,7 @@ export class ListadoPedidosMozoPage implements OnInit {
 
 
   ConfirmarPago(pedido : any){
+    localStorage.removeItem("descuento"); // Elimino el descuento asignado
     this.userService.UpdatearEstadoPedido(pedido.id,'finalizado')
     .then(()=>{
     
