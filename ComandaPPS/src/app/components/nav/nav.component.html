@@ -75,6 +75,10 @@
         <ion-item (click)="this.logOut()">Cerrar sesión</ion-item>
       </ion-menu-toggle>
 
+      <ion-menu-toggle *ngIf="this.auth?.usuarioActual">
+        <ion-item [routerLink]="['/mesa-asignada-cliente']" (click)="this.audioS.PlayAudio()">Chat</ion-item>
+      </ion-menu-toggle>
+
     </ion-list>
   </ion-content>
 </ion-menu>
