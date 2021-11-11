@@ -19,17 +19,17 @@
                 <div class="row">
                     <div class="col-12">
                         <ion-item>
-                            <ion-label class="ms-1" position="floating" for="email"><b>Correo</b></ion-label>
+                            <ion-label class="ms-1" position="floating" for="email"><b>Correo electrónico</b></ion-label>
                             <ion-input type="text" class="" formControlName='email' name="email" required></ion-input>
                         </ion-item>
 
                         <div class='text-light px-1 error-text m-0'
                             *ngIf="form.get('email')?.touched && form.get('email')?.errors?.required">
-                            Ingrese su correo
+                            Ingrese su correo electrónico
                         </div>
                         <div class='text-light px-1 error-text m-0'
                             *ngIf="form.get('email')?.touched && form.get('email')?.errors?.email">
-                            Ingrese un correo valido
+                            Ingrese un correo electrónico valido
                         </div>
                     </div>
                     <div class="col-12">

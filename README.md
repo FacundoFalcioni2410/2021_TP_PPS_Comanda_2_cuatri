@@ -37,7 +37,7 @@
 
 ## 🖥 Tercera semana  
 #### FECHA INICIO: 30/10/2021 - FECHA FIN: 6/11/2021  
-✔ Envio de correo electronico - Facundo Falcioni  
+✔ Envio de correo electrónico - Facundo Falcioni  
 ✔ 3 Push Notifications - Facundo Falcioni  
 ✔ 2 Push Notifications - Agustin Gaitan  
 ✔ Chat - Bogdan Krylov  
@@ -49,3 +49,9 @@
 ✔ Estilos - Bogdan Krylov, Facundo Falcioni y Agustin Gaitan  
 ✔ Sonido entre paginas - Agustin Gaitan  
 ✔ Vibraciones en errores - Facundo Falcioni  
+
+## 🖥 Cuarta semana  
+#### FECHA INICIO: 6/11/2021 - FECHA FIN: 13/11/2021  
+✔ Arreglo palabras en ingles - Bogdan Krylov  
+✔ Arreglo espacios neutros en estado del pedido y importe más grande en cuenta del pedido - Agustin Gaitan  
+✔ Productos más grandes en listado de pedidos y mejora de visibilidad en el carrito - Facundo Falcioni  
