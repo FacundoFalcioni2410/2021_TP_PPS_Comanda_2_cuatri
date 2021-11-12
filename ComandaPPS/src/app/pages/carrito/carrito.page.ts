@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class CarritoPage implements OnInit {
 
   @Input() productos: any;
+  @Input() maximo: any;
   precio: number = 0;
   maxTiempo: number;
 
@@ -96,6 +97,31 @@ export class CarritoPage implements OnInit {
         this.router.navigate(['/cliente-espera-pedido']);
       },3000)
     });
+  }
+
+  disminuirCantidad(producto: any){
+    if(producto.cantidad > 1)
+    {
+      producto.cantidad--;
+    }
+    else
+    {
+      this.productos.splice(this.productos.indexOf(producto),1);
+    }
+
+    this.precio -= producto.precio;
+  }
+
+  aumentarCantidad(producto: any){
+    if(producto.cantidad === this.maximo)
+    {
+      Swal.fire({position: 'bottom', text:'Cantidad maxima del producto alcanzada', timer: 1500, timerProgressBar: true, icon: 'error', toast: true});
+    }
+    else
+    {
+      producto.cantidad++;
+      this.precio += producto.precio;
+    }
   }
 
 }

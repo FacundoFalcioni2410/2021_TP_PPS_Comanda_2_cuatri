@@ -68,6 +68,7 @@ export class RealizarPedidoPage implements OnInit {
         cssClass: 'modal-fullscreen',
         componentProps: {
           'productos': this.productos,
+          'maximo': this.cantidadMaxima
         }
       });
       await modal.present();

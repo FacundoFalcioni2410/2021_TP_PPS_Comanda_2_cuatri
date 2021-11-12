@@ -11,6 +11,7 @@
 
 <ion-content [fullscreen]="true" class="p-0 m-0" scroll-y="false">
   <app-lista-productos (producto)="recibirProducto($event)"></app-lista-productos>
+  <div class="oscuro"></div>
 </ion-content>
 <ion-footer style="height: 56px;background-color: #232323;">
   <div *ngFor="let producto of productos; let i = index" class="d-inline">
@@ -20,7 +21,7 @@
         class="fas fa-plus-circle"></i></span>
   </div>
   <button class="btn btn-primary mt-2" style="float:right !important;" (click)="verPedido()">Ver pedido
-    ({{cantidad}})</button>
+    ({{productos.length}})</button>
   <button class="btn btn-danger mt-2 me-2" style="float:right !important;" (click)="resetearPedido()">Limpiar</button>
 
 </ion-footer>

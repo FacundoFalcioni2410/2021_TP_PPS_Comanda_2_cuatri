@@ -20,18 +20,24 @@
         <img src="../../../assets/restaurant.png" class="img-fluid" alt="Bootstrap Themes" style="width:200px; height:200px" loading="lazy">
       </div>
       <div class="col-lg-6 text-center bg">
-        <h1 class="display-5 fw-bold lh-1 mb-3" style="font-size: 50px;">Estado de su pedido: {{this.pedido?.estado}}</h1>
+        <div>
+          <h3 class="display-5 fw-bold lh-1 mb-3  " style="font-size: 50px;">Estado de su pedido:  
+            <div class="mt-3">
+              <span style="background-color: darkcyan; border-radius: 10px;padding: 3px">{{this.pedido?.estado}}</span>
+            </div>
+          </h3>
+        </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <ion-button color="primary" class="fw-bold" (click)="audio.PlayAudio()" style="height:80px;" [routerLink]="['/clientes']">Encuesta</ion-button>
+          <ion-button color="primary" class="fw-bold" (click)="audio.PlayAudio()" style="height:75px;" [routerLink]="['/clientes']">Encuesta</ion-button>
         </div>
         <div *ngIf="this.pedido?.estado === 'recibido'" class="fw-bold" (click)="audio.PlayAudio()" [routerLink]="['/cuenta-del-pedido']"
           class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <ion-button color="success" style="height:80px;">Pedir cuenta</ion-button>
+          <ion-button color="success" style="height:75px;">Pedir cuenta</ion-button>
         </div>
-        <div class="fw-bold" (click)="audio.PlayAudio()" [routerLink]="['/ahorcado']"
+        <!-- <div class="fw-bold" (click)="audio.PlayAudio()" [routerLink]="['/ahorcado']"
           class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <ion-button color="success" style="height:80px; font-weight: 900; font-size: 18px;">Jugar 10% de descuento</ion-button>
-        </div>
+          <ion-button color="success" style="height:80px; font-size: 18px;">Jugar 10% de descuento</ion-button>
+        </div> -->
       </div>
     </div>
   </div>

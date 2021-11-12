@@ -14,5 +14,8 @@
 			"iconColor": "#2D73CE",
 			"sound": "notification.wav"
 		}
+	},
+	"server": {
+		"url": "http://192.168.0.172:8101"
 	}
 }
