@@ -23,6 +23,7 @@ export class CuentaDelPedidoPage implements OnInit {
   constructor(private userService: AuthService, private qrS: QRService, private router: Router,
               public audio : AudioService) {
     this.userService.TraerPedido(this.userService?.usuarioActual?.pedido).subscribe(res =>{
+      
       this.pedido = res;
 
       if(this.pedido.estado === 'finalizado')
@@ -34,6 +35,7 @@ export class CuentaDelPedidoPage implements OnInit {
         },3500)
       }
     });
+    
     this.userService.getMesas().subscribe(res =>{
       for(let mesa of res)
       {
@@ -46,7 +48,11 @@ export class CuentaDelPedidoPage implements OnInit {
   }
 
   ngOnInit() {
+    var des = localStorage.getItem("10%");
+    if(des == '10%'){Swal.fire({text: 'Se descontó un 10% por ganar en un juego', toast: true, timer:3500, icon: 'success', timerProgressBar: true, position: 'center'});}
   }
+
+
 
   async scanPropina(){
     let propina = await this.qrS.scan();
@@ -78,14 +84,8 @@ export class CuentaDelPedidoPage implements OnInit {
         this.propina = 0;
         this.descuento = 0;
       }
-      var d = localStorage.getItem("descuento");
-      if(d == "10"){
-        this.totalPagar = this.pedido.precioTotal - (this.pedido.precioTotal * 10 / 100) + this.propina;
-        this.scaneo = true;
-      } else{
         this.totalPagar = this.pedido.precioTotal + this.propina;
         this.scaneo = true;
-      }
       
     }
   }

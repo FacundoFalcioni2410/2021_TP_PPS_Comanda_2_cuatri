@@ -178,6 +178,11 @@ export class AuthService {
     return this.pedidosCollection.doc(idPedido).update({'estado': valor})
   }
 
+  /* Para agregar descuentos */
+  UpdatearPrecioTotalPedido(idPedido : any, valor : any){
+    return this.pedidosCollection.doc(idPedido).update({'precioTotal': valor})
+  }
+
   
   UpdatearEtapasRealizadasPedido(idPedido : any, valor : any){
     return this.pedidosCollection.doc(idPedido).update({'etapasRealizadas': valor, cocteleriaEntregado: true})

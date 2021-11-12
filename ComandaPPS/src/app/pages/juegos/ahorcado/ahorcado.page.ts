@@ -41,9 +41,9 @@ export class AhorcadoPage implements OnInit {
   descuento = 0;
   jugado = 0;
 
-  constructor(private auth : AuthService) {
+  constructor(private userService: AuthService) {
     this.numero = 0;
-    
+
   }
 
   ngOnInit(): void {
@@ -52,49 +52,68 @@ export class AhorcadoPage implements OnInit {
 
   }
 
-  
 
-  obtenerRandom(){ 
-    this.numero =  Math.round(Math.random() * 6);
-    if(this.numero == 0){this.numero ++;}
+
+  obtenerRandom() {
+    this.numero = Math.round(Math.random() * 2);
+    if (this.numero == 0) { this.numero++; }
   }
 
-  sonar2(key: any){
-    
+  sonar2(key: any) {
+
     /* Jugado 1 vez */
 
-    if(this.jugado == 0){
-      if(this.intentos > 0){
-        this.intentos --;
-        if(key == this.numero){
+    if (this.jugado == 0) {
+      if (this.intentos > 0) {
+        this.intentos--;
+        if (key == this.numero) {
           this.ganado = true;
           this.descuento = 10;
-          localStorage.setItem("descuento",this.descuento.toString());
-          this.jugado ++;
+          localStorage.setItem("descuento", this.descuento.toString());
+          this.jugado++;
+
+          var ref = this.userService.TraerPedido(this.userService?.usuarioActual?.pedido).subscribe(res => {
+
+            var pedido = res;
+
+            var precio = pedido.precioTotal - pedido.precioTotal * 10 / 100;
+            var des = localStorage.getItem("descuento");
+            if (des == "10") {
+              this.userService.UpdatearPrecioTotalPedido(pedido.id, precio);
+
+              localStorage.removeItem("descuento");
+              localStorage.setItem("10%",'10%');
+            }
+
+            ref.unsubscribe();
+
+          });
         }
       }
-      if(this.intentos == 0 && this.ganado == false){
+      if (this.intentos == 0 && this.ganado == false) {
         this.perdido = true;
-        this.jugado ++;
+        this.jugado++;
       }
     } else { /* Sigue jugando */
-      if(this.intentos > 0){
-        this.intentos --;
-        if(key == this.numero){
+      if (this.intentos > 0) {
+        this.intentos--;
+        if (key == this.numero) {
           this.ganado = true;
-          this.jugado ++;
+          this.jugado++;
         }
       }
-      if(this.intentos == 0 && this.ganado == false){
+      if (this.intentos == 0 && this.ganado == false) {
         this.perdido = true;
-        this.jugado ++;
+        this.jugado++;
       }
     }
 
     
+
+
   }
 
-  Rejugar(){
+  Rejugar() {
     this.obtenerRandom();
     this.ganado = false;
     this.perdido = false;
