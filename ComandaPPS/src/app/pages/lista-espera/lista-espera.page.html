@@ -21,7 +21,7 @@
           <ion-col size=6 *ngFor="let item of listaDeEsperaArray" [ngClass]="{'d-none' : item.mesaAsignada }">
             <div>
               <ion-card>
-                <img class="d-block m-auto img-circle img-responsive" [src]="item.foto" />
+                <img class="d-block m-auto img-circle img-responsive" [src]="item.foto" style="height: 150px;width: 150px;"/>
                 <ion-card-header>
                   <ion-card-title style="font-size:12px;">{{item.nombre}} {{item.apellido}}</ion-card-title>
                 </ion-card-header>

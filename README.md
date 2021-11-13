@@ -55,3 +55,67 @@
 ✔ Arreglo palabras en ingles - Bogdan Krylov  
 ✔ Arreglo espacios neutros en estado del pedido y importe más grande en cuenta del pedido - Agustin Gaitan  
 ✔ Productos más grandes en listado de pedidos y mejora de visibilidad en el carrito - Facundo Falcioni  
+
+
+# Tour de la aplicación
+
+## Interfaz del cliente 
+
+### Ingreso del cliente
+
+Al ingresar a la aplicación el cliente tiene la opcion de iniciar sesión si ya posee una cuenta, o de registrarse como cliente normal, o en su defecto, como cliente anonimo.
+
+![Ingreso a la aplicación](./fotosReadme/login-registros.jpg?qraw=true)  
+
+### Una vez dentro...
+
+El cliente debe escanear un QR que lo ingresa a la lista de espera. De ser aceptado y de habérsele asignado una mesa, debe escanear el QR de la misma (no puede escanear otro).
+
+![Cliente ingresa a la mesa](./fotosReadme/ingreso-cliente.jpg?qraw=true)  
+
+### Realización de pedido
+
+Una vez aquí, el cliente tiene la opción de consultar al mozo mediante un chat, o realizar el pedido correspondiente.
+
+![Realizar pedido](./fotosReadme/ingreso-cliente.jpg?qraw=true)  
+
+
+### Luego de realizar el pedido...
+
+Aqui el cliente tiene la opción de confirmar la recepción de su pedido, además puede volver a escanear el código QR de la mesa para visualizar el estado del pedido, y una vez recibido puede pedir la cuenta o acceder a la encuesta.
+
+![Cliente espera el pedido](./fotosReadme/esperando-pedido.jpg?qraw=true)  
+
+### Cuenta del pedido
+
+El cliente pide la cuenta y en la misma, se encuentra la opción de escanear un codigo QR para la propina. Una vez realizado el pago, debe esperar la confirmación del mozo.
+
+![Cuenta del pedido](./fotosReadme/cuenta.jpg?qraw=true)  
+
+### Visualización de los graficos de la encuesta
+
+Al retirarse del local el cliente puede escanear nuevamente el QR de ingreso al local para visualizar los graficos de las encuestas.
+
+![Graficos de las encuestas](./fotosReadme/cliente-final.jpg?qraw=true)  
+
+## Interfaz de los empleados
+
+### Dueño/supervisor y Metre
+
+Aquí se encuentran las tareas que puede realizar cada uno, cuando alguien ingresa al local y cuando alguien ingresa a la lista de espera respectivamente.
+
+![Tareas dueño y metre](./fotosReadme/supervisor-metre-habilitacion.jpg?qraw=true)  
+
+### Bartender, Chef y Mozo
+
+En esta sección tanto el bartender como el chef realizan los pedidos y se los devuelven al mozo. Los pedidos se separan por producto, asi que el tiempo de realización es el del producto que mayor elaboración conlleve. El mozo se encarga de enviar los pedidos a las secciones anteriormente mencionadas, entregarlo al cliente y por último confirmar el pago.
+
+![Tareas dueño y metre](./fotosReadme/pedidos-empleados-todos.jpg?qraw=true)  
+
+## Menú de cada usuario
+
+![Menú de los usuarios](./fotosReadme/menus.jpg?qraw=true)  
+
+## Push notification y correo electronico
+
+![Notificaciones](./fotosReadme/mails-push.jpg?qraw=true)  
