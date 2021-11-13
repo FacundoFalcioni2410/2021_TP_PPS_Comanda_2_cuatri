@@ -120,4 +120,6 @@ En esta sección tanto el bartender como el chef realizan los pedidos y se los d
 
 ## Push notification y correo electronico
 
+Aquí se pueden ver los correos electronicos que le llegarian la cliente al momento de ingresar a la aplicación y cuando es habilitado. También se encuentra una de las distintas push notification que se mandan a lo largo de la aplicación
+
 ![Notificaciones](./fotosReadme/mails-push.jpg?qraw=true)  
