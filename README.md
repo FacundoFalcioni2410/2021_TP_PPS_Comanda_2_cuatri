@@ -1,5 +1,7 @@
 # Churrasic Park
 
+![Icono de la aplicación](./fotosReadme/restaurant.png?qraw=true)  
+
 ## Integrantes
 ##### Facundo Falcioni
 ##### Agustin Gaitan
