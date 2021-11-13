@@ -1,6 +1,6 @@
 # Churrasic Park
 
-![Icono de la aplicación](./fotosReadme/restaurant.png?qraw=true)  
+<img src="./fotosReadme/restaurant.png" alt="Icono de la aplicación" width="200">
 
 ## Integrantes
 ##### Facundo Falcioni
