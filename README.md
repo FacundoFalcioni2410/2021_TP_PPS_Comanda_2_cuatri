@@ -79,7 +79,7 @@ El cliente debe escanear un QR que lo ingresa a la lista de espera. De ser acept
 
 Una vez aquí, el cliente tiene la opción de consultar al mozo mediante un chat, o realizar el pedido correspondiente.
 
-![Realizar pedido](./fotosReadme/ingreso-cliente.jpg?qraw=true)  
+![Realizar pedido](./fotosReadme/pedido.jpg?qraw=true)  
 
 
 ### Luego de realizar el pedido...
