@@ -56,8 +56,16 @@
 #### FECHA INICIO: 6/11/2021 - FECHA FIN: 13/11/2021  
 ✔ Arreglo palabras en ingles - Bogdan Krylov  
 ✔ Arreglo espacios neutros en estado del pedido y importe más grande en cuenta del pedido - Agustin Gaitan  
-✔ Productos más grandes en listado de pedidos y mejora de visibilidad en el carrito - Facundo Falcioni  
+✔ Productos más grandes en listado de pedidos y mejora de visibilidad en el carrito - Facundo Falcioni
 
+## 🖥 Quinta semana  
+#### FECHA INICIO: 13/11/2021 - FECHA FIN: 20/11/2021  
+✔ Reserva de mesa en tiempo futuro - Bogdan Krylov  
+✔ Push Notification reserva de la mesa - Bogdan Krylov  
+✔ Dueño confirma la reserva - Bogdan Krylov  
+✔ Juego de 10% descuento - Bogdan Krylov  
+✔ Solo puede realizar la reserva un cliente registrado - Bogdan Krylov  
+✔ Pasado el tiempo de reserva de la mesa, la misma se libera - Bogdan Krylov  
 
 # Tour de la aplicación
 
