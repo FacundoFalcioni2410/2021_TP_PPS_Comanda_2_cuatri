@@ -17,7 +17,7 @@
     <ion-card style='width:80%;margin:0 auto 10px 10px;' *ngIf="this.userService.usuarioActual?.id !== message.user?.id"
       class="chat">
       <div id="chat_content">
-        <ion-card-header *ngIf="this.userService.tipoUsuario != 'cliente'" id="header">
+        <ion-card-header *ngIf="this.userService.tipoUsuario != 'cliente'" class="text-dark">
           Mesa {{message.user.mesaAsignada}}
         </ion-card-header>
         <ion-card-header *ngIf="this.userService.tipoUsuario == 'cliente'">
@@ -26,7 +26,7 @@
         <ion-card-content style='padding-bottom:5px;' class="sms">
           {{message.message}}
         </ion-card-content>
-        <ion-card-content class="hour">
+        <ion-card-content class="text-dark">
           {{message.hour}}
         </ion-card-content>
       </div>
@@ -36,7 +36,7 @@
         <ion-card-content class="sms">
           {{message.message}}
         </ion-card-content>
-        <ion-card-content>
+        <ion-card-content class="text-dark">
           {{message.hour}}
         </ion-card-content>
       </div>
