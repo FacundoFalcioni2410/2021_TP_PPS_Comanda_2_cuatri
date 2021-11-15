@@ -5,6 +5,42 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp(functions.config().firebase);
 
+exports.nuevaReservaMesa = functions.firestore.document('clientes/{clienteID}').onUpdate((change, context) => {
+    //Cuando se actualiza un documento en la coleccion 'clientes' se ejecuta la funcion
+    const after = change.after.data(); //Obtengo los datos que se modificaron
+    const promises: any = [];
+
+    if (after.reservaEstado == 'pendiente') { //Si la reserva esta pendiente se manda la push
+
+        let query = admin.firestore().collection('supervisores') // Obtengo los supervisores/dueños 
+
+        query.get().then(snapshot => { // Array de documentos de los supervisores
+            if (!snapshot.empty) // Si hay supervisores
+            {
+                snapshot.forEach(doc => { //Cada doc es un documento de un supervisor
+                    let supervisor = doc.data(); //Los datos del documento del supervisor
+                    const payload = {
+                        token: supervisor.pushToken, //El token al que se le envia la push
+                        notification: {
+                            title: 'Nueva reserva de mesa',
+                            body: 'Nueva reserva de mesa esperando ser aceptada'
+                        },
+                        data: {
+                            ruta: '/gestion-reservas' //Ruta a la que se envia cuando toca la notificacion
+                        }
+                    };
+
+                    const p = admin.messaging().send(payload); //Se manda la push
+                    promises.push(p);
+                });
+                return Promise.all(promises);
+            }
+            return null;
+        });
+    }
+    return null;
+});
+
 
 exports.ingresoListaEspera = functions.firestore.document('clientes/{clienteID}').onUpdate((change, context) =>{
     const after = change.after.data();
