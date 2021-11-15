@@ -17,7 +17,7 @@
       </div>
       <div class="col-12 text-center bg">
         <h1 class="display-5 fw-bold lh-1 m-0 p-0">¡Bienvenido a Churrasic Park!</h1>
-        <p *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada !== 0" class="lead fw-bold fs-3">Por favor,
+        <p *ngIf="!this.usuario?.listaEspera && this.usuario?.mesaAsignada !== 0 && !this.usuario?.reserva" class="lead fw-bold fs-3">Por favor,
           ingrese a
           la lista de espera y espere a que un metre le asigne una mesa.</p>
         <i *ngIf="!this.usuario?.listaEspera && !this.usuario?.mesaAsignada" class="fas fa-qrcode pt-3 ps-2 mb-3"
@@ -27,7 +27,18 @@
           <label class="fw-bold fs-3">¡Entraste a la lista de espera! Esperá a que un empleado te asigne una
             mesa.</label>
         </div>
-        <div *ngIf="this.usuario?.mesaAsignada" class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <!-- Si no es una reserva -->
+        <div *ngIf="this.usuario?.mesaAsignada && !this.usuario?.reserva && this.usuario?.mesaAsignada !== '0'" class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <label class="fw-bold fs-3">Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}). Escanea el QR de tu
+            mesa</label>
+          <i class="fas fa-qrcode pt-3 ps-2 mb-3" (click)="Scan()" style="font-size: 55px !important;"></i>
+        </div>
+        <!-- Si es una reserva pero pendiente de aprobacion -->
+        <div *ngIf="this.usuario?.reserva && this.usuario?.reservaEstado == 'pendiente'" class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <label class="fw-bold fs-3">Tenes una reserva pendiente de aprobación</label>
+        </div>
+        <!-- Si es una reserva y ha sido aprobada -->
+        <div *ngIf="this.usuario?.reserva && this.usuario?.reservaEstado == 'aceptado'" class="d-grid gap-2 d-md-flex justify-content-md-start">
           <label class="fw-bold fs-3">Ya tenes una mesa asignada ({{this.usuario?.mesaAsignada}}). Escanea el QR de tu
             mesa</label>
           <i class="fas fa-qrcode pt-3 ps-2 mb-3" (click)="Scan()" style="font-size: 55px !important;"></i>
@@ -41,5 +52,7 @@
       </div>
     </div>
   </div>
-
+  <br>
+  <div *ngIf="!this.usuario?.mesaAsignada || this.usuario?.mesaAsignada == '0'" align="center"><ion-button color="success" style="height:60px; font-weight: 900; font-size: 18px; margin-top: 30px;" (click)="audio.PlayAudio()" [routerLink]="['/reservas']">RESERVAR MESA</ion-button></div>
+  
 </ion-content>

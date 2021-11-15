@@ -66,6 +66,11 @@
       <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
         <ion-item [routerLink]="['/registro-mesa']" (click)="this.audioS.PlayAudio()">Alta de mesa</ion-item>
       </ion-menu-toggle>
+
+      <!-- Reservas -->
+      <ion-menu-toggle *ngIf="this.auth.usuarioActual?.perfil">
+        <ion-item [routerLink]="['/gestion-reservas']" (click)="this.audioS.PlayAudio()">Gestionar reservas</ion-item>
+      </ion-menu-toggle>
       
       <ion-menu-toggle *ngIf="this.auth?.usuarioActual?.tipo === 'mozo'">
         <ion-item [routerLink]="['/chat']" (click)="this.audioS.PlayAudio()">Chat</ion-item>

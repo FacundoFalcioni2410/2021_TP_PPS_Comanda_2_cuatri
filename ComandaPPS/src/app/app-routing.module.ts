@@ -102,7 +102,15 @@ const routes: Routes = [
   {
     path: 'cuenta-del-pedido',
     loadChildren: () => import('./pages/cuenta-del-pedido/cuenta-del-pedido.module').then( m => m.CuentaDelPedidoPageModule)
+  },  {
+    path: 'reservas',
+    loadChildren: () => import('./pages/reservas/reservas.module').then( m => m.ReservasPageModule)
+  },
+  {
+    path: 'gestion-reservas',
+    loadChildren: () => import('./pages/gestion-reservas/gestion-reservas.module').then( m => m.GestionReservasPageModule)
   }
+
 ];
 
 @NgModule({

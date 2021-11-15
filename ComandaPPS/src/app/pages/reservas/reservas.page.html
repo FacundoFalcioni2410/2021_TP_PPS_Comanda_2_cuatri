@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button>
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="first" style="font-size:14px;">Menu</ion-menu-button>
+    </ion-buttons>
+    <ion-title>Reservar Mesa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content>
+    <ion-card class="myAnim login">
+      <ion-card-header>
+        <ion-card-title class="card">Reservar Mesa</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <form [formGroup]="reservaForm">
+          <ion-item lines="full">
+            <ion-input type="date" placeholder="Fecha" formControlName="fecha" placeholder="fecha"></ion-input>
+          </ion-item>
+          <div class="e" *ngIf="formControls.fecha.errors?.required">
+            Fecha es obligatoria
+          </div>
+          <div *ngIf="fecha_error" class="e">
+            Debe ser en presente o futuro
+          </div>
+          <ion-item lines="full">
+            <ion-input type="time" formControlName="hora" placeholder="hora"></ion-input>
+          </ion-item>
+          <div class="p" *ngIf="formControls.hora.errors?.required">
+            Ponga un horario
+          </div>
+          <div *ngIf="hora_error" class="p">
+            Debe ser en futuro
+          </div>
+          <ion-item>
+            <ion-select formControlName="mesa" type="ios" interface="popover">
+              <div *ngFor="let mesa of mesasArray">
+                <ion-select-option *ngIf="!mesa.cliente" value={{mesa.numero}} placeholder="mesa">{{mesa.numero}}
+                </ion-select-option>
+              </div>
+            </ion-select>
+          </ion-item>
+          <div class="p" *ngIf="formControls.mesa.errors?.required">
+            Seleccione una mesa
+          </div>
+          <ion-row>
+            <ion-col>
+              <div *ngIf="spinner" id="spinner" align="center"><img src="../assets/spinner.gif" alt="spinner" align="center"></div>
+            </ion-col>
+          </ion-row>
+          <ion-toolbar *ngIf="this.err == true" color="danger">
+            <ion-buttons slot="start">
+              <ion-button>
+                <ion-icon name="key-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+          <ion-row>
+            <ion-col>
+              <ion-button class="btn_submit" *ngIf="!spinner" [disabled]="!reservaForm.valid" type="submit"  expand="block" (click)="Reservar(reservaForm.value)">RESERVAR</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+        
+      </ion-card-content>
+    </ion-card>
+    </ion-content>
+
+</ion-content>

@@ -1,0 +1,42 @@
+ion-content {
+    --background: none;
+    background-image: url("../../../assets/reservas_fondo.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center center;
+
+    .spinner {
+        display: flex;
+        justify-self: center;
+        /* margin-top: 50%; */
+        /* margin: auto; */
+        width: auto;
+        margin: 0 auto;
+        margin-top: 50%;
+    }
+}
+
+ion-list {
+    background: transparent;
+    ion-item {
+        color: rgb(0, 0, 0);
+
+        background: transparent;
+        h2 {
+            font-family: fantasy;
+            font-size: 18px;
+            text-shadow: 0px 0px 4px gray;
+            color: rgb(2, 0, 7);
+        }
+        h3 {
+            font-family: sans-serif;
+            font-size: 14px;
+            color: black;
+        }
+        ion-avatar {
+            width: 5em;
+            height: 5em;
+        }
+    }
+}

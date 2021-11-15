@@ -1,0 +1,146 @@
+ion-content {
+    --overflow: hidden;
+    --background: url("/assets/fondo_mesas.jpg") 0 0/100% 100% no-repeat;
+    --background-repeat: no-repeat;
+    --background-size: cover;
+}
+
+.myAnim {
+    animation: myAnim 1s;
+}
+
+/* Creamos la animación ReboteIn Izquierda (con keyframes) */
+
+@keyframes myAnim {
+    0% {
+        opacity: 0;
+        transform: translateY(-890px);
+    }
+    50% {
+        transform: translateZ(-1290px);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(20px);
+    }
+}
+.login {
+    background-color: rgba(120, 138, 55, 0.404);
+    margin-top: 68px;
+    min-height: 450px;
+    box-shadow: 1px 1px 8px 6px rgba(43, 32, 105, 0.534);
+}
+.card {
+    margin-top: 4px;
+    text-align: center;
+    font-size: 27px;
+    font-weight: bolder;
+    text-shadow: 2px 1px 2px black;
+    --color: rgba(34, 4, 117, 0.548);
+    background-color: rgba(185, 184, 127, 0.651);
+}
+
+#spinner {
+    img {
+        padding-top: 50px;
+        padding-bottom: 20px;
+        margin-bottom: 40px;
+        width: auto;
+        height: 240px !important;
+        align-items: center;
+    }
+}
+
+ion-item {
+    margin-bottom: 10px;
+    --background: rgba(7, 1, 61, 0.555);
+    --color: rgb(253, 252, 167);
+    border-radius: 40px;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.856);
+}
+ion-input {
+    text-shadow: 2px 1px 1px rgb(127, 223, 3);
+    --color: rgb(248, 234, 195);
+}
+
+.e {
+    color: rgb(255, 238, 0);
+    text-shadow: 0px 0px 2px black;
+}
+.p {
+    color: rgb(255, 251, 0);
+    text-shadow: 0px 0px 2px black;
+}
+.btn_submit {
+    --color: rgb(230, 255, 2);
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 18px;
+    box-shadow: 1px 1px 6px 2px black;
+    margin-top: 100px;
+    --background: rgb(4, 62, 88);
+}
+.btn_submit:hover {
+    --color: rgb(101, 255, 71);
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 18px;
+    box-shadow: 1px 1px 6px 2px black;
+    margin-top: 100px;
+    --background: rgb(1, 5, 68);
+}
+/* Select */
+ion-select {
+    /* Applies to the value and placeholder color */
+    color: #f8ff9d;
+
+    /* Set a different placeholder color */
+    --placeholder-color: #971e49;
+
+    /* Set full opacity on the placeholder */
+    --placeholder-opacity: 1;
+}
+
+/* Set the width to the full container and center the content */
+ion-select {
+    width: 100%;
+    color: yellow;
+    justify-content: center;
+}
+
+/* Set the flex in order to size the text width to its content */
+ion-select::part(placeholder),
+ion-select::part(text) {
+    flex: 0 0 auto;
+}
+
+/* Set the placeholder color and opacity */
+ion-select::part(placeholder) {
+    color: #e0b5b5;
+    text-shadow: 2px 1px 2px rgb(0, 0, 0);
+    font-weight: bolder;
+    opacity: 1;
+}
+
+/*
+   * Set the font of the first letter of the placeholder
+   * Shadow parts work with pseudo-elements, too!
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+   */
+ion-select::part(placeholder)::first-letter {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* Set the text color */
+ion-select::part(text) {
+    color: #fff6d1;
+}
+
+/* Set the icon color and opacity */
+ion-select::part(icon) {
+    color: #cf074d;
+    opacity: 1;
+}
