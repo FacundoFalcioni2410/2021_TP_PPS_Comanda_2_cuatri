@@ -19,15 +19,56 @@ export class IngresoLocalPage implements OnInit {
   usuario: any;
   flag = false;
 
+  fecha_error = false;
+
   constructor(private qrS: QRService, public userService: AuthService, private route: Router,
     public audio: AudioService) {
-    this.userService.TraerGenerico('clientes', 'uid', this.userService.usuarioActual.uid).subscribe(res => {
-      this.usuario = res[0];
-      this.userService.usuarioActual = res[0];
-    });
+
+    
+
   }
 
   ngOnInit() {
+    this.userService.getUserObs()
+      .subscribe(val => {
+        this.usuario = null;
+        var u: any;
+        u = val
+        this.usuario = u;
+
+
+        /* this.userService.usuarioActual = res[0]; */
+
+        /* Método que verifica si dejar o no ingresar a la mesa reservada si aún no es el día */
+
+        /* Ejecuto ese método solo si hay una reserva, si no, no lo necesito. Para no generar errores en variables */
+
+        if (this.usuario?.reserva) { // Si el cliente reservó una mesa
+
+          var fecha: Date;
+          fecha = new Date();
+
+
+
+          var day = fecha.getDate();
+          var month = fecha.getMonth() + 1; // 1 - 2 - 3 - 4 etc
+          var year = fecha.getFullYear(); // ok
+          var now = new Date(year, month, day).getTime();
+          var aux = this.usuario?.fecha.split("-");
+
+          var fecha2 = new Date(aux[0], aux[1], aux[2]).getTime();
+
+          var diff = fecha2 - now;
+
+          if (diff > 0) { //  Si el cliente viene un día antes de la reserva, no le dejo escanear el QR si es aceptada la reserva
+            this.fecha_error = true;
+          } else {
+            this.fecha_error = false;
+          }
+
+        }
+
+      });
   }
 
 
@@ -115,14 +156,16 @@ export class IngresoLocalPage implements OnInit {
                   backdrop: false,
                 });
                 Haptics.vibrate({ duration: 2000 });
-              } else{
+              } else {
+                /* Cambio el estado de reserva si la tiene a 'sentado' para que no se elimine la mesa */
+                this.userService.AceptarRechazarReserva(this.usuario, 'sentado', 'na');
                 /* Caso contrario o si no hay reservas */
                 this.audio.PlayAudio();
                 this.route.navigateByUrl('/realizar-pedido');
 
               }
 
-              
+
             } else {
               Haptics.vibrate({ duration: 2000 });
               this.flag = true;

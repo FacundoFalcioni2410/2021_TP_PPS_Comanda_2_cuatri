@@ -25,7 +25,7 @@ ion-content {
     }
 }
 .login {
-    background-color: rgba(120, 138, 55, 0.404);
+    background-color: rgba(5, 73, 62, 0.678);
     margin-top: 68px;
     min-height: 450px;
     box-shadow: 1px 1px 8px 6px rgba(43, 32, 105, 0.534);
@@ -37,7 +37,7 @@ ion-content {
     font-weight: bolder;
     text-shadow: 2px 1px 2px black;
     --color: rgba(34, 4, 117, 0.548);
-    background-color: rgba(185, 184, 127, 0.651);
+    background-color: rgba(127, 185, 175, 0.651);
 }
 
 #spinner {
@@ -66,12 +66,22 @@ ion-input {
 }
 
 .e {
-    color: rgb(255, 238, 0);
+    border-radius: 40px;
+    background: black;
+    color: rgb(255, 57, 57);
     text-shadow: 0px 0px 2px black;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 8px;
 }
 .p {
-    color: rgb(255, 251, 0);
+    border-radius: 40px;
+    background: black;
+    color: rgb(255, 37, 37);
     text-shadow: 0px 0px 2px black;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 8px;
 }
 .btn_submit {
     --color: rgb(230, 255, 2);

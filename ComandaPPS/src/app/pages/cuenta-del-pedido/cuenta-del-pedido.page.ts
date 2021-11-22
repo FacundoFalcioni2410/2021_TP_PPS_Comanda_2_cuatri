@@ -20,6 +20,8 @@ export class CuentaDelPedidoPage implements OnInit {
   scaneo: boolean = false;
   totalPagar;
 
+  usuario:any;
+
   constructor(private userService: AuthService, private qrS: QRService, private router: Router,
               public audio : AudioService) {
     this.userService.TraerPedido(this.userService?.usuarioActual?.pedido).subscribe(res =>{
@@ -48,6 +50,15 @@ export class CuentaDelPedidoPage implements OnInit {
   }
 
   ngOnInit() {
+
+    /* Usuario con sus datos */
+    this.userService.getUserObs()
+      .subscribe(val => {
+
+        this.usuario = val;
+
+      });
+
     var des = localStorage.getItem("10%");
     if(des == '10%'){Swal.fire({text: 'Se descontó un 10% por ganar en un juego', toast: true, timer:3500, icon: 'success', timerProgressBar: true, position: 'center'});}
   }

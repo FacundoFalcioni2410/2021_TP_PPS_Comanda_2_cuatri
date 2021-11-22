@@ -17,6 +17,8 @@ import { FotosService } from './fotos.service';
 })
 export class AuthService {
 
+  intervalo:any;
+
   usuarioActual: any;
   loading: boolean = false;
   tipoUsuario: string = '';
@@ -78,13 +80,18 @@ export class AuthService {
 
 
 
+    this.chequearReservas();
+
+
+  }
+
+  chequearReservas() {
     /* HAGO UN MÉTODO QUE VA A CHEQUEAR SI UNA MESA RESERVADA YA CADUCÓ */
 
-    setInterval(()=>{
-
-      this.getMesas()
+    this.getMesasObs()
       .subscribe((data) => {
         this.mesasArray = data;
+
       });
 
     this.getClientes()
@@ -108,7 +115,7 @@ export class AuthService {
         for (let reserva of this.reservasArray) {
           if (reserva.reserva == true) {
 
-            let numMesa = Number.parseInt(reserva.mesaAsignada,10);
+            let numMesa = Number.parseInt(reserva.mesaAsignada, 10);
             let mesaObj: any;
 
             for (let mesa of this.mesasArray) {
@@ -117,6 +124,8 @@ export class AuthService {
                 break;
               }
             }
+
+
 
             var aux = reserva.fecha.split("-");
 
@@ -131,7 +140,8 @@ export class AuthService {
             if (diff < 0) {
 
               /* Está en pasado, caducó, procedo a eliminar la reserva */
-              this.eliminarReserva(reserva,mesaObj);
+              if (reserva.reservaEstado != 'sentado') { this.eliminarReserva(reserva, mesaObj); }
+
 
             } else if (diff == 0) {
 
@@ -146,9 +156,9 @@ export class AuthService {
 
                 if (dif_mins < 40) {
                   /* Si entra acá es porque caducó la reserva, procedo a eliminar la reserva */
-                  this.eliminarReserva(reserva,mesaObj);
+                  if (reserva.reservaEstado != 'sentado') { this.eliminarReserva(reserva, mesaObj); }
 
-                } else {
+                } else if (dif_mins >= 40) {
                   /* Si los minutos son correctos (más de 40 o igual), no se hace nada */
 
                   // Aún a tiempo
@@ -165,7 +175,7 @@ export class AuthService {
                   if (result < 40) {
 
                     /* Elimino la reserva */
-                    this.eliminarReserva(reserva,mesaObj);
+                    if (reserva.reservaEstado != 'sentado') { this.eliminarReserva(reserva, mesaObj); }
 
                   } else {
                     /* Si los minutos son correctos (más de 40 o igual), no se hace nada */
@@ -190,17 +200,13 @@ export class AuthService {
 
 
       });
-
-
-    },1000);
-
-
   }
 
 
-  eliminarReserva(cliente: any, mesa:any) {
+  eliminarReserva(cliente: any, mesa: any) {
     this.clienteCollection.doc(cliente.id).update({ fecha: "", hora: "", mesaAsignada: "0", listaEspera: false, reserva: false, reservaEstado: "" });
     this.UpdatearMesaCliente(mesa, false);
+    this.stopTimer();
   }
 
   getPedidos() {
@@ -223,6 +229,12 @@ export class AuthService {
     return this.productoCollection.valueChanges({ idField: 'id' });
   }
 
+
+  /* MI METODO */
+  getMesasObs() {
+    return this.mesaCollection.valueChanges({ idField: 'id' });
+  }
+
   getMesas() {
     return this.mesaCollection.valueChanges({ idField: 'id' });
   }
@@ -231,9 +243,20 @@ export class AuthService {
     return this.clienteCollection.valueChanges({ idField: 'id' });
   }
 
+
+  /* MI METODO */
+  getClientesObs() {
+    return this.clienteCollection.valueChanges();
+  }
+
   getUser() {
     var usr = this.clienteCollection.doc(this.usuarioActual.id).valueChanges({ idField: 'id' })
     return usr;
+  }
+
+  /* MI METODO */
+  getUserObs() {
+    return this.clienteCollection.doc(this.usuarioActual.id).valueChanges({ idField: 'id' }); //RETORNA AL CLIENTE ACTUAL
   }
 
   async borrarUsuarioActual() {
@@ -287,15 +310,40 @@ export class AuthService {
   /* Poner la mesa como reservada y poner la fecha y hora */
 
   SetearMesaClienteReserva(cliente: any, estado: any, fecha_: any, hora_: any) {
-    return this.clienteCollection.doc(cliente.id).update({ reserva: estado, fecha: fecha_, hora: hora_, listaEspera: true, reservaEstado: "pendiente" });
+    this.MiFlagSetter(cliente);
+    return this.clienteCollection.doc(cliente.id).update({ reserva: estado, fecha: fecha_, hora: hora_, listaEspera: true, reservaEstado: "pendiente", flag: 0 });
   }
 
+
+  /* Metodo para detectar cambios en la colección en el caso de chequear el horario caducado de reserva */
+  MiFlagSetter(cliente:any){
+    var key = 0;
+    this.intervalo = setInterval(()=>{
+
+      if(key == 0){
+        this.clienteCollection.doc(cliente.id).update({ flag: key });
+        key = 1;
+      }
+      if(key == 1){
+        this.clienteCollection.doc(cliente.id).update({ flag: key });
+        key = 0;
+      }
+
+    },60000);
+    
+  }
+  stopTimer(){clearInterval(this.intervalo);}
+
   /* Aceptar o rechazar  reserva*/
-  AceptarRechazarReserva(cliente: any, estado: any, mesa: any){
-    if(estado == 'rechazado'){
+  AceptarRechazarReserva(cliente: any, estado: any, mesa: any) {
+    if (estado == 'rechazado') {
+      
       this.clienteCollection.doc(cliente.id).update({ fecha: "", hora: "", mesaAsignada: "0", listaEspera: false, reserva: false, reservaEstado: "rechazado" });
       this.UpdatearMesaCliente(mesa, false);
+      this.stopTimer();
     }
+
+    
     /* Siendo la mesa ya asignada */
     return this.clienteCollection.doc(cliente.id).update({ reservaEstado: estado }); // pendiente, aceptado, rechazado
   }

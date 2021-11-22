@@ -17,6 +17,9 @@ export class ClienteEsperaPedidoPage implements OnInit {
 
   pedidoDelCliente : any;
 
+  /* Usuario actual */
+  usuario:any;
+
   constructor(public userService : AuthService, private qrS : QRService, private router : Router, private vibration: Vibration,
               public audio : AudioService) { 
     this.userService.TraerPedido(this.userService.usuarioActual.pedido)
@@ -26,6 +29,13 @@ export class ClienteEsperaPedidoPage implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getUserObs()
+      .subscribe(val => {
+
+        this.usuario = val;
+
+
+      });
   }
 
   Scan(){
@@ -48,7 +58,7 @@ export class ClienteEsperaPedidoPage implements OnInit {
         let datos = await this.qrS.scan();
 
         if(datos.text){
-          if(datos.text == this.userService.usuarioActual.mesaAsignada){
+          if(datos.text == this.usuario.mesaAsignada){
             this.audio.PlayAudio();
             this.router.navigateByUrl('/mesa-asignada-cliente');
           }

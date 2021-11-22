@@ -17,6 +17,9 @@ export class CarritoPage implements OnInit {
   precio: number = 0;
   maxTiempo: number;
 
+  /* Usuario */
+  usuario:any;
+
   constructor(private modalController: ModalController, private userService: AuthService, private router: Router, private audioS: AudioService) {
     
   }
@@ -32,6 +35,15 @@ export class CarritoPage implements OnInit {
       }
       this.precio += producto.precio * producto.cantidad;
     }
+
+    /* Traigo al cliente actual consu mesa y todo */
+    this.userService.getUserObs()
+      .subscribe(val => {
+
+        this.usuario = val;
+
+      });
+
   }
 
   dismiss(){
@@ -83,7 +95,8 @@ export class CarritoPage implements OnInit {
       precioTotal: this.precio,
       cocteleriaEntregado: false,
       cocinaEntregado: false,
-      tipo: tipo
+      tipo: tipo,
+      mesa: this.usuario.mesaAsignada
     }
 
     this.userService.SubirPedido(pedido)
