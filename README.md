@@ -83,12 +83,16 @@ El cliente debe escanear un QR que lo ingresa a la lista de espera. De ser acept
 
 ![Cliente ingresa a la mesa](./fotosReadme/ingreso-cliente.jpg?qraw=true)  
 
+Además el cliente puede reservar una mesa (la cual puede ser creada como se ve en la foto por el dueño/supervisor)
+
+![Reserva mesa](./fotosReadme/asignar-mesa-y-reservar.png?qraw=true)  
+
+
 ### Realización de pedido
 
 Una vez aquí, el cliente tiene la opción de consultar al mozo mediante un chat, o realizar el pedido correspondiente.
 
 ![Realizar pedido](./fotosReadme/pedido.jpg?qraw=true)  
-
 
 ### Luego de realizar el pedido...
 
@@ -100,7 +104,11 @@ Aqui el cliente tiene la opción de confirmar la recepción de su pedido, ademá
 
 El cliente pide la cuenta y en la misma, se encuentra la opción de escanear un codigo QR para la propina. Una vez realizado el pago, debe esperar la confirmación del mozo.
 
-![Cuenta del pedido](./fotosReadme/cuenta.jpg?qraw=true)  
+![Cuenta del pedido](./fotosReadme/cuenta.jpg?qraw=true)
+
+El cliente tambien tiene la opción de jugar un juego, que si gana a la primera obtiene un 10% de descuento
+
+![Juego descuento](./fotosReadme/juego-con-descuento.png?qraw=true)
 
 ### Visualización de los graficos de la encuesta
 
@@ -115,6 +123,10 @@ Al retirarse del local el cliente puede escanear nuevamente el QR de ingreso al 
 Aquí se encuentran las tareas que puede realizar cada uno, cuando alguien ingresa al local y cuando alguien ingresa a la lista de espera respectivamente.
 
 ![Tareas dueño y metre](./fotosReadme/supervisor-metre-habilitacion.jpg?qraw=true)  
+
+Además el dueño/supervisor puede aceptar o rechazar las reservas que solicite el cliente
+
+![Reserva dueño](./fotosReadme/supervisor-acepta-reserva.png?qraw=true)  
 
 ### Bartender, Chef y Mozo
 
